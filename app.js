@@ -110,10 +110,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     directoryGrid.innerHTML = filtered.map(r => {
-      // Avatar
+      // Avatar (Photo or Clean Monogram Initials)
+      const initials = r.name
+        .split(" ")
+        .filter(w => w.length > 0 && !["and", "&", "the", "a"].includes(w.toLowerCase()))
+        .slice(0, 2)
+        .map(w => w[0].toUpperCase())
+        .join("") || r.plot;
+
       const avatarContent = r.photoUrl
         ? `<img src="${r.photoUrl}" alt="${r.name}">`
-        : `<span class="material-symbols-rounded" style="font-size: 26px;">person</span>`;
+        : `<span>${initials}</span>`;
 
       // Indicators
       const tenantChip = r.hasTenant
