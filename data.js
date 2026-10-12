@@ -25,7 +25,7 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "31",
-    surname: "Agarwals",
+    surname: "Jagrawals",
     members: "Gaurav, Pramod & Rekha",
     relation: "Resident Owner",
     phone: "+91 89469 68876",
