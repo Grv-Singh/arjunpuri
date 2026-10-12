@@ -466,25 +466,38 @@ const GRIEVANCE_PORTALS = [
   }
 ];
 
-// Local Authorities, Parshad, Karyakarta & Trades Helpers (Ward 145)
+// Local Authorities, Vigilance, Helplines, Trades & Colony Contacts (Ward 145)
 const CIVIC_AND_TRADE_CONTACTS = [
+  // --- ELECTRICITY & POWER ---
   {
     role: "JEN Electricity (कनिष्ठ अभियंता)",
-    name: "Rahul Ji (JEN पावरहाउस)",
+    name: "Rahul Ji (JEN विद्युत विभाग)",
     category: "authority",
     icon: "bolt",
-    phone: "Powerhouse CD-II Desk",
-    rawPhone: "918946968876",
+    phone: "+91 94133 90122",
+    rawPhone: "9413390122",
     office: "JVVNL Powerhouse CD-II, Jaipur",
     duty: "Underground cabling, transformer tripping & pillar boxes"
   },
+  {
+    role: "JVVNL Lineman (लाइनमैन विद्युत विभाग)",
+    name: "Sunil Thapa (सुनील थापा)",
+    category: "authority",
+    icon: "electrical_services",
+    phone: "+91 96028 47270",
+    rawPhone: "9602847270",
+    office: "JVVNL Powerhouse Area Unit",
+    duty: "Local line fault repair, jumper replacement, phase restoration"
+  },
+
+  // --- CIVIC & LOCAL BODY ---
   {
     role: "Area Ward Parshad (पार्षद)",
     name: "Prem Chand (पार्षद)",
     category: "authority",
     icon: "how_to_reg",
     phone: "+91 97857 40980",
-    rawPhone: "919785740980",
+    rawPhone: "9785740980",
     office: "Ward 145, Nagar Nigam Greater",
     duty: "Road approvals, drainage allocation, colony meetings"
   },
@@ -494,7 +507,7 @@ const CIVIC_AND_TRADE_CONTACTS = [
     category: "authority",
     icon: "campaign",
     phone: "+91 93519 41910",
-    rawPhone: "919351941910",
+    rawPhone: "9351941910",
     office: "Imli Phatak Area Unit",
     duty: "MLA liaison, public grievances, street sweeping drive"
   },
@@ -508,6 +521,91 @@ const CIVIC_AND_TRADE_CONTACTS = [
     office: "Ward 145 Health Dept",
     duty: "Garbage vans, lane sweepers, malba challans"
   },
+  {
+    role: "Sanitation Staff (सफाई कर्मचारी नगर निगम)",
+    name: "Dilip Sarsar (दिलीप सरसर - नगर निगम)",
+    category: "authority",
+    icon: "mop",
+    phone: "+91 99501 87959",
+    rawPhone: "9950187959",
+    office: "Ward 145 Sanitation Team",
+    duty: "Lane sweeping, drainage silt cleaning & waste disposal"
+  },
+
+  // --- EMERGENCY & HELPLINES ---
+  {
+    role: "Police Emergency & Beat",
+    name: "Police Emergency 112 / 100",
+    category: "authority",
+    icon: "local_police",
+    phone: "112 / 100",
+    rawPhone: "112",
+    office: "Local Police Beat & Control Room",
+    duty: "Evening anti-social loitering, lane obstruction, security"
+  },
+  {
+    role: "Emergency Ambulance (एम्बुलेंस)",
+    name: "Medical Ambulance 102",
+    category: "authority",
+    icon: "emergency",
+    phone: "102",
+    rawPhone: "102",
+    office: "Rajasthan Emergency Medical Service",
+    duty: "Immediate emergency hospital transport & patient care"
+  },
+  {
+    role: "Fire Brigade (अग्निशमन सेवा)",
+    name: "Fire Emergency 101",
+    category: "authority",
+    icon: "local_fire_department",
+    phone: "101",
+    rawPhone: "101",
+    office: "Jaipur Fire Service Control Room",
+    duty: "Transformer fire, electrical short circuits, emergency rescue"
+  },
+  {
+    role: "Childline (बाल सुरक्षा हेल्पलाइन)",
+    name: "Childline 1098",
+    category: "authority",
+    icon: "child_care",
+    phone: "1098",
+    rawPhone: "1098",
+    office: "Ministry of Women & Child Development",
+    duty: "Child protection, child labour reporting, distress relief"
+  },
+  {
+    role: "ACB Rajasthan (भ्रष्टाचार निरोधक ब्यूरो)",
+    name: "ACB Anti-Corruption Rajasthan",
+    category: "authority",
+    icon: "policy",
+    phone: "1064 • WA +91 94135 02834",
+    rawPhone: "9413502834",
+    office: "Anti-Corruption Bureau, Rajasthan",
+    duty: "Bribe demand reporting, government officer vigilance",
+    customMsg: "Sir, reporting corruption / bribe demand issue in government department..."
+  },
+  {
+    role: "CBI Jaipur Vigilance (सीबीआई भ्रष्टाचार डेस्क)",
+    name: "CBI Jaipur Corruption Desk",
+    category: "authority",
+    icon: "shield",
+    phone: "+91 94140 22600 / 0141-2228315",
+    rawPhone: "9414022600",
+    office: "Central Bureau of Investigation, Jaipur Branch",
+    duty: "Central government corruption complaints & fraud reporting"
+  },
+  {
+    role: "FSSAI Food Safety (खाद्य सुरक्षा हेल्पलाइन)",
+    name: "FSSAI Toll-Free 1800112100",
+    category: "authority",
+    icon: "restaurant",
+    phone: "1800112100",
+    rawPhone: "1800112100",
+    office: "Food Safety and Standards Authority of India",
+    duty: "Commercial food adulteration, expired products & hygiene complaints"
+  },
+
+  // --- TRADES & ESSENTIAL SERVICES ---
   {
     role: "Water Tank Supplier (पानी टैंकर)",
     name: "Water Tank Supply (पानी टैंकर)",
@@ -550,12 +648,12 @@ const CIVIC_AND_TRADE_CONTACTS = [
   },
   {
     role: "Electrician (बिजली मिस्त्री)",
-    name: "Electrician Services (इलेक्ट्रीशियन)",
+    name: "Om Prakash Electrician (इलेक्ट्रीशियन)",
     category: "trade",
     icon: "electric_bolt",
     phone: "+91 98292 64008",
     rawPhone: "9829264008",
-    office: "Local Electrical Works",
+    office: "Imli Phatak Electrical Works",
     duty: "House wiring, tripping, MCB, switchboard & invertor fixes"
   },
   {
@@ -590,13 +688,23 @@ const CIVIC_AND_TRADE_CONTACTS = [
   },
   {
     role: "House Help / Maid (घरेलू सहायिका)",
-    name: "Sandhya (संध्या)",
+    name: "Sandhya (संध्या - घरेलू सहायिका)",
     category: "trade",
     icon: "cleaning_services",
     phone: "+91 93390 85223",
     rawPhone: "9339085223",
     office: "Arjunpuri Area Domestic Staff",
     duty: "Housekeeping, cleaning, utensil washing & domestic assistance"
+  },
+  {
+    role: "House Help / Maid (घरेलू सहायिका)",
+    name: "Bai (बाई - घरेलू सहायिका)",
+    category: "trade",
+    icon: "cleaning_services",
+    phone: "+91 63679 83945",
+    rawPhone: "6367983945",
+    office: "Arjunpuri Area Domestic Staff",
+    duty: "Housekeeping, cleaning, utensil washing & cooking assistance"
   },
   {
     role: "Scrap & Malba Dealer (कबाड़ी)",
@@ -608,14 +716,36 @@ const CIVIC_AND_TRADE_CONTACTS = [
     office: "Sahakar Marg Scrap Depot",
     duty: "Iron rods, construction scrap & household waste pickup"
   },
+
+  // --- COLONY RESIDENTS & COORDINATORS ---
   {
-    role: "Police Emergency & Beat",
-    name: "Emergency Police Beat (टोंक फाटक थाना)",
-    category: "authority",
-    icon: "local_police",
-    phone: "112 / 100",
-    rawPhone: "112",
-    office: "Local Police Station",
-    duty: "Evening anti-social loitering, lane obstruction, security"
+    role: "Colony Liaison / Resident",
+    name: "Dinesh Ji Arjunpuri",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 85040 71231",
+    rawPhone: "8504071231",
+    office: "Arjunpuri 1st Community",
+    duty: "Colony matters, coordination & resident welfare"
+  },
+  {
+    role: "Colony Liaison / Resident",
+    name: "N N Arjunpuri",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 92516 87044",
+    rawPhone: "9251687044",
+    office: "Arjunpuri 1st Community",
+    duty: "Colony liaison & community coordination"
+  },
+  {
+    role: "Plot 14A / Commercial Resident",
+    name: "Goyal Ji Arjunpuri",
+    category: "colony",
+    icon: "home",
+    phone: "+91 94134 90448",
+    rawPhone: "9413490448",
+    office: "Plot 14A (Varalika Compu Power)",
+    duty: "Resident owner, commercial power systems"
   }
 ];
