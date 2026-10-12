@@ -2,232 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arjunpuri 1st — Community & Resident Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Arjunpuri 1st — Colony Management Portal</title>
   
   <!-- Modern Typography: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Android Material Symbols Rounded (Material 3 / latest Android) -->
+  <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <!-- Header / Navbar -->
-    <header class="navbar">
-      <a href="#" class="brand">
-        <div class="brand-icon">
-          <span class="material-symbols-rounded">location_city</span>
+  <div class="app-wrapper">
+    <!-- Header: Royal Archer Theme -->
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="archer-crest" title="Arjunpuri Royal Archer Emblem">
+          <span class="material-symbols-rounded">crisis_alert</span>
         </div>
-        <div>
-          <div class="brand-title">Arjunpuri 1st Link Road</div>
-          <div class="brand-subtitle">Imli Phatak, Tonk Phatak, Jaipur — 302015</div>
+        <div class="brand-titles">
+          <h1>Arjunpuri 1st</h1>
+          <span>अर्जुनपुरी 1st लिंक रोड • जयपुर 302015</span>
         </div>
-      </a>
-
-      <div class="nav-stats">
-        <div class="stat-pill">
-          <span class="material-symbols-rounded">home</span>
-          <span>Plots: <strong id="total-plots-count">31</strong></span>
-        </div>
-        <div class="stat-pill">
-          <span class="material-symbols-rounded">verified_user</span>
-          <span>Verified: <strong id="verified-plots-count">30</strong></span>
-        </div>
+      </div>
+      <div class="header-badge">
+        <span class="material-symbols-rounded" style="font-size: 14px;">verified</span>
+        <span id="plot-counter">19 Plots</span>
       </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-      <div class="hero-tag">
-        <span class="material-symbols-rounded">shield</span>
-        Colony Management & Verification Portal
+    <!-- Instant Universal Search -->
+    <div class="search-island">
+      <div class="search-field">
+        <span class="material-symbols-rounded search-icon">search</span>
+        <input 
+          type="text" 
+          id="main-search-input" 
+          class="search-input" 
+          placeholder="खोजें: प्लॉट, नाम, गाड़ी नंबर (8634), या मोबाइल..." 
+          autocomplete="off"
+          autocorrect="off"
+        >
+        <button id="clear-search-btn" class="clear-search-btn" title="Clear">
+          <span class="material-symbols-rounded" style="font-size: 18px;">close</span>
+        </button>
       </div>
-      <h1>Arjunpuri 1st Resident & Plot Directory</h1>
-      <p>Direct resident directory with WhatsApp, call & SMS buttons, vehicle plate tracking, tenant & police verification indicators, and 1-click grievance launchers.</p>
+    </div>
+
+    <!-- Micro Filter Strip -->
+    <div class="filter-strip" id="filter-strip">
+      <button class="micro-pill active" data-filter="all">
+        <span class="material-symbols-rounded" style="font-size: 14px;">grid_view</span>
+        All Plots
+      </button>
+      <button class="micro-pill" data-filter="vehicles">
+        <span class="material-symbols-rounded" style="font-size: 14px;">directions_car</span>
+        Vehicles
+      </button>
+      <button class="micro-pill" data-filter="tenants">
+        <span class="material-symbols-rounded" style="font-size: 14px;">key</span>
+        Tenants & PGs
+      </button>
+      <button class="micro-pill" data-filter="encroachment">
+        <span class="material-symbols-rounded" style="font-size: 14px;">report</span>
+        Encroachments
+      </button>
+      <button class="micro-pill" data-filter="verified">
+        <span class="material-symbols-rounded" style="font-size: 14px;">verified</span>
+        Police Verified
+      </button>
+    </div>
+
+    <!-- VIEW 1: Directory List (High Density) -->
+    <main id="view-directory" class="view-panel">
+      <div id="directory-list" class="directory-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
+
+    <!-- VIEW 2: 1-Click Grievance Launchers -->
+    <section id="view-grievances" class="view-panel" style="display: none;">
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
+        1-Click Government Grievance Portals (बिजली, पानी, नगर निगम):
+      </div>
+      <div id="grievance-list">
+        <!-- Rendered dynamically -->
+      </div>
     </section>
 
-    <!-- Navigation Tabs -->
-    <nav class="tabs-nav" id="section-tabs">
-      <button class="tab-btn active" data-tab="directory">
+    <!-- VIEW 3: Authorities & Help Directory -->
+    <section id="view-contacts" class="view-panel" style="display: none;">
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
+        पार्षद, कार्यकर्ता, पुलिस व स्थानीय मिस्त्री सहायता:
+      </div>
+      <div id="contacts-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Bottom Dock Navigation -->
+    <nav class="bottom-dock">
+      <button class="dock-btn active" data-tab="directory">
         <span class="material-symbols-rounded">groups</span>
-        Plot Directory & Verification
+        Directory
       </button>
-      <button class="tab-btn" data-tab="vehicles">
-        <span class="material-symbols-rounded">directions_car</span>
-        Vehicle & Parking Lookup
+      <button class="dock-btn" data-tab="grievances">
+        <span class="material-symbols-rounded">bolt</span>
+        Grievance
       </button>
-      <button class="tab-btn" data-tab="grievances">
-        <span class="material-symbols-rounded">open_in_new</span>
-        File Grievance (JVVNL / Jal / Nigam)
-      </button>
-      <button class="tab-btn" data-tab="contacts">
+      <button class="dock-btn" data-tab="contacts">
         <span class="material-symbols-rounded">contact_phone</span>
-        Parshad & Trades Directory
-      </button>
-      <button class="tab-btn" data-tab="rules">
-        <span class="material-symbols-rounded">rule</span>
-        Colony By-Laws
+        Contacts
       </button>
     </nav>
-
-    <!-- TAB 1: Directory -->
-    <div id="tab-content-directory" class="tab-panel">
-      <!-- Search & Filters -->
-      <div class="filter-bar">
-        <div class="search-box">
-          <span class="material-symbols-rounded">search</span>
-          <input type="text" id="directory-search" class="search-input" placeholder="Search plot (e.g. A-31), resident name, phone, or vehicle...">
-        </div>
-
-        <div class="filter-pills" id="filter-pills">
-          <button class="pill-btn active" data-filter="all">
-            <span class="material-symbols-rounded">grid_view</span>
-            All Plots
-          </button>
-          <button class="pill-btn" data-filter="owner">
-            <span class="material-symbols-rounded">home_pin</span>
-            Owner Occupied
-          </button>
-          <button class="pill-btn" data-filter="tenant">
-            <span class="material-symbols-rounded">key</span>
-            Tenant Present
-          </button>
-          <button class="pill-btn" data-filter="verified">
-            <span class="material-symbols-rounded">verified</span>
-            Police Verified
-          </button>
-          <button class="pill-btn" data-filter="pending">
-            <span class="material-symbols-rounded">warning</span>
-            Pending Verification
-          </button>
-          <button class="pill-btn" data-filter="encroachment">
-            <span class="material-symbols-rounded">report</span>
-            Encroachments
-          </button>
-          <button class="pill-btn" data-filter="has-vehicle">
-            <span class="material-symbols-rounded">directions_car</span>
-            Vehicles
-          </button>
-        </div>
-      </div>
-
-      <!-- Directory Grid -->
-      <div class="directory-grid" id="directory-grid">
-        <!-- Rendered dynamically via JavaScript -->
-      </div>
-    </div>
-
-    <!-- TAB 2: Vehicle Lookup -->
-    <div id="tab-content-vehicles" class="tab-panel" style="display: none;">
-      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">directions_car</span>
-          Instant Vehicle-to-Plot Lookup
-        </h2>
-        <p>Found an unknown or blocking vehicle in the lane? Enter license plate number to contact the owner directly via 1-click Call, SMS, or WhatsApp.</p>
-      </div>
-
-      <div class="search-box" style="margin-bottom: 1.5rem;">
-        <span class="material-symbols-rounded">search</span>
-        <input type="text" id="vehicle-search" class="search-input" placeholder="Type vehicle plate number (e.g. 8141, 9849, RJ14)...">
-      </div>
-
-      <div class="directory-grid" id="vehicles-grid">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-
-    <!-- TAB 3: Grievance Portals (Direct 1-Click Launchers) -->
-    <div id="tab-content-grievances" class="tab-panel" style="display: none;">
-      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">campaign</span>
-          1-Click Government Grievance Launchers
-        </h2>
-        <p>Direct official filing portals and toll-free lines for electricity hazards, water supply failures, municipal garbage, and road encroachment.</p>
-      </div>
-
-      <div id="grievance-portals-list">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-
-    <!-- TAB 4: Parshad & Trades Contacts -->
-    <div id="tab-content-contacts" class="tab-panel" style="display: none;">
-      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">contact_phone</span>
-          Parshad, Authorities & Trade Helpers
-        </h2>
-        <p>One-click direct contact for Ward Parshad, Area Karyakarta, Sanitation SI, Electrician, Plumber, Mason, and Scrap Vendor.</p>
-      </div>
-
-      <div id="civic-contacts-list">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-
-    <!-- TAB 5: Colony By-Laws -->
-    <div id="tab-content-rules" class="tab-panel" style="display: none;">
-      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">gavel</span>
-          Arjunpuri 1st Link Road Community Charter
-        </h2>
-        <p>Consensus rules agreed upon to maintain hygiene, peace, and smooth vehicle movement in our narrow link road.</p>
-      </div>
-
-      <div class="petition-card">
-        <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--warning);">volume_off</span>
-          1. Quiet Hours & Construction Timing
-        </h3>
-        <p class="petition-summary">Heavy noise construction, stone cutting, drilling, and hammer work is strictly permitted only between <strong>06:00 AM and 10:00 PM</strong>. Night work is prohibited.</p>
-      </div>
-
-      <div class="petition-card">
-        <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">construction</span>
-          2. Construction Malba & Dust Control
-        </h3>
-        <p class="petition-summary">Any demolition debris (malba) must be lifted within 7 days. Green safety netting and water sprinkling must be used to prevent dust from blowing into neighboring homes.</p>
-      </div>
-
-      <div class="petition-card">
-        <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--success);">directions_car</span>
-          3. Clear Passage & Lane Parking Ethics
-        </h3>
-        <p class="petition-summary">Vehicles must be parked strictly against designated plot walls. The center lane must remain free for emergency vehicles, water tankers, and garbage vans.</p>
-      </div>
-
-      <div class="petition-card">
-        <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--danger);">delete_forever</span>
-          4. Waste & Water Drainage
-        </h3>
-        <p class="petition-summary">All wastewater from car washing must flow directly into naali chambers, never onto the public street to prevent mosquito breeding and slippery mud.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Detail Modal -->
-  <div class="modal-overlay" id="detail-modal">
-    <div class="modal-content">
-      <button class="modal-close" id="modal-close-btn">
-        <span class="material-symbols-rounded">close</span>
-      </button>
-      <div id="modal-body">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
   </div>
 
   <!-- Scripts -->
