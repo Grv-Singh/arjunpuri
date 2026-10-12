@@ -146,17 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         badgesHtml += `<span class="badge-tenant">${r.tenantCount ? r.tenantCount + ' Tenants' : 'Tenant'}</span>`;
       }
 
-      // Vehicles line
-      const vehicleHtml = (r.vehicles && r.vehicles.length > 0)
-        ? `<div class="vehicle-line">
-             <span class="material-symbols-rounded">directions_car</span>
-             <span class="vehicle-highlight">${r.vehicles.join(" • ")}</span>
-           </div>`
-        : `<div class="vehicle-line" style="color: var(--text-dim);">
-             <span class="material-symbols-rounded" style="color: var(--text-dim);">no_crash</span>
-             <span>No vehicle</span>
-           </div>`;
-
       // 1-Tap Action URLs
       const msgText = encodeURIComponent(`Namaste ${surnameDisplay} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
 
@@ -171,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   <span class="name-text">${surnameDisplay}</span>
                   ${badgesHtml}
                 </div>
-                ${vehicleHtml}
               </div>
             </div>
 

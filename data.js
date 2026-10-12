@@ -20,8 +20,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Pareek Family Residence. Designated parking.",
-    nuisanceAlert: ""
+    notes: "Colony-wide garbage accumulates outside.",
+    nuisanceAlert: "Entire colony garbage dumping point outside."
   },
   {
     plot: "31",
@@ -44,7 +44,7 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW (3-Phase)",
     meterType: "Smart Meter",
-    notes: "2 Verified Tenants on premises. Clean frontage.",
+    notes: "Vehicle wash water runoff onto street.",
     nuisanceAlert: ""
   },
   {
@@ -61,14 +61,14 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: true,
-    encroachmentType: "Dental Clinic Board & Rubble",
+    encroachmentType: "Board & Rubble",
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Construction rubble and dental services board outside. Dental clinic encroachment.",
-    nuisanceAlert: "Dental clinic board & construction rubble on walkway."
+    notes: "Dental clinic board and construction rubble outside.",
+    nuisanceAlert: ""
   },
   {
     plot: "29",
@@ -115,8 +115,8 @@ const RESIDENTS_DATA = [
     nuisanceAlert: ""
   },
   {
-    plot: "27",
-    surname: "Pushpendra (Cafe & PG)",
+    plot: "27 (Corner)",
+    surname: "Pushpendra (Corner Cafe & PG)",
     members: "Pushpendra (PG with 10 Tenants)",
     relation: "PG & Commercial Cafe",
     phone: "+91 80008 60490",
@@ -162,7 +162,7 @@ const RESIDENTS_DATA = [
   {
     plot: "25",
     surname: "Sainis (PG)",
-    members: "Saini Ji & PG Students",
+    members: "PG Tenants (6 Students)",
     relation: "Student PG Accommodation",
     phone: "+91 93145 30593",
     rawPhone: "919314530593",
@@ -187,9 +187,9 @@ const RESIDENTS_DATA = [
     phone: "+91 99280 22998",
     rawPhone: "9928022998",
     photoUrl: "",
-    hasTenant: false,
-    tenantCount: 0,
-    tenantInfo: "Family Occupied",
+    hasTenant: true,
+    tenantCount: 1,
+    tenantInfo: "1 Tenant",
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
@@ -198,8 +198,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Gupta family residence. Clean record, underground cabling proponent.",
-    nuisanceAlert: ""
+    notes: "Construction rubble and waste outside.",
+    nuisanceAlert: "Construction rubble & waste outside."
   },
   {
     plot: "23",
@@ -222,12 +222,12 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Active in colony improvement. Dedicated front parking.",
+    notes: "Active in colony improvement.",
     nuisanceAlert: ""
   },
   {
     plot: "20",
-    surname: "Corner Plot (Atikraman)",
+    surname: "Plot 20 (Atikraman)",
     members: "Tenanted Property (2 Tenants)",
     relation: "Tenanted Corner Property",
     phone: "+91 93148 35023",
