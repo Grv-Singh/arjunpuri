@@ -19,6 +19,38 @@ document.addEventListener("DOMContentLoaded", () => {
     plotCounter.textContent = `${RESIDENTS_DATA.length} Plots`;
   }
 
+  // Theme Toggle (Dark / Light)
+  const themeToggleBtn = document.getElementById("theme-toggle-btn");
+  const themeIcon = document.getElementById("theme-icon");
+
+  function applyTheme(theme) {
+    if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+      if (themeIcon) themeIcon.textContent = "dark_mode";
+      if (themeToggleBtn) themeToggleBtn.setAttribute("title", "Switch to Dark Theme");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      if (themeIcon) themeIcon.textContent = "light_mode";
+      if (themeToggleBtn) themeToggleBtn.setAttribute("title", "Switch to Light Theme");
+    }
+    try {
+      localStorage.setItem("arjunpuri-theme", theme);
+    } catch (e) {}
+  }
+
+  let savedTheme = "dark";
+  try {
+    savedTheme = localStorage.getItem("arjunpuri-theme") || "dark";
+  } catch (e) {}
+  applyTheme(savedTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      applyTheme(isLight ? "dark" : "light");
+    });
+  }
+
   // Instant Universal Search
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
