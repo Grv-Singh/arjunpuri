@@ -42,33 +42,33 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Banner -->
     <section class="hero">
       <div class="hero-tag">
         <span class="material-symbols-rounded">shield</span>
         Colony Management & Verification Portal
       </div>
       <h1>Arjunpuri 1st Resident & Plot Directory</h1>
-      <p>A unified digital registry for all 31 plots: verified residents, vehicle-to-plot lookup, civic authorities direct dial, and public grievance tracking.</p>
+      <p>Direct resident directory with WhatsApp, call & SMS buttons, vehicle plate tracking, tenant & police verification indicators, and 1-click grievance launchers.</p>
     </section>
 
     <!-- Navigation Tabs -->
     <nav class="tabs-nav" id="section-tabs">
       <button class="tab-btn active" data-tab="directory">
         <span class="material-symbols-rounded">groups</span>
-        Plot & Resident Directory
+        Plot Directory & Verification
       </button>
       <button class="tab-btn" data-tab="vehicles">
         <span class="material-symbols-rounded">directions_car</span>
         Vehicle & Parking Lookup
       </button>
-      <button class="tab-btn" data-tab="civic">
-        <span class="material-symbols-rounded">contact_phone</span>
-        Authority & Civic Contacts
+      <button class="tab-btn" data-tab="grievances">
+        <span class="material-symbols-rounded">open_in_new</span>
+        File Grievance (JVVNL / Jal / Nigam)
       </button>
-      <button class="tab-btn" data-tab="petitions">
-        <span class="material-symbols-rounded">campaign</span>
-        Civic Grievances & Actions
+      <button class="tab-btn" data-tab="contacts">
+        <span class="material-symbols-rounded">contact_phone</span>
+        Parshad & Trades Directory
       </button>
       <button class="tab-btn" data-tab="rules">
         <span class="material-symbols-rounded">rule</span>
@@ -76,7 +76,7 @@
       </button>
     </nav>
 
-    <!-- SECTION 1: Directory -->
+    <!-- TAB 1: Directory -->
     <div id="tab-content-directory" class="tab-panel">
       <!-- Search & Filters -->
       <div class="filter-bar">
@@ -88,23 +88,27 @@
         <div class="filter-pills" id="filter-pills">
           <button class="pill-btn active" data-filter="all">
             <span class="material-symbols-rounded">grid_view</span>
-            All Plots (31)
+            All Plots
           </button>
           <button class="pill-btn" data-filter="owner">
             <span class="material-symbols-rounded">home_pin</span>
-            Owners
+            Owner Occupied
           </button>
           <button class="pill-btn" data-filter="tenant">
             <span class="material-symbols-rounded">key</span>
-            Tenants
+            Tenant Present
           </button>
           <button class="pill-btn" data-filter="verified">
             <span class="material-symbols-rounded">verified</span>
-            Police/ID Verified
+            Police Verified
+          </button>
+          <button class="pill-btn" data-filter="pending">
+            <span class="material-symbols-rounded">warning</span>
+            Pending Verification
           </button>
           <button class="pill-btn" data-filter="has-vehicle">
             <span class="material-symbols-rounded">directions_car</span>
-            Vehicles Registered
+            Vehicles
           </button>
         </div>
       </div>
@@ -115,14 +119,14 @@
       </div>
     </div>
 
-    <!-- SECTION 2: Vehicle Lookup -->
+    <!-- TAB 2: Vehicle Lookup -->
     <div id="tab-content-vehicles" class="tab-panel" style="display: none;">
       <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
         <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
           <span class="material-symbols-rounded" style="color: var(--primary);">directions_car</span>
           Instant Vehicle-to-Plot Lookup
         </h2>
-        <p>Found an unknown or blocking vehicle in the lane? Enter license plate number to contact owner directly and prevent WhatsApp disputes.</p>
+        <p>Found an unknown or blocking vehicle in the lane? Enter license plate number to contact the owner directly via 1-click Call, SMS, or WhatsApp.</p>
       </div>
 
       <div class="search-box" style="margin-bottom: 1.5rem;">
@@ -135,14 +139,29 @@
       </div>
     </div>
 
-    <!-- SECTION 3: Civic & Authorities Directory -->
-    <div id="tab-content-civic" class="tab-panel" style="display: none;">
+    <!-- TAB 3: Grievance Portals (Direct 1-Click Launchers) -->
+    <div id="tab-content-grievances" class="tab-panel" style="display: none;">
       <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
         <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">call</span>
-          Essential Civic Authorities & Service Directory
+          <span class="material-symbols-rounded" style="color: var(--primary);">campaign</span>
+          1-Click Government Grievance Launchers
         </h2>
-        <p>Direct lines for local Ward Parshad, Nagar Nigam Sanitation Officers, Police Beat, Electricity Helpdesk, and local helpers.</p>
+        <p>Direct official filing portals and toll-free lines for electricity hazards, water supply failures, municipal garbage, and road encroachment.</p>
+      </div>
+
+      <div id="grievance-portals-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- TAB 4: Parshad & Trades Contacts -->
+    <div id="tab-content-contacts" class="tab-panel" style="display: none;">
+      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
+        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span class="material-symbols-rounded" style="color: var(--primary);">contact_phone</span>
+          Parshad, Authorities & Trade Helpers
+        </h2>
+        <p>One-click direct contact for Ward Parshad, Area Karyakarta, Sanitation SI, Electrician, Plumber, Mason, and Scrap Vendor.</p>
       </div>
 
       <div id="civic-contacts-list">
@@ -150,37 +169,22 @@
       </div>
     </div>
 
-    <!-- SECTION 4: Civic Petitions & Actions -->
-    <div id="tab-content-petitions" class="tab-panel" style="display: none;">
-      <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-        <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-rounded" style="color: var(--primary);">policy</span>
-          Official Civic Petitions & Legal Grievances
-        </h2>
-        <p>Real-time tracking of community petitions submitted to government departments with reference numbers and formal demands.</p>
-      </div>
-
-      <div id="petitions-list">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-
-    <!-- SECTION 5: Colony By-Laws -->
+    <!-- TAB 5: Colony By-Laws -->
     <div id="tab-content-rules" class="tab-panel" style="display: none;">
       <div class="hero" style="margin-bottom: 1.5rem; padding: 1.5rem;">
         <h2 style="font-size: 1.4rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
           <span class="material-symbols-rounded" style="color: var(--primary);">gavel</span>
           Arjunpuri 1st Link Road Community Charter
         </h2>
-        <p>Guidelines unanimously agreed upon to maintain hygiene, quiet peace, and smooth mobility in our narrow link road.</p>
+        <p>Consensus rules agreed upon to maintain hygiene, peace, and smooth vehicle movement in our narrow link road.</p>
       </div>
 
       <div class="petition-card">
         <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
           <span class="material-symbols-rounded" style="color: var(--warning);">volume_off</span>
-          1. Quiet Hours & Construction Work Timing
+          1. Quiet Hours & Construction Timing
         </h3>
-        <p class="petition-summary">Heavy noise construction, stone cutting, drilling, and hammer work is strictly permitted only between <strong>06:00 AM and 10:00 PM</strong>. Night work violating senior citizens' and students' peace is prohibited.</p>
+        <p class="petition-summary">Heavy noise construction, stone cutting, drilling, and hammer work is strictly permitted only between <strong>06:00 AM and 10:00 PM</strong>. Night work is prohibited.</p>
       </div>
 
       <div class="petition-card">
@@ -188,21 +192,21 @@
           <span class="material-symbols-rounded" style="color: var(--primary);">construction</span>
           2. Construction Malba & Dust Control
         </h3>
-        <p class="petition-summary">Any demolition debris (malba) must be cleared within 7 days. Green safety netting and water sprinkling must be used to prevent dust from blowing into neighboring homes.</p>
+        <p class="petition-summary">Any demolition debris (malba) must be lifted within 7 days. Green safety netting and water sprinkling must be used to prevent dust from blowing into neighboring homes.</p>
       </div>
 
       <div class="petition-card">
         <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
           <span class="material-symbols-rounded" style="color: var(--success);">directions_car</span>
-          3. Clear Passage & Parking Ethics
+          3. Clear Passage & Lane Parking Ethics
         </h3>
-        <p class="petition-summary">Vehicles must be parked strictly against the designated plot boundaries. The center lane must remain free at all times to allow passage for fire tenders, ambulances, and water tankers.</p>
+        <p class="petition-summary">Vehicles must be parked strictly against designated plot walls. The center lane must remain free for emergency vehicles, water tankers, and garbage vans.</p>
       </div>
 
       <div class="petition-card">
         <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
           <span class="material-symbols-rounded" style="color: var(--danger);">delete_forever</span>
-          4. Waste & Water Disposal
+          4. Waste & Water Drainage
         </h3>
         <p class="petition-summary">All wastewater from car washing must flow directly into naali chambers, never onto the public street to prevent mosquito breeding and slippery mud.</p>
       </div>
@@ -220,12 +224,6 @@
         <!-- Rendered dynamically -->
       </div>
     </div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <span class="material-symbols-rounded" id="toast-icon">check_circle</span>
-    <span id="toast-text">Action completed successfully</span>
   </div>
 
   <!-- Scripts -->

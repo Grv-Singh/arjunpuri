@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Elements
   const directoryGrid = document.getElementById("directory-grid");
   const vehiclesGrid = document.getElementById("vehicles-grid");
+  const grievancePortalsList = document.getElementById("grievance-portals-list");
   const civicContactsList = document.getElementById("civic-contacts-list");
-  const petitionsList = document.getElementById("petitions-list");
   const directorySearchInput = document.getElementById("directory-search");
   const vehicleSearchInput = document.getElementById("vehicle-search");
   const detailModal = document.getElementById("detail-modal");
@@ -18,15 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalCloseBtn = document.getElementById("modal-close-btn");
   const tabButtons = document.querySelectorAll("#section-tabs .tab-btn");
   const filterPills = document.querySelectorAll("#filter-pills .pill-btn");
-  const toast = document.getElementById("toast");
-  const toastText = document.getElementById("toast-text");
 
   // Init Counts
   const totalPlotsCountEl = document.getElementById("total-plots-count");
   const verifiedPlotsCountEl = document.getElementById("verified-plots-count");
   if (totalPlotsCountEl) totalPlotsCountEl.textContent = RESIDENTS_DATA.length;
   if (verifiedPlotsCountEl) {
-    const verified = RESIDENTS_DATA.filter(r => r.status === "Verified").length;
+    const verified = RESIDENTS_DATA.filter(r => r.policeVerified).length;
     verifiedPlotsCountEl.textContent = verified;
   }
 
@@ -45,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (activePanel) activePanel.style.display = "block";
 
       if (currentTab === "vehicles") renderVehicles();
-      if (currentTab === "civic") renderCivicContacts();
-      if (currentTab === "petitions") renderPetitions();
+      if (currentTab === "grievances") renderGrievancePortals();
+      if (currentTab === "contacts") renderContacts();
     });
   });
 
@@ -81,9 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let filtered = RESIDENTS_DATA.filter(r => {
       // Pill Filter
-      if (currentFilter === "owner" && r.type !== "Owner") return false;
-      if (currentFilter === "tenant" && r.type !== "Tenanted") return false;
-      if (currentFilter === "verified" && r.status !== "Verified") return false;
+      if (currentFilter === "owner" && r.hasTenant) return false;
+      if (currentFilter === "tenant" && !r.hasTenant) return false;
+      if (currentFilter === "verified" && !r.policeVerified) return false;
+      if (currentFilter === "pending" && r.policeVerified) return false;
       if (currentFilter === "has-vehicle" && (!r.vehicles || r.vehicles.length === 0)) return false;
 
       // Text Search
@@ -110,15 +109,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     directoryGrid.innerHTML = filtered.map(r => {
-      const isVerified = r.status === "Verified";
-      const statusClass = isVerified ? "status-verified" : "status-pending";
-      const statusIcon = isVerified ? "verified" : "pending_actions";
+      // Avatar
+      const avatarContent = r.photoUrl
+        ? `<img src="${r.photoUrl}" alt="${r.name}">`
+        : `<span class="material-symbols-rounded" style="font-size: 26px;">person</span>`;
 
-      const vehicleChips = (r.vehicles && r.vehicles.length > 0)
-        ? r.vehicles.map(v => `<span class="meta-chip vehicle"><span class="material-symbols-rounded" style="font-size: 14px;">directions_car</span>${v}</span>`).join("")
-        : "";
+      // Indicators
+      const tenantChip = r.hasTenant
+        ? `<span class="indicator-chip indicator-tenant"><span class="material-symbols-rounded" style="font-size: 13px;">key</span>Tenant Present</span>`
+        : `<span class="indicator-chip indicator-owner"><span class="material-symbols-rounded" style="font-size: 13px;">home_pin</span>Owner Occupied</span>`;
 
-      const whatsappText = encodeURIComponent(`Namaste ${r.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
+      const policeChip = r.policeVerified
+        ? `<span class="indicator-chip indicator-police-verified"><span class="material-symbols-rounded" style="font-size: 13px;">verified</span>Police Verified</span>`
+        : `<span class="indicator-chip indicator-police-pending"><span class="material-symbols-rounded" style="font-size: 13px;">warning</span>Pending Verification</span>`;
+
+      // Vehicles
+      const vehicleBox = (r.vehicles && r.vehicles.length > 0)
+        ? `<div class="vehicles-tag-box">
+             <span class="material-symbols-rounded" style="color: #818cf8; font-size: 16px;">directions_car</span>
+             <span>Vehicles: <strong>${r.vehicles.join(", ")}</strong></span>
+           </div>`
+        : `<div class="vehicles-tag-box" style="color: var(--text-dim);">
+             <span class="material-symbols-rounded" style="font-size: 16px;">no_crash</span>
+             <span>No vehicles recorded</span>
+           </div>`;
+
+      // Pre-filled Messages
+      const msgText = encodeURIComponent(`Namaste ${r.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
 
       return `
         <div class="plot-card" data-plot="${r.plot}">
@@ -127,33 +144,40 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="material-symbols-rounded" style="font-size: 18px;">home</span>
               ${r.plot}
             </div>
-            <div class="status-badge ${statusClass}">
-              <span class="material-symbols-rounded" style="font-size: 14px;">${statusIcon}</span>
-              ${r.status}
+            <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600;">Plot Verified</span>
+          </div>
+
+          <!-- Resident Avatar & Name -->
+          <div class="resident-profile-box">
+            <div class="resident-avatar">
+              ${avatarContent}
+            </div>
+            <div class="resident-details">
+              <div class="resident-name" title="${r.name}">${r.name}</div>
+              <div class="resident-relation">${r.relation}</div>
             </div>
           </div>
 
-          <div class="resident-name">${r.name}</div>
-          <div class="resident-relation">${r.relation} &bull; ${r.type}</div>
-
-          <div class="meta-tags">
-            ${vehicleChips}
-            <span class="meta-chip power">
-              <span class="material-symbols-rounded" style="font-size: 14px;">bolt</span>
-              ${r.loadKw}
-            </span>
-            <span class="meta-chip">
-              <span class="material-symbols-rounded" style="font-size: 14px;">speed</span>
-              ${r.meterType}
-            </span>
+          <!-- Indicators -->
+          <div class="indicators-row">
+            ${tenantChip}
+            ${policeChip}
           </div>
 
+          <!-- Vehicles -->
+          ${vehicleBox}
+
+          <!-- 3 One-Click Buttons: Call, SMS, WhatsApp + Details -->
           <div class="card-actions">
             <a href="tel:${r.phone}" class="action-btn btn-call" title="Call ${r.name}">
               <span class="material-symbols-rounded">call</span>
               Call
             </a>
-            <a href="https://wa.me/${r.rawPhone}?text=${whatsappText}" target="_blank" class="action-btn btn-whatsapp" title="WhatsApp ${r.name}">
+            <a href="sms:${r.rawPhone}?body=${msgText}" class="action-btn btn-sms" title="SMS ${r.name}">
+              <span class="material-symbols-rounded">sms</span>
+              SMS
+            </a>
+            <a href="https://wa.me/${r.rawPhone}?text=${msgText}" target="_blank" class="action-btn btn-whatsapp" title="WhatsApp ${r.name}">
               <span class="material-symbols-rounded">chat</span>
               WhatsApp
             </a>
@@ -166,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
-  // Render Vehicles
+  // Render Vehicles Grid
   function renderVehicles() {
     if (!vehiclesGrid) return;
 
@@ -199,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `).join(" ");
 
-      const whatsappText = encodeURIComponent(`Namaste ${r.name} ji, your vehicle is parked in Arjunpuri 1st lane, could you please adjust it?`);
+      const waMsg = encodeURIComponent(`Namaste ${r.name} ji, regarding your vehicle parked in Arjunpuri 1st lane, could you please adjust it?`);
 
       return `
         <div class="plot-card">
@@ -208,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="material-symbols-rounded" style="font-size: 18px;">home</span>
               ${r.plot}
             </div>
-            <span class="meta-chip" style="color: var(--primary);">Plot Registered</span>
+            <span class="meta-chip" style="color: var(--primary);">Registered Vehicle</span>
           </div>
 
           <div style="margin-bottom: 0.85rem;">
@@ -218,14 +242,18 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="resident-name">${r.name}</div>
           <div class="resident-relation">${r.relation} &bull; ${r.phone}</div>
 
-          <div class="card-actions" style="margin-top: 1rem;">
+          <div class="card-actions" style="margin-top: 1rem; grid-template-columns: 1fr 1fr 1.2fr;">
             <a href="tel:${r.phone}" class="action-btn btn-call">
               <span class="material-symbols-rounded">call</span>
-              Call Owner
+              Call
             </a>
-            <a href="https://wa.me/${r.rawPhone}?text=${whatsappText}" target="_blank" class="action-btn btn-whatsapp">
+            <a href="sms:${r.rawPhone}?body=${waMsg}" class="action-btn btn-sms">
+              <span class="material-symbols-rounded">sms</span>
+              SMS
+            </a>
+            <a href="https://wa.me/${r.rawPhone}?text=${waMsg}" target="_blank" class="action-btn btn-whatsapp">
               <span class="material-symbols-rounded">chat</span>
-              Message Owner
+              WhatsApp
             </a>
           </div>
         </div>
@@ -233,14 +261,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
-  // Render Civic Contacts
-  function renderCivicContacts() {
+  // Render Grievance Portals (1-Click Launchers)
+  function renderGrievancePortals() {
+    if (!grievancePortalsList) return;
+
+    grievancePortalsList.innerHTML = GRIEVANCE_PORTALS.map(g => `
+      <div class="grievance-card">
+        <div class="grievance-icon-box">
+          <span class="material-symbols-rounded" style="font-size: 28px;">${g.icon}</span>
+        </div>
+        <div class="grievance-info">
+          <div class="grievance-dept">${g.dept}</div>
+          <div class="grievance-issue">${g.issue}</div>
+        </div>
+        <div class="grievance-actions">
+          <a href="${g.url}" target="_blank" class="btn-portal">
+            <span class="material-symbols-rounded">open_in_new</span>
+            ${g.actionLabel}
+          </a>
+          <a href="tel:${g.tollFree}" class="action-btn btn-call" style="padding: 0.65rem 0.9rem;">
+            <span class="material-symbols-rounded">phone_in_talk</span>
+            Toll-Free ${g.tollFree}
+          </a>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // Render Contacts Directory (Parshad, Karyakarta & Trades)
+  function renderContacts() {
     if (!civicContactsList) return;
 
-    civicContactsList.innerHTML = CIVIC_CONTACTS.map(c => {
-      const waText = encodeURIComponent(`Namaste ${c.name} ji, regarding Arjunpuri 1st Link Road civic matter...`);
+    civicContactsList.innerHTML = CIVIC_AND_TRADE_CONTACTS.map(c => {
+      const waText = encodeURIComponent(`Namaste ${c.name} ji, regarding Arjunpuri 1st Link Road...`);
       return `
         <div class="civic-card">
+          <div class="grievance-icon-box" style="background: rgba(129, 140, 248, 0.12); border-color: rgba(129, 140, 248, 0.25); color: var(--accent);">
+            <span class="material-symbols-rounded" style="font-size: 28px;">${c.icon}</span>
+          </div>
           <div class="civic-info">
             <div class="civic-role">${c.role}</div>
             <div class="civic-name">${c.name}</div>
@@ -250,13 +308,17 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="civic-duty">${c.duty}</div>
           </div>
-          <div style="display: flex; gap: 0.5rem; align-items: center;">
-            <a href="tel:${c.rawPhone}" class="action-btn btn-call" style="min-width: 100px;">
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+            <a href="tel:${c.rawPhone}" class="action-btn btn-call" style="min-width: 80px;">
               <span class="material-symbols-rounded">call</span>
               Call
             </a>
             ${c.rawPhone.length > 5 ? `
-              <a href="https://wa.me/${c.rawPhone}?text=${waText}" target="_blank" class="action-btn btn-whatsapp" style="min-width: 110px;">
+              <a href="sms:${c.rawPhone}?body=${waText}" class="action-btn btn-sms" style="min-width: 80px;">
+                <span class="material-symbols-rounded">sms</span>
+                SMS
+              </a>
+              <a href="https://wa.me/${c.rawPhone}?text=${waText}" target="_blank" class="action-btn btn-whatsapp" style="min-width: 100px;">
                 <span class="material-symbols-rounded">chat</span>
                 WhatsApp
               </a>
@@ -265,44 +327,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
     }).join("");
-  }
-
-  // Render Petitions
-  function renderPetitions() {
-    if (!petitionsList) return;
-
-    petitionsList.innerHTML = CIVIC_PETITIONS.map(p => `
-      <div class="petition-card">
-        <div class="petition-header">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="status-badge status-verified">
-              <span class="material-symbols-rounded" style="font-size: 14px;">check_circle</span>
-              ${p.status}
-            </span>
-            <span style="font-size: 0.8rem; color: var(--text-dim); font-weight: 600;">Ref: ${p.id}</span>
-          </div>
-          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
-            <span class="material-symbols-rounded" style="font-size: 14px;">calendar_today</span>
-            ${p.date}
-          </span>
-        </div>
-
-        <div class="petition-title">${p.title}</div>
-        <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">
-          <span class="material-symbols-rounded" style="font-size: 15px;">account_balance</span>
-          ${p.department} &bull; ${p.target}
-        </div>
-
-        <div class="petition-summary">${p.summary}</div>
-
-        <div style="display: flex; gap: 0.5rem; align-items: center;">
-          <span class="meta-chip">
-            <span class="material-symbols-rounded" style="font-size: 14px;">attachment</span>
-            ${p.evidencePhotos} Evidence Photos Attached
-          </span>
-        </div>
-      </div>
-    `).join("");
   }
 
   // Modal Open Function
@@ -321,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div>
           <h2 style="font-size: 1.3rem; font-weight: 800;">${r.name}</h2>
-          <span style="font-size: 0.85rem; color: var(--text-muted);">${r.relation} &bull; ${r.type}</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">${r.relation}</span>
         </div>
       </div>
 
@@ -330,17 +354,16 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>${r.phone}</span>
       </div>
       <div class="detail-row">
-        <span>Police Verification</span>
-        <span style="color: var(--success); display: inline-flex; align-items: center; gap: 0.25rem;">
-          <span class="material-symbols-rounded" style="font-size: 16px;">verified</span>
-          ${r.policeVerifRef}
+        <span>Tenant Status</span>
+        <span style="color: ${r.hasTenant ? '#c084fc' : '#38bdf8'}; font-weight: 700;">
+          ${r.hasTenant ? 'Tenant Present' : 'Owner Occupied'}
         </span>
       </div>
       <div class="detail-row">
-        <span>Aadhaar / ID Card</span>
-        <span style="color: var(--primary); display: inline-flex; align-items: center; gap: 0.25rem;">
-          <span class="material-symbols-rounded" style="font-size: 16px;">badge</span>
-          ${r.aadhaarStatus}
+        <span>Police Verification</span>
+        <span style="color: ${r.policeVerified ? 'var(--success)' : 'var(--warning)'}; display: inline-flex; align-items: center; gap: 0.25rem;">
+          <span class="material-symbols-rounded" style="font-size: 16px;">${r.policeVerified ? 'verified' : 'warning'}</span>
+          ${r.policeVerifRef}
         </span>
       </div>
       <div class="detail-row">
@@ -352,16 +375,20 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>${r.loadKw} (${r.meterType})</span>
       </div>
       <div class="detail-row" style="border-bottom: none; flex-direction: column; gap: 0.4rem;">
-        <span>Notes & Facilities</span>
+        <span>Notes & Details</span>
         <span style="text-align: left; color: var(--text-muted); font-size: 0.85rem; font-weight: normal; background: rgba(255, 255, 255, 0.04); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
           ${r.notes || "No special notes recorded."}
         </span>
       </div>
 
-      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 0.5rem; margin-top: 1.5rem;">
         <a href="tel:${r.phone}" class="action-btn btn-call" style="padding: 0.75rem;">
           <span class="material-symbols-rounded">call</span>
           Call Direct
+        </a>
+        <a href="sms:${r.rawPhone}?body=${waText}" class="action-btn btn-sms" style="padding: 0.75rem;">
+          <span class="material-symbols-rounded">sms</span>
+          SMS Direct
         </a>
         <a href="https://wa.me/${r.rawPhone}?text=${waText}" target="_blank" class="action-btn btn-whatsapp" style="padding: 0.75rem;">
           <span class="material-symbols-rounded">chat</span>
@@ -384,14 +411,6 @@ document.addEventListener("DOMContentLoaded", () => {
     detailModal.addEventListener("click", (e) => {
       if (e.target === detailModal) detailModal.classList.remove("active");
     });
-  }
-
-  // Toast Function
-  function showToast(msg) {
-    if (!toast || !toastText) return;
-    toastText.textContent = msg;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
   }
 
   // Initial Render
