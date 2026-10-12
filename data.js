@@ -6,7 +6,7 @@ const RESIDENTS_DATA = [
     members: "Pareek Ji, Himanshu Pareek & Siddharth Pareek",
     relation: "Resident Owner",
     phone: "+91 94140 75229",
-    rawPhone: "919414075229",
+    rawPhone: "9414075229",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -33,7 +33,7 @@ const RESIDENTS_DATA = [
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
-    tenantInfo: "Co-Living Verified Tenants (2 Tenants)",
+    tenantInfo: "2 Tenants",
     policeVerified: true,
     policeVerifRef: "Police Ref: 682357 / 682358",
     hasEncroachment: false,
@@ -61,14 +61,14 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: true,
-    encroachmentType: "Board & Rubble",
+    encroachmentType: "Dental Clinic Board & Rubble",
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Dental clinic board and construction rubble outside.",
-    nuisanceAlert: ""
+    notes: "Construction rubble and dental services board outside. Dental clinic encroachment.",
+    nuisanceAlert: "Dental services board & construction rubble outside."
   },
   {
     plot: "29",
@@ -89,8 +89,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "10 kW (3-Phase)",
     meterType: "Smart Meter",
-    notes: "Drainage chamber L-joint connection completed. Food waste & wrappers dumped outside.",
-    nuisanceAlert: "Persistent food waste & wrapper garbage dumped outside."
+    notes: "Food waste and wrappers dumped outside.",
+    nuisanceAlert: "Persistent food waste & wrapper dumping outside."
   },
   {
     plot: "28",
@@ -115,9 +115,9 @@ const RESIDENTS_DATA = [
     nuisanceAlert: ""
   },
   {
-    plot: "27 (Corner)",
-    surname: "Pushpendra (Corner Cafe & PG)",
-    members: "Pushpendra (PG with 10 Tenants)",
+    plot: "27",
+    surname: "Pushpendra (Cafe & PG)",
+    members: "Pushpendra",
     relation: "PG & Commercial Cafe",
     phone: "+91 80008 60490",
     rawPhone: "8000860490",
@@ -130,17 +130,17 @@ const RESIDENTS_DATA = [
     hasEncroachment: true,
     encroachmentType: "Chabutra, Cafe & Pipe Discharge",
     vehicles: [
-      "RJ 14 KE 1074 (Hero Honda Splendor Plus)"
+      "RJ 14 KE 1074 (HERO Honda Splendor plus)"
     ],
     loadKw: "11 kW (Commercial)",
     meterType: "Commercial 3-Phase",
-    notes: "Cafe setup with road pipe water discharge, chabutra encroachment and commercial dustbin nuisance.",
-    nuisanceAlert: "Cafe garbage, raised chabutra and road waste water discharge."
+    notes: "Has a cafe. Chabutra encroachment, road pipe water discharge and outside commercial dustbin.",
+    nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water."
   },
   {
     plot: "26",
     surname: "Chaudharys",
-    members: "Raj Chaudhary & Family",
+    members: "Raj Chaudhary",
     relation: "Resident Owner",
     phone: "+91 94617 83436",
     rawPhone: "9461783436",
@@ -162,10 +162,10 @@ const RESIDENTS_DATA = [
   {
     plot: "25",
     surname: "Sainis (PG)",
-    members: "PG Tenants (6 Students)",
+    members: "PG Tenants",
     relation: "Student PG Accommodation",
     phone: "+91 93145 30593",
-    rawPhone: "919314530593",
+    rawPhone: "9314530593",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -176,13 +176,13 @@ const RESIDENTS_DATA = [
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "8-9 big stones placed outside to restrict public parking. Persistent garbage nearby.",
-    nuisanceAlert: "8-9 large stones/boulders placed on road restricting parking."
+    notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं). Persistent garbage nearby.",
+    nuisanceAlert: "Large stones placed on street to restrict parking."
   },
   {
     plot: "24",
     surname: "Guptas",
-    members: "Daya Gupta, Kaushalya Gupta, Mohini & Vishal Gupta",
+    members: "Daya Gupta, Kaushalya Gupta, Mohini & Vishal",
     relation: "Resident Family",
     phone: "+91 99280 22998",
     rawPhone: "9928022998",
@@ -199,7 +199,7 @@ const RESIDENTS_DATA = [
     loadKw: "7 kW",
     meterType: "Smart Meter",
     notes: "Construction rubble and waste outside.",
-    nuisanceAlert: "Construction rubble & waste outside."
+    nuisanceAlert: "Construction rubble and waste outside."
   },
   {
     plot: "23",
@@ -207,7 +207,7 @@ const RESIDENTS_DATA = [
     members: "Varsha, Sonu, Hardik, Ganvesh, Sakshi, Pankaj & Ashish Sokhiya",
     relation: "Resident Owner",
     phone: "+91 93145 30593",
-    rawPhone: "919314530593",
+    rawPhone: "9314530593",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -228,8 +228,8 @@ const RESIDENTS_DATA = [
   {
     plot: "20",
     surname: "Plot 20 (Atikraman)",
-    members: "Tenanted Property (2 Tenants)",
-    relation: "Tenanted Corner Property",
+    members: "2 Tenants",
+    relation: "Tenanted Property",
     phone: "+91 93148 35023",
     rawPhone: "9314835023",
     photoUrl: "",
@@ -247,8 +247,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Electronic Meter",
-    notes: "Construction rubble outside. Public nuisance due to garbage accumulation and stagnant dirty water trough.",
-    nuisanceAlert: "Stagnant dirty water trough, garbage accumulation & construction rubble outside."
+    notes: "Public nuisance issue due to garbage accumulation, stagnant dirty water trough. Few construction rubble outside.",
+    nuisanceAlert: "Garbage accumulation, stagnant dirty water trough & construction rubble."
   },
   {
     plot: "19",
@@ -269,7 +269,7 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Resident property. Front parking.",
+    notes: "Resident property.",
     nuisanceAlert: ""
   },
   {
@@ -291,14 +291,14 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Harjiram Burdak Residence.",
-    nuisanceAlert: ""
+    notes: "Waste accumulation outside.",
+    nuisanceAlert: "Waste accumulation outside premises."
   },
   {
     plot: "A-17",
     surname: "Sethiyas",
-    members: "Sethiya Ji & Tenants",
-    relation: "Tenanted Property (6 Tenants)",
+    members: "Sethiya Ji",
+    relation: "Tenanted Property",
     phone: "+91 98290 75229",
     rawPhone: "9829075229",
     photoUrl: "",
@@ -321,7 +321,7 @@ const RESIDENTS_DATA = [
   {
     plot: "AA 16",
     surname: "Agrawals (Kailash Villa)",
-    members: "Golden & Family",
+    members: "Golden",
     relation: "Resident Owner",
     phone: "+91 92140 75229",
     rawPhone: "9214075229",
@@ -337,13 +337,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Electronic Meter",
-    notes: "Kailash Villa. Longstanding resident, designated front parking.",
+    notes: "Kailash Villa. Long-standing vehicle parked outside.",
     nuisanceAlert: ""
   },
   {
     plot: "15A",
     surname: "Kumawats",
-    members: "Madan Mohan, Sushila & Nishant Kumawat",
+    members: "Madan Mohan Kumawat, Sushila Kumawat & Nishant Kumawat",
     relation: "Resident Owner",
     phone: "+91 90241 10043",
     rawPhone: "9024110043",
@@ -423,13 +423,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Three telephone poles outside Plot B-13 to be removed. Area trash clear needed.",
-    nuisanceAlert: "Telephone poles and dark unmonitored corner with trash buildup."
+    notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
+    nuisanceAlert: "Telephone poles and area trash buildup outside."
   },
   {
     plot: "12A",
     surname: "Boolchandanis",
-    members: "Neeraj Boolchandani (Multiple Tenants)",
+    members: "Neeraj Boolchandani",
     relation: "Property Owner",
     phone: "+91 97820 23549",
     rawPhone: "9782023549",
@@ -446,13 +446,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Boundary has garbage and construction rubble. Has encroachment. Rented out to many tenants.",
-    nuisanceAlert: "Garbage & construction rubble accumulated at boundary."
+    notes: "Boundary: Garbage and construction rubble. Has encroachment. Rented out to many tenants.",
+    nuisanceAlert: "Boundary garbage and construction rubble."
   },
   {
     plot: "A10",
     surname: "Plot A10 (PG)",
-    members: "Fully Rented PG (6 Tenants)",
+    members: "Fully Rented PG",
     relation: "Commercial PG Property",
     phone: "+91 93145 30593",
     rawPhone: "9314530593",
@@ -466,13 +466,13 @@ const RESIDENTS_DATA = [
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Electronic Meter",
-    notes: "Property rented out completely to 6 tenants as PG.",
+    notes: "PG rented out completely, 6 tenants.",
     nuisanceAlert: ""
   },
   {
     plot: "C10",
     surname: "Jagannath Ji",
-    members: "Jagannath Ji & Others",
+    members: "Jagannath Ji and others",
     relation: "Resident Owner",
     phone: "+91 94140 75229",
     rawPhone: "9414075229",
@@ -486,7 +486,7 @@ const RESIDENTS_DATA = [
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Jagannath Ji and family residence.",
+    notes: "Jagannath Ji and others residence.",
     nuisanceAlert: ""
   },
   {
@@ -506,13 +506,13 @@ const RESIDENTS_DATA = [
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Dr. G D Singhania Residence. Clean record.",
+    notes: "Dr. G D Singhania and Sunita Singhania residence.",
     nuisanceAlert: ""
   },
   {
     plot: "A32",
-    surname: "Agarwals",
-    members: "Agarwal Residence",
+    surname: "Agrwals",
+    members: "Agrwals",
     relation: "Resident Owner",
     phone: "+91 99822 31470",
     rawPhone: "9982231470",
@@ -529,8 +529,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Electronic Meter",
-    notes: "Presence of construction rubble outside.",
-    nuisanceAlert: "Construction rubble outside premises."
+    notes: "Presence of construction rubble.",
+    nuisanceAlert: "Presence of construction rubble outside."
   },
   {
     plot: "A-33",
@@ -569,7 +569,7 @@ const RESIDENTS_DATA = [
     vehicles: [],
     loadKw: "5 kW",
     meterType: "Electronic Meter",
-    notes: "No vehicles, no encroachment.",
+    notes: "No vehicles. No encroachment.",
     nuisanceAlert: ""
   }
 ];
