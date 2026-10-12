@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (searchQuery) {
         const q = searchQuery;
         const matchPlot = r.plot.toLowerCase().includes(q);
-        const matchName = r.name.toLowerCase().includes(q);
+        const matchName = ((r.surname || "") + " " + (r.members || "") + " " + (r.name || "")).toLowerCase().includes(q);
         const matchPhone = (r.phone && r.phone.toLowerCase().includes(q)) || (r.rawPhone && r.rawPhone.includes(q));
         const matchVehicles = r.vehicles && r.vehicles.some(v => v.toLowerCase().includes(q));
         const matchNotes = r.notes && r.notes.toLowerCase().includes(q);
@@ -109,8 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     directoryList.innerHTML = filtered.map(r => {
-      // Monogram Initials or Photo
-      const initials = r.name
+      // Surname for main title and monogram avatar
+      const surnameDisplay = r.surname || r.name;
+      const initials = surnameDisplay
         .split(" ")
         .filter(w => w.length > 0 && !["and", "&", "the", "a", "sahab's"].includes(w.toLowerCase()))
         .slice(0, 2)
@@ -118,19 +119,19 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("") || r.plot;
 
       const avatarHtml = r.photoUrl
-        ? `<div class="row-avatar"><img src="${r.photoUrl}" alt="${r.name}"></div>`
+        ? `<div class="row-avatar"><img src="${r.photoUrl}" alt="${surnameDisplay}"></div>`
         : `<div class="row-avatar">${initials}</div>`;
 
-      // Micro badges
+      // Outside icons / micro badges (Icon only for encroachment outside!)
       let badgesHtml = '';
       if (r.hasEncroachment) {
-        badgesHtml += `<span class="badge-encroach">Aakraman</span>`;
+        badgesHtml += `<span class="icon-encroach" title="Encroachment (अतिक्रमण)"><span class="material-symbols-rounded">report</span></span>`;
+      }
+      if (r.nuisanceAlert) {
+        badgesHtml += `<span class="icon-nuisance" title="${r.nuisanceAlert}"><span class="material-symbols-rounded">warning</span></span>`;
       }
       if (r.hasTenant) {
         badgesHtml += `<span class="badge-tenant">${r.tenantCount ? r.tenantCount + ' Tenants' : 'Tenant'}</span>`;
-      }
-      if (r.nuisanceAlert) {
-        badgesHtml += `<span class="badge-nuisance" title="${r.nuisanceAlert}"><span class="material-symbols-rounded" style="font-size: 11px;">warning</span>Nuisance</span>`;
       }
 
       // Vehicles line
@@ -145,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
            </div>`;
 
       // 1-Tap Action URLs
-      const msgText = encodeURIComponent(`Namaste ${r.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
+      const msgText = encodeURIComponent(`Namaste ${surnameDisplay} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
 
       return `
         <div class="plot-row" data-plot="${r.plot}" onclick="toggleRowExpand(this)">
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${avatarHtml}
               <div class="row-info">
                 <div class="name-line">
-                  <span class="name-text">${r.name}</span>
+                  <span class="name-text">${surnameDisplay}</span>
                   ${badgesHtml}
                 </div>
                 ${vehicleHtml}
@@ -179,29 +180,39 @@ document.addEventListener("DOMContentLoaded", () => {
           <!-- Seamless Accordion Details on Tap -->
           <div class="row-details">
             <div class="detail-item">
-              <span>Relation / Occupancy:</span>
+              <span>Residents / Family:</span>
+              <span style="color: #38bdf8;">${r.members || r.name}</span>
+            </div>
+            <div class="detail-item">
+              <span>Status:</span>
               <span>${r.relation}</span>
             </div>
             <div class="detail-item">
-              <span>Police Verification:</span>
+              <span>Tenant Verification:</span>
               <span style="color: ${r.policeVerified ? 'var(--emerald)' : 'var(--gold)'}; font-weight: 700;">
                 ${r.policeVerifRef}
               </span>
             </div>
             <div class="detail-item">
-              <span>Electricity Sanction:</span>
+              <span>Electricity:</span>
               <span>${r.loadKw} &bull; ${r.meterType}</span>
             </div>
-            ${r.notes ? `
-              <div class="detail-item" style="flex-direction: column; align-items: flex-start; gap: 0.15rem;">
-                <span>Notes:</span>
-                <span style="color: var(--text-muted); font-weight: normal;">${r.notes}</span>
+            ${r.hasEncroachment ? `
+              <div class="detail-alert-box" style="border-color: rgba(244, 63, 94, 0.35); background: rgba(244, 63, 94, 0.08); color: #fca5a5;">
+                <span class="material-symbols-rounded" style="font-size: 15px; color: var(--rose); flex-shrink: 0;">report</span>
+                <span><strong>Encroachment (अतिक्रमण):</strong> Lane encroachment / obstruction recorded outside.</span>
               </div>
             ` : ''}
             ${r.nuisanceAlert ? `
               <div class="detail-alert-box">
-                <span class="material-symbols-rounded" style="font-size: 15px; color: var(--gold); flex-shrink: 0;">report_problem</span>
+                <span class="material-symbols-rounded" style="font-size: 15px; color: var(--gold); flex-shrink: 0;">warning</span>
                 <span><strong>Public Nuisance Alert:</strong> ${r.nuisanceAlert}</span>
+              </div>
+            ` : ''}
+            ${r.notes ? `
+              <div class="detail-item" style="flex-direction: column; align-items: flex-start; gap: 0.15rem;">
+                <span>Notes:</span>
+                <span style="color: var(--text-muted); font-weight: normal;">${r.notes}</span>
               </div>
             ` : ''}
           </div>

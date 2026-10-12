@@ -375,6 +375,38 @@ body {
   white-space: nowrap;
 }
 
+.icon-encroach {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose);
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.icon-encroach .material-symbols-rounded {
+  font-size: 13px;
+}
+
+.icon-nuisance {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.icon-nuisance .material-symbols-rounded {
+  font-size: 13px;
+}
+
 .badge-nuisance {
   font-size: 0.65rem;
   font-weight: 700;

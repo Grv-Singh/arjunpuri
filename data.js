@@ -2,8 +2,9 @@
 const RESIDENTS_DATA = [
   {
     plot: "31",
-    name: "Gaurav, Pramod & Rekha",
-    relation: "Resident Owners",
+    surname: "Singhs",
+    members: "Gaurav, Pramod & Rekha",
+    relation: "Resident Owner",
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
     photoUrl: "",
@@ -20,12 +21,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW (3-Phase)",
     meterType: "Smart Meter",
-    notes: "Community Coordinator, IT & Remote CCTV Hub, Solar",
+    notes: "",
     nuisanceAlert: ""
   },
   {
     plot: "30",
-    name: "Ashok Gupta",
+    surname: "Guptas",
+    members: "Ashok Gupta & Family",
     relation: "Resident Owner",
     phone: "+91 98290 75229",
     rawPhone: "919829075229",
@@ -35,19 +37,20 @@ const RESIDENTS_DATA = [
     tenantInfo: "2 Tenants",
     policeVerified: true,
     policeVerifRef: "Verified Record",
-    hasEncroachment: false,
+    hasEncroachment: true,
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Permanent Resident, 2 Tenants on premises",
+    notes: "2 Tenants on premises",
     nuisanceAlert: ""
   },
   {
     plot: "29",
-    name: "Plot 29 Residence",
-    relation: "Resident",
+    surname: "MLAs",
+    members: "MLA Associated Family",
+    relation: "Resident Owner",
     phone: "+91 96944 73000",
     rawPhone: "919694473000",
     photoUrl: "",
@@ -55,20 +58,21 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 05 CC 7937 (Black Kia Seltos)"
     ],
     loadKw: "10 kW (3-Phase)",
     meterType: "Smart Meter",
-    notes: "MLA Associated Residence, Drainage chamber fixed",
+    notes: "Drainage chamber L-joint connection completed",
     nuisanceAlert: ""
   },
   {
     plot: "28",
-    name: "Plot 28 Residence",
-    relation: "Tenanted Residence",
+    surname: "Radhe Radhe",
+    members: "Radhe Radhe Residence",
+    relation: "Tenanted Property",
     phone: "+91 75973 02948",
     rawPhone: "917597302948",
     photoUrl: "",
@@ -76,7 +80,7 @@ const RESIDENTS_DATA = [
     tenantCount: 2,
     tenantInfo: "Has Tenants",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
     loadKw: "7 kW",
@@ -86,8 +90,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "24",
-    name: "Sokhiya Family (Varsha, Sonu, Hardik, Ranveer, Sakshi, Pankaj & Ashish)",
-    relation: "Resident Owners",
+    surname: "Sokhiyas",
+    members: "Varsha, Sonu, Hardik, Ranveer, Sakshi, Pankaj & Ashish Sokhiya",
+    relation: "Resident Owner",
     phone: "+91 93145 30593",
     rawPhone: "919314530593",
     photoUrl: "",
@@ -103,12 +108,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Active community member, front parking",
+    notes: "Front parking dedicated",
     nuisanceAlert: ""
   },
   {
     plot: "23",
-    name: "Gupta Family (Daya Gupta, Kaushalya Gupta, Mohini & Vishal)",
+    surname: "Guptas",
+    members: "Daya Gupta, Kaushalya Gupta, Mohini & Vishal Gupta",
     relation: "Resident Family",
     phone: "+91 99280 22998",
     rawPhone: "919928022998",
@@ -129,8 +135,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "22",
-    name: "Saini Ji",
-    relation: "Resident & PG Operator",
+    surname: "Sainis (PG)",
+    members: "Saini Ji & PG Students",
+    relation: "Resident Owner",
     phone: "+91 93145 30593",
     rawPhone: "919314530593",
     photoUrl: "",
@@ -148,8 +155,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "21",
-    name: "Chaudhary Couple, Rahul Saini & Nikhil Saini",
-    relation: "Resident & Tenants",
+    surname: "Sainis & Chaudharys",
+    members: "Chaudhary couple, Rahul Saini, Nikhil Saini",
+    relation: "Resident Owner",
     phone: "+91 94617 83436",
     rawPhone: "919461783436",
     photoUrl: "",
@@ -157,7 +165,7 @@ const RESIDENTS_DATA = [
     tenantCount: 2,
     tenantInfo: "2 Tenants",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
@@ -169,7 +177,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "20",
-    name: "Corner Plot (Encroachment & Multiple Tenants)",
+    surname: "Corner Plot (Tenants)",
+    members: "4 Tenants Outside",
     relation: "Tenanted Property",
     phone: "+91 94617 83436",
     rawPhone: "919461783436",
@@ -192,8 +201,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "18",
-    name: "Rajesh Taparia",
-    relation: "Family Head",
+    surname: "Taparias",
+    members: "Rajesh Taparia & Family",
+    relation: "Resident Owner",
     phone: "+91 93148 35023",
     rawPhone: "919314835023",
     photoUrl: "",
@@ -201,7 +211,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 14 XC 6807 (Maruti Suzuki Alto)"
@@ -213,7 +223,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "AA 16",
-    name: "Golden (Kailash Villa)",
+    surname: "Agrawals (Kailash Villa)",
+    members: "Golden & Family",
     relation: "Resident Owner",
     phone: "+91 92140 75229",
     rawPhone: "919214075229",
@@ -222,7 +233,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "No Tenants (Owner Only)",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 14 CH 9849"
@@ -234,8 +245,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "15A",
-    name: "Madan Mohan, Sushila & Nishant Kumawat",
-    relation: "Resident Family",
+    surname: "Kumawats",
+    members: "Madan Mohan, Sushila & Nishant Kumawat",
+    relation: "Resident Owner",
     phone: "+91 90241 10043",
     rawPhone: "919024110043",
     photoUrl: "",
@@ -243,7 +255,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Family Occupied",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 14 QD 6299 (Red TVS Jupiter)"
@@ -255,8 +267,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "B13",
-    name: "Anil Chandwar & Naman Chandwar",
-    relation: "Resident Owners",
+    surname: "Chandwars",
+    members: "Anil Chandwar & Naman Chandwar",
+    relation: "Resident Owner",
     phone: "+91 97856 07150",
     rawPhone: "919785607150",
     photoUrl: "",
@@ -264,7 +277,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Family Occupied",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 14 LC 9770 (Hyundai Accent)"
@@ -276,7 +289,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "A14",
-    name: "Ashish Bambani",
+    surname: "Bambanis",
+    members: "Ashish Bambani",
     relation: "Resident Owner",
     phone: "+91 98870 00785",
     rawPhone: "919887000785",
@@ -285,7 +299,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "Black Honda City"
@@ -297,8 +311,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "14A",
-    name: "Varalika Compu Power Systems",
-    relation: "Commercial Enterprise",
+    surname: "Varalika Compu Power",
+    members: "Varalika Compu Power Systems",
+    relation: "Commercial Unit",
     phone: "+91 94134 90448",
     rawPhone: "919413490448",
     photoUrl: "",
@@ -316,7 +331,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "12A",
-    name: "Kuldeep Boolchandani",
+    surname: "Boolchandanis",
+    members: "Kuldeep Boolchandani (4 Tenants)",
     relation: "Property Owner",
     phone: "+91 97820 23549",
     rawPhone: "919782023549",
@@ -335,7 +351,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "A32",
-    name: "Rathore Sahab's Home",
+    surname: "Rathores",
+    members: "Rathore Sahab's Home",
     relation: "Resident Owner",
     phone: "+91 99822 31470",
     rawPhone: "919982231470",
@@ -344,7 +361,7 @@ const RESIDENTS_DATA = [
     tenantCount: 1,
     tenantInfo: "1 Tenant",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 60 CC 8594",
@@ -357,8 +374,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "48A",
-    name: "Plot 48A",
-    relation: "Premises",
+    surname: "Plot 48A",
+    members: "Plot 48A Residence",
+    relation: "Resident Owner",
     phone: "+91 88909 43688",
     rawPhone: "918890943688",
     photoUrl: "",
@@ -366,7 +384,7 @@ const RESIDENTS_DATA = [
     tenantCount: 0,
     tenantInfo: "Clean Record",
     policeVerified: true,
-    policeVerifRef: "Verified",
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
     loadKw: "5 kW",
@@ -376,8 +394,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "4",
-    name: "Pushpendra (Cafe & Library PG)",
-    relation: "PG Operator & Cafe Owner",
+    surname: "Pushpendra (Cafe & PG)",
+    members: "Pushpendra (15-20 Tenants)",
+    relation: "Commercial / PG",
     phone: "+91 80008 60490",
     rawPhone: "918000860490",
     photoUrl: "",
@@ -395,7 +414,7 @@ const RESIDENTS_DATA = [
   }
 ];
 
-// Direct 1-Click Government Grievance Launchers (No tracking bloat)
+// Direct 1-Click Government Grievance Launchers
 const GRIEVANCE_PORTALS = [
   {
     dept: "JVVNL Electricity (बिजली विभाग)",
@@ -442,6 +461,16 @@ const GRIEVANCE_PORTALS = [
 // Local Authorities, Parshad, Karyakarta & Trades Helpers
 const CIVIC_AND_TRADE_CONTACTS = [
   {
+    role: "JEN Electricity (कनिष्ठ अभियंता)",
+    name: "Rahul Ji (JEN पावरहाउस)",
+    category: "authority",
+    icon: "bolt",
+    phone: "Powerhouse CD-II Desk",
+    rawPhone: "918946968876",
+    office: "JVVNL Powerhouse CD-II, Jaipur",
+    duty: "Underground cabling, transformer tripping & pillar boxes"
+  },
+  {
     role: "Area Ward Parshad (पार्षद)",
     name: "Prem Chand (पार्षद)",
     category: "authority",
@@ -470,16 +499,6 @@ const CIVIC_AND_TRADE_CONTACTS = [
     rawPhone: "8764879857",
     office: "Jaipur Greater Health Dept",
     duty: "Garbage vans, lane sweepers, malba challans"
-  },
-  {
-    role: "JEN Electricity (कनिष्ठ अभियंता)",
-    name: "Rahul Ji (JEN पावरहाउस)",
-    category: "authority",
-    icon: "bolt",
-    phone: "Powerhouse CD-II Desk",
-    rawPhone: "918946968876",
-    office: "JVVNL Powerhouse CD-II, Jaipur",
-    duty: "Underground cabling, transformer tripping & pillar boxes"
   },
   {
     role: "Colony Electrician (बिजली मिस्त्री)",
