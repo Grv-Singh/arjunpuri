@@ -195,12 +195,14 @@ document.addEventListener("DOMContentLoaded", () => {
               <span>Status:</span>
               <span>${r.relation}</span>
             </div>
-            <div class="detail-item">
-              <span>Tenant Verification:</span>
-              <span style="color: ${r.policeVerified ? 'var(--emerald)' : 'var(--gold)'}; font-weight: 700;">
-                ${r.policeVerifRef}
-              </span>
-            </div>
+            ${r.hasTenant ? `
+              <div class="detail-item">
+                <span>Tenant Verification:</span>
+                <span style="color: ${r.policeVerified ? 'var(--emerald)' : 'var(--gold)'}; font-weight: 700;">
+                  ${r.policeVerifRef}
+                </span>
+              </div>
+            ` : ''}
             ${r.hasEncroachment ? `
               <div class="detail-alert-box" style="border-color: rgba(244, 63, 94, 0.35); background: rgba(244, 63, 94, 0.08); color: #fca5a5;">
                 <span class="material-symbols-rounded" style="font-size: 15px; color: var(--rose); flex-shrink: 0;">report</span>

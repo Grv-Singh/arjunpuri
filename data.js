@@ -57,12 +57,12 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: true,
-    encroachmentType: "Dental Clinic Board & Rubble",
+    encroachmentType: "Advertisement Board & Rubble",
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
-    notes: "Construction rubble and dental services board outside. Dental clinic encroachment.",
-    nuisanceAlert: "Dental services board & construction rubble outside."
+    notes: "Construction rubble and advertisement board outside.",
+    nuisanceAlert: "Advertisement board & rubble outside."
   },
   {
     plot: "29",
@@ -106,8 +106,8 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "27",
-    surname: "Pushpendra (Cafe & PG)",
-    members: "Pushpendra",
+    surname: "Radhe Krishna Girls PG",
+    members: "Pushpendra (Radhe Krishna Girls PG)",
     relation: "PG & Commercial Cafe",
     phone: "+91 80008 60490",
     rawPhone: "8000860490",
@@ -207,9 +207,9 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "20",
-    surname: "Plot 20 (Atikraman)",
-    members: "2 Tenants",
-    relation: "Tenanted Property",
+    surname: "Patnis",
+    members: "Yogesh Patni & 2 Tenants",
+    relation: "Resident Owner & 2 Tenants (Corner Plot)",
     phone: "+91 93148 35023",
     rawPhone: "9314835023",
     photoUrl: "",
