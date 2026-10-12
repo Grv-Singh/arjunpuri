@@ -201,10 +201,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${r.policeVerifRef}
               </span>
             </div>
-            <div class="detail-item">
-              <span>Electricity:</span>
-              <span>${r.loadKw} &bull; ${r.meterType}</span>
-            </div>
             ${r.hasEncroachment ? `
               <div class="detail-alert-box" style="border-color: rgba(244, 63, 94, 0.35); background: rgba(244, 63, 94, 0.08); color: #fca5a5;">
                 <span class="material-symbols-rounded" style="font-size: 15px; color: var(--rose); flex-shrink: 0;">report</span>
