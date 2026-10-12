@@ -2,8 +2,8 @@
 const RESIDENTS_DATA = [
   {
     plot: "31",
-    surname: "Singhs",
-    members: "Gaurav, Pramod & Rekha",
+    surname: "Agarwals",
+    members: "Gaurav Singh, Pramod Agarwal, Chandra Agarwal",
     relation: "Resident Owner",
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
@@ -27,7 +27,7 @@ const RESIDENTS_DATA = [
   {
     plot: "30",
     surname: "Guptas",
-    members: "Ashok Gupta & Family",
+    members: "Ashok Gupta, Ashish Gupta, Harshita Gupta",
     relation: "Resident Owner",
     phone: "+91 98290 75229",
     rawPhone: "919829075229",
@@ -38,12 +38,13 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: true,
+    encroachmentType: "Board",
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "2 Tenants on premises",
+    notes: "",
     nuisanceAlert: ""
   },
   {
@@ -65,33 +66,13 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "10 kW (3-Phase)",
     meterType: "Smart Meter",
-    notes: "Drainage chamber L-joint connection completed",
-    nuisanceAlert: ""
-  },
-  {
-    plot: "28",
-    surname: "Radhe Radhe",
-    members: "Radhe Radhe Residence",
-    relation: "Tenanted Property",
-    phone: "+91 75973 02948",
-    rawPhone: "917597302948",
-    photoUrl: "",
-    hasTenant: true,
-    tenantCount: 2,
-    tenantInfo: "Has Tenants",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
-    hasEncroachment: false,
-    vehicles: [],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
-    notes: "Has tenants, No encroachment",
-    nuisanceAlert: ""
+    notes: "Drainage chamber L-joint connection completed. Persistent garbage dumped outside (food waste & wrappers).",
+    nuisanceAlert: "Persistent garbage dumped outside (food waste & wrappers)."
   },
   {
     plot: "24",
     surname: "Sokhiyas",
-    members: "Varsha, Sonu, Hardik, Ranveer, Sakshi, Pankaj & Ashish Sokhiya",
+    members: "Varsha, Sonu, Hardik, Sakshi, Pankaj, Ashish & Ganvesh Sokhiya",
     relation: "Resident Owner",
     phone: "+91 93145 30593",
     rawPhone: "919314530593",
@@ -108,8 +89,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Front parking dedicated",
-    nuisanceAlert: ""
+    notes: "Washing water runoff flows into colony lane. Front parking dedicated.",
+    nuisanceAlert: "Vehicle washing runoff water flows onto colony road."
   },
   {
     plot: "23",
@@ -130,82 +111,36 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Underground cabling proponent, no encroachment",
-    nuisanceAlert: ""
+    notes: "Outside persistent garbage accumulation. Underground cabling proponent.",
+    nuisanceAlert: "Garbage placed outside premises."
   },
   {
     plot: "22",
-    surname: "Sainis (PG)",
+    surname: "Sainis",
     members: "Saini Ji & PG Students",
-    relation: "Resident Owner",
+    relation: "Student PG Accommodation",
     phone: "+91 93145 30593",
     rawPhone: "919314530593",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
-    tenantInfo: "PG with 6 Tenants",
+    tenantInfo: "Student PG Accommodation (6 Tenants)",
     policeVerified: true,
     policeVerifRef: "PG Verification on File",
     hasEncroachment: false,
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Student PG accommodation, no vehicles, no encroachment",
+    notes: "Student PG accommodation, no vehicles, no encroachment.",
     nuisanceAlert: ""
   },
   {
     plot: "21",
-    surname: "Sainis & Chaudharys",
-    members: "Chaudhary couple, Rahul Saini, Nikhil Saini",
+    surname: "Sainis",
+    members: "Rahul Saini & Nikhil Saini",
     relation: "Resident Owner",
     phone: "+91 94617 83436",
     rawPhone: "919461783436",
-    photoUrl: "",
-    hasTenant: true,
-    tenantCount: 2,
-    tenantInfo: "2 Tenants",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
-    hasEncroachment: false,
-    vehicles: [
-      "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
-    ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
-    notes: "No encroachment, 2 tenants",
-    nuisanceAlert: ""
-  },
-  {
-    plot: "20",
-    surname: "Corner Plot (Tenants)",
-    members: "4 Tenants Outside",
-    relation: "Tenanted Property",
-    phone: "+91 94617 83436",
-    rawPhone: "919461783436",
-    photoUrl: "",
-    hasTenant: true,
-    tenantCount: 4,
-    tenantInfo: "4 Tenants",
-    policeVerified: false,
-    policeVerifRef: "Pending Verification",
-    hasEncroachment: true,
-    vehicles: [
-      "RJ 14 CK 6124 (Maruti Suzuki Alto)",
-      "RJ 14 UX 8634 (Maruti Suzuki XL6)",
-      "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
-    ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
-    notes: "Aakraman (Encroachment) with 4 tenants. Vehicles parked outside.",
-    nuisanceAlert: "Public nuisance issue due to persistent garbage accumulation around corner."
-  },
-  {
-    plot: "18",
-    surname: "Taparias",
-    members: "Rajesh Taparia & Family",
-    relation: "Resident Owner",
-    phone: "+91 93148 35023",
-    rawPhone: "919314835023",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -213,17 +148,63 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
-    vehicles: [
-      "RJ 14 XC 6807 (Maruti Suzuki Alto)"
-    ],
+    vehicles: [],
     loadKw: "7 kW",
-    meterType: "Smart Meter",
-    notes: "Active in civic coordination & underground cabling",
+    meterType: "Electronic Meter",
+    notes: "Owner occupied, clean record, no encroachment.",
     nuisanceAlert: ""
   },
   {
+    plot: "Corner",
+    surname: "Chaudharys",
+    members: "Chaudhary Couple",
+    relation: "Tenanted Property",
+    phone: "+91 94617 83436",
+    rawPhone: "919461783436",
+    photoUrl: "",
+    hasTenant: true,
+    tenantCount: 2,
+    tenantInfo: "2 Tenants",
+    policeVerified: false,
+    policeVerifRef: "Pending Verification",
+    hasEncroachment: false,
+    vehicles: [
+      "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
+    ],
+    loadKw: "7 kW",
+    meterType: "Electronic Meter",
+    notes: "2 tenants on property. Vehicle WagonR parked outside.",
+    nuisanceAlert: ""
+  },
+  {
+    plot: "18 & 20",
+    surname: "Agarwals (Taparia)",
+    members: "Rajesh Agarwal & Family",
+    relation: "Resident Owner & Corner Property",
+    phone: "+91 93148 35023",
+    rawPhone: "9314835023",
+    photoUrl: "",
+    hasTenant: true,
+    tenantCount: 4,
+    tenantInfo: "4 Tenants",
+    policeVerified: false,
+    policeVerifRef: "Tenant Verification Pending",
+    hasEncroachment: true,
+    encroachmentType: "Corner Shops & Debris",
+    vehicles: [
+      "RJ 14 XC 6807 (Maruti Suzuki Alto)",
+      "RJ 14 UX 8634 (Maruti Suzuki XL6)",
+      "RJ 14 CK 6124 (Maruti Suzuki Alto)",
+      "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
+    ],
+    loadKw: "7 kW",
+    meterType: "Smart Meter",
+    notes: "Active in civic coordination & underground cabling. Corner shops with construction malba outside.",
+    nuisanceAlert: "Persistent garbage accumulation around shops and waste water tank obstruction."
+  },
+  {
     plot: "AA 16",
-    surname: "Agrawals (Kailash Villa)",
+    surname: "Agarwals (Kailash Villa)",
     members: "Golden & Family",
     relation: "Resident Owner",
     phone: "+91 92140 75229",
@@ -240,7 +221,7 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Electronic Meter",
-    notes: "Kailash Villa, Longstanding resident, designated front parking",
+    notes: "Long-standing car parked outside (to expire in 4 years). Kailash Villa.",
     nuisanceAlert: ""
   },
   {
@@ -284,8 +265,8 @@ const RESIDENTS_DATA = [
     ],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Chandwar Family Residence",
-    nuisanceAlert: ""
+    notes: "Side boundary is a dark corner with telephone poles, no lights/CCTV; frequent substance loitering and garbage dumping.",
+    nuisanceAlert: "Dark boundary attracts anti-social substance loitering and littering."
   },
   {
     plot: "A14",
@@ -293,7 +274,7 @@ const RESIDENTS_DATA = [
     members: "Ashish Bambani",
     relation: "Resident Owner",
     phone: "+91 98870 00785",
-    rawPhone: "919887000785",
+    rawPhone: "9887000785",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -331,11 +312,11 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "12A",
-    surname: "Boolchandanis",
-    members: "Kuldeep Boolchandani (4 Tenants)",
+    surname: "Bulchandanis",
+    members: "Neeraj Bulchandani (4 Tenants)",
     relation: "Property Owner",
     phone: "+91 97820 23549",
-    rawPhone: "919782023549",
+    rawPhone: "9782023549",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 4,
@@ -343,10 +324,11 @@ const RESIDENTS_DATA = [
     policeVerified: false,
     policeVerifRef: "Pending Verification",
     hasEncroachment: true,
+    encroachmentType: "Lane Terminus Obstruction",
     vehicles: [],
     loadKw: "7 kW",
     meterType: "Smart Meter",
-    notes: "Has encroachment. At least 4 tenants residing. Lane terminus.",
+    notes: "Has encroachment. 4 tenants residing. Lane terminus.",
     nuisanceAlert: ""
   },
   {
@@ -355,7 +337,7 @@ const RESIDENTS_DATA = [
     members: "Rathore Sahab's Home",
     relation: "Resident Owner",
     phone: "+91 99822 31470",
-    rawPhone: "919982231470",
+    rawPhone: "9982231470",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 1,
@@ -368,8 +350,8 @@ const RESIDENTS_DATA = [
       "White Tata Nexon"
     ],
     loadKw: "7 kW",
-    meterType: "Smart Meter",
-    notes: "Rathore Sahab, 1 tenant residing",
+    meterType: "Electronic Meter",
+    notes: "No encroachment, 1 tenant",
     nuisanceAlert: ""
   },
   {
@@ -395,10 +377,10 @@ const RESIDENTS_DATA = [
   {
     plot: "4",
     surname: "Pushpendra (Cafe & PG)",
-    members: "Pushpendra (15-20 Tenants)",
-    relation: "Commercial / PG",
+    members: "Pushpendra Kumar (15-20 Tenants)",
+    relation: "PG Property & Commercial",
     phone: "+91 80008 60490",
-    rawPhone: "918000860490",
+    rawPhone: "8000860490",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 18,
@@ -406,11 +388,12 @@ const RESIDENTS_DATA = [
     policeVerified: false,
     policeVerifRef: "Tenant Verification Required",
     hasEncroachment: true,
+    encroachmentType: "Chabutra, Pipe, Cafe & Dustbin",
     vehicles: [],
     loadKw: "11 kW (Commercial)",
     meterType: "Commercial 3-Phase",
-    notes: "Vinay Library, Radhe Radhe Cafe. High tenant density (15-20). Has encroachment. No permanent vehicles.",
-    nuisanceAlert: "Encroachment and pedestrian movement congestion due to commercial setup."
+    notes: "Pipe discharged on road pouring waste water; large chabutra encroachment; cafe causes heavy filth; outside dustbin nuisance; commercial halwai shop dumps waste on street.",
+    nuisanceAlert: "Severe public nuisance: waste water pipe on street, large raised chabutra, cafe litter & halwai shop garbage."
   }
 ];
 

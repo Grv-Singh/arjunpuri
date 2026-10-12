@@ -80,6 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Render Directory
+  // Official WhatsApp Vector Logo
+  const WA_SVG = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:block;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.42 0-2.82-.37-4.06-1.08l-.29-.17-3.11.82.83-3.03-.19-.31a8.2 8.2 0 0 1-1.26-4.46c0-4.54 3.7-8.24 8.24-8.24m-3.55 4.14c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.44s1.02 2.84 1.16 3.03c.14.19 1.97 3.16 4.88 4.3 2.41.95 2.9.76 3.42.71.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33s-1.69-.83-1.95-.93c-.26-.1-.45-.14-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.14-1.21-.45-2.31-1.43-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49z"/></svg>`;
+
   function renderDirectory() {
     if (!directoryList) return;
 
@@ -133,7 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Outside icons / micro badges (Icon only for encroachment outside!)
       let badgesHtml = '';
       if (r.hasEncroachment) {
-        badgesHtml += `<span class="icon-encroach" title="Encroachment (अतिक्रमण)"><span class="material-symbols-rounded">report</span></span>`;
+        const encLabel = r.encroachmentType || "Atikraman";
+        badgesHtml += `<span class="icon-encroach" title="Atikraman (अतिक्रमण): ${encLabel}"><span class="material-symbols-rounded">report</span></span>`;
       }
       if (r.nuisanceAlert) {
         badgesHtml += `<span class="icon-nuisance" title="${r.nuisanceAlert}"><span class="material-symbols-rounded">warning</span></span>`;
@@ -180,13 +184,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="material-symbols-rounded">sms</span>
               </a>
               <a href="https://wa.me/${r.rawPhone}?text=${msgText}" target="_blank" class="btn-icon wa" title="WhatsApp">
-                <span class="material-symbols-rounded">chat</span>
+                ${WA_SVG}
               </a>
             </div>
           </div>
 
           <!-- Seamless Accordion Details on Tap -->
           <div class="row-details">
+            ${(r.vehicles && r.vehicles.length > 0) ? `
+              <div class="detail-item" style="align-items: flex-start;">
+                <span>Cars / Vehicles:</span>
+                <span style="text-align: right; color: #f1f5f9; font-weight: 600;">
+                  ${r.vehicles.map(v => `<div style="font-size: 0.76rem; line-height: 1.35;">${v}</div>`).join("")}
+                </span>
+              </div>
+            ` : ''}
             <div class="detail-item">
               <span>Residents / Family:</span>
               <span style="color: #38bdf8;">${r.members || r.name}</span>
@@ -208,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ${r.hasEncroachment ? `
               <div class="detail-alert-box" style="border-color: rgba(244, 63, 94, 0.35); background: rgba(244, 63, 94, 0.08); color: #fca5a5;">
                 <span class="material-symbols-rounded" style="font-size: 15px; color: var(--rose); flex-shrink: 0;">report</span>
-                <span><strong>Encroachment (अतिक्रमण):</strong> Lane encroachment / obstruction recorded outside.</span>
+                <span><strong>Atikraman (अतिक्रमण):</strong> ${r.encroachmentType || 'Lane obstruction recorded outside.'}</span>
               </div>
             ` : ''}
             ${r.nuisanceAlert ? `
@@ -309,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="material-symbols-rounded">sms</span>
               </a>
               <a href="https://wa.me/${c.rawPhone}?text=${waMsg}" target="_blank" class="btn-icon wa" title="WhatsApp">
-                <span class="material-symbols-rounded">chat</span>
+                ${WA_SVG}
               </a>
             ` : ''}
           </div>
