@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentFilter === "tenant" && !r.hasTenant) return false;
       if (currentFilter === "verified" && !r.policeVerified) return false;
       if (currentFilter === "pending" && r.policeVerified) return false;
+      if (currentFilter === "encroachment" && !r.hasEncroachment) return false;
       if (currentFilter === "has-vehicle" && (!r.vehicles || r.vehicles.length === 0)) return false;
 
       // Text Search
@@ -116,12 +117,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Indicators
       const tenantChip = r.hasTenant
-        ? `<span class="indicator-chip indicator-tenant"><span class="material-symbols-rounded" style="font-size: 13px;">key</span>Tenant Present</span>`
+        ? `<span class="indicator-chip indicator-tenant"><span class="material-symbols-rounded" style="font-size: 13px;">key</span>${r.tenantInfo || 'Tenant Present'}</span>`
         : `<span class="indicator-chip indicator-owner"><span class="material-symbols-rounded" style="font-size: 13px;">home_pin</span>Owner Occupied</span>`;
 
       const policeChip = r.policeVerified
         ? `<span class="indicator-chip indicator-police-verified"><span class="material-symbols-rounded" style="font-size: 13px;">verified</span>Police Verified</span>`
         : `<span class="indicator-chip indicator-police-pending"><span class="material-symbols-rounded" style="font-size: 13px;">warning</span>Pending Verification</span>`;
+
+      const encroachChip = r.hasEncroachment
+        ? `<span class="indicator-chip indicator-encroach"><span class="material-symbols-rounded" style="font-size: 13px;">report</span>Encroachment (Aakraman)</span>`
+        : `<span class="indicator-chip indicator-clear"><span class="material-symbols-rounded" style="font-size: 13px;">check_circle</span>No Encroachment</span>`;
+
+      // Nuisance Banner
+      const nuisanceBanner = r.nuisanceAlert
+        ? `<div class="nuisance-banner"><span class="material-symbols-rounded">warning</span><span>${r.nuisanceAlert}</span></div>`
+        : '';
 
       // Vehicles
       const vehicleBox = (r.vehicles && r.vehicles.length > 0)
@@ -162,7 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="indicators-row">
             ${tenantChip}
             ${policeChip}
+            ${encroachChip}
           </div>
+
+          <!-- Nuisance Alert if any -->
+          ${nuisanceBanner}
 
           <!-- Vehicles -->
           ${vehicleBox}
