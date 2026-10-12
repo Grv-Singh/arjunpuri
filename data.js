@@ -3,10 +3,10 @@ const RESIDENTS_DATA = [
   {
     plot: "34",
     surname: "Pareeks",
-    members: "Pareek Ji, Himanshu Pareek & Siddharth Pareek",
+    members: "Praveen Kumar Pareek, Siddharth Pareek & Himanshu Pareek",
     relation: "Resident Owner",
-    phone: "+91 94140 75229",
-    rawPhone: "9414075229",
+    phone: "+91 76197 71121",
+    rawPhone: "7619771121",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -18,14 +18,14 @@ const RESIDENTS_DATA = [
       "RJ 45 CQ 2182 (Maruti Suzuki Baleno)",
       "GJ 01 RL 4038 (Maruti Suzuki Alto)"
     ],
-    notes: "Colony-wide garbage accumulates outside.",
+    notes: "Colony-wide garbage accumulates outside. Siddharth: +91 76197 71121 | Praveen: +91 98870 48542.",
     nuisanceAlert: "Entire colony garbage dumping point outside."
   },
   {
     plot: "31",
     surname: "Jagrawals",
-    members: "Gaurav, Pramod & Rekha",
-    relation: "Resident Owner",
+    members: "Gaurav Singh, Pramod Jagrawal & Rekha Jagrawal",
+    relation: "Resident Owner (SuperAdmin)",
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
     photoUrl: "",
@@ -40,7 +40,7 @@ const RESIDENTS_DATA = [
       "RJ 14 WB 3851 (Grey Maruti Esteem)",
       "RJ 14 WB 6095 (Maroon Honda Aviator)"
     ],
-    notes: "Vehicle wash water runoff onto street.",
+    notes: "Vehicle wash water runoff onto street. Gaurav: +91 89469 68876 | Pramod: +91 99299 90041 | Rekha: +91 94140 40522.",
     nuisanceAlert: ""
   },
   {
@@ -107,10 +107,10 @@ const RESIDENTS_DATA = [
   {
     plot: "27",
     surname: "Radhe Krishna Girls PG",
-    members: "Pushpendra (Radhe Krishna Girls PG)",
+    members: "Pushpendra (Radhe Krishna Girls PG & Cafe)",
     relation: "PG & Commercial Cafe",
-    phone: "+91 80008 60490",
-    rawPhone: "8000860490",
+    phone: "+91 95882 57792",
+    rawPhone: "9588257792",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 10,
@@ -122,16 +122,16 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 KE 1074 (HERO Honda Splendor plus)"
     ],
-    notes: "Has a cafe. Chabutra encroachment, road pipe water discharge and outside commercial dustbin.",
+    notes: "Radhe Krishna Girls PG & Cafe. Pushpendra: +91 95882 57792 (Alt: +91 80008 60490). Chabutra encroachment, road pipe water discharge.",
     nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water."
   },
   {
     plot: "26",
     surname: "Chaudharys",
-    members: "Raj Chaudhary",
+    members: "Raj Choudhary",
     relation: "Resident Owner",
-    phone: "+91 94617 83436",
-    rawPhone: "9461783436",
+    phone: "+91 88906 72644",
+    rawPhone: "8890672644",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -142,16 +142,16 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
     ],
-    notes: "No encroachment. 2 tenants.",
+    notes: "No encroachment. 2 tenants. Raj Choudhary: +91 88906 72644 (Alt: +91 94617 83436).",
     nuisanceAlert: ""
   },
   {
     plot: "25",
     surname: "Sainis (PG)",
-    members: "PG Tenants",
+    members: "Saini Ji, Rahul Saini & PG Tenants",
     relation: "Student PG Accommodation",
-    phone: "+91 93145 30593",
-    rawPhone: "9314530593",
+    phone: "+91 63506 56029",
+    rawPhone: "6350656029",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -160,16 +160,16 @@ const RESIDENTS_DATA = [
     policeVerifRef: "PG Verification on File",
     hasEncroachment: false,
     vehicles: [],
-    notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं). Persistent garbage nearby.",
+    notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं). Rahul Saini: +91 63506 56029.",
     nuisanceAlert: "Large stones placed on street to restrict parking."
   },
   {
     plot: "24",
     surname: "Guptas",
-    members: "Daya Gupta, Kaushalya Gupta, Mohini & Vishal",
+    members: "Daya Gupta, Kaushalya Gupta, Mohini, Vishal & P. Gupta",
     relation: "Resident Family",
-    phone: "+91 99280 22998",
-    rawPhone: "9928022998",
+    phone: "+91 93145 30593",
+    rawPhone: "9314530593",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 1,
@@ -180,7 +180,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 WC 4501 (Silver Renault Kwid)"
     ],
-    notes: "Construction rubble and waste outside.",
+    notes: "Construction rubble and waste outside. P. Gupta (Admin): +91 93145 30593.",
     nuisanceAlert: "Construction rubble and waste outside."
   },
   {
@@ -202,7 +202,7 @@ const RESIDENTS_DATA = [
       "RJ 45 CN 4767 (Skoda Rapid)",
       "RJ 45 CX 1315 (Maruti Suzuki Grand Vitara)"
     ],
-    notes: "Active in colony improvement.",
+    notes: "Active in colony improvement. Varsha: +91 97832 26728 | Pankaj: +91 93145 30593.",
     nuisanceAlert: ""
   },
   {
@@ -230,11 +230,11 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "19",
-    surname: "Plot 19",
-    members: "Resident Family",
+    surname: "Jains (Plot 19)",
+    members: "Praduman Jain (PK Jain)",
     relation: "Resident Owner",
-    phone: "+91 94140 75229",
-    rawPhone: "9414075229",
+    phone: "+91 98206 95225",
+    rawPhone: "9820695225",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -245,7 +245,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 45 CH 3474 (Maruti Suzuki Celerio)"
     ],
-    notes: "Resident property.",
+    notes: "Praduman Jain (PK Jain) residence.",
     nuisanceAlert: ""
   },
   {
@@ -271,10 +271,10 @@ const RESIDENTS_DATA = [
   {
     plot: "A-17",
     surname: "Sethiyas",
-    members: "Sethiya Ji",
+    members: "Neetu Sethia & Sethiya Ji",
     relation: "Tenanted Property",
-    phone: "+91 98290 75229",
-    rawPhone: "9829075229",
+    phone: "+91 90241 10043",
+    rawPhone: "9024110043",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -287,7 +287,7 @@ const RESIDENTS_DATA = [
       "RJ 60 CD 8970 (Maruti Suzuki Brezza)",
       "RJ 14 CW 8141"
     ],
-    notes: "6 tenants residing on premises.",
+    notes: "6 tenants residing on premises. Neetu Sethia: +91 90241 10043.",
     nuisanceAlert: ""
   },
   {
@@ -371,10 +371,10 @@ const RESIDENTS_DATA = [
   {
     plot: "B13",
     surname: "Chandwars",
-    members: "Anil Chandwar & Naman Chandwar",
+    members: "Pradeep Jain Chandwar, Anil Chandwar & Naman Chandwar",
     relation: "Resident Owner",
-    phone: "+91 97856 07150",
-    rawPhone: "9785607150",
+    phone: "+91 94143 44976",
+    rawPhone: "9414344976",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -385,7 +385,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 LC 9770 (Hyundai Accent)"
     ],
-    notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
+    notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash. Pradeep Jain Chandwar: +91 94143 44976.",
     nuisanceAlert: "Telephone poles and area trash buildup outside."
   },
   {
@@ -414,8 +414,8 @@ const RESIDENTS_DATA = [
     surname: "Plot A10 (PG)",
     members: "Fully Rented PG",
     relation: "Commercial PG Property",
-    phone: "+91 93145 30593",
-    rawPhone: "9314530593",
+    phone: "",
+    rawPhone: "",
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -448,10 +448,10 @@ const RESIDENTS_DATA = [
   {
     plot: "9",
     surname: "Singhanias",
-    members: "Dr. G D Singhania & Sunita Singhania",
+    members: "Dr. G D Singhania, Sunita Singhania & Ishika Singhania",
     relation: "Resident Owner",
-    phone: "+91 98290 75229",
-    rawPhone: "9829075229",
+    phone: "+91 83869 77101",
+    rawPhone: "8386977101",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -460,7 +460,7 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    notes: "Dr. G D Singhania and Sunita Singhania residence.",
+    notes: "Dr. G D Singhania & family. Ishika Singhania: +91 83869 77101.",
     nuisanceAlert: ""
   },
   {
@@ -865,5 +865,55 @@ const CIVIC_AND_TRADE_CONTACTS = [
     rawPhone: "9783226728",
     office: "Plot 23, Arjunpuri 1st",
     duty: "Resident coordination, colony welfare & cleanliness drives"
+  },
+  {
+    role: "Colony Resident / Liaison (Plot 23)",
+    name: "Pankaj Sokhiya (पंकज सोखिया)",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 93145 30593",
+    rawPhone: "9314530593",
+    office: "Plot 23, Arjunpuri 1st",
+    duty: "Resident coordination & colony welfare"
+  },
+  {
+    role: "Colony Liaison / Admin",
+    name: "Rajesh Taparia (राजेश तापड़िया)",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 93148 35023",
+    rawPhone: "9314835023",
+    office: "Arjunpuri 1st Community",
+    duty: "Colony matters & community coordination"
+  },
+  {
+    role: "Colony Resident / Liaison",
+    name: "Ajay Singh Rathore",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 92140 75229",
+    rawPhone: "9214075229",
+    office: "Arjunpuri 1st Community",
+    duty: "Community coordination & resident welfare"
+  },
+  {
+    role: "Resident / Liaison (Plot B13)",
+    name: "Pradeep Jain Chandwar",
+    category: "colony",
+    icon: "home",
+    phone: "+91 94143 44976",
+    rawPhone: "9414344976",
+    office: "Plot B13, Arjunpuri 1st",
+    duty: "Resident owner, infrastructure coordination"
+  },
+  {
+    role: "Resident / Liaison (Plot 34)",
+    name: "Siddharth Pareek",
+    category: "colony",
+    icon: "home",
+    phone: "+91 76197 71121",
+    rawPhone: "7619771121",
+    office: "Plot 34, Arjunpuri 1st",
+    duty: "Resident owner & youth coordination"
   }
 ];
