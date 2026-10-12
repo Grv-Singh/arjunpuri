@@ -18,8 +18,6 @@ const RESIDENTS_DATA = [
       "RJ 45 CQ 2182 (Maruti Suzuki Baleno)",
       "GJ 01 RL 4038 (Maruti Suzuki Alto)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Colony-wide garbage accumulates outside.",
     nuisanceAlert: "Entire colony garbage dumping point outside."
   },
@@ -42,8 +40,6 @@ const RESIDENTS_DATA = [
       "RJ 14 WB 3851 (Grey Maruti Esteem)",
       "RJ 14 WB 6095 (Maroon Honda Aviator)"
     ],
-    loadKw: "7 kW (3-Phase)",
-    meterType: "Smart Meter",
     notes: "Vehicle wash water runoff onto street.",
     nuisanceAlert: ""
   },
@@ -65,8 +61,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Construction rubble and dental services board outside. Dental clinic encroachment.",
     nuisanceAlert: "Dental services board & construction rubble outside."
   },
@@ -87,8 +81,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 05 CC 7937 (Black Kia Seltos)"
     ],
-    loadKw: "10 kW (3-Phase)",
-    meterType: "Smart Meter",
     notes: "Food waste and wrappers dumped outside.",
     nuisanceAlert: "Persistent food waste & wrapper dumping outside."
   },
@@ -109,8 +101,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 34 CB 1048 (Hyundai Venue)"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "Has tenants. No encroachment.",
     nuisanceAlert: ""
   },
@@ -132,8 +122,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 KE 1074 (HERO Honda Splendor plus)"
     ],
-    loadKw: "11 kW (Commercial)",
-    meterType: "Commercial 3-Phase",
     notes: "Has a cafe. Chabutra encroachment, road pipe water discharge and outside commercial dustbin.",
     nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water."
   },
@@ -154,8 +142,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "No encroachment. 2 tenants.",
     nuisanceAlert: ""
   },
@@ -174,8 +160,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "PG Verification on File",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं). Persistent garbage nearby.",
     nuisanceAlert: "Large stones placed on street to restrict parking."
   },
@@ -196,8 +180,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 WC 4501 (Silver Renault Kwid)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Construction rubble and waste outside.",
     nuisanceAlert: "Construction rubble and waste outside."
   },
@@ -220,8 +202,6 @@ const RESIDENTS_DATA = [
       "RJ 45 CN 4767 (Skoda Rapid)",
       "RJ 45 CX 1315 (Maruti Suzuki Grand Vitara)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Active in colony improvement.",
     nuisanceAlert: ""
   },
@@ -245,8 +225,6 @@ const RESIDENTS_DATA = [
       "RJ 14 UX 8634 (Maruti Suzuki XL6)",
       "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "Public nuisance issue due to garbage accumulation, stagnant dirty water trough. Few construction rubble outside.",
     nuisanceAlert: "Garbage accumulation, stagnant dirty water trough & construction rubble."
   },
@@ -267,8 +245,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 45 CH 3474 (Maruti Suzuki Celerio)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Resident property.",
     nuisanceAlert: ""
   },
@@ -289,8 +265,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 XC 6807 (Maruti Suzuki Alto)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Waste accumulation outside.",
     nuisanceAlert: "Waste accumulation outside premises."
   },
@@ -313,8 +287,6 @@ const RESIDENTS_DATA = [
       "RJ 60 CD 8970 (Maruti Suzuki Brezza)",
       "RJ 14 CW 8141"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "6 tenants residing on premises.",
     nuisanceAlert: ""
   },
@@ -335,8 +307,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CH 9849"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "Kailash Villa. Long-standing vehicle parked outside.",
     nuisanceAlert: ""
   },
@@ -357,8 +327,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 QD 6299 (Red TVS Jupiter)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Kumawat Family Residence.",
     nuisanceAlert: ""
   },
@@ -379,8 +347,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "Black Honda City"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Permanent Resident.",
     nuisanceAlert: ""
   },
@@ -399,8 +365,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Registered Enterprise",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "11 kW (3-Phase)",
-    meterType: "Commercial 3-Phase",
     notes: "Power backup, inverter & IT systems enterprise.",
     nuisanceAlert: ""
   },
@@ -421,8 +385,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 LC 9770 (Hyundai Accent)"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
     nuisanceAlert: "Telephone poles and area trash buildup outside."
   },
@@ -444,8 +406,6 @@ const RESIDENTS_DATA = [
     vehicles: [
       "Tenants' Vehicles Present"
     ],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Boundary: Garbage and construction rubble. Has encroachment. Rented out to many tenants.",
     nuisanceAlert: "Boundary garbage and construction rubble."
   },
@@ -464,8 +424,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Tenant Verification Required",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "PG rented out completely, 6 tenants.",
     nuisanceAlert: ""
   },
@@ -484,8 +442,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Jagannath Ji and others residence.",
     nuisanceAlert: ""
   },
@@ -504,8 +460,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "7 kW",
-    meterType: "Smart Meter",
     notes: "Dr. G D Singhania and Sunita Singhania residence.",
     nuisanceAlert: ""
   },
@@ -527,8 +481,6 @@ const RESIDENTS_DATA = [
       "RJ 60 CC 8594",
       "White Tata Nexon"
     ],
-    loadKw: "7 kW",
-    meterType: "Electronic Meter",
     notes: "Presence of construction rubble.",
     nuisanceAlert: "Presence of construction rubble outside."
   },
@@ -547,8 +499,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "5 kW",
-    meterType: "Electronic Meter",
     notes: "Construction rubble present outside.",
     nuisanceAlert: "Construction rubble present outside."
   },
@@ -567,8 +517,6 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    loadKw: "5 kW",
-    meterType: "Electronic Meter",
     notes: "No vehicles. No encroachment.",
     nuisanceAlert: ""
   }
