@@ -26,7 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (clearSearchBtn) {
         clearSearchBtn.classList.toggle("active", searchQuery.length > 0);
       }
-      renderDirectory();
+      if (currentTab === "contacts") {
+        renderContacts();
+      } else {
+        renderDirectory();
+      }
     });
   }
 
@@ -36,7 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
         searchInput.value = "";
         searchQuery = "";
         clearSearchBtn.classList.remove("active");
-        renderDirectory();
+        if (currentTab === "contacts") {
+          renderContacts();
+        } else {
+          renderDirectory();
+        }
         searchInput.focus();
       }
     });
@@ -258,7 +266,28 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderContacts() {
     if (!contactsList) return;
 
-    contactsList.innerHTML = CIVIC_AND_TRADE_CONTACTS.map(c => {
+    let filtered = CIVIC_AND_TRADE_CONTACTS;
+    if (searchQuery) {
+      filtered = filtered.filter(c => {
+        const matchName = (c.name || "").toLowerCase().includes(searchQuery);
+        const matchRole = (c.role || "").toLowerCase().includes(searchQuery);
+        const matchDuty = (c.duty || "").toLowerCase().includes(searchQuery);
+        const matchPhone = (c.phone || "").toLowerCase().includes(searchQuery) || (c.rawPhone || "").includes(searchQuery);
+        return matchName || matchRole || matchDuty || matchPhone;
+      });
+    }
+
+    if (filtered.length === 0) {
+      contactsList.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem; color: var(--text-muted);">
+          <span class="material-symbols-rounded" style="font-size: 32px; color: var(--text-dim); margin-bottom: 0.3rem;">search_off</span>
+          <p style="font-size: 0.9rem; font-weight: 700; color: var(--text-main);">No matching contacts</p>
+        </div>
+      `;
+      return;
+    }
+
+    contactsList.innerHTML = filtered.map(c => {
       const waMsg = encodeURIComponent(c.customMsg || `Namaste ${c.name} ji, regarding Arjunpuri 1st Link Road...`);
       return `
         <div class="utility-card">

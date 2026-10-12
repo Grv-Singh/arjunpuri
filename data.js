@@ -531,6 +531,16 @@ const CIVIC_AND_TRADE_CONTACTS = [
     duty: "Chamber repair, naali cement work, brickwork"
   },
   {
+    role: "House Help / Maid (घरेलू सहायिका)",
+    name: "Sandhya (संध्या)",
+    category: "trade",
+    icon: "cleaning_services",
+    phone: "+91 93390 85223",
+    rawPhone: "919339085223",
+    office: "Arjunpuri Area Domestic Staff",
+    duty: "Housekeeping, cleaning, utensil washing & domestic assistance"
+  },
+  {
     role: "Scrap & Malba Dealer (कबाड़ी)",
     name: "Rashid Khan (कबाड़ी)",
     category: "trade",
