@@ -188,8 +188,8 @@ const RESIDENTS_DATA = [
     surname: "Sokhiyas",
     members: "Varsha, Sonu, Hardik, Ganvesh, Sakshi, Pankaj & Ashish Sokhiya",
     relation: "Resident Owner",
-    phone: "+91 93145 30593",
-    rawPhone: "9314530593",
+    phone: "+91 97832 26728",
+    rawPhone: "9783226728",
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -855,5 +855,15 @@ const CIVIC_AND_TRADE_CONTACTS = [
     rawPhone: "9413490448",
     office: "Plot 14A (Varalika Compu Power)",
     duty: "Resident owner, commercial power systems"
+  },
+  {
+    role: "Colony Liaison / Resident (Plot 23)",
+    name: "Varsha Sokhiya (वर्षा सोखिया)",
+    category: "colony",
+    icon: "groups",
+    phone: "+91 97832 26728",
+    rawPhone: "9783226728",
+    office: "Plot 23, Arjunpuri 1st",
+    duty: "Resident coordination, colony welfare & cleanliness drives"
   }
 ];
