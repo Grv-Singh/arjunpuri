@@ -414,26 +414,34 @@ const RESIDENTS_DATA = [
   }
 ];
 
-// Direct 1-Click Government Grievance Launchers
+// Direct 1-Click Government Grievance Launchers & Utility Portals
 const GRIEVANCE_PORTALS = [
   {
+    dept: "JVVNL Smart Meter Portal (स्मार्ट मीटर लॉगिन)",
+    issue: "Live Consumption, Daily kWh Readings, Balance & Recharge",
+    icon: "electric_meter",
+    url: "https://cp.jvvnldhundaramisp.in/",
+    tollFree: "1912",
+    actionLabel: "Open Smart Meter Dashboard"
+  },
+  {
     dept: "JVVNL Electricity (बिजली विभाग)",
-    issue: "Sparking, Cable Hanging, Voltage Fluctuation & Underground Line Demand",
+    issue: "Sparking, Cable Hanging, Voltage Fluctuation & Underground Demand",
     icon: "bolt",
     url: "https://bijlimitra.jvvnl.org/",
     tollFree: "1912",
     actionLabel: "Lodge JVVNL Complaint (Bijli Mitra)"
   },
   {
-    dept: "Jal Vibhag / PHED (जल विभाग)",
-    issue: "Low Drinking Water Pressure, Pipeline Leaks, Dirty Water Supply",
+    dept: "Jal Vibhag / PHED (जल विभाग - वार्ड 145)",
+    issue: "Key 1: 140730900524 • Key 2: 140730900535 | Water Helpline 181",
     icon: "water_drop",
     url: "https://sampark.rajasthan.gov.in/",
     tollFree: "181",
-    actionLabel: "Report Water Problem (PHED / Sampark 181)"
+    actionLabel: "Report Water Problem (Helpline 181)"
   },
   {
-    dept: "Jaipur Nagar Nigam Greater (नगर निगम)",
+    dept: "Jaipur Nagar Nigam Greater (नगर निगम - वार्ड 145)",
     issue: "Garbage Van Not Coming, Street Sweeping, Malba Clearance, Streetlights",
     icon: "delete_sweep",
     url: "https://jaipurmc.org/",
@@ -458,7 +466,7 @@ const GRIEVANCE_PORTALS = [
   }
 ];
 
-// Local Authorities, Parshad, Karyakarta & Trades Helpers
+// Local Authorities, Parshad, Karyakarta & Trades Helpers (Ward 145)
 const CIVIC_AND_TRADE_CONTACTS = [
   {
     role: "JEN Electricity (कनिष्ठ अभियंता)",
@@ -477,7 +485,7 @@ const CIVIC_AND_TRADE_CONTACTS = [
     icon: "how_to_reg",
     phone: "+91 97857 40980",
     rawPhone: "919785740980",
-    office: "Ward 141, Nagar Nigam Greater",
+    office: "Ward 145, Nagar Nigam Greater",
     duty: "Road approvals, drainage allocation, colony meetings"
   },
   {
@@ -497,38 +505,88 @@ const CIVIC_AND_TRADE_CONTACTS = [
     icon: "cleaning_services",
     phone: "+91 87648 79857",
     rawPhone: "8764879857",
-    office: "Jaipur Greater Health Dept",
+    office: "Ward 145 Health Dept",
     duty: "Garbage vans, lane sweepers, malba challans"
   },
   {
-    role: "Colony Electrician (बिजली मिस्त्री)",
-    name: "Om Prakash (इलेक्ट्रीशियन)",
+    role: "Water Tank Supplier (पानी टैंकर)",
+    name: "Water Tank Supply (पानी टैंकर)",
     category: "trade",
-    icon: "electric_bolt",
-    phone: "+91 94134 90448",
-    rawPhone: "919413490448",
-    office: "Imli Phatak Service Station",
-    duty: "Domestic short-circuits, MCB fixes, appliance repairs"
+    icon: "local_shipping",
+    phone: "+91 97846 88331",
+    rawPhone: "9784688331",
+    office: "Local Sweet Water Supply",
+    duty: "Emergency sweet water tanker supply (मीठे पानी का टैंकर)"
   },
   {
-    role: "Colony Plumber (नल व पाइप मिस्त्री)",
-    name: "Plumbing Services (प्लम्बर)",
+    role: "Water Tank Cleaner (पानी टंकी सफाई)",
+    name: "Water Tank Cleaning Service (टंकी सफाई)",
     category: "trade",
-    icon: "plumbing",
-    phone: "+91 89469 68876",
-    rawPhone: "918946968876",
-    office: "Local Community Line",
-    duty: "Water tank valves, leakage, motor repairs, pipeline choke"
+    icon: "sanitizer",
+    phone: "+91 77423 06456",
+    rawPhone: "7742306456",
+    office: "Professional Tank Cleaning",
+    duty: "Underground sump & overhead sintex tank scrubbing & UV cleaning"
+  },
+  {
+    role: "Refrigerator / AC / Appliances (एसी व फ्रिज मिस्त्री)",
+    name: "AC & Home Appliances Repair (एसी, फ्रिज)",
+    category: "trade",
+    icon: "ac_unit",
+    phone: "+91 94619 02505",
+    rawPhone: "9461902505",
+    office: "Home Appliance Repair Service",
+    duty: "AC servicing, gas filling, refrigerator & appliance repairs"
+  },
+  {
+    role: "RO Water Purifier (आर.ओ. मिस्त्री)",
+    name: "RO Water Purifier Service (आर.ओ.)",
+    category: "trade",
+    icon: "water",
+    phone: "+91 98280 84367",
+    rawPhone: "9828084367",
+    office: "Area Water Purifier Solutions",
+    duty: "Filter replacement, membrane service & water TDS calibration"
+  },
+  {
+    role: "Electrician (बिजली मिस्त्री)",
+    name: "Electrician Services (इलेक्ट्रीशियन)",
+    category: "trade",
+    icon: "electric_bolt",
+    phone: "+91 98292 64008",
+    rawPhone: "9829264008",
+    office: "Local Electrical Works",
+    duty: "House wiring, tripping, MCB, switchboard & invertor fixes"
+  },
+  {
+    role: "Carpenter / Khati (कारपेंटर / बढ़ई)",
+    name: "Carpenter Services (कारपेंटर)",
+    category: "trade",
+    icon: "carpenter",
+    phone: "+91 96539 67275",
+    rawPhone: "9653967275",
+    office: "Woodwork & Furniture Service",
+    duty: "Door locks, cupboards, modular woodwork & wooden repair"
+  },
+  {
+    role: "Painter (पेंटर / रंगाई-पुताई)",
+    name: "Painter Services (पेंटर)",
+    category: "trade",
+    icon: "format_paint",
+    phone: "+91 99823 31426",
+    rawPhone: "9982331426",
+    office: "Painting & Wall Putty",
+    duty: "Wall putty, emulsion, waterproof exterior paint & polish"
   },
   {
     role: "Mason / Rajmistri (राजमिस्त्री)",
-    name: "Masonry & Civil Repairs (राजमिस्त्री)",
+    name: "Masonry & Civil Works (राजमिस्त्री)",
     category: "trade",
-    icon: "handyman",
-    phone: "+91 89469 68876",
-    rawPhone: "918946968876",
-    office: "Local Mason Guild",
-    duty: "Chamber repair, naali cement work, brickwork"
+    icon: "construction",
+    phone: "+91 98280 87470",
+    rawPhone: "9828087470",
+    office: "Local Mason Services",
+    duty: "Tile fitting, plaster, naali / chamber repair & civil work"
   },
   {
     role: "House Help / Maid (घरेलू सहायिका)",
@@ -536,7 +594,7 @@ const CIVIC_AND_TRADE_CONTACTS = [
     category: "trade",
     icon: "cleaning_services",
     phone: "+91 93390 85223",
-    rawPhone: "919339085223",
+    rawPhone: "9339085223",
     office: "Arjunpuri Area Domestic Staff",
     duty: "Housekeeping, cleaning, utensil washing & domestic assistance"
   },
@@ -546,7 +604,7 @@ const CIVIC_AND_TRADE_CONTACTS = [
     category: "trade",
     icon: "recycling",
     phone: "+91 92143 59268",
-    rawPhone: "919214359268",
+    rawPhone: "9214359268",
     office: "Sahakar Marg Scrap Depot",
     duty: "Iron rods, construction scrap & household waste pickup"
   },
