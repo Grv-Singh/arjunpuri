@@ -29,11 +29,11 @@ const RESIDENTS_DATA = [
     plot: "31",
     surname: "Jagrawals",
     members: "Gaurav Singh, Pramod Jagrawal & Rekha Jagrawal",
-    relation: "Resident Owner (SuperAdmin)",
+    relation: "Resident Owner",
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
     membersList: [
-      { name: "Gaurav Singh", phone: "+91 89469 68876", rawPhone: "918946968876", role: "SuperAdmin" },
+      { name: "Gaurav Singh", phone: "+91 89469 68876", rawPhone: "918946968876", role: "Resident" },
       { name: "Pramod Jagrawal", phone: "+91 99299 90041", rawPhone: "919929990041", role: "Resident Owner" },
       { name: "Rekha Jagrawal", phone: "+91 94140 40522", rawPhone: "919414040522", role: "Resident" }
     ],
