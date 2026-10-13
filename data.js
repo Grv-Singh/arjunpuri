@@ -117,7 +117,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 34 CB 1048 (Hyundai Venue)"
     ],
-    notes: "Has tenants. No encroachment.",
+    notes: "Has tenants.",
     nuisanceAlert: ""
   },
   {
@@ -165,7 +165,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
     ],
-    notes: "No encroachment. 2 tenants.",
+    notes: "2 tenants.",
     nuisanceAlert: ""
   },
   {
@@ -190,39 +190,14 @@ const RESIDENTS_DATA = [
     nuisanceAlert: "Large stones placed on street to restrict parking."
   },
   {
-    plot: "24",
-    surname: "Guptas",
-    members: "Daya Gupta, Kaushalya Gupta, Mohini, Vishal & P. Gupta",
-    relation: "Resident Family",
-    phone: "+91 93145 30593",
-    rawPhone: "9314530593",
-    membersList: [
-      { name: "P. Gupta", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Admin / Resident" },
-      { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
-    ],
-    photoUrl: "",
-    hasTenant: true,
-    tenantCount: 1,
-    tenantInfo: "1 Tenant",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
-    hasEncroachment: false,
-    vehicles: [
-      "RJ 14 WC 4501 (Silver Renault Kwid)"
-    ],
-    notes: "Construction rubble and waste outside.",
-    nuisanceAlert: "Construction rubble and waste outside."
-  },
-  {
     plot: "23",
     surname: "Sokhiyas",
-    members: "Varsha, Sonu, Hardik, Ganvesh, Sakshi, Pankaj & Ashish Sokhiya",
+    members: "Varsha, Sonu, Hardik, Ganvesh, Sakshi & Ashish Sokhiya",
     relation: "Resident Owner",
     phone: "+91 97832 26728",
     rawPhone: "9783226728",
     membersList: [
-      { name: "Varsha Sokhiya", phone: "+91 97832 26728", rawPhone: "9783226728", role: "Admin / Resident" },
-      { name: "Pankaj Gupta", phone: "+91 93145 30590", rawPhone: "9314530590", role: "Resident" }
+      { name: "Varsha Sokhiya", phone: "+91 97832 26728", rawPhone: "9783226728", role: "Admin / Resident" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -238,6 +213,30 @@ const RESIDENTS_DATA = [
     ],
     notes: "Active in colony improvement.",
     nuisanceAlert: ""
+  },
+  {
+    plot: "24",
+    surname: "Guptas",
+    members: "Daya Gupta, Kaushalya Gupta, Mohini, Vishal & Pankaj Gupta",
+    relation: "Resident Family",
+    phone: "+91 93145 30590",
+    rawPhone: "9314530590",
+    membersList: [
+      { name: "Pankaj Gupta", phone: "+91 93145 30590", rawPhone: "9314530590", role: "Resident" },
+      { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
+    ],
+    photoUrl: "",
+    hasTenant: true,
+    tenantCount: 1,
+    tenantInfo: "1 Tenant",
+    policeVerified: true,
+    policeVerifRef: "Verified Record",
+    hasEncroachment: false,
+    vehicles: [
+      "RJ 14 WC 4501 (Silver Renault Kwid)"
+    ],
+    notes: "Construction rubble and waste outside.",
+    nuisanceAlert: "Construction rubble and waste outside."
   },
   {
     plot: "20",
@@ -599,7 +598,7 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    notes: "No vehicles. No encroachment.",
+    notes: "No vehicles.",
     nuisanceAlert: ""
   },
   {
