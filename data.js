@@ -58,10 +58,10 @@ const RESIDENTS_DATA = [
     surname: "Guptas",
     members: "Ashok Gupta, Ashish Gupta & Harshita Gupta",
     relation: "Resident Owner",
-    phone: "+91 98290 75229",
-    rawPhone: "9829075229",
+    phone: "+91 99283 64162",
+    rawPhone: "9928364162",
     membersList: [
-      { name: "Ashok Gupta", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
+      { name: "Ashok Gupta", phone: "+91 99283 64162", rawPhone: "9928364162", role: "Resident Owner" },
       { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident" }
     ],
     photoUrl: "",
@@ -510,25 +510,6 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Jagannath Ji and others residence.",
-    nuisanceAlert: ""
-  },
-  {
-    plot: "11",
-    surname: "Singhs",
-    members: "Ashok Singh",
-    relation: "Resident Owner",
-    phone: "",
-    rawPhone: "",
-    membersList: [],
-    photoUrl: "",
-    hasTenant: false,
-    tenantCount: 0,
-    tenantInfo: "Owner Occupied",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
-    hasEncroachment: false,
-    vehicles: [],
-    notes: "Ashok Singh residence.",
     nuisanceAlert: ""
   },
   {
