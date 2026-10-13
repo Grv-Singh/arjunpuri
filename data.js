@@ -7,6 +7,10 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 76197 71121",
     rawPhone: "7619771121",
+    membersList: [
+      { name: "Praveen Kumar Pareek", phone: "+91 98870 48542", rawPhone: "9887048542", role: "Resident" },
+      { name: "Siddharth Pareek", phone: "+91 76197 71121", rawPhone: "7619771121", role: "Resident" },
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -28,6 +32,11 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner (SuperAdmin)",
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
+    membersList: [
+      { name: "Gaurav Singh", phone: "+91 89469 68876", rawPhone: "918946968876", role: "SuperAdmin" },
+      { name: "Pramod Jagrawal", phone: "+91 99299 90041", rawPhone: "919929990041", role: "Resident Owner" },
+      { name: "Rekha Jagrawal", phone: "+91 94140 40522", rawPhone: "919414040522", role: "Resident" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -50,6 +59,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 98290 75229",
     rawPhone: "9829075229",
+    membersList: [
+      { name: "Ashok Gupta", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -71,6 +83,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 96944 73000",
     rawPhone: "9694473000",
+    membersList: [
+      { name: "MLA Associated Family", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -91,6 +106,9 @@ const RESIDENTS_DATA = [
     relation: "Tenanted Property",
     phone: "+91 75973 02948",
     rawPhone: "917597302948",
+    membersList: [
+      { name: "Resident Family & Tenants", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -111,6 +129,10 @@ const RESIDENTS_DATA = [
     relation: "PG & Commercial Cafe",
     phone: "+91 95882 57792",
     rawPhone: "9588257792",
+    membersList: [
+      { name: "Pushpendra", phone: "+91 95882 57792", rawPhone: "9588257792", role: "PG & Cafe Owner" },
+      { name: "Pushpendra (Alternate)", phone: "+91 80008 60490", rawPhone: "8000860490", role: "Alt Number" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 10,
@@ -132,6 +154,10 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 88906 72644",
     rawPhone: "8890672644",
+    membersList: [
+      { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner" },
+      { name: "Raj Choudhary (Alternate)", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Alt Number" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -152,6 +178,9 @@ const RESIDENTS_DATA = [
     relation: "Student PG Accommodation",
     phone: "+91 63506 56029",
     rawPhone: "6350656029",
+    membersList: [
+      { name: "Rahul Saini", phone: "+91 63506 56029", rawPhone: "6350656029", role: "Resident" },
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -170,6 +199,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Family",
     phone: "+91 93145 30593",
     rawPhone: "9314530593",
+    membersList: [
+      { name: "P. Gupta", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Admin / Resident" },
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 1,
@@ -190,6 +222,10 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 97832 26728",
     rawPhone: "9783226728",
+    membersList: [
+      { name: "Varsha Sokhiya", phone: "+91 97832 26728", rawPhone: "9783226728", role: "Admin / Resident" },
+      { name: "Pankaj Sokhiya", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Resident" },
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -212,6 +248,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner & 2 Tenants (Corner Plot)",
     phone: "+91 93148 35023",
     rawPhone: "9314835023",
+    membersList: [
+      { name: "Yogesh Patni", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Owner (Corner Plot)" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -235,6 +274,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 98206 95225",
     rawPhone: "9820695225",
+    membersList: [
+      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -255,6 +297,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 93148 35023",
     rawPhone: "9314835023",
+    membersList: [
+      { name: "Harjiram Burdak", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -275,6 +320,9 @@ const RESIDENTS_DATA = [
     relation: "Tenanted Property",
     phone: "+91 90241 10043",
     rawPhone: "9024110043",
+    membersList: [
+      { name: "Neetu Sethia", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner" },
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -297,6 +345,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 92140 75229",
     rawPhone: "9214075229",
+    membersList: [
+      { name: "Golden", phone: "+91 92140 75229", rawPhone: "9214075229", role: "Resident Owner (Kailash Villa)" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -317,6 +368,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 90241 10043",
     rawPhone: "9024110043",
+    membersList: [
+      { name: "Madan Mohan Kumawat", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner" },
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -337,6 +391,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 98870 00785",
     rawPhone: "9887000785",
+    membersList: [
+      { name: "Ashish Bambani", phone: "+91 98870 00785", rawPhone: "9887000785", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -357,6 +414,9 @@ const RESIDENTS_DATA = [
     relation: "Commercial Enterprise",
     phone: "+91 94134 90448",
     rawPhone: "9413490448",
+    membersList: [
+      { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Varalika Compu Power" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -375,6 +435,10 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 94143 44976",
     rawPhone: "9414344976",
+    membersList: [
+      { name: "Pradeep Jain Chandwar", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident Owner" },
+      { name: "Anil Chandwar", phone: "+91 97856 07150", rawPhone: "9785607150", role: "Resident" },
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -395,6 +459,9 @@ const RESIDENTS_DATA = [
     relation: "Property Owner",
     phone: "+91 97820 23549",
     rawPhone: "9782023549",
+    membersList: [
+      { name: "Neeraj Boolchandani", phone: "+91 97820 23549", rawPhone: "9782023549", role: "Property Owner" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 4,
@@ -416,6 +483,8 @@ const RESIDENTS_DATA = [
     relation: "Commercial PG Property",
     phone: "",
     rawPhone: "",
+    membersList: [
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 6,
@@ -434,6 +503,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 94140 75229",
     rawPhone: "9414075229",
+    membersList: [
+      { name: "Jagannath Ji", phone: "+91 94140 75229", rawPhone: "9414075229", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -452,6 +524,10 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 83869 77101",
     rawPhone: "8386977101",
+    membersList: [
+      { name: "Ishika Singhania", phone: "+91 83869 77101", rawPhone: "8386977101", role: "Resident" },
+      { name: "Dr. G D Singhania", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -470,6 +546,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 99822 31470",
     rawPhone: "9982231470",
+    membersList: [
+      { name: "Agrwal Family", phone: "+91 99822 31470", rawPhone: "9982231470", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -491,6 +570,9 @@ const RESIDENTS_DATA = [
     relation: "Property",
     phone: "+91 99822 31470",
     rawPhone: "9982231470",
+    membersList: [
+      { name: "Plot A-33 Premises", phone: "+91 99822 31470", rawPhone: "9982231470", role: "Owner" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -509,6 +591,9 @@ const RESIDENTS_DATA = [
     relation: "Resident Owner",
     phone: "+91 88909 43688",
     rawPhone: "918890943688",
+    membersList: [
+      { name: "Plot 48A Residence", phone: "+91 88909 43688", rawPhone: "8890943688", role: "Resident" }
+    ],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,

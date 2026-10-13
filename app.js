@@ -131,11 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const matchPlot = r.plot.toLowerCase().includes(q);
         const matchName = ((r.surname || "") + " " + (r.members || "") + " " + (r.name || "")).toLowerCase().includes(q);
         const matchPhone = (r.phone && r.phone.toLowerCase().includes(q)) || (r.rawPhone && r.rawPhone.includes(q));
+        const matchMembers = r.membersList && r.membersList.some(m => 
+          (m.name && m.name.toLowerCase().includes(q)) ||
+          (m.phone && m.phone.toLowerCase().includes(q)) ||
+          (m.rawPhone && m.rawPhone.includes(q)) ||
+          (m.role && m.role.toLowerCase().includes(q))
+        );
         const matchVehicles = r.vehicles && r.vehicles.some(v => v.toLowerCase().includes(q));
         const matchNotes = r.notes && r.notes.toLowerCase().includes(q);
         const matchNuisance = r.nuisanceAlert && r.nuisanceAlert.toLowerCase().includes(q);
         const matchTenant = r.tenantInfo && r.tenantInfo.toLowerCase().includes(q);
-        return matchPlot || matchName || matchPhone || matchVehicles || matchNotes || matchNuisance || matchTenant;
+        return matchPlot || matchName || matchPhone || matchMembers || matchVehicles || matchNotes || matchNuisance || matchTenant;
       }
       return true;
     });
@@ -195,18 +201,24 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
 
-            <!-- 3 Simple Micro-Buttons (Call, SMS, WhatsApp) -->
-            <div class="row-actions" onclick="event.stopPropagation()">
-              <a href="tel:${r.phone}" class="btn-icon call" title="Call">
-                <span class="material-symbols-rounded">call</span>
-              </a>
-              <a href="sms:${r.rawPhone}?body=${msgText}" class="btn-icon sms" title="SMS">
-                <span class="material-symbols-rounded">sms</span>
-              </a>
-              <a href="https://wa.me/${r.rawPhone}?text=${msgText}" target="_blank" class="btn-icon wa" title="WhatsApp">
-                ${WA_SVG}
-              </a>
-            </div>
+            <!-- Header Quick Actions -->
+            ${r.phone ? `
+              <div class="row-actions" onclick="event.stopPropagation()">
+                <a href="tel:${r.phone}" class="btn-icon call" title="Call">
+                  <span class="material-symbols-rounded">call</span>
+                </a>
+                <a href="sms:${r.rawPhone}?body=${msgText}" class="btn-icon sms" title="SMS">
+                  <span class="material-symbols-rounded">sms</span>
+                </a>
+                <a href="https://wa.me/${r.rawPhone}?text=${msgText}" target="_blank" class="btn-icon wa" title="WhatsApp">
+                  ${WA_SVG}
+                </a>
+              </div>
+            ` : `
+              <div class="row-expand-hint" title="Tap to view residents">
+                <span class="material-symbols-rounded" style="color: var(--text-dim); font-size: 26px;">expand_more</span>
+              </div>
+            `}
           </div>
 
           <!-- Seamless Accordion Details on Tap -->
@@ -219,10 +231,51 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
               </div>
             ` : ''}
-            <div class="detail-item">
-              <span>Residents / Family:</span>
-              <span style="color: #38bdf8;">${r.members || r.name}</span>
-            </div>
+
+            <!-- Individual Members with Verified Contacts Only -->
+            ${(() => {
+              const verifiedMembers = (r.membersList || []).filter(m => m.phone && m.phone.trim() !== "");
+              if (verifiedMembers.length === 0) return '';
+              return `
+                <div class="members-section">
+                  <div class="members-header">
+                    <span class="material-symbols-rounded">contacts</span>
+                    <span>Verified Contacts (${verifiedMembers.length}):</span>
+                  </div>
+                  <div class="members-grid">
+                    ${verifiedMembers.map(m => {
+                      const mMsg = encodeURIComponent(`Namaste ${m.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
+                      return `
+                        <div class="member-card">
+                          <div class="member-details">
+                            <div class="member-top-row">
+                              <span class="member-name-text">${m.name}</span>
+                              ${m.role ? `<span class="member-badge">${m.role}</span>` : ''}
+                            </div>
+                            <div class="member-phone-row">
+                              <span class="material-symbols-rounded member-phone-icon">call</span>
+                              <span class="member-phone-val">${m.phone}</span>
+                            </div>
+                          </div>
+                          <div class="member-action-btns" onclick="event.stopPropagation()">
+                            <a href="tel:${m.phone}" class="btn-icon call" title="Call ${m.name}">
+                              <span class="material-symbols-rounded">call</span>
+                            </a>
+                            <a href="sms:${m.rawPhone}?body=${mMsg}" class="btn-icon sms" title="SMS ${m.name}">
+                              <span class="material-symbols-rounded">sms</span>
+                            </a>
+                            <a href="https://wa.me/${m.rawPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="WhatsApp ${m.name}">
+                              ${WA_SVG}
+                            </a>
+                          </div>
+                        </div>
+                      `;
+                    }).join("")}
+                  </div>
+                </div>
+              `;
+            })()}
+
             <div class="detail-item">
               <span>Status:</span>
               <span>${r.relation}</span>
