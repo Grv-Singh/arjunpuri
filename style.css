@@ -526,6 +526,46 @@ body {
   font-size: 15px;
 }
 
+/* Tenant Verification Indicator Badges */
+.indicator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  line-height: 1.25;
+}
+
+.indicator-badge .material-symbols-rounded {
+  font-size: 16px;
+}
+
+.indicator-badge.verified {
+  color: var(--emerald);
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.indicator-badge.pending {
+  color: var(--gold);
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="light"] .indicator-badge.verified {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="light"] .indicator-badge.pending {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
 /* Action Micro-Buttons (Enlarged Touch Targets for Elderly: 40x40px) */
 .row-actions {
   display: flex;

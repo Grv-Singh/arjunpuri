@@ -269,9 +269,17 @@ document.addEventListener("DOMContentLoaded", () => {
             ${r.hasTenant ? `
               <div class="detail-item">
                 <span>Tenant Verification:</span>
-                <span style="color: ${r.policeVerified ? 'var(--emerald)' : 'var(--gold)'}; font-weight: 700;">
-                  ${r.policeVerifRef}
-                </span>
+                ${r.policeVerified ? `
+                  <span class="indicator-badge verified">
+                    <span class="material-symbols-rounded">check_circle</span>
+                    Verified
+                  </span>
+                ` : `
+                  <span class="indicator-badge pending">
+                    <span class="material-symbols-rounded">pending</span>
+                    Pending
+                  </span>
+                `}
               </div>
             ` : ''}
             ${r.hasEncroachment ? `
