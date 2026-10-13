@@ -96,7 +96,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 05 CC 7937 (Black Kia Seltos)"
     ],
-    notes: "Food waste and wrappers dumped outside.",
+    notes: "Drainage chamber L-joint connection completed. Food waste and wrappers dumped outside.",
     nuisanceAlert: "Persistent food waste & wrapper dumping outside."
   },
   {
@@ -111,8 +111,8 @@ const RESIDENTS_DATA = [
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "Has Tenants",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
+    policeVerified: false,
+    policeVerifRef: "Pending Verification",
     hasEncroachment: false,
     vehicles: [
       "RJ 34 CB 1048 (Hyundai Venue)"
@@ -153,8 +153,7 @@ const RESIDENTS_DATA = [
     phone: "+91 88906 72644",
     rawPhone: "8890672644",
     membersList: [
-      { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner" },
-      { name: "Raj Choudhary (Alternate)", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Alt Number" }
+      { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner" }
     ],
     photoUrl: "",
     hasTenant: true,
@@ -243,11 +242,13 @@ const RESIDENTS_DATA = [
   {
     plot: "20",
     surname: "Patnis",
-    members: "Jyotish Patni & 2 Tenants",
+    members: "Yogesh Patni & 2 Tenants",
     relation: "Resident Owner & 2 Tenants (Corner Plot)",
-    phone: "",
-    rawPhone: "",
-    membersList: [],
+    phone: "+91 94617 83436",
+    rawPhone: "9461783436",
+    membersList: [
+      { name: "Yogesh Patni", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Resident Owner" }
+    ],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
