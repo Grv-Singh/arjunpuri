@@ -83,11 +83,9 @@ const RESIDENTS_DATA = [
     surname: "MLAs",
     members: "MLA Associated Family",
     relation: "Resident Owner",
-    phone: "+91 96944 73000",
-    rawPhone: "9694473000",
-    membersList: [
-      { name: "MLA Associated Family", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
-    ],
+    phone: "",
+    rawPhone: "",
+    membersList: [],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -201,6 +199,7 @@ const RESIDENTS_DATA = [
     rawPhone: "9314530593",
     membersList: [
       { name: "P. Gupta", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Admin / Resident" },
+      { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
     ],
     photoUrl: "",
     hasTenant: true,
@@ -224,7 +223,7 @@ const RESIDENTS_DATA = [
     rawPhone: "9783226728",
     membersList: [
       { name: "Varsha Sokhiya", phone: "+91 97832 26728", rawPhone: "9783226728", role: "Admin / Resident" },
-      { name: "Pankaj Sokhiya", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Resident" },
+      { name: "Pankaj Gupta", phone: "+91 93145 30590", rawPhone: "9314530590", role: "Resident" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -244,13 +243,11 @@ const RESIDENTS_DATA = [
   {
     plot: "20",
     surname: "Patnis",
-    members: "Yogesh Patni & 2 Tenants",
+    members: "Jyotish Patni & 2 Tenants",
     relation: "Resident Owner & 2 Tenants (Corner Plot)",
-    phone: "+91 93148 35023",
-    rawPhone: "9314835023",
-    membersList: [
-      { name: "Yogesh Patni", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Owner (Corner Plot)" }
-    ],
+    phone: "",
+    rawPhone: "",
+    membersList: [],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
@@ -270,12 +267,13 @@ const RESIDENTS_DATA = [
   {
     plot: "19",
     surname: "Jains (Plot 19)",
-    members: "Praduman Jain (PK Jain)",
+    members: "Praduman Jain (PK Jain) & Pradeep Jain",
     relation: "Resident Owner",
     phone: "+91 98206 95225",
     rawPhone: "9820695225",
     membersList: [
-      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident Owner" }
+      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident Owner" },
+      { name: "Pradeep Jain", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -287,7 +285,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 45 CH 3474 (Maruti Suzuki Celerio)"
     ],
-    notes: "Praduman Jain (PK Jain) residence.",
+    notes: "Praduman Jain (PK Jain) & Pradeep Jain residence.",
     nuisanceAlert: ""
   },
   {
@@ -295,11 +293,9 @@ const RESIDENTS_DATA = [
     surname: "Burdaks",
     members: "Harjiram Burdak",
     relation: "Resident Owner",
-    phone: "+91 93148 35023",
-    rawPhone: "9314835023",
-    membersList: [
-      { name: "Harjiram Burdak", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner" }
-    ],
+    phone: "",
+    rawPhone: "",
+    membersList: [],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
@@ -431,13 +427,12 @@ const RESIDENTS_DATA = [
   {
     plot: "B13",
     surname: "Chandwars",
-    members: "Pradeep Jain Chandwar, Anil Chandwar & Naman Chandwar",
+    members: "Anil Chandwar & Naman Chandwar",
     relation: "Resident Owner",
-    phone: "+91 94143 44976",
-    rawPhone: "9414344976",
+    phone: "+91 97856 07150",
+    rawPhone: "9785607150",
     membersList: [
-      { name: "Pradeep Jain Chandwar", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident Owner" },
-      { name: "Anil Chandwar", phone: "+91 97856 07150", rawPhone: "9785607150", role: "Resident" },
+      { name: "Anil Chandwar", phone: "+91 97856 07150", rawPhone: "9785607150", role: "Resident" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -518,6 +513,25 @@ const RESIDENTS_DATA = [
     nuisanceAlert: ""
   },
   {
+    plot: "11",
+    surname: "Singhs",
+    members: "Ashok Singh",
+    relation: "Resident Owner",
+    phone: "",
+    rawPhone: "",
+    membersList: [],
+    photoUrl: "",
+    hasTenant: false,
+    tenantCount: 0,
+    tenantInfo: "Owner Occupied",
+    policeVerified: true,
+    policeVerifRef: "Verified Record",
+    hasEncroachment: false,
+    vehicles: [],
+    notes: "Ashok Singh residence.",
+    nuisanceAlert: ""
+  },
+  {
     plot: "9",
     surname: "Singhanias",
     members: "Dr. G D Singhania, Sunita Singhania & Ishika Singhania",
@@ -526,6 +540,7 @@ const RESIDENTS_DATA = [
     rawPhone: "8386977101",
     membersList: [
       { name: "Ishika Singhania", phone: "+91 83869 77101", rawPhone: "8386977101", role: "Resident" },
+      { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident" },
       { name: "Dr. G D Singhania", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
     ],
     photoUrl: "",
@@ -541,13 +556,13 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "A32",
-    surname: "Agrwals",
-    members: "Agrwals",
+    surname: "Agrawals",
+    members: "Archna Agrawal & Family",
     relation: "Resident Owner",
-    phone: "+91 99822 31470",
-    rawPhone: "9982231470",
+    phone: "+91 99280 22998",
+    rawPhone: "9928022998",
     membersList: [
-      { name: "Agrwal Family", phone: "+91 99822 31470", rawPhone: "9982231470", role: "Resident Owner" }
+      { name: "Archna Agrawal", phone: "+91 99280 22998", rawPhone: "9928022998", role: "Resident Owner" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -603,6 +618,27 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "No vehicles. No encroachment.",
+    nuisanceAlert: ""
+  },
+  {
+    plot: "1-K-2",
+    surname: "Agrawals",
+    members: "Rosesh Agrawal",
+    relation: "Resident Owner",
+    phone: "+91 93148 35023",
+    rawPhone: "9314835023",
+    membersList: [
+      { name: "Rosesh Agrawal", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner" }
+    ],
+    photoUrl: "",
+    hasTenant: false,
+    tenantCount: 0,
+    tenantInfo: "Owner Occupied",
+    policeVerified: true,
+    policeVerifRef: "Verified Record",
+    hasEncroachment: false,
+    vehicles: [],
+    notes: "Resident Owner.",
     nuisanceAlert: ""
   }
 ];
