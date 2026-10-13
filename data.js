@@ -71,12 +71,12 @@ const RESIDENTS_DATA = [
     policeVerified: true,
     policeVerifRef: "Verified Record",
     hasEncroachment: true,
-    encroachmentType: "Advertisement Board & Rubble",
+    encroachmentType: "Commercial Activity",
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
-    notes: "Construction rubble and advertisement board outside.",
-    nuisanceAlert: "Advertisement board & rubble outside."
+    notes: "",
+    nuisanceAlert: "Rubble outside."
   },
   {
     plot: "29",
