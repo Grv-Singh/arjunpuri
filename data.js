@@ -3,13 +3,14 @@ const RESIDENTS_DATA = [
   {
     plot: "34",
     surname: "Pareeks",
-    members: "Praveen Kumar Pareek, Siddharth Pareek & Himanshu Pareek",
+    members: "Praveen Kumar Pareek, Siddharth Pareek, Sneh Lata Pareek & Himanshu Pareek",
     relation: "Resident Owner",
     phone: "+91 98870 48542",
     rawPhone: "9887048542",
     membersList: [
       { name: "Siddharth Pareek", phone: "+91 98870 48542", rawPhone: "9887048542", role: "Resident" },
       { name: "Siddharth Pareek (Alternate)", phone: "+91 76197 71121", rawPhone: "7619771121", role: "Alt Number" },
+      { name: "Sneh Lata Pareek", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident" }
     ],
     photoUrl: "",
     hasTenant: false,
@@ -104,11 +105,9 @@ const RESIDENTS_DATA = [
     surname: "Plot 28",
     members: "Resident Family & Tenants",
     relation: "Tenanted Property",
-    phone: "+91 75973 02948",
-    rawPhone: "917597302948",
-    membersList: [
-      { name: "Resident Family & Tenants", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident" }
-    ],
+    phone: "",
+    rawPhone: "",
+    membersList: [],
     photoUrl: "",
     hasTenant: true,
     tenantCount: 2,
