@@ -201,24 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
 
-            <!-- Header Quick Actions -->
-            ${r.phone ? `
-              <div class="row-actions" onclick="event.stopPropagation()">
-                <a href="tel:${r.phone}" class="btn-icon call" title="Call">
-                  <span class="material-symbols-rounded">call</span>
-                </a>
-                <a href="sms:${r.rawPhone}?body=${msgText}" class="btn-icon sms" title="SMS">
-                  <span class="material-symbols-rounded">sms</span>
-                </a>
-                <a href="https://wa.me/${r.rawPhone}?text=${msgText}" target="_blank" class="btn-icon wa" title="WhatsApp">
-                  ${WA_SVG}
-                </a>
-              </div>
-            ` : `
-              <div class="row-expand-hint" title="Tap to view residents">
-                <span class="material-symbols-rounded" style="color: var(--text-dim); font-size: 26px;">expand_more</span>
-              </div>
-            `}
+            <!-- Clean Expand Indicator (Actions strictly per-person inside) -->
+            <div class="row-expand-indicator">
+              <span class="material-symbols-rounded chevron-icon">expand_more</span>
+            </div>
           </div>
 
           <!-- Seamless Accordion Details on Tap -->

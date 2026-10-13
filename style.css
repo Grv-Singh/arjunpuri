@@ -747,13 +747,43 @@ body {
   height: 38px;
 }
 
-.row-expand-hint {
-  width: 40px;
-  height: 40px;
+.row-expand-indicator {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-dim);
+  transition: var(--transition);
   flex-shrink: 0;
+}
+
+[data-theme="light"] .row-expand-indicator {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.row-expand-indicator .chevron-icon {
+  font-size: 22px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.plot-row:hover .row-expand-indicator {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.plot-row.expanded .row-expand-indicator {
+  background: var(--gold-bg);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: var(--gold);
+}
+
+.plot-row.expanded .row-expand-indicator .chevron-icon {
+  transform: rotate(180deg);
 }
 
 .detail-alert-box {

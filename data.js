@@ -22,7 +22,7 @@ const RESIDENTS_DATA = [
       "RJ 45 CQ 2182 (Maruti Suzuki Baleno)",
       "GJ 01 RL 4038 (Maruti Suzuki Alto)"
     ],
-    notes: "Colony-wide garbage accumulates outside. Siddharth: +91 76197 71121 | Praveen: +91 98870 48542.",
+    notes: "Colony-wide garbage accumulates outside.",
     nuisanceAlert: "Entire colony garbage dumping point outside."
   },
   {
@@ -49,7 +49,7 @@ const RESIDENTS_DATA = [
       "RJ 14 WB 3851 (Grey Maruti Esteem)",
       "RJ 14 WB 6095 (Maroon Honda Aviator)"
     ],
-    notes: "Vehicle wash water runoff onto street. Gaurav: +91 89469 68876 | Pramod: +91 99299 90041 | Rekha: +91 94140 40522.",
+    notes: "Vehicle wash water runoff onto street.",
     nuisanceAlert: ""
   },
   {
@@ -144,7 +144,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 KE 1074 (HERO Honda Splendor plus)"
     ],
-    notes: "Radhe Krishna Girls PG & Cafe. Pushpendra: +91 95882 57792 (Alt: +91 80008 60490). Chabutra encroachment, road pipe water discharge.",
+    notes: "Radhe Krishna Girls PG & Cafe. Chabutra encroachment, road pipe water discharge.",
     nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water."
   },
   {
@@ -168,7 +168,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
     ],
-    notes: "No encroachment. 2 tenants. Raj Choudhary: +91 88906 72644 (Alt: +91 94617 83436).",
+    notes: "No encroachment. 2 tenants.",
     nuisanceAlert: ""
   },
   {
@@ -189,7 +189,7 @@ const RESIDENTS_DATA = [
     policeVerifRef: "PG Verification on File",
     hasEncroachment: false,
     vehicles: [],
-    notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं). Rahul Saini: +91 63506 56029.",
+    notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं).",
     nuisanceAlert: "Large stones placed on street to restrict parking."
   },
   {
@@ -212,7 +212,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 WC 4501 (Silver Renault Kwid)"
     ],
-    notes: "Construction rubble and waste outside. P. Gupta (Admin): +91 93145 30593.",
+    notes: "Construction rubble and waste outside.",
     nuisanceAlert: "Construction rubble and waste outside."
   },
   {
@@ -238,7 +238,7 @@ const RESIDENTS_DATA = [
       "RJ 45 CN 4767 (Skoda Rapid)",
       "RJ 45 CX 1315 (Maruti Suzuki Grand Vitara)"
     ],
-    notes: "Active in colony improvement. Varsha: +91 97832 26728 | Pankaj: +91 93145 30593.",
+    notes: "Active in colony improvement.",
     nuisanceAlert: ""
   },
   {
@@ -335,7 +335,7 @@ const RESIDENTS_DATA = [
       "RJ 60 CD 8970 (Maruti Suzuki Brezza)",
       "RJ 14 CW 8141"
     ],
-    notes: "6 tenants residing on premises. Neetu Sethia: +91 90241 10043.",
+    notes: "6 tenants residing on premises.",
     nuisanceAlert: ""
   },
   {
@@ -449,7 +449,7 @@ const RESIDENTS_DATA = [
     vehicles: [
       "RJ 14 LC 9770 (Hyundai Accent)"
     ],
-    notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash. Pradeep Jain Chandwar: +91 94143 44976.",
+    notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
     nuisanceAlert: "Telephone poles and area trash buildup outside."
   },
   {
@@ -536,7 +536,7 @@ const RESIDENTS_DATA = [
     policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [],
-    notes: "Dr. G D Singhania & family. Ishika Singhania: +91 83869 77101.",
+    notes: "Dr. G D Singhania and Sunita Singhania residence.",
     nuisanceAlert: ""
   },
   {
