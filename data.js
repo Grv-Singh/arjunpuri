@@ -56,12 +56,13 @@ const RESIDENTS_DATA = [
   {
     plot: "30",
     surname: "Guptas",
-    members: "Ashok Gupta & Ashish Gupta",
+    members: "Ashok Gupta, Ashish Gupta & Harshita Gupta",
     relation: "Resident Owner",
     phone: "+91 98290 75229",
     rawPhone: "9829075229",
     membersList: [
       { name: "Ashok Gupta", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
+      { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident" }
     ],
     photoUrl: "",
     hasTenant: true,
