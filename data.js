@@ -49,7 +49,7 @@ const RESIDENTS_DATA = [
       "RJ 14 WB 3851 (Grey Maruti Esteem)",
       "RJ 14 WB 6095 (Maroon Honda Aviator)"
     ],
-    notes: "Vehicle wash water runoff onto street.",
+    notes: "Tenant Verification: Police Ref: 682357 / 682358. Vehicle wash water runoff onto street.",
     nuisanceAlert: ""
   },
   {

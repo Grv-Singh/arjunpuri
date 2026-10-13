@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="members-section">
                   <div class="members-header">
                     <span class="material-symbols-rounded">contacts</span>
-                    <span>Verified Contacts (${verifiedMembers.length}):</span>
+                    <span>Contacts:</span>
                   </div>
                   <div class="members-grid">
                     ${verifiedMembers.map(m => {
