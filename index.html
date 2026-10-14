@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261013_1251">
+  <link rel="stylesheet" href="style.css?v=20261014_2225">
 </head>
 <body>
 
@@ -40,6 +40,10 @@
           <span class="material-symbols-rounded" style="font-size: 14px;">verified</span>
           <span id="plot-counter">26 Plots</span>
         </div>
+        <button id="lang-toggle-btn" class="lang-toggle-btn" title="Toggle Language (हिंदी / English)" aria-label="Toggle Language">
+          <span class="material-symbols-rounded" style="font-size: 16px;">translate</span>
+          <span id="lang-indicator" class="lang-indicator">HI</span>
+        </button>
         <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Theme" aria-label="Toggle Theme">
           <span class="material-symbols-rounded theme-icon" id="theme-icon">light_mode</span>
         </button>
@@ -130,10 +134,56 @@
         Contacts
       </button>
     </nav>
+
+    <!-- Fullscreen Issues Slideshow Lightbox -->
+    <div id="slideshow-modal" class="slideshow-modal" style="display: none;" role="dialog" aria-modal="true">
+      <div class="slideshow-backdrop" onclick="closeSlideshow()"></div>
+      <div class="slideshow-container">
+        <div class="slideshow-header">
+          <div class="slideshow-title-box">
+            <span class="material-symbols-rounded" style="color: var(--rose); font-size: 18px;">photo_library</span>
+            <span id="slideshow-plot-title" style="font-weight: 700;">Plot Issues</span>
+            <span id="slideshow-counter" class="slideshow-counter">1 / 1</span>
+          </div>
+          <button class="slideshow-close-btn" onclick="closeSlideshow()" title="Close">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+        </div>
+
+        <div class="slideshow-body">
+          <button class="slideshow-nav-btn prev" onclick="navigateSlideshow(-1)" title="Previous Issue">
+            <span class="material-symbols-rounded">chevron_left</span>
+          </button>
+          
+          <div class="slideshow-media-wrapper" id="slideshow-media-wrapper">
+            <!-- Dynamic Media Content -->
+          </div>
+
+          <button class="slideshow-nav-btn next" onclick="navigateSlideshow(1)" title="Next Issue">
+            <span class="material-symbols-rounded">chevron_right</span>
+          </button>
+        </div>
+
+        <div class="slideshow-footer">
+          <div class="slideshow-caption" id="slideshow-caption"></div>
+          <div class="slideshow-meta">
+            <span id="slideshow-filepath" class="slideshow-filepath"></span>
+            <div class="slideshow-actions">
+              <button id="slideshow-download-btn" class="slideshow-action-btn" title="Download">
+                <span class="material-symbols-rounded">download</span>
+              </button>
+              <button id="slideshow-delete-btn" class="slideshow-action-btn delete" title="Delete">
+                <span class="material-symbols-rounded">delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261013_1254"></script>
-  <script src="app.js?v=20261013_1254"></script>
+  <script src="data.js?v=20261014_2225"></script>
+  <script src="app.js?v=20261014_2225"></script>
 </body>
 </html>

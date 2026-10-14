@@ -24,7 +24,10 @@ const RESIDENTS_DATA = [
       "GJ 01 RL 4038 (Maruti Suzuki Alto)"
     ],
     notes: "Colony-wide garbage accumulates outside.",
-    nuisanceAlert: "Entire colony garbage dumping point outside."
+    nuisanceAlert: "Entire colony garbage dumping point outside.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "31",
@@ -51,7 +54,10 @@ const RESIDENTS_DATA = [
       "RJ 14 WB 6095 (Maroon Honda Aviator)"
     ],
     notes: "Tenant Verification: Police Ref: 682357 / 682358. Vehicle wash water runoff onto street.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "30",
@@ -76,7 +82,10 @@ const RESIDENTS_DATA = [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     notes: "",
-    nuisanceAlert: "Rubble outside."
+    nuisanceAlert: "Rubble outside.",
+    warnings: 1,
+    escalations: 0,
+    issues: [{ url: "assets/issues/plot-30/rubble_commercial_01.jpg", type: "image", caption: "Commercial board & construction rubble", date: "2026-10-12" }],
   },
   {
     plot: "29",
@@ -97,7 +106,10 @@ const RESIDENTS_DATA = [
       "RJ 05 CC 7937 (Black Kia Seltos)"
     ],
     notes: "Drainage chamber L-joint connection completed. Food waste and wrappers dumped outside.",
-    nuisanceAlert: "Persistent food waste & wrapper dumping outside."
+    nuisanceAlert: "Persistent food waste & wrapper dumping outside.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "28",
@@ -118,7 +130,10 @@ const RESIDENTS_DATA = [
       "RJ 34 CB 1048 (Hyundai Venue)"
     ],
     notes: "Has tenants.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "27",
@@ -143,7 +158,10 @@ const RESIDENTS_DATA = [
       "RJ 14 KE 1074 (HERO Honda Splendor plus)"
     ],
     notes: "Radhe Krishna Girls PG & Cafe. Chabutra encroachment, road pipe water discharge.",
-    nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water."
+    nuisanceAlert: "Commercial cafe waste, raised chabutra and road waste water.",
+    warnings: 2,
+    escalations: 1,
+    issues: [{ url: "assets/issues/plot-27/chabutra_discharge_01.jpg", type: "image", caption: "Chabutra encroachment & wastewater discharge", date: "2026-10-11" }],
   },
   {
     plot: "26",
@@ -166,7 +184,10 @@ const RESIDENTS_DATA = [
       "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
     ],
     notes: "2 tenants.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "25",
@@ -187,7 +208,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं).",
-    nuisanceAlert: "Large stones placed on street to restrict parking."
+    nuisanceAlert: "Large stones placed on street to restrict parking.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "23",
@@ -212,7 +236,10 @@ const RESIDENTS_DATA = [
       "RJ 45 CX 1315 (Maruti Suzuki Grand Vitara)"
     ],
     notes: "Active in colony improvement.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "24",
@@ -236,7 +263,10 @@ const RESIDENTS_DATA = [
       "RJ 14 WC 4501 (Silver Renault Kwid)"
     ],
     notes: "Construction rubble and waste outside.",
-    nuisanceAlert: "Construction rubble and waste outside."
+    nuisanceAlert: "Construction rubble and waste outside.",
+    warnings: 1,
+    escalations: 0,
+    issues: [{ url: "assets/issues/plot-24/stones_rubble_01.jpg", type: "image", caption: "Large stones placed on street to restrict parking", date: "2026-10-10" }],
   },
   {
     plot: "20",
@@ -262,7 +292,10 @@ const RESIDENTS_DATA = [
       "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
     ],
     notes: "Public nuisance issue due to garbage accumulation, stagnant dirty water trough. Few construction rubble outside.",
-    nuisanceAlert: "Garbage accumulation, stagnant dirty water trough & construction rubble."
+    nuisanceAlert: "Garbage accumulation, stagnant dirty water trough & construction rubble.",
+    warnings: 2,
+    escalations: 1,
+    issues: [{ url: "assets/issues/plot-20/water_trough_rubble_01.jpg", type: "image", caption: "Corner encroachment, stagnant water trough & rubble", date: "2026-10-13" }],
   },
   {
     plot: "19",
@@ -286,7 +319,10 @@ const RESIDENTS_DATA = [
       "RJ 45 CH 3474 (Maruti Suzuki Celerio)"
     ],
     notes: "Praduman Jain (PK Jain) & Pradeep Jain residence.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "18",
@@ -307,7 +343,10 @@ const RESIDENTS_DATA = [
       "RJ 14 XC 6807 (Maruti Suzuki Alto)"
     ],
     notes: "Waste accumulation outside.",
-    nuisanceAlert: "Waste accumulation outside premises."
+    nuisanceAlert: "Waste accumulation outside premises.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "A-17",
@@ -332,7 +371,10 @@ const RESIDENTS_DATA = [
       "RJ 14 CW 8141"
     ],
     notes: "6 tenants residing on premises.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "AA 16",
@@ -355,7 +397,10 @@ const RESIDENTS_DATA = [
       "RJ 14 CH 9849"
     ],
     notes: "Kailash Villa. Long-standing vehicle parked outside.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "15A",
@@ -378,7 +423,10 @@ const RESIDENTS_DATA = [
       "RJ 14 QD 6299 (Red TVS Jupiter)"
     ],
     notes: "Kumawat Family Residence.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "A14",
@@ -401,7 +449,10 @@ const RESIDENTS_DATA = [
       "Black Honda City"
     ],
     notes: "Permanent Resident.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "14A",
@@ -422,7 +473,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Power backup, inverter & IT systems enterprise.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "B13",
@@ -445,7 +499,10 @@ const RESIDENTS_DATA = [
       "RJ 14 LC 9770 (Hyundai Accent)"
     ],
     notes: "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
-    nuisanceAlert: "Telephone poles and area trash buildup outside."
+    nuisanceAlert: "Telephone poles and area trash buildup outside.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "12A",
@@ -469,7 +526,10 @@ const RESIDENTS_DATA = [
       "Tenants' Vehicles Present"
     ],
     notes: "Boundary: Garbage and construction rubble. Has encroachment. Rented out to many tenants.",
-    nuisanceAlert: "Boundary garbage and construction rubble."
+    nuisanceAlert: "Boundary garbage and construction rubble.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "A10",
@@ -489,7 +549,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "PG rented out completely, 6 tenants.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "C10",
@@ -510,7 +573,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Jagannath Ji and others residence.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "9",
@@ -533,7 +599,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Dr. G D Singhania and Sunita Singhania residence.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "A32",
@@ -557,7 +626,10 @@ const RESIDENTS_DATA = [
       "White Tata Nexon"
     ],
     notes: "Presence of construction rubble.",
-    nuisanceAlert: "Presence of construction rubble outside."
+    nuisanceAlert: "Presence of construction rubble outside.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "A-33",
@@ -578,7 +650,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Construction rubble present outside.",
-    nuisanceAlert: "Construction rubble present outside."
+    nuisanceAlert: "Construction rubble present outside.",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "48A",
@@ -599,7 +674,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "No vehicles.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "1-K-2",
@@ -620,7 +698,10 @@ const RESIDENTS_DATA = [
     hasEncroachment: false,
     vehicles: [],
     notes: "Resident Owner.",
-    nuisanceAlert: ""
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   }
 ];
 
