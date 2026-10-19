@@ -289,13 +289,13 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "19",
-    surname: "Jains (Plot 19)",
+    surname: "Jain",
     members: "Praduman Jain (PK Jain) & Pradeep Jain",
     relation: "Resident Owner",
     phone: "+91 98206 95225",
     rawPhone: "9820695225",
     membersList: [
-      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident (P.no.19)", photoUrl: "assets/avatars/user_919820695225.jpg" },
+      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident Owner", photoUrl: "assets/avatars/user_919820695225.jpg" },
       { name: "Pradeep Jain", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident" }
     ],
     photoUrl: "assets/plots/plot_19.png",
