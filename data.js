@@ -306,13 +306,14 @@ const RESIDENTS_DATA = [
   {
     plot: "A-17",
     surname: "Sethiyas",
-    members: "Neetu Sethia & Raj Sethiya",
+    members: "Neetu Sethia, Raj Sethiya & Ritu Sethia",
     relation: "Tenanted Property",
     phone: "+91 90241 10043",
     rawPhone: "9024110043",
     membersList: [
       { name: "Neetu Sethia", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner", photoUrl: "assets/avatars/user_919024110043.jpg" },
-      { name: "Raj Sethiya", phone: "+91 77288 30454", rawPhone: "7728830454", role: "Resident Owner" }
+      { name: "Raj Sethiya", phone: "+91 77288 30454", rawPhone: "7728830454", role: "Resident Owner" },
+      { name: "Ritu Sethia", phone: "+91 99833 83045", rawPhone: "9983383045", role: "Resident Owner", photoUrl: "assets/avatars/user_919983383045.jpg" }
     ],
     photoUrl: "assets/avatars/user_919024110043.jpg",
     hasTenant: true,
