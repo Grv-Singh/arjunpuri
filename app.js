@@ -322,9 +322,58 @@ document.addEventListener("DOMContentLoaded", async () => {
     CLIENT_ISSUES[r.plot] = list;
   }
 
+  // Custom Progress Milestones
+  let customProgressData = [];
+  try {
+    customProgressData = JSON.parse(localStorage.getItem("arjunpuri_custom_progress")) || [];
+  } catch (e) {
+    customProgressData = [];
+  }
+
+  // Persistent Deleted Media Tracking
+  function getDeletedStaticIssues() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_deleted_static_issues") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveDeletedStaticIssue(url) {
+    if (!url) return;
+    const list = getDeletedStaticIssues();
+    if (!list.includes(url)) {
+      list.push(url);
+      try {
+        localStorage.setItem("arjunpuri_deleted_static_issues", JSON.stringify(list));
+      } catch (e) {}
+    }
+  }
+
+  function getDeletedMilestonePhotos() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_deleted_milestone_photos") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveDeletedMilestonePhoto(url) {
+    if (!url) return;
+    const list = getDeletedMilestonePhotos();
+    if (!list.includes(url)) {
+      list.push(url);
+      try {
+        localStorage.setItem("arjunpuri_deleted_milestone_photos", JSON.stringify(list));
+      } catch (e) {}
+    }
+  }
+
   function getAllPlotIssues(plot) {
     const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
-    const staticIssues = (defaultData && defaultData.issues) || [];
+    const rawStatic = (defaultData && defaultData.issues) || [];
+    const deletedList = getDeletedStaticIssues();
+    const staticIssues = rawStatic.filter(iss => !deletedList.includes(iss.url));
     const clientList = CLIENT_ISSUES[plot] || [];
     return [...staticIssues, ...clientList];
   }
@@ -624,27 +673,58 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
     }
 
-    // Delete Handler (for client uploaded files)
+    // Delete Handler (for all photos: pre-existing or uploaded later)
     if (slideshowDeleteBtn) {
-      if (issue.isCustom && issue.id) {
-        slideshowDeleteBtn.style.display = "inline-flex";
-        slideshowDeleteBtn.onclick = async () => {
-          await mediaDB.deleteIssue(issue.id);
-          CLIENT_ISSUES[activeSlideshowPlot] = (CLIENT_ISSUES[activeSlideshowPlot] || []).filter(i => i.id !== issue.id);
-          activeSlideshowIssues = getAllPlotIssues(activeSlideshowPlot);
-          if (activeSlideshowIssues.length === 0) {
-            closeSlideshow();
-          } else {
-            activeSlideshowIndex = Math.min(activeSlideshowIndex, activeSlideshowIssues.length - 1);
-            updateSlideshowUI();
-          }
-          renderDirectory();
-        };
-      } else {
-        slideshowDeleteBtn.style.display = "none";
-      }
+      slideshowDeleteBtn.style.display = "inline-flex";
+      slideshowDeleteBtn.onclick = () => window.deleteActiveSlideshowPhoto();
+    }
+    const slideshowDeleteBtnTop = document.getElementById("slideshow-delete-btn-top");
+    if (slideshowDeleteBtnTop) {
+      slideshowDeleteBtnTop.style.display = "inline-flex";
+      slideshowDeleteBtnTop.onclick = () => window.deleteActiveSlideshowPhoto();
     }
   }
+
+  // Universal Delete Action for Active Slideshow Photo
+  window.deleteActiveSlideshowPhoto = async function() {
+    if (!activeSlideshowIssues || activeSlideshowIssues.length === 0) return;
+    const issue = activeSlideshowIssues[activeSlideshowIndex];
+    if (!issue) return;
+
+    const confirmMsg = currentLang === "hi" 
+      ? "क्या आप इस फ़ोटो को हटाना चाहते हैं?" 
+      : "Delete this photo?";
+    if (!confirm(confirmMsg)) return;
+
+    if (activeSlideshowPlot === "Progress") {
+      const targetUrl = issue.url;
+      const customIdx = customProgressData.findIndex(m => m.photoUrl === targetUrl);
+      if (customIdx >= 0) {
+        customProgressData[customIdx].photoUrl = "";
+        try {
+          localStorage.setItem("arjunpuri_custom_progress", JSON.stringify(customProgressData));
+        } catch (e) {}
+      }
+      saveDeletedMilestonePhoto(targetUrl);
+      closeSlideshow();
+      renderProgress();
+    } else {
+      if (issue.isCustom && issue.id) {
+        await mediaDB.deleteIssue(issue.id);
+        CLIENT_ISSUES[activeSlideshowPlot] = (CLIENT_ISSUES[activeSlideshowPlot] || []).filter(i => i.id !== issue.id);
+      } else {
+        saveDeletedStaticIssue(issue.url);
+      }
+      activeSlideshowIssues = getAllPlotIssues(activeSlideshowPlot);
+      if (activeSlideshowIssues.length === 0) {
+        closeSlideshow();
+      } else {
+        activeSlideshowIndex = Math.min(activeSlideshowIndex, activeSlideshowIssues.length - 1);
+        updateSlideshowUI();
+      }
+      renderDirectory();
+    }
+  };
 
   // Keyboard navigation for slideshow
   document.addEventListener("keydown", (e) => {
@@ -975,16 +1055,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     rowEl.classList.toggle("expanded");
   };
 
-  // -------------------------------------------------------------
-  // 8. Progress Timeline View & Form Management
-  // -------------------------------------------------------------
-  let customProgressData = [];
-  try {
-    customProgressData = JSON.parse(localStorage.getItem("arjunpuri_custom_progress")) || [];
-  } catch (e) {
-    customProgressData = [];
-  }
-
+  // Progress Timeline View & Form Management (customProgressData declared above)
   let selectedProgressPhotoData = "";
 
   window.handleProgressFileSelect = function(inputEl) {
@@ -1046,7 +1117,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   function renderProgress() {
     if (!progressTimelineList) return;
 
-    const allMilestones = [...customProgressData, ...(window.PROGRESS_DATA || [])];
+    const delMilestonePhotos = getDeletedMilestonePhotos();
+    const allMilestones = [...customProgressData, ...(window.PROGRESS_DATA || [])].map(m => {
+      if (m.photoUrl && delMilestonePhotos.includes(m.photoUrl)) {
+        return { ...m, photoUrl: "" };
+      }
+      return m;
+    });
     allMilestones.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     let filtered = allMilestones;

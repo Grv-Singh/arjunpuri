@@ -1528,10 +1528,16 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.slideshow-action-btn.delete:hover {
+.slideshow-action-btn.delete {
   color: var(--rose);
+  border-color: rgba(244, 63, 94, 0.35);
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.slideshow-action-btn.delete:hover {
+  color: #ffffff;
   border-color: var(--rose);
-  background: rgba(244, 63, 94, 0.15);
+  background: rgba(244, 63, 94, 0.45);
 }
 
 /* Member Avatar Mini in Cards */
