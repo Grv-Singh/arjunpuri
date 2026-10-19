@@ -274,18 +274,15 @@ const RESIDENTS_DATA = [
     tenantInfo: "2 Tenants",
     policeVerified: false,
     policeVerifRef: "Pending Verification",
-    hasEncroachment: true,
-    encroachmentType: "Corner Encroachment & Rubble",
+    hasEncroachment: false,
     vehicles: [
-      "RJ 14 CK 6124 (Maruti Suzuki Alto)",
-      "RJ 14 UX 8634 (Maruti Suzuki XL6)",
       "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
     ],
-    notes: "Public nuisance issue due to garbage accumulation, stagnant dirty water trough. Few construction rubble outside.",
-    nuisanceAlert: "Garbage accumulation, stagnant dirty water trough & construction rubble.",
-    warnings: 2,
-    escalations: 1,
-    issues: [{ url: "assets/issues/plot-20/water_trough_rubble_01.jpg", type: "image", caption: "Corner encroachment, stagnant water trough & rubble", date: "2026-10-13" }],
+    notes: "Yogesh Patni residence.",
+    nuisanceAlert: "",
+    warnings: 0,
+    escalations: 0,
+    issues: [],
   },
   {
     plot: "19",
@@ -732,13 +729,16 @@ const RESIDENTS_DATA = [
     policeVerified: false,
     policeVerifRef: "Pending Verification",
     hasEncroachment: true,
-    encroachmentType: "Commercial Activity & Water Trough",
-    vehicles: [],
-    notes: "Plot 1&2. Krishna Kunj aka Radhe Krishna Girls PG. Water trough, rubble and encroachment outside. 4+ tenants.",
-    nuisanceAlert: "Water trough, rubble & encroachment outside.",
-    warnings: 1,
-    escalations: 0,
-    issues: [],
+    encroachmentType: "Commercial Activity, Water Trough & Rubble",
+    vehicles: [
+      "RJ 14 CK 6124 (Maruti Suzuki Alto)",
+      "RJ 14 UX 8634 (Maruti Suzuki XL6)"
+    ],
+    notes: "Plot 1&2. Krishna Kunj aka Radhe Krishna Girls PG. Stagnant water trough, construction rubble and commercial encroachment outside. 4+ tenants.",
+    nuisanceAlert: "Stagnant dirty water trough, construction rubble & commercial encroachment outside.",
+    warnings: 2,
+    escalations: 1,
+    issues: [{ url: "assets/issues/plot-20/water_trough_rubble_01.jpg", type: "image", caption: "Stagnant water trough, rubble & encroachment outside Plot 1&2", date: "2026-10-13" }],
   }
 ];
 
