@@ -165,14 +165,15 @@ const RESIDENTS_DATA = [
     issues: [],
   },
   {
-    plot: "25",
+    plot: "21-25",
     surname: "Sainis (PG)",
-    members: "Saini Ji, Rahul Saini & PG Tenants",
+    members: "Sushila Saini, Saini Ji, Rahul Saini & PG Tenants",
     relation: "Student PG Accommodation",
-    phone: "+91 63506 56029",
-    rawPhone: "6350656029",
+    phone: "+91 94601 92021",
+    rawPhone: "9460192021",
     membersList: [
-      { name: "Rahul Saini", phone: "+91 63506 56029", rawPhone: "6350656029", role: "Resident" },
+      { name: "Sushila Saini", phone: "+91 94601 92021", rawPhone: "9460192021", role: "Resident Owner", photoUrl: "assets/avatars/user_919460192021.jpg" },
+      { name: "Rahul Saini", phone: "+91 63506 56029", rawPhone: "6350656029", role: "Resident" }
     ],
     photoUrl: "assets/avatars/user_919460192021.jpg",
     hasTenant: true,
