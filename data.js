@@ -438,7 +438,8 @@ const RESIDENTS_DATA = [
     phone: "+91 77378 19230",
     rawPhone: "7737819230",
     membersList: [
-      { name: "Alka Chandwar", phone: "+91 77378 19230", rawPhone: "7737819230", role: "Resident Owner", photoUrl: "assets/avatars/user_917737819230.jpg" }
+      { name: "Alka Chandwar", phone: "+91 77378 19230", rawPhone: "7737819230", role: "Resident Owner", photoUrl: "assets/avatars/user_917737819230.jpg" },
+      { name: "Anil Chandwar", phone: "+91 93146 37812", rawPhone: "9314637812", role: "Resident Owner" }
     ],
     photoUrl: "assets/avatars/user_917737819230.jpg",
     hasTenant: false,
