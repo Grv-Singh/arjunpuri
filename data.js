@@ -632,30 +632,6 @@ const RESIDENTS_DATA = [
     warnings: 0,
     escalations: 0,
     issues: [],
-  },
-  {
-    plot: "1-K-2",
-    surname: "Agrawals",
-    members: "Rosesh Agrawal",
-    relation: "Resident Owner",
-    phone: "+91 93148 35023",
-    rawPhone: "9314835023",
-    membersList: [
-      { name: "Rajesh Taparia (Rosesh Agrawal)", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Admin / Resident Owner", photoUrl: "assets/avatars/user_919314835023.jpg" }
-    ],
-    photoUrl: "assets/avatars/user_919314835023.jpg",
-    hasTenant: false,
-    tenantCount: 0,
-    tenantInfo: "Owner Occupied",
-    policeVerified: true,
-    policeVerifRef: "Verified Record",
-    hasEncroachment: false,
-    vehicles: [],
-    notes: "Resident Owner.",
-    nuisanceAlert: "",
-    warnings: 0,
-    escalations: 0,
-    issues: [],
   }
 ];
 
