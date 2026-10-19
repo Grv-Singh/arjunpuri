@@ -237,7 +237,7 @@ const RESIDENTS_DATA = [
   {
     plot: "20",
     surname: "Patnis",
-    members: "Yogesh Patni & 2 Tenants",
+    members: "Yogesh Patni",
     relation: "Resident Owner & 2 Tenants (Corner Plot)",
     phone: "+91 94617 83436",
     rawPhone: "9461783436",
