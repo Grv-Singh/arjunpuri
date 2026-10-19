@@ -713,7 +713,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Dynamic Governance values
       const warningsVal = getPlotWarnings(r.plot, r.warnings || 0);
-      const escalationsVal = getPlotEscalations(r.plot, r.escalations || 0);
       const plotNoteVal = getPlotNote(r.plot, r.notes || "");
       const issuesList = getAllPlotIssues(r.plot);
 
@@ -755,30 +754,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           <!-- Accordion Details -->
           <div class="row-details">
-            <!-- Governance Steppers: Warnings & Escalation -->
+            <!-- Compact Warning Counter -->
             <div class="governance-counters" onclick="event.stopPropagation()">
-              <div class="counter-box">
+              <div class="counter-box warning-box">
                 <span class="counter-label">${t("warnings")}</span>
                 <div class="stepper-controls">
                   <button class="stepper-btn minus" onclick="updateCounter('${r.plot}', 'warnings', -1)" title="Decrease Warnings">
-                    <span class="material-symbols-rounded" style="font-size: 16px;">remove</span>
+                    <span class="material-symbols-rounded" style="font-size: 13px;">remove</span>
                   </button>
                   <span class="stepper-value" id="val-warnings-${safePlot}">${warningsVal}</span>
                   <button class="stepper-btn plus" onclick="updateCounter('${r.plot}', 'warnings', 1)" title="Increase Warnings">
-                    <span class="material-symbols-rounded" style="font-size: 16px;">add</span>
-                  </button>
-                </div>
-              </div>
-
-              <div class="counter-box">
-                <span class="counter-label">${t("escalation")}</span>
-                <div class="stepper-controls">
-                  <button class="stepper-btn minus" onclick="updateCounter('${r.plot}', 'escalations', -1)" title="Decrease Escalation">
-                    <span class="material-symbols-rounded" style="font-size: 16px;">remove</span>
-                  </button>
-                  <span class="stepper-value" id="val-escalations-${safePlot}">${escalationsVal}</span>
-                  <button class="stepper-btn plus" onclick="updateCounter('${r.plot}', 'escalations', 1)" title="Increase Escalation">
-                    <span class="material-symbols-rounded" style="font-size: 16px;">add</span>
+                    <span class="material-symbols-rounded" style="font-size: 13px;">add</span>
                   </button>
                 </div>
               </div>

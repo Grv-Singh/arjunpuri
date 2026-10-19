@@ -1021,48 +1021,46 @@ body {
   border-color: rgba(15, 23, 42, 0.12);
 }
 
-/* Governance Counters: Warnings & Escalation */
+/* Governance Counter: Warnings (Compact) */
 .governance-counters {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin: 0.75rem 0 0.4rem 0;
+  display: flex;
+  align-items: center;
+  margin: 0.45rem 0 0.25rem 0;
 }
 
 .counter-box {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.035);
   border: 1px solid var(--border-card);
-  border-radius: 10px;
-  padding: 0.5rem 0.65rem;
-  display: flex;
-  flex-direction: column;
+  border-radius: 8px;
+  padding: 0.25rem 0.55rem;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
+  gap: 0.5rem;
 }
 
 [data-theme="light"] .counter-box {
-  background: rgba(15, 23, 42, 0.025);
-  border-color: rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.09);
 }
 
 .counter-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
 }
 
 .stepper-controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.35rem;
 }
 
 .stepper-btn {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
   background: rgba(255, 255, 255, 0.06);
@@ -1072,6 +1070,12 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
+  padding: 0;
+}
+
+.stepper-btn .material-symbols-rounded {
+  font-size: 13px !important;
+  line-height: 1;
 }
 
 .stepper-btn:hover {
@@ -1082,7 +1086,7 @@ body {
 }
 
 .stepper-btn:active {
-  transform: scale(0.94);
+  transform: scale(0.92);
 }
 
 [data-theme="light"] .stepper-btn {
@@ -1091,12 +1095,13 @@ body {
 }
 
 .stepper-value {
-  font-size: 1.15rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  min-width: 26px;
+  min-width: 18px;
   text-align: center;
   color: var(--text-main);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 /* Publicly Editable Notes */
