@@ -112,14 +112,13 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "27",
-    surname: "Radhe Krishna Girls PG",
-    members: "Pushpendra (Radhe Krishna Girls PG & Cafe)",
+    surname: "Radhe Radhe",
+    members: "Pushpendra (Radhe Radhe Girls PG & Cafe)",
     relation: "PG & Commercial Cafe",
     phone: "+91 95882 57792",
     rawPhone: "9588257792",
     membersList: [
-      { name: "Pushpendra", phone: "+91 95882 57792", rawPhone: "9588257792", role: "PG & Cafe Owner" },
-      { name: "Pushpendra (Alternate)", phone: "+91 80008 60490", rawPhone: "8000860490", role: "Alt Number" }
+      { name: "Pushpendra", phone: "+91 95882 57792", rawPhone: "9588257792", role: "PG & Cafe Owner" }
     ],
     photoUrl: "",
     hasTenant: true,
