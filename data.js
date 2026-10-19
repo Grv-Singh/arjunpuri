@@ -631,6 +631,31 @@ const RESIDENTS_DATA = [
     warnings: 0,
     escalations: 0,
     issues: [],
+  },
+  {
+    plot: "1-2",
+    surname: "Krishna Kunj (Radhe Krishna Girls PG)",
+    members: "Rajesh Agrawal (Taparia)",
+    relation: "Girls PG & Residence",
+    phone: "+91 93148 35023",
+    rawPhone: "9314835023",
+    membersList: [
+      { name: "Rajesh Agrawal (Taparia)", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner", photoUrl: "assets/avatars/user_919314835023.jpg" }
+    ],
+    photoUrl: "assets/avatars/user_919314835023.jpg",
+    hasTenant: true,
+    tenantCount: 4,
+    tenantInfo: "4+ Tenants",
+    policeVerified: false,
+    policeVerifRef: "Pending Verification",
+    hasEncroachment: true,
+    encroachmentType: "Commercial Activity & Water Trough",
+    vehicles: [],
+    notes: "Plot 1&2. Krishna Kunj aka Radhe Krishna Girls PG. Water trough, rubble and encroachment outside. 4+ tenants.",
+    nuisanceAlert: "Water trough, rubble & encroachment outside.",
+    warnings: 1,
+    escalations: 0,
+    issues: [],
   }
 ];
 
