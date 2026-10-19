@@ -434,12 +434,14 @@ const RESIDENTS_DATA = [
   {
     plot: "B13",
     surname: "Chandwars",
-    members: "Anil Chandwar & Naman Chandwar",
+    members: "Alka Chandwar, Anil Chandwar & Naman Chandwar",
     relation: "Resident Owner",
-    phone: "",
-    rawPhone: "",
-    membersList: [],
-    photoUrl: "",
+    phone: "+91 77378 19230",
+    rawPhone: "7737819230",
+    membersList: [
+      { name: "Alka Chandwar", phone: "+91 77378 19230", rawPhone: "7737819230", role: "Resident Owner", photoUrl: "assets/avatars/user_917737819230.jpg" }
+    ],
+    photoUrl: "assets/avatars/user_917737819230.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Family Occupied",
