@@ -199,6 +199,7 @@ const RESIDENTS_DATA = [
       { name: "Varsha Sokhiya", phone: "+91 97832 26728", rawPhone: "9783226728", role: "Admin / Resident" },
       { name: "Hardik Sonkhiya", phone: "+91 95871 52924", rawPhone: "9587152924", role: "Resident", photoUrl: "assets/avatars/user_919587152924.jpg" },
       { name: "Ganvesh Sonkhiya", phone: "+91 96605 33960", rawPhone: "9660533960", role: "Resident" },
+      { name: "Ashish Sonkhiya", phone: "+91 98870 00785", rawPhone: "9887000785", role: "Resident" },
       { name: "Harish Gupta", phone: "+91 97856 07150", rawPhone: "9785607150", role: "Resident", photoUrl: "assets/avatars/user_919785607150.jpg" },
       { name: "Vishal Gupta", phone: "+91 70627 22097", rawPhone: "7062722097", role: "Resident", photoUrl: "assets/avatars/user_917062722097.jpg" },
       { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner", photoUrl: "assets/avatars/user_919694473000.jpg" },
