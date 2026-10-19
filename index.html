@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261019_2152">
+  <link rel="stylesheet" href="style.css?v=20261019_2234">
 </head>
 <body>
 
@@ -119,19 +119,72 @@
       </div>
     </section>
 
+    <!-- VIEW 4: Colony Progress & Milestones Timeline -->
+    <section id="view-progress" class="view-panel" style="display: none;">
+      <div class="progress-section-header">
+        <h2 class="section-heading" data-i18n="progressHeading">Colony Progress & Milestones</h2>
+        <div class="section-subheading" data-i18n="progressSub">कॉलोनी विकास, सुधार कार्य एवं ऐतिहासिक माइलस्टोन टाइमलाइन:</div>
+      </div>
+
+      <!-- Add New Progress Milestone Form Card -->
+      <div class="progress-form-card">
+        <div class="progress-form-title">
+          <span class="material-symbols-rounded" style="color: var(--emerald); font-size: 18px;">add_task</span>
+          <span data-i18n="addProgressTitle">Add New Progress Milestone</span>
+        </div>
+        <form id="progress-form" onsubmit="handleProgressSubmit(event)">
+          <div class="progress-form-row">
+            <div class="form-group" style="flex: 1;">
+              <label for="progress-date" data-i18n="progressDateLabel">Date:</label>
+              <input type="date" id="progress-date" class="progress-input" required>
+            </div>
+            <div class="form-group" style="flex: 2;">
+              <label for="progress-title" data-i18n="progressTitleLabel">Milestone Title:</label>
+              <input type="text" id="progress-title" class="progress-input" placeholder="e.g. Street LED Light Installed" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="progress-note" data-i18n="progressNoteLabel">Description / Details:</label>
+            <textarea id="progress-note" class="progress-textarea" placeholder="Enter progress details..." rows="2" required></textarea>
+          </div>
+          <div class="progress-form-footer">
+            <label class="btn-progress-file">
+              <input type="file" id="progress-file" accept="image/*" capture="environment" style="display: none;" onchange="handleProgressFileSelect(this)">
+              <span class="material-symbols-rounded" style="font-size: 16px;">add_a_photo</span>
+              <span id="progress-file-label" data-i18n="progressUploadPhoto">Attach Photo</span>
+            </label>
+            <button type="submit" class="btn-submit-progress">
+              <span class="material-symbols-rounded" style="font-size: 16px;">publish</span>
+              <span data-i18n="progressSubmitBtn">Add to Timeline</span>
+            </button>
+          </div>
+          <div id="progress-form-preview" class="progress-form-preview" style="display: none;"></div>
+        </form>
+      </div>
+
+      <!-- Timeline Container -->
+      <div id="progress-timeline-list" class="timeline-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
     <!-- Bottom Dock Navigation -->
     <nav class="bottom-dock">
       <button class="dock-btn active" data-tab="directory">
         <span class="material-symbols-rounded">groups</span>
-        Directory
+        <span data-i18n="dockDirectory">Directory</span>
+      </button>
+      <button class="dock-btn" data-tab="progress">
+        <span class="material-symbols-rounded">trending_up</span>
+        <span data-i18n="dockProgress">Progress</span>
       </button>
       <button class="dock-btn" data-tab="grievances">
         <span class="material-symbols-rounded">bolt</span>
-        Grievance
+        <span data-i18n="dockGrievance">Grievance</span>
       </button>
       <button class="dock-btn" data-tab="contacts">
         <span class="material-symbols-rounded">contact_phone</span>
-        Contacts
+        <span data-i18n="dockContacts">Contacts</span>
       </button>
     </nav>
 
@@ -183,7 +236,7 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261014_2225"></script>
-  <script src="app.js?v=20261019_2152"></script>
+  <script src="data.js?v=20261019_2234"></script>
+  <script src="app.js?v=20261019_2234"></script>
 </body>
 </html>

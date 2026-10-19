@@ -13,6 +13,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const directoryList = document.getElementById("directory-list");
   const grievanceList = document.getElementById("grievance-list");
   const contactsList = document.getElementById("contacts-list");
+  const progressTimelineList = document.getElementById("progress-timeline-list");
+  const progressDate = document.getElementById("progress-date");
+  const progressTitle = document.getElementById("progress-title");
+  const progressNote = document.getElementById("progress-note");
+  const progressFile = document.getElementById("progress-file");
+  const progressFileLabel = document.getElementById("progress-file-label");
+  const progressFormPreview = document.getElementById("progress-form-preview");
   const searchInput = document.getElementById("main-search-input");
   const clearSearchBtn = document.getElementById("clear-search-btn");
   const filterPills = document.querySelectorAll("#filter-strip .micro-pill");
@@ -22,6 +29,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const langIndicator = document.getElementById("lang-indicator");
   const themeToggleBtn = document.getElementById("theme-toggle-btn");
   const themeIcon = document.getElementById("theme-icon");
+
+  if (progressDate) {
+    progressDate.value = new Date().toISOString().split("T")[0];
+  }
 
   // Official WhatsApp Vector Logo
   const WA_SVG = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:block;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.42 0-2.82-.37-4.06-1.08l-.29-.17-3.11.82.83-3.03-.19-.31a8.2 8.2 0 0 1-1.26-4.46c0-4.54 3.7-8.24 8.24-8.24m-3.55 4.14c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.44s1.02 2.84 1.16 3.03c.14.19 1.97 3.16 4.88 4.3 2.41.95 2.9.76 3.42.71.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33s-1.69-.83-1.95-.93c-.26-.1-.45-.14-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.14-1.21-.45-2.31-1.43-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49z"/></svg>`;
@@ -40,15 +51,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       encroachments: "Encroachments",
       verified: "Police Verified",
       dockDirectory: "Directory",
+      dockProgress: "Progress",
       dockGrievance: "Grievance",
       dockContacts: "Contacts",
+      progressHeading: "Colony Progress & Milestones",
+      progressSub: "Timeline of community progress, civic works, and key milestones:",
+      addProgressTitle: "Add New Progress Milestone",
+      progressDateLabel: "Date:",
+      progressTitleLabel: "Milestone Title:",
+      progressNoteLabel: "Description / Details:",
+      progressUploadPhoto: "Attach Photo",
+      progressSubmitBtn: "Add to Timeline",
       grievanceSub: "1-Click Government Grievance Portals (Electricity, Water, Nagar Nigam):",
       contactsSub: "Councilor, Workers, Police & Local Tradesmen Assistance:",
       noPlotsFound: "No matching plots found",
       noPlotsHint: "Search by plot (20, 31), name, or vehicle number (8634, 9300)",
       noContactsFound: "No matching contacts",
       warnings: "Warnings",
-      escalation: "Escalation",
       issues: "Issues",
       notes: "Notes:",
       save: "Save",
@@ -88,15 +107,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       encroachments: "अतिक्रमण",
       verified: "सत्यापित",
       dockDirectory: "डायरेक्टरी",
+      dockProgress: "प्रगति",
       dockGrievance: "शिकायतें",
       dockContacts: "संपर्क",
+      progressHeading: "कॉलोनी प्रगति एवं विकास कार्य",
+      progressSub: "कॉलोनी विकास, सुधार कार्य एवं ऐतिहासिक माइलस्टोन टाइमलाइन:",
+      addProgressTitle: "नया प्रगति कार्य / माइलस्टोन जोड़ें",
+      progressDateLabel: "दिनांक:",
+      progressTitleLabel: "कार्य शीर्षक:",
+      progressNoteLabel: "विवरण / जानकारी:",
+      progressUploadPhoto: "फोटो जोड़ें",
+      progressSubmitBtn: "टाइमलाइन में जोड़ें",
       grievanceSub: "1-क्लिक सरकारी शिकायत पोर्टल (बिजली, पानी, नगर निगम):",
       contactsSub: "पार्षद, कार्यकर्ता, पुलिस व स्थानीय मिस्त्री सहायता:",
       noPlotsFound: "कोई प्लॉट नहीं मिला",
       noPlotsHint: "प्लॉट (20, 31), नाम, या वाहन नंबर (8634) से खोजें",
       noContactsFound: "कोई संपर्क नहीं मिला",
       warnings: "चेतावनी",
-      escalation: "शिकायत वृद्धि",
       issues: "समस्याएं",
       notes: "टिप्पणी:",
       save: "सहेजें",
@@ -178,6 +205,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Dock buttons
     const dockMap = {
       directory: "dockDirectory",
+      progress: "dockProgress",
       grievances: "dockGrievance",
       contacts: "dockContacts"
     };
@@ -191,7 +219,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // Re-render active view
-    if (currentTab === "grievances") renderGrievances();
+    if (currentTab === "progress") renderProgress();
+    else if (currentTab === "grievances") renderGrievances();
     else if (currentTab === "contacts") renderContacts();
     else renderDirectory();
   }
@@ -342,6 +371,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       if (currentTab === "contacts") {
         renderContacts();
+      } else if (currentTab === "progress") {
+        renderProgress();
       } else {
         renderDirectory();
       }
@@ -356,6 +387,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         clearSearchBtn.classList.remove("active");
         if (currentTab === "contacts") {
           renderContacts();
+        } else if (currentTab === "progress") {
+          renderProgress();
         } else {
           renderDirectory();
         }
@@ -388,25 +421,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       const targetView = document.getElementById(`view-${currentTab}`);
       if (targetView) targetView.style.display = "block";
 
-      if (currentTab === "grievances") renderGrievances();
-      if (currentTab === "contacts") renderContacts();
+      if (currentTab === "progress") renderProgress();
+      else if (currentTab === "grievances") renderGrievances();
+      else if (currentTab === "contacts") renderContacts();
+      else renderDirectory();
     });
   });
 
   // -------------------------------------------------------------
-  // 5. Governance Steppers (Warnings & Escalation) & Notes Helpers
+  // 5. Governance Steppers (Warnings) & Notes Helpers
   // -------------------------------------------------------------
   function getPlotWarnings(plot, fallback = 0) {
     try {
       const v = localStorage.getItem(`arjunpuri_warn_${plot}`);
-      if (v !== null) return parseInt(v, 10);
-    } catch (e) {}
-    return fallback;
-  }
-
-  function getPlotEscalations(plot, fallback = 0) {
-    try {
-      const v = localStorage.getItem(`arjunpuri_esc_${plot}`);
       if (v !== null) return parseInt(v, 10);
     } catch (e) {}
     return fallback;
@@ -431,8 +458,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     el.textContent = nextVal;
 
     try {
-      const storageKey = type === "warnings" ? `arjunpuri_warn_${plot}` : `arjunpuri_esc_${plot}`;
-      localStorage.setItem(storageKey, nextVal.toString());
+      localStorage.setItem(`arjunpuri_warn_${plot}`, nextVal.toString());
     } catch (e) {}
   };
 
@@ -529,6 +555,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateSlideshowUI();
   };
 
+  window.openProgressSlideshow = function(photoUrl, titleEncoded) {
+    const title = decodeURIComponent(titleEncoded);
+    activeSlideshowPlot = "Progress";
+    activeSlideshowIssues = [{ url: photoUrl, type: "image", caption: title, filepath: photoUrl }];
+    activeSlideshowIndex = 0;
+    if (slideshowModal) slideshowModal.style.display = "flex";
+    updateSlideshowUI();
+  };
+
   window.closeSlideshow = function() {
     if (slideshowModal) slideshowModal.style.display = "none";
     if (slideshowMediaWrapper) slideshowMediaWrapper.innerHTML = "";
@@ -550,7 +585,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const issue = activeSlideshowIssues[activeSlideshowIndex];
     if (slideshowPlotTitle) {
-      slideshowPlotTitle.textContent = `${t("issues")} — Plot ${activeSlideshowPlot}`;
+      slideshowPlotTitle.textContent = activeSlideshowPlot === "Progress"
+        ? `${t("dockProgress")} Milestone`
+        : `${t("issues")} — Plot ${activeSlideshowPlot}`;
     }
     if (slideshowCounter) {
       slideshowCounter.textContent = `${activeSlideshowIndex + 1} / ${activeSlideshowIssues.length}`;
@@ -559,7 +596,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       slideshowCaption.textContent = issue.caption || `Plot ${activeSlideshowPlot} Issue`;
     }
     if (slideshowFilepath) {
-      const cleanPlotFolder = `plot-${activeSlideshowPlot.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
+      const cleanPlotFolder = `plot-${(activeSlideshowPlot || "").toString().replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
       slideshowFilepath.textContent = issue.filepath || issue.url || `assets/issues/${cleanPlotFolder}/`;
     }
 
@@ -580,7 +617,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       slideshowDownloadBtn.onclick = () => {
         const a = document.createElement("a");
         a.href = issue.url;
-        a.download = `plot_${activeSlideshowPlot}_issue_${activeSlideshowIndex + 1}${issue.type === 'video' ? '.mp4' : '.jpg'}`;
+        a.download = `arjunpuri_${activeSlideshowPlot}_issue_${activeSlideshowIndex + 1}${issue.type === 'video' ? '.mp4' : '.jpg'}`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -847,7 +884,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
             ` : ''}
 
-            <!-- Individual Members & Contacts -->
+            <!-- Individual Members & Contacts with Profile Pictures -->
             ${(() => {
               const verifiedMembers = (r.membersList || []).filter(m => m.phone && m.phone.trim() !== "");
               if (verifiedMembers.length === 0) return '';
@@ -862,6 +899,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                       const mMsg = encodeURIComponent(`Namaste ${m.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
                       return `
                         <div class="member-card">
+                          ${m.photoUrl ? `<img src="${m.photoUrl}" alt="${m.name}" class="member-avatar-mini">` : ''}
                           <div class="member-details">
                             <div class="member-top-row">
                               <span class="member-name-text">${m.name}</span>
@@ -938,7 +976,120 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // -------------------------------------------------------------
-  // 8. Grievances Renderer
+  // 8. Progress Timeline View & Form Management
+  // -------------------------------------------------------------
+  let customProgressData = [];
+  try {
+    customProgressData = JSON.parse(localStorage.getItem("arjunpuri_custom_progress")) || [];
+  } catch (e) {
+    customProgressData = [];
+  }
+
+  let selectedProgressPhotoData = "";
+
+  window.handleProgressFileSelect = function(inputEl) {
+    if (!inputEl || !inputEl.files || inputEl.files.length === 0) return;
+    const file = inputEl.files[0];
+    if (progressFileLabel) {
+      progressFileLabel.textContent = file.name.slice(0, 16) + "...";
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      selectedProgressPhotoData = e.target.result;
+      if (progressFormPreview) {
+        progressFormPreview.style.display = "block";
+        progressFormPreview.innerHTML = `<img src="${selectedProgressPhotoData}" alt="Preview">`;
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  window.handleProgressSubmit = function(e) {
+    e.preventDefault();
+    if (!progressDate || !progressTitle || !progressNote) return;
+
+    const dateVal = progressDate.value.trim();
+    const titleVal = progressTitle.value.trim();
+    const noteVal = progressNote.value.trim();
+    if (!dateVal || !titleVal || !noteVal) return;
+
+    const newMilestone = {
+      id: `prog-usr-${Date.now()}`,
+      date: dateVal,
+      title: titleVal,
+      note: noteVal,
+      photoUrl: selectedProgressPhotoData || "",
+      status: "Community Logged",
+      isCustom: true
+    };
+
+    customProgressData.unshift(newMilestone);
+    try {
+      localStorage.setItem("arjunpuri_custom_progress", JSON.stringify(customProgressData));
+    } catch (e) {}
+
+    // Reset Form
+    progressTitle.value = "";
+    progressNote.value = "";
+    if (progressFile) progressFile.value = "";
+    if (progressFileLabel) progressFileLabel.textContent = t("progressUploadPhoto");
+    if (progressFormPreview) {
+      progressFormPreview.style.display = "none";
+      progressFormPreview.innerHTML = "";
+    }
+    selectedProgressPhotoData = "";
+    progressDate.value = new Date().toISOString().split("T")[0];
+
+    renderProgress();
+  };
+
+  function renderProgress() {
+    if (!progressTimelineList) return;
+
+    const allMilestones = [...customProgressData, ...(window.PROGRESS_DATA || [])];
+    allMilestones.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    let filtered = allMilestones;
+    if (searchQuery) {
+      filtered = filtered.filter(m => 
+        m.title.toLowerCase().includes(searchQuery) ||
+        m.note.toLowerCase().includes(searchQuery) ||
+        m.date.includes(searchQuery)
+      );
+    }
+
+    if (filtered.length === 0) {
+      progressTimelineList.innerHTML = `
+        <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+          <span class="material-symbols-rounded" style="font-size: 38px; color: var(--text-dim); margin-bottom: 0.4rem;">history_toggle_off</span>
+          <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">No progress milestones found</p>
+        </div>
+      `;
+      return;
+    }
+
+    progressTimelineList.innerHTML = filtered.map(m => `
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <div class="timeline-top-row">
+            <span class="timeline-date-badge">${m.date}</span>
+            <span class="timeline-status-badge">${m.status || "Completed"}</span>
+          </div>
+          <div class="timeline-title">${m.title}</div>
+          <div class="timeline-note">${m.note}</div>
+          ${m.photoUrl ? `
+            <div class="timeline-media" onclick="openProgressSlideshow('${m.photoUrl}', '${encodeURIComponent(m.title)}')">
+              <img src="${m.photoUrl}" alt="${m.title}" loading="lazy">
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // -------------------------------------------------------------
+  // 9. Grievances Renderer
   // -------------------------------------------------------------
   function renderGrievances() {
     if (!grievanceList) return;
@@ -970,7 +1121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // -------------------------------------------------------------
-  // 9. Contacts Renderer
+  // 10. Contacts Renderer
   // -------------------------------------------------------------
   function renderContacts() {
     if (!contactsList) return;

@@ -9,10 +9,10 @@ const RESIDENTS_DATA = [
     rawPhone: "9887048542",
     membersList: [
       { name: "Siddharth Pareek", phone: "+91 98870 48542", rawPhone: "9887048542", role: "Resident" },
-      { name: "Siddharth Pareek (Alternate)", phone: "+91 76197 71121", rawPhone: "7619771121", role: "Alt Number" },
-      { name: "Sneh Lata Pareek", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident" }
+      { name: "Siddharth Pareek", phone: "+91 76197 71121", rawPhone: "7619771121", role: "Resident", photoUrl: "assets/avatars/user_917619771121.jpg" },
+      { name: "Sneh Lata Pareek", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident", photoUrl: "assets/avatars/user_917597302948.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_917619771121.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -37,11 +37,11 @@ const RESIDENTS_DATA = [
     phone: "+91 89469 68876",
     rawPhone: "918946968876",
     membersList: [
-      { name: "Gaurav Singh", phone: "+91 89469 68876", rawPhone: "918946968876", role: "Resident" },
-      { name: "Pramod Jagrawal", phone: "+91 99299 90041", rawPhone: "919929990041", role: "Resident Owner" },
-      { name: "Rekha", phone: "+91 94140 40522", rawPhone: "919414040522", role: "Resident" }
+      { name: "Gaurav Singh", phone: "+91 89469 68876", rawPhone: "918946968876", role: "Resident", photoUrl: "assets/avatars/user_918946968876.jpg" },
+      { name: "Pramod Jagrawal", phone: "+91 99299 90041", rawPhone: "919929990041", role: "Resident Owner", photoUrl: "assets/avatars/user_919929990041.jpg" },
+      { name: "Rekha", phone: "+91 94140 40522", rawPhone: "919414040522", role: "Resident", photoUrl: "assets/avatars/user_919414040522.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_918946968876.jpg",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -68,9 +68,9 @@ const RESIDENTS_DATA = [
     rawPhone: "9928364162",
     membersList: [
       { name: "Ashok Gupta", phone: "+91 99283 64162", rawPhone: "9928364162", role: "Resident Owner" },
-      { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident" }
+      { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident", photoUrl: "assets/avatars/user_918386830777.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_918386830777.jpg",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -171,9 +171,9 @@ const RESIDENTS_DATA = [
     phone: "+91 88906 72644",
     rawPhone: "8890672644",
     membersList: [
-      { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner" }
+      { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner", photoUrl: "assets/avatars/user_918890672644.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_918890672644.jpg",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -199,7 +199,7 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Rahul Saini", phone: "+91 63506 56029", rawPhone: "6350656029", role: "Resident" },
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919460192021.jpg",
     hasTenant: true,
     tenantCount: 6,
     tenantInfo: "PG with 6 Tenants",
@@ -249,10 +249,10 @@ const RESIDENTS_DATA = [
     phone: "+91 93145 30590",
     rawPhone: "9314530590",
     membersList: [
-      { name: "Pankaj Gupta", phone: "+91 93145 30590", rawPhone: "9314530590", role: "Resident" },
-      { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner" }
+      { name: "Pankaj Gupta", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Resident" },
+      { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner", photoUrl: "assets/avatars/user_919694473000.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919694473000.jpg",
     hasTenant: true,
     tenantCount: 1,
     tenantInfo: "1 Tenant",
@@ -276,9 +276,9 @@ const RESIDENTS_DATA = [
     phone: "+91 94617 83436",
     rawPhone: "9461783436",
     membersList: [
-      { name: "Yogesh Patni", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Resident Owner" }
+      { name: "Yogesh Patni", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Resident Owner", photoUrl: "assets/avatars/user_919461783436.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919461783436.jpg",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -305,10 +305,10 @@ const RESIDENTS_DATA = [
     phone: "+91 98206 95225",
     rawPhone: "9820695225",
     membersList: [
-      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident Owner" },
+      { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident (P.no.19)", photoUrl: "assets/avatars/user_919820695225.jpg" },
       { name: "Pradeep Jain", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919820695225.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -356,9 +356,9 @@ const RESIDENTS_DATA = [
     phone: "+91 90241 10043",
     rawPhone: "9024110043",
     membersList: [
-      { name: "Neetu Sethia", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner" },
+      { name: "Neetu Sethia", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner", photoUrl: "assets/avatars/user_919024110043.jpg" },
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919024110043.jpg",
     hasTenant: true,
     tenantCount: 6,
     tenantInfo: "6 Tenants",
@@ -462,9 +462,9 @@ const RESIDENTS_DATA = [
     phone: "+91 94134 90448",
     rawPhone: "9413490448",
     membersList: [
-      { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Varalika Compu Power" }
+      { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Varalika Compu Power", photoUrl: "assets/avatars/user_919413490448.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919413490448.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Commercial Unit",
@@ -488,7 +488,7 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Anil Chandwar", phone: "+91 97856 07150", rawPhone: "9785607150", role: "Resident" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919785607150.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Family Occupied",
@@ -586,11 +586,11 @@ const RESIDENTS_DATA = [
     phone: "+91 83869 77101",
     rawPhone: "8386977101",
     membersList: [
-      { name: "Ishika Singhania", phone: "+91 83869 77101", rawPhone: "8386977101", role: "Resident" },
-      { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident" },
-      { name: "Dr. G D Singhania", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner" },
+      { name: "Ishika Singhania", phone: "+91 83869 77101", rawPhone: "8386977101", role: "Resident", photoUrl: "assets/avatars/user_918386977101.jpg" },
+      { name: "Dr. G D Singhania", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner", photoUrl: "assets/avatars/user_919829075229.jpg" },
+      { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident", photoUrl: "assets/avatars/user_917062722097.jpg" },
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919829075229.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -612,9 +612,9 @@ const RESIDENTS_DATA = [
     phone: "+91 99280 22998",
     rawPhone: "9928022998",
     membersList: [
-      { name: "Archna Agrawal", phone: "+91 99280 22998", rawPhone: "9928022998", role: "Resident Owner" }
+      { name: "Archna Agrawal", phone: "+91 99280 22998", rawPhone: "9928022998", role: "Resident Owner", photoUrl: "assets/avatars/user_919928022998.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919928022998.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -687,9 +687,9 @@ const RESIDENTS_DATA = [
     phone: "+91 93148 35023",
     rawPhone: "9314835023",
     membersList: [
-      { name: "Rosesh Agrawal", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner" }
+      { name: "Rajesh Taparia (Rosesh Agrawal)", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Admin / Resident Owner", photoUrl: "assets/avatars/user_919314835023.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919314835023.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -1006,5 +1006,89 @@ const CIVIC_AND_TRADE_CONTACTS = [
     rawPhone: "9214359268",
     office: "Sahakar Marg Scrap Depot",
     duty: "Iron rods, construction scrap & household waste pickup"
+  }
+];
+
+// Arjunpuri 1st — Colony Historical Progress & Milestones Register
+const PROGRESS_DATA = [
+  {
+    id: "prog-10",
+    date: "2026-10-14",
+    title: "BSNL Telephone Pole Removal Application Submitted",
+    note: "Application for removal of redundant telephone poles submitted to BSNL authorities following community signatures outside Plot A-31.",
+    photoUrl: "",
+    status: "Submitted"
+  },
+  {
+    id: "prog-9",
+    date: "2026-10-12",
+    title: "Tree Pruning & Electrical Load Survey",
+    note: "Overhanging tree branch trimming completed along link road lines. Electrical load survey completed with JVVNL Powerhouse CD-II team.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-8",
+    date: "2026-10-11",
+    title: "Ward 145 Councillor Colony Survey",
+    note: "Parshad Prem Chand ji, Ward President & Karyakartas conducted ground survey for road carpeting, drainage, and street LED fixtures.",
+    photoUrl: "assets/progress/2026_10_11_160758_ACF61C23E1648A5C68BF58E21CFFD6AE.jpeg",
+    status: "Completed"
+  },
+  {
+    id: "prog-7",
+    date: "2026-10-11",
+    title: "Sanitation & Vigilance Coordination with Nagar Nigam",
+    note: "Nagar Nigam SI Roop Narayan ji added to colony vigilance channel for prompt road waste and sanitation resolution.",
+    photoUrl: "assets/progress/2026_10_11_162534_AC743F8B10F4244F760D8320E9D7A1BA.jpeg",
+    status: "Active"
+  },
+  {
+    id: "prog-6",
+    date: "2026-10-07",
+    title: "Smart Meter vs Standard Meter Verification Audit",
+    note: "Discrepancy audit conducted comparing 10-day consumption (112 units standard vs 302 units smart meter); consumer helpline mobilized.",
+    photoUrl: "assets/progress/2026_10_07_113159_ACBBF0986E5FB7F57A6AF923C82CEF91.jpeg",
+    status: "Verified"
+  },
+  {
+    id: "prog-5",
+    date: "2026-09-12",
+    title: "Colony-Wide Pressurized Sewage Flushing Drive",
+    note: "Synchronized downstream sewage flushing drive executed across all plots at 12 noon to clear downstream choke points.",
+    photoUrl: "",
+    status: "Executed"
+  },
+  {
+    id: "prog-4",
+    date: "2026-09-01",
+    title: "Road Encroachment & Auto Clearance Notice",
+    note: "Tenant commitment secured to remove obstruction vehicles and auto-rickshaws outside Plot 12A / 20.",
+    photoUrl: "assets/progress/2026_09_01_213424_ACA8D990F263A3AF157C3EB2141831A3.jpeg",
+    status: "Resolved"
+  },
+  {
+    id: "prog-3",
+    date: "2026-08-31",
+    title: "Corner Garbage Clearance & Animal Bowl Hygiene",
+    note: "Corner waste cleared; proposal initiated for automatic float-valve animal water bowl replacing stagnant troughs.",
+    photoUrl: "assets/progress/2026_08_31_232516_AC3C52FACA47A6DF7B5DDFD0D28C99D0.jpeg",
+    status: "Completed"
+  },
+  {
+    id: "prog-2",
+    date: "2026-08-23",
+    title: "Drainage Chamber L-Joint Connection Completed",
+    note: "Drainage chamber L-joint connection completed on Link Road to eliminate persistent dirty water accumulation.",
+    photoUrl: "assets/progress/2026_08_23_172616_AC3E4B731DCDB937B47662845B9C171B.jpeg",
+    status: "Completed"
+  },
+  {
+    id: "prog-1",
+    date: "2026-08-15",
+    title: "Construction Rubble Removal Initiative",
+    note: "Colony-wide notice and street survey for removal of unattended construction rubble and stones.",
+    photoUrl: "assets/progress/2026_08_15_192046_AC5C82258CECA709AD7D1CCE418C57AD.jpeg",
+    status: "Ongoing"
   }
 ];
