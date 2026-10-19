@@ -360,13 +360,11 @@ const RESIDENTS_DATA = [
   {
     plot: "15A",
     surname: "Kumawats",
-    members: "Madan Mohan Kumawat, Sushila Kumawat & Nishant Kumawat",
+    members: "Sushila Kumawat & Nishant Kumawat",
     relation: "Resident Owner",
-    phone: "+91 90241 10043",
-    rawPhone: "9024110043",
-    membersList: [
-      { name: "Madan Mohan Kumawat", phone: "+91 90241 10043", rawPhone: "9024110043", role: "Resident Owner" },
-    ],
+    phone: "",
+    rawPhone: "",
+    membersList: [],
     photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
