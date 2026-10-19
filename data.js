@@ -567,10 +567,10 @@ const RESIDENTS_DATA = [
     rawPhone: "8386977101",
     membersList: [
       { name: "Ishika Singhania", phone: "+91 83869 77101", rawPhone: "8386977101", role: "Resident", photoUrl: "assets/avatars/user_918386977101.jpg" },
-      { name: "Dr. G D Singhania", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner", photoUrl: "assets/avatars/user_919829075229.jpg" },
-      { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident", photoUrl: "assets/avatars/user_917062722097.jpg" },
+      { name: "Dr. G D Singhania", phone: "", rawPhone: "", role: "Resident Owner" },
+      { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident" },
     ],
-    photoUrl: "assets/avatars/user_919829075229.jpg",
+    photoUrl: "assets/avatars/user_918386977101.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -587,12 +587,15 @@ const RESIDENTS_DATA = [
   {
     plot: "A32",
     surname: "Agrawals",
-    members: "Archna Agrawal & Family",
+    members: "Archna Agrawal, Gopal Agrawal, Vaibhav Agrawal & Ananya Agrawal",
     relation: "Resident Owner",
     phone: "+91 99280 22998",
     rawPhone: "9928022998",
     membersList: [
-      { name: "Archna Agrawal", phone: "+91 99280 22998", rawPhone: "9928022998", role: "Resident Owner", photoUrl: "assets/avatars/user_919928022998.jpg" }
+      { name: "Archna Agrawal", phone: "+91 99280 22998", rawPhone: "9928022998", role: "Resident Owner", photoUrl: "assets/avatars/user_919928022998.jpg" },
+      { name: "Gopal Agrawal", phone: "+91 98290 15875", rawPhone: "9829015875", role: "Resident Owner" },
+      { name: "Vaibhav Agrawal", phone: "+91 96727 68657", rawPhone: "9672768657", role: "Resident", photoUrl: "assets/avatars/user_919672768657.jpg" },
+      { name: "Ananya Agrawal", phone: "+91 83858 44375", rawPhone: "8385844375", role: "Resident" }
     ],
     photoUrl: "assets/avatars/user_919928022998.jpg",
     hasTenant: false,
