@@ -351,11 +351,13 @@ const RESIDENTS_DATA = [
   {
     plot: "AA 16",
     surname: "Kailash Villa",
-    members: "Golden",
+    members: "Ramesh",
     relation: "Resident Owner",
-    phone: "",
-    rawPhone: "",
-    membersList: [],
+    phone: "+91 98290 57961",
+    rawPhone: "9829057961",
+    membersList: [
+      { name: "Ramesh", phone: "+91 98290 57961", rawPhone: "9829057961", role: "Resident Owner" }
+    ],
     photoUrl: "assets/plots/plot_AA_16.png",
     plotPhoto: "assets/plots/plot_AA_16.png",
     hasTenant: false,
