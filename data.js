@@ -62,12 +62,12 @@ const RESIDENTS_DATA = [
   {
     plot: "30",
     surname: "Guptas",
-    members: "Ashok Gupta, Ashish Gupta & Harshita Gupta",
+    members: "Ashish Gupta & Harshita Gupta",
     relation: "Resident Owner",
-    phone: "+91 99283 64162",
-    rawPhone: "9928364162",
+    phone: "+91 80059 50955",
+    rawPhone: "8005950955",
     membersList: [
-      { name: "Ashok Gupta", phone: "+91 99283 64162", rawPhone: "9928364162", role: "Resident Owner" },
+      { name: "Ashish Gupta", phone: "+91 80059 50955", rawPhone: "8005950955", role: "Resident Owner" },
       { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident", photoUrl: "assets/avatars/user_918386830777.jpg" }
     ],
     photoUrl: "assets/avatars/user_918386830777.jpg",
@@ -76,16 +76,15 @@ const RESIDENTS_DATA = [
     tenantInfo: "2 Tenants",
     policeVerified: true,
     policeVerifRef: "Verified Record",
-    hasEncroachment: true,
-    encroachmentType: "Commercial Activity",
+    hasEncroachment: false,
     vehicles: [
       "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
     ],
     notes: "",
-    nuisanceAlert: "Rubble outside.",
+    nuisanceAlert: "Advertisement board & rubble outside.",
     warnings: 1,
     escalations: 0,
-    issues: [{ url: "assets/issues/plot-30/rubble_commercial_01.jpg", type: "image", caption: "Commercial board & construction rubble", date: "2026-10-12" }],
+    issues: [{ url: "assets/issues/plot-30/rubble_commercial_01.jpg", type: "image", caption: "Advertisement board & rubble", date: "2026-10-12" }],
   },
   {
     plot: "29",
