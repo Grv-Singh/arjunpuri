@@ -613,6 +613,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateSlideshowUI();
   };
 
+  window.openPlotPhotoSlideshow = function(plot) {
+    const r = RESIDENTS_DATA.find(item => item.plot === plot);
+    if (!r) return;
+    const photos = r.plotPhotos && r.plotPhotos.length > 0 
+      ? r.plotPhotos 
+      : (r.plotPhoto || r.photoUrl ? [r.plotPhoto || r.photoUrl] : []);
+    if (photos.length === 0) return;
+
+    activeSlideshowPlot = plot;
+    activeSlideshowIssues = photos.map((pUrl, idx) => ({
+      url: pUrl,
+      type: "image",
+      caption: `Plot ${plot} (${r.surname || r.name || ''}) — Property Photo${photos.length > 1 ? ` (${idx + 1}/${photos.length})` : ''}`,
+      filepath: pUrl,
+      isPlotPhoto: true
+    }));
+    activeSlideshowIndex = 0;
+    if (slideshowModal) slideshowModal.style.display = "flex";
+    updateSlideshowUI();
+  };
+
   window.closeSlideshow = function() {
     if (slideshowModal) slideshowModal.style.display = "none";
     if (slideshowMediaWrapper) slideshowMediaWrapper.innerHTML = "";
@@ -634,9 +655,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const issue = activeSlideshowIssues[activeSlideshowIndex];
     if (slideshowPlotTitle) {
-      slideshowPlotTitle.textContent = activeSlideshowPlot === "Progress"
-        ? `${t("dockProgress")} Milestone`
-        : `${t("issues")} — Plot ${activeSlideshowPlot}`;
+      if (activeSlideshowPlot === "Progress") {
+        slideshowPlotTitle.textContent = `${t("dockProgress")} Milestone`;
+      } else if (issue.isPlotPhoto) {
+        slideshowPlotTitle.textContent = `Plot ${activeSlideshowPlot} Photo`;
+      } else {
+        slideshowPlotTitle.textContent = `${t("issues")} — Plot ${activeSlideshowPlot}`;
+      }
     }
     if (slideshowCounter) {
       slideshowCounter.textContent = `${activeSlideshowIndex + 1} / ${activeSlideshowIssues.length}`;
@@ -675,13 +700,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Delete Handler (for all photos: pre-existing or uploaded later)
     if (slideshowDeleteBtn) {
-      slideshowDeleteBtn.style.display = "inline-flex";
-      slideshowDeleteBtn.onclick = () => window.deleteActiveSlideshowPhoto();
+      if (issue.isPlotPhoto) {
+        slideshowDeleteBtn.style.display = "none";
+      } else {
+        slideshowDeleteBtn.style.display = "inline-flex";
+        slideshowDeleteBtn.onclick = () => window.deleteActiveSlideshowPhoto();
+      }
     }
     const slideshowDeleteBtnTop = document.getElementById("slideshow-delete-btn-top");
     if (slideshowDeleteBtnTop) {
-      slideshowDeleteBtnTop.style.display = "inline-flex";
-      slideshowDeleteBtnTop.onclick = () => window.deleteActiveSlideshowPhoto();
+      if (issue.isPlotPhoto) {
+        slideshowDeleteBtnTop.style.display = "none";
+      } else {
+        slideshowDeleteBtnTop.style.display = "inline-flex";
+        slideshowDeleteBtnTop.onclick = () => window.deleteActiveSlideshowPhoto();
+      }
     }
   }
 
@@ -807,8 +840,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         .map(w => w[0].toUpperCase())
         .join("") || r.plot;
 
-      const avatarHtml = r.photoUrl
-        ? `<div class="row-avatar"><img src="${r.photoUrl}" alt="${surnameDisplay}"></div>`
+      const plotPhotoSrc = r.plotPhoto || r.photoUrl;
+      const avatarHtml = plotPhotoSrc
+        ? `<div class="row-avatar" onclick="event.stopPropagation(); openPlotPhotoSlideshow('${r.plot}')" title="Click to view Plot ${r.plot} photo"><img src="${plotPhotoSrc}" alt="${surnameDisplay}"></div>`
         : `<div class="row-avatar">${initials}</div>`;
 
       // Badges

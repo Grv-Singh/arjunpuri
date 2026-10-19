@@ -12,7 +12,8 @@ const RESIDENTS_DATA = [
       { name: "Siddharth Pareek", phone: "+91 76197 71121", rawPhone: "7619771121", role: "Resident", photoUrl: "assets/avatars/user_917619771121.jpg" },
       { name: "Sneh Lata Pareek", phone: "+91 75973 02948", rawPhone: "917597302948", role: "Resident", photoUrl: "assets/avatars/user_917597302948.jpg" }
     ],
-    photoUrl: "assets/avatars/user_917619771121.jpg",
+    photoUrl: "assets/plots/plot_34.png",
+    plotPhoto: "assets/plots/plot_34.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -41,7 +42,8 @@ const RESIDENTS_DATA = [
       { name: "Pramod Jagrawal", phone: "+91 99299 90041", rawPhone: "919929990041", role: "Resident Owner", photoUrl: "assets/avatars/user_919929990041.jpg" },
       { name: "Rekha", phone: "+91 94140 40522", rawPhone: "919414040522", role: "Resident", photoUrl: "assets/avatars/user_919414040522.jpg" }
     ],
-    photoUrl: "assets/avatars/user_918946968876.jpg",
+    photoUrl: "assets/plots/plot_31.png",
+    plotPhoto: "assets/plots/plot_31.png",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -70,7 +72,8 @@ const RESIDENTS_DATA = [
       { name: "Ashish Gupta", phone: "+91 80059 50955", rawPhone: "8005950955", role: "Resident Owner" },
       { name: "Harshita Gupta", phone: "+91 83868 30777", rawPhone: "918386830777", role: "Resident", photoUrl: "assets/avatars/user_918386830777.jpg" }
     ],
-    photoUrl: "assets/avatars/user_918386830777.jpg",
+    photoUrl: "assets/plots/plot_30.png",
+    plotPhoto: "assets/plots/plot_30.png",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -94,7 +97,8 @@ const RESIDENTS_DATA = [
     phone: "",
     rawPhone: "",
     membersList: [],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_28_29.png",
+    plotPhoto: "assets/plots/plot_28_29.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -120,7 +124,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Pushpendra", phone: "+91 95882 57792", rawPhone: "9588257792", role: "PG & Cafe Owner" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_27.png",
+    plotPhoto: "assets/plots/plot_27.png",
     hasTenant: true,
     tenantCount: 10,
     tenantInfo: "PG with 10 Tenants",
@@ -147,7 +152,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Raj Choudhary", phone: "+91 88906 72644", rawPhone: "8890672644", role: "Resident Owner", photoUrl: "assets/avatars/user_918890672644.jpg" }
     ],
-    photoUrl: "assets/avatars/user_918890672644.jpg",
+    photoUrl: "assets/plots/plot_26.png",
+    plotPhoto: "assets/plots/plot_26.png",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -174,7 +180,9 @@ const RESIDENTS_DATA = [
       { name: "Sushila Saini", phone: "+91 94601 92021", rawPhone: "9460192021", role: "Resident Owner", photoUrl: "assets/avatars/user_919460192021.jpg" },
       { name: "Rahul Saini", phone: "+91 63506 56029", rawPhone: "6350656029", role: "Resident" }
     ],
-    photoUrl: "assets/avatars/user_919460192021.jpg",
+    photoUrl: "assets/plots/plot_21_25.png",
+    plotPhoto: "assets/plots/plot_21_25.png",
+    plotPhotos: ["assets/plots/plot_21_25.png","assets/plots/25.png"],
     hasTenant: true,
     tenantCount: 6,
     tenantInfo: "PG with 6 Tenants",
@@ -205,7 +213,9 @@ const RESIDENTS_DATA = [
       { name: "Daya Gupta", phone: "+91 96944 73000", rawPhone: "9694473000", role: "Resident Owner", photoUrl: "assets/avatars/user_919694473000.jpg" },
       { name: "Pankaj Gupta", phone: "+91 93145 30593", rawPhone: "9314530593", role: "Resident" }
     ],
-    photoUrl: "assets/avatars/user_919587152924.jpg",
+    photoUrl: "assets/plots/plot_23_24.png",
+    plotPhoto: "assets/plots/plot_23_24.png",
+    plotPhotos: ["assets/plots/plot_23_24.png","assets/plots/24.png"],
     hasTenant: true,
     tenantCount: 1,
     tenantInfo: "1 Tenant",
@@ -234,7 +244,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Yogesh Patni", phone: "+91 94617 83436", rawPhone: "9461783436", role: "Resident Owner", photoUrl: "assets/avatars/user_919461783436.jpg" }
     ],
-    photoUrl: "assets/avatars/user_919461783436.jpg",
+    photoUrl: "assets/plots/plot_20.png",
+    plotPhoto: "assets/plots/plot_20.png",
     hasTenant: true,
     tenantCount: 2,
     tenantInfo: "2 Tenants",
@@ -264,7 +275,8 @@ const RESIDENTS_DATA = [
       { name: "Praduman Jain (PK Jain)", phone: "+91 98206 95225", rawPhone: "9820695225", role: "Resident (P.no.19)", photoUrl: "assets/avatars/user_919820695225.jpg" },
       { name: "Pradeep Jain", phone: "+91 94143 44976", rawPhone: "9414344976", role: "Resident" }
     ],
-    photoUrl: "assets/avatars/user_919820695225.jpg",
+    photoUrl: "assets/plots/plot_19.png",
+    plotPhoto: "assets/plots/plot_19.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -288,7 +300,8 @@ const RESIDENTS_DATA = [
     phone: "",
     rawPhone: "",
     membersList: [],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_18.png",
+    plotPhoto: "assets/plots/plot_18.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -316,7 +329,8 @@ const RESIDENTS_DATA = [
       { name: "Raj Sethiya", phone: "+91 77288 30454", rawPhone: "7728830454", role: "Resident Owner" },
       { name: "Ritu Sethia", phone: "+91 99833 83045", rawPhone: "9983383045", role: "Resident Owner", photoUrl: "assets/avatars/user_919983383045.jpg" }
     ],
-    photoUrl: "assets/avatars/user_919024110043.jpg",
+    photoUrl: "assets/plots/plot_A_17.png",
+    plotPhoto: "assets/plots/plot_A_17.png",
     hasTenant: true,
     tenantCount: 6,
     tenantInfo: "6 Tenants",
@@ -342,7 +356,8 @@ const RESIDENTS_DATA = [
     phone: "",
     rawPhone: "",
     membersList: [],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_AA_16.png",
+    plotPhoto: "assets/plots/plot_AA_16.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "No Tenants (Owner Only)",
@@ -366,7 +381,8 @@ const RESIDENTS_DATA = [
     phone: "",
     rawPhone: "",
     membersList: [],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_15A.png",
+    plotPhoto: "assets/plots/plot_15A.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Family Occupied",
@@ -392,7 +408,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Ashish Bambani", phone: "+91 98870 00785", rawPhone: "9887000785", role: "Resident Owner" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_A14.png",
+    plotPhoto: "assets/plots/plot_A14.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -418,7 +435,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Varalika Compu Power", phone: "+91 93514 11266", rawPhone: "9351411266", role: "Commercial Enterprise" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_14A.png",
+    plotPhoto: "assets/plots/plot_14A.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Commercial Unit",
@@ -443,7 +461,8 @@ const RESIDENTS_DATA = [
       { name: "Alka Chandwar", phone: "+91 77378 19230", rawPhone: "7737819230", role: "Resident Owner", photoUrl: "assets/avatars/user_917737819230.jpg" },
       { name: "Anil Chandwar", phone: "+91 93146 37812", rawPhone: "9314637812", role: "Resident Owner" }
     ],
-    photoUrl: "assets/avatars/user_917737819230.jpg",
+    photoUrl: "assets/plots/plot_B13.png",
+    plotPhoto: "assets/plots/plot_B13.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Family Occupied",
@@ -469,7 +488,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Neeraj Boolchandani", phone: "+91 97820 23549", rawPhone: "9782023549", role: "Property Owner" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_12A.png",
+    plotPhoto: "assets/plots/plot_12A.png",
     hasTenant: true,
     tenantCount: 4,
     tenantInfo: "Rented to Multiple Tenants",
@@ -497,7 +517,8 @@ const RESIDENTS_DATA = [
       { name: "Ashok Singh Rathore", phone: "+91 98290 75229", rawPhone: "9829075229", role: "Resident Owner", photoUrl: "assets/avatars/user_919829075229.jpg" },
       { name: "Ajay Singh Rathore", phone: "+91 92140 75229", rawPhone: "9214075229", role: "Resident" }
     ],
-    photoUrl: "assets/avatars/user_919829075229.jpg",
+    photoUrl: "assets/plots/plot_11A.png",
+    plotPhoto: "assets/plots/plot_11A.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -520,7 +541,8 @@ const RESIDENTS_DATA = [
     rawPhone: "",
     membersList: [
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_A10.png",
+    plotPhoto: "assets/plots/plot_A10.png",
     hasTenant: true,
     tenantCount: 6,
     tenantInfo: "6 Tenants (Rented Completely)",
@@ -544,7 +566,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Jagannath Ji", phone: "+91 94140 75229", rawPhone: "9414075229", role: "Resident Owner" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_C10.png",
+    plotPhoto: "assets/plots/plot_C10.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Family Occupied",
@@ -570,7 +593,8 @@ const RESIDENTS_DATA = [
       { name: "Dr. G D Singhania", phone: "", rawPhone: "", role: "Resident Owner" },
       { name: "Sunita Singhania", phone: "+91 70628 45001", rawPhone: "7062845001", role: "Resident" },
     ],
-    photoUrl: "assets/avatars/user_918386977101.jpg",
+    photoUrl: "assets/plots/plot_9.png",
+    plotPhoto: "assets/plots/plot_9.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -597,7 +621,8 @@ const RESIDENTS_DATA = [
       { name: "Vaibhav Agrawal", phone: "+91 96727 68657", rawPhone: "9672768657", role: "Resident", photoUrl: "assets/avatars/user_919672768657.jpg" },
       { name: "Ananya Agrawal", phone: "+91 83858 44375", rawPhone: "8385844375", role: "Resident" }
     ],
-    photoUrl: "assets/avatars/user_919928022998.jpg",
+    photoUrl: "assets/plots/plot_A32.png",
+    plotPhoto: "assets/plots/plot_A32.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Owner Occupied",
@@ -624,7 +649,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Plot A-33 Premises", phone: "+91 99822 31470", rawPhone: "9982231470", role: "Owner" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/plots/plot_A_33.png",
+    plotPhoto: "assets/plots/plot_A_33.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Premises",
@@ -648,7 +674,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Resident Owner", photoUrl: "assets/avatars/user_919413490448.jpg" }
     ],
-    photoUrl: "assets/avatars/user_919413490448.jpg",
+    photoUrl: "assets/plots/plot_48A.png",
+    plotPhoto: "assets/plots/plot_48A.png",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Clean Record",
@@ -672,7 +699,8 @@ const RESIDENTS_DATA = [
     membersList: [
       { name: "Rajesh Agrawal (Taparia)", phone: "+91 93148 35023", rawPhone: "9314835023", role: "Resident Owner", photoUrl: "assets/avatars/user_919314835023.jpg" }
     ],
-    photoUrl: "assets/avatars/user_919314835023.jpg",
+    photoUrl: "assets/plots/plot_1_2.png",
+    plotPhoto: "assets/plots/plot_1_2.png",
     hasTenant: true,
     tenantCount: 4,
     tenantInfo: "4+ Tenants",
