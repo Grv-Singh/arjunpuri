@@ -412,12 +412,12 @@ const RESIDENTS_DATA = [
     surname: "Varalika Compu Power",
     members: "Varalika Compu Power Systems",
     relation: "Commercial Enterprise",
-    phone: "+91 94134 90448",
-    rawPhone: "9413490448",
+    phone: "+91 93514 11266",
+    rawPhone: "9351411266",
     membersList: [
-      { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Varalika Compu Power", photoUrl: "assets/avatars/user_919413490448.jpg" }
+      { name: "Varalika Compu Power", phone: "+91 93514 11266", rawPhone: "9351411266", role: "Commercial Enterprise" }
     ],
-    photoUrl: "assets/avatars/user_919413490448.jpg",
+    photoUrl: "",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Commercial Unit",
@@ -610,15 +610,15 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "48A",
-    surname: "Plot 48A",
-    members: "Plot 48A Residence",
+    surname: "Goyals",
+    members: "Goyal Ji",
     relation: "Resident Owner",
-    phone: "+91 88909 43688",
-    rawPhone: "918890943688",
+    phone: "+91 94134 90448",
+    rawPhone: "9413490448",
     membersList: [
-      { name: "Plot 48A Residence", phone: "+91 88909 43688", rawPhone: "8890943688", role: "Resident" }
+      { name: "Goyal Ji", phone: "+91 94134 90448", rawPhone: "9413490448", role: "Resident Owner", photoUrl: "assets/avatars/user_919413490448.jpg" }
     ],
-    photoUrl: "",
+    photoUrl: "assets/avatars/user_919413490448.jpg",
     hasTenant: false,
     tenantCount: 0,
     tenantInfo: "Clean Record",
