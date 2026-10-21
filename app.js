@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       vehicles: "Vehicles",
       tenants: "Tenants & PGs",
       encroachments: "Encroachments",
+      nuisanceFilter: "Nuisance",
       verified: "Police Verified",
       dockDirectory: "Directory",
       dockProgress: "Progress",
@@ -82,6 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       carsVehicles: "Cars / Vehicles:",
       atkLabel: "Atikraman (अतिक्रमण):",
       nuisanceLabel: "Public Nuisance Alert:",
+      nuisancePlaceholder: "Add or update public nuisance alert for this plot...",
       notePlaceholder: "Add or update notes for this plot...",
       call: "Call",
       sms: "SMS",
@@ -105,6 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       vehicles: "वाहन",
       tenants: "किरायेदार",
       encroachments: "अतिक्रमण",
+      nuisanceFilter: "उपद्रव अलर्ट",
       verified: "सत्यापित",
       dockDirectory: "डायरेक्टरी",
       dockProgress: "प्रगति",
@@ -138,6 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       carsVehicles: "कार / वाहन:",
       atkLabel: "अतिक्रमण (Atikraman):",
       nuisanceLabel: "सार्वजनिक उपद्रव चेतावनी:",
+      nuisancePlaceholder: "इस प्लॉट के लिए सार्वजनिक उपद्रव या शिकायत दर्ज करें...",
       notePlaceholder: "इस प्लॉट के लिए टिप्पणी दर्ज या संपादित करें...",
       call: "कॉल करें",
       sms: "एसएमएस",
@@ -191,6 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       vehicles: "vehicles",
       tenants: "tenants",
       encroachment: "encroachments",
+      nuisance: "nuisanceFilter",
       verified: "verified"
     };
     filterPills.forEach(pill => {
@@ -539,6 +544,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (e) {}
   };
 
+  function getPlotNuisance(plot, fallback = "") {
+    try {
+      const v = localStorage.getItem(`arjunpuri_nuisance_${plot}`);
+      if (v !== null) return v;
+    } catch (e) {}
+    return fallback;
+  }
+
+  window.saveNuisance = function(plot) {
+    const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+    const textarea = document.getElementById(`nuisance-input-${safePlot}`);
+    const statusEl = document.getElementById(`nuisance-status-${safePlot}`);
+    if (!textarea) return;
+
+    const val = textarea.value.trim();
+    try {
+      localStorage.setItem(`arjunpuri_nuisance_${plot}`, val);
+    } catch (e) {}
+
+    if (statusEl) {
+      statusEl.innerHTML = `<span class="material-symbols-rounded" style="font-size: 13px; vertical-align: middle;">check_circle</span> ${t("saved")}`;
+      setTimeout(() => {
+        statusEl.innerHTML = "";
+      }, 2500);
+    }
+  };
+
+  window.handleNuisanceInput = function(plot) {
+    const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+    const textarea = document.getElementById(`nuisance-input-${safePlot}`);
+    if (!textarea) return;
+    try {
+      localStorage.setItem(`arjunpuri_nuisance_${plot}`, textarea.value);
+    } catch (e) {}
+  };
+
   // -------------------------------------------------------------
   // 6. Issues Media Upload & Slideshow System
   // -------------------------------------------------------------
@@ -795,7 +836,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (currentFilter === "vehicles" && (!r.vehicles || r.vehicles.length === 0)) return false;
       if (currentFilter === "tenants" && !r.hasTenant) return false;
       if (currentFilter === "encroachment" && !r.hasEncroachment) return false;
-      if (currentFilter === "verified" && !r.policeVerified) return false;
+      if (currentFilter === "nuisance") {
+        const nAlert = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+        if (!nAlert || !nAlert.trim()) return false;
+      }
+      if (currentFilter === "verified" && (!r.hasTenant || !r.policeVerified)) return false;
 
       // Universal Search matching
       if (searchQuery) {
@@ -812,7 +857,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const matchVehicles = r.vehicles && r.vehicles.some(v => v.toLowerCase().includes(q));
         const savedNote = getPlotNote(r.plot, r.notes || "");
         const matchNotes = savedNote && savedNote.toLowerCase().includes(q);
-        const matchNuisance = r.nuisanceAlert && r.nuisanceAlert.toLowerCase().includes(q);
+        const savedNuisance = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+        const matchNuisance = savedNuisance && savedNuisance.toLowerCase().includes(q);
         const matchTenant = r.tenantInfo && r.tenantInfo.toLowerCase().includes(q);
         return matchPlot || matchName || matchPhone || matchMembers || matchVehicles || matchNotes || matchNuisance || matchTenant;
       }
@@ -851,8 +897,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const encLabel = r.encroachmentType || "Atikraman";
         badgesHtml += `<span class="icon-encroach" title="Atikraman (अतिक्रमण): ${encLabel}"><span class="material-symbols-rounded">report</span></span>`;
       }
-      if (r.nuisanceAlert) {
-        badgesHtml += `<span class="icon-nuisance" title="${r.nuisanceAlert}"><span class="material-symbols-rounded">warning</span></span>`;
+      const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+      if (nuisanceAlertVal && nuisanceAlertVal.trim()) {
+        badgesHtml += `<span class="icon-nuisance" title="${nuisanceAlertVal}"><span class="material-symbols-rounded">warning</span></span>`;
       }
       if (r.hasTenant) {
         const tenantStr = r.tenantCount ? `${r.tenantCount} ${t("tenantsText")}` : t("tenantsText");
@@ -1072,12 +1119,27 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
             ` : ''}
 
-            ${r.nuisanceAlert ? `
-              <div class="detail-alert-box">
-                <span class="material-symbols-rounded" style="font-size: 15px; color: var(--gold); flex-shrink: 0;">warning</span>
-                <span><strong>${t("nuisanceLabel")}</strong> ${r.nuisanceAlert}</span>
+            <!-- Public Nuisance Alert (Editable) -->
+            <div class="editable-notes-section nuisance-section" onclick="event.stopPropagation()">
+              <div class="notes-header">
+                <div class="notes-header-left">
+                  <span class="material-symbols-rounded" style="font-size: 16px; color: var(--gold);">warning</span>
+                  <span>${t("nuisanceLabel")}</span>
+                </div>
+                <button class="btn-save-note" onclick="saveNuisance('${r.plot}')" title="Save Nuisance Alert">
+                  <span class="material-symbols-rounded" style="font-size: 14px;">check</span>
+                  <span>${t("save")}</span>
+                </button>
               </div>
-            ` : ''}
+              <textarea 
+                id="nuisance-input-${safePlot}" 
+                class="note-textarea nuisance-textarea" 
+                placeholder="${t("nuisancePlaceholder")}" 
+                rows="2"
+                oninput="handleNuisanceInput('${r.plot}')"
+              >${nuisanceAlertVal}</textarea>
+              <div class="note-save-status" id="nuisance-status-${safePlot}"></div>
+            </div>
           </div>
         </div>
       `;

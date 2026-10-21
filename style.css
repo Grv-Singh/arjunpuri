@@ -1364,6 +1364,16 @@ body {
   min-height: 14px;
 }
 
+.nuisance-section {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.04);
+  margin-top: 0.5rem;
+}
+
+.nuisance-textarea:focus {
+  border-color: rgba(245, 158, 11, 0.65);
+}
+
 /* Issues Section & Media Thumbnails */
 .issues-section {
   background: rgba(255, 255, 255, 0.025);
