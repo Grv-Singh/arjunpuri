@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261021_1358">
+  <link rel="stylesheet" href="style.css?v=20261021_1859">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
         </div>
         <div class="brand-titles">
           <h1>Arjunpuri 1<sup>st</sup></h1>
-          <span>अर्जुनपुरी 1<sup>st</sup> लिंक रोड • वार्ड 145 • जयपुर 302015</span>
+          <span id="brand-sub">लिंक रोड • वार्ड 145 • जयपुर 302015</span>
         </div>
       </div>
       <div class="header-right">
@@ -58,7 +58,7 @@
           type="text" 
           id="main-search-input" 
           class="search-input" 
-          placeholder="खोजें: प्लॉट, नाम, गाड़ी नंबर (8634), या मोबाइल..." 
+          placeholder="खोजें: प्लॉट, नाम, गाड़ी नंबर, या मोबाइल..." 
           autocomplete="off"
           autocorrect="off"
         >
@@ -115,9 +115,63 @@
 
     <!-- VIEW 3: Authorities & Help Directory -->
     <section id="view-contacts" class="view-panel" style="display: none;">
-      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
-        पार्षद, कार्यकर्ता, पुलिस व स्थानीय मिस्त्री सहायता:
+      <div class="contacts-top-bar">
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          पुलिस, आपातकालीन व स्थानीय मिस्त्री / घरेलू सहायता:
+        </div>
+        <button id="btn-toggle-add-contact" class="btn-add-contact" onclick="toggleAddContactForm()">
+          <span class="material-symbols-rounded">person_add</span>
+          <span id="label-add-contact">नया संपर्क जोड़ें</span>
+        </button>
       </div>
+
+      <!-- Add New Contact Form Card (Collapsible) -->
+      <div id="contact-form-card" class="contact-form-card" style="display: none;">
+        <div class="contact-form-title">
+          <span class="material-symbols-rounded" style="color: var(--gold); font-size: 18px;">person_add</span>
+          <span>Add New Contact / नया संपर्क</span>
+        </div>
+        <form id="contact-form" onsubmit="handleAddContactSubmit(event)">
+          <div class="contact-form-row">
+            <div class="form-group" style="flex: 2;">
+              <label for="contact-name">Name / नाम:</label>
+              <input type="text" id="contact-name" class="progress-input" placeholder="उदा. Ramesh Kumar (प्लंबर)" required>
+            </div>
+            <div class="form-group" style="flex: 1.5;">
+              <label for="contact-role">Role / सेवा / पद:</label>
+              <input type="text" id="contact-role" class="progress-input" placeholder="उदा. Plumber / मिस्त्री" required>
+            </div>
+          </div>
+          <div class="contact-form-row">
+            <div class="form-group" style="flex: 2;">
+              <label for="contact-phone">Phone / मोबाइल नंबर:</label>
+              <input type="tel" id="contact-phone" class="progress-input" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="form-group" style="flex: 1.5;">
+              <label for="contact-category">Category / श्रेणी:</label>
+              <select id="contact-category" class="progress-input">
+                <option value="trade">Trades & Domestic (मिस्त्री / घरेलू)</option>
+                <option value="authority">Civic & Authority (अधिकारी)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-duty">Duty / Description (कार्य विवरण):</label>
+            <input type="text" id="contact-duty" class="progress-input" placeholder="उदा. पाइप फिटिंग, नल रिपेयर, नाली लीकेज">
+          </div>
+          <div class="contact-form-footer">
+            <button type="submit" class="btn-submit-contact">
+              <span class="material-symbols-rounded" style="font-size: 16px;">check</span>
+              <span>Save Contact / सहेजें</span>
+            </button>
+            <button type="button" class="btn-cancel-contact" onclick="toggleAddContactForm(false)">
+              <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+              <span>Cancel / रद्द करें</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
       <div id="contacts-list">
         <!-- Rendered dynamically -->
       </div>
@@ -229,7 +283,6 @@
         <div class="slideshow-footer">
           <div class="slideshow-caption" id="slideshow-caption"></div>
           <div class="slideshow-meta">
-            <span id="slideshow-filepath" class="slideshow-filepath"></span>
             <div class="slideshow-actions">
               <button id="slideshow-download-btn" class="slideshow-action-btn" title="Download">
                 <span class="material-symbols-rounded">download</span>
@@ -245,7 +298,7 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261021_1358"></script>
-  <script src="app.js?v=20261021_1358"></script>
+  <script src="data.js?v=20261021_1859"></script>
+  <script src="app.js?v=20261021_1859"></script>
 </body>
 </html>

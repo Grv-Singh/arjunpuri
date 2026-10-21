@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // -------------------------------------------------------------
   const I18N = {
     en: {
-      brandSub: "Arjunpuri 1st Link Road • Ward 145 • Jaipur 302015",
+      brandSub: "Link Road • Ward 145 • Jaipur 302015",
       plotsCount: "Plots",
-      searchPlaceholder: "Search: Plot, Name, Vehicle No. (8634), or Phone...",
+      searchPlaceholder: "Search: Plot, Name, Vehicle No., or Phone...",
       allPlots: "Plots",
       vehicles: "Vehicles",
       tenants: "Tenants & PGs",
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       progressUploadPhoto: "Attach Photo",
       progressSubmitBtn: "Add to Timeline",
       grievanceSub: "1-Click Government Grievance Portals (Electricity, Water, Nagar Nigam):",
-      contactsSub: "Councilor, Workers, Police & Local Tradesmen Assistance:",
+      contactsSub: "Police Emergency, Helplines, Trades & Local Services:",
       noPlotsFound: "No matching plots found",
-      noPlotsHint: "Search by plot (20, 31), name, or vehicle number (8634, 9300)",
+      noPlotsHint: "Search by plot (20, 31), name, or vehicle number",
       noContactsFound: "No matching contacts",
       warnings: "Warnings",
       issues: "Issues",
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       cleanRecord: "Clean Record"
     },
     hi: {
-      brandSub: "अर्जुनपुरी 1st लिंक रोड • वार्ड 145 • जयपुर 302015",
+      brandSub: "लिंक रोड • वार्ड 145 • जयपुर 302015",
       plotsCount: "प्लॉट",
-      searchPlaceholder: "खोजें: प्लॉट, नाम, गाड़ी नंबर (8634), या मोबाइल...",
+      searchPlaceholder: "खोजें: प्लॉट, नाम, गाड़ी नंबर, या मोबाइल...",
       allPlots: "प्लॉट",
       vehicles: "वाहन",
       tenants: "किरायेदार",
@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       progressUploadPhoto: "फोटो जोड़ें",
       progressSubmitBtn: "टाइमलाइन में जोड़ें",
       grievanceSub: "1-क्लिक सरकारी शिकायत पोर्टल (बिजली, पानी, नगर निगम):",
-      contactsSub: "पार्षद, कार्यकर्ता, पुलिस व स्थानीय मिस्त्री सहायता:",
+      contactsSub: "पुलिस, आपातकालीन व स्थानीय मिस्त्री / घरेलू सहायता:",
       noPlotsFound: "कोई प्लॉट नहीं मिला",
-      noPlotsHint: "प्लॉट (20, 31), नाम, या वाहन नंबर (8634) से खोजें",
+      noPlotsHint: "प्लॉट (20, 31), नाम, या वाहन नंबर से खोजें",
       noContactsFound: "कोई संपर्क नहीं मिला",
       warnings: "चेतावनी",
       issues: "समस्याएं",
@@ -335,6 +335,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     customProgressData = [];
   }
 
+  // Custom Contacts Data
+  let customContacts = [];
+  try {
+    customContacts = JSON.parse(localStorage.getItem("arjunpuri_custom_contacts")) || [];
+  } catch (e) {
+    customContacts = [];
+  }
+
   // Persistent Deleted Media Tracking
   function getDeletedStaticIssues() {
     try {
@@ -370,6 +378,31 @@ document.addEventListener("DOMContentLoaded", async () => {
       list.push(url);
       try {
         localStorage.setItem("arjunpuri_deleted_milestone_photos", JSON.stringify(list));
+      } catch (e) {}
+    }
+  }
+
+  function getDeletedPlotPhotos() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_deleted_plot_photos") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveDeletedPlotPhoto(url, plot) {
+    if (url) {
+      const list = getDeletedPlotPhotos();
+      if (!list.includes(url)) {
+        list.push(url);
+        try {
+          localStorage.setItem("arjunpuri_deleted_plot_photos", JSON.stringify(list));
+        } catch (e) {}
+      }
+    }
+    if (plot) {
+      try {
+        localStorage.setItem(`arjunpuri_plot_photo_deleted_${plot}`, "true");
       } catch (e) {}
     }
   }
@@ -657,17 +690,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.openPlotPhotoSlideshow = function(plot) {
     const r = RESIDENTS_DATA.find(item => item.plot === plot);
     if (!r) return;
-    const photos = r.plotPhotos && r.plotPhotos.length > 0 
+    const isPhotoDeleted = getDeletedPlotPhotos().includes(r.plotPhoto || r.photoUrl) || 
+      localStorage.getItem(`arjunpuri_plot_photo_deleted_${plot}`) === "true";
+    if (isPhotoDeleted) return;
+
+    let photos = r.plotPhotos && r.plotPhotos.length > 0 
       ? r.plotPhotos 
       : (r.plotPhoto || r.photoUrl ? [r.plotPhoto || r.photoUrl] : []);
+    photos = photos.filter(p => !getDeletedPlotPhotos().includes(p));
     if (photos.length === 0) return;
 
     activeSlideshowPlot = plot;
     activeSlideshowIssues = photos.map((pUrl, idx) => ({
       url: pUrl,
       type: "image",
-      caption: `Plot ${plot} (${r.surname || r.name || ''}) — Property Photo${photos.length > 1 ? ` (${idx + 1}/${photos.length})` : ''}`,
-      filepath: pUrl,
+      caption: `Plot ${plot}`,
+      filepath: "",
       isPlotPhoto: true
     }));
     activeSlideshowIndex = 0;
@@ -699,20 +737,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (activeSlideshowPlot === "Progress") {
         slideshowPlotTitle.textContent = `${t("dockProgress")} Milestone`;
       } else if (issue.isPlotPhoto) {
-        slideshowPlotTitle.textContent = `Plot ${activeSlideshowPlot} Photo`;
+        slideshowPlotTitle.textContent = `Plot ${activeSlideshowPlot}`;
       } else {
-        slideshowPlotTitle.textContent = `${t("issues")} — Plot ${activeSlideshowPlot}`;
+        slideshowPlotTitle.textContent = `Plot ${activeSlideshowPlot}`;
       }
     }
     if (slideshowCounter) {
-      slideshowCounter.textContent = `${activeSlideshowIndex + 1} / ${activeSlideshowIssues.length}`;
+      slideshowCounter.textContent = `${activeSlideshowIndex + 1} of ${activeSlideshowIssues.length}`;
     }
     if (slideshowCaption) {
-      slideshowCaption.textContent = issue.caption || `Plot ${activeSlideshowPlot} Issue`;
+      if (issue.isPlotPhoto) {
+        slideshowCaption.textContent = `Plot ${activeSlideshowPlot}`;
+      } else {
+        slideshowCaption.textContent = issue.caption || `Plot ${activeSlideshowPlot}`;
+      }
     }
     if (slideshowFilepath) {
-      const cleanPlotFolder = `plot-${(activeSlideshowPlot || "").toString().replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
-      slideshowFilepath.textContent = issue.filepath || issue.url || `assets/issues/${cleanPlotFolder}/`;
+      slideshowFilepath.textContent = "";
     }
 
     if (slideshowMediaWrapper) {
@@ -722,7 +763,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
       } else {
         slideshowMediaWrapper.innerHTML = `
-          <img src="${issue.url}" alt="${issue.caption || 'Issue'}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          <img src="${issue.url}" alt="${issue.caption || 'Photo'}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
         `;
       }
     }
@@ -732,30 +773,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       slideshowDownloadBtn.onclick = () => {
         const a = document.createElement("a");
         a.href = issue.url;
-        a.download = `arjunpuri_${activeSlideshowPlot}_issue_${activeSlideshowIndex + 1}${issue.type === 'video' ? '.mp4' : '.jpg'}`;
+        a.download = `arjunpuri_plot_${activeSlideshowPlot}_${activeSlideshowIndex + 1}${issue.type === 'video' ? '.mp4' : '.jpg'}`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
       };
     }
 
-    // Delete Handler (for all photos: pre-existing or uploaded later)
+    // Delete Handler (for all photos: plot photo, issues, or progress)
     if (slideshowDeleteBtn) {
-      if (issue.isPlotPhoto) {
-        slideshowDeleteBtn.style.display = "none";
-      } else {
-        slideshowDeleteBtn.style.display = "inline-flex";
-        slideshowDeleteBtn.onclick = () => window.deleteActiveSlideshowPhoto();
-      }
+      slideshowDeleteBtn.style.display = "inline-flex";
+      slideshowDeleteBtn.onclick = () => window.deleteActiveSlideshowPhoto();
     }
     const slideshowDeleteBtnTop = document.getElementById("slideshow-delete-btn-top");
     if (slideshowDeleteBtnTop) {
-      if (issue.isPlotPhoto) {
-        slideshowDeleteBtnTop.style.display = "none";
-      } else {
-        slideshowDeleteBtnTop.style.display = "inline-flex";
-        slideshowDeleteBtnTop.onclick = () => window.deleteActiveSlideshowPhoto();
-      }
+      slideshowDeleteBtnTop.style.display = "inline-flex";
+      slideshowDeleteBtnTop.onclick = () => window.deleteActiveSlideshowPhoto();
     }
   }
 
@@ -769,6 +802,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       ? "क्या आप इस फ़ोटो को हटाना चाहते हैं?" 
       : "Delete this photo?";
     if (!confirm(confirmMsg)) return;
+
+    if (issue.isPlotPhoto) {
+      saveDeletedPlotPhoto(issue.url, activeSlideshowPlot);
+      closeSlideshow();
+      renderDirectory();
+      return;
+    }
 
     if (activeSlideshowPlot === "Progress") {
       const targetUrl = issue.url;
@@ -865,6 +905,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       return true;
     });
 
+    if (plotCounter) {
+      if (currentFilter === "all" && !searchQuery) {
+        plotCounter.textContent = `${RESIDENTS_DATA.length} ${t("plotsCount")}`;
+      } else {
+        plotCounter.textContent = `${filtered.length} / ${RESIDENTS_DATA.length} ${t("plotsCount")}`;
+      }
+    }
+
     if (filtered.length === 0) {
       directoryList.innerHTML = `
         <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
@@ -887,23 +935,40 @@ document.addEventListener("DOMContentLoaded", async () => {
         .join("") || r.plot;
 
       const plotPhotoSrc = r.plotPhoto || r.photoUrl;
-      const avatarHtml = plotPhotoSrc
+      const isPhotoDeleted = getDeletedPlotPhotos().includes(plotPhotoSrc) || 
+        localStorage.getItem(`arjunpuri_plot_photo_deleted_${r.plot}`) === "true";
+      const avatarHtml = (!isPhotoDeleted && plotPhotoSrc)
         ? `<div class="row-avatar" onclick="event.stopPropagation(); openPlotPhotoSlideshow('${r.plot}')" title="Click to view Plot ${r.plot} photo"><img src="${plotPhotoSrc}" alt="${surnameDisplay}"></div>`
         : `<div class="row-avatar">${initials}</div>`;
 
-      // Badges
+      // Badges & Filter callouts
       let badgesHtml = '';
-      if (r.hasEncroachment) {
-        const encLabel = r.encroachmentType || "Atikraman";
-        badgesHtml += `<span class="icon-encroach" title="Atikraman (अतिक्रमण): ${encLabel}"><span class="material-symbols-rounded">report</span></span>`;
-      }
-      const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
-      if (nuisanceAlertVal && nuisanceAlertVal.trim()) {
-        badgesHtml += `<span class="icon-nuisance" title="${nuisanceAlertVal}"><span class="material-symbols-rounded">warning</span></span>`;
-      }
-      if (r.hasTenant) {
-        const tenantStr = r.tenantCount ? `${r.tenantCount} ${t("tenantsText")}` : t("tenantsText");
-        badgesHtml += `<span class="badge-tenant">${tenantStr}</span>`;
+      if (currentFilter === "vehicles" && r.vehicles && r.vehicles.length > 0) {
+        badgesHtml += `<div class="filter-detail-badge vehicles"><span class="material-symbols-rounded" style="font-size: 13px;">directions_car</span> ${r.vehicles.join(" • ")}</div>`;
+      } else if (currentFilter === "tenants" && r.hasTenant) {
+        badgesHtml += `<div class="filter-detail-badge tenants"><span class="material-symbols-rounded" style="font-size: 13px;">key</span> ${r.tenantInfo || (r.tenantCount + ' Tenants')}</div>`;
+      } else if (currentFilter === "encroachment" && r.hasEncroachment) {
+        badgesHtml += `<div class="filter-detail-badge encroachment"><span class="material-symbols-rounded" style="font-size: 13px;">report</span> ${r.encroachmentType || 'Atikraman'}</div>`;
+      } else if (currentFilter === "nuisance") {
+        const nAlert = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+        if (nAlert && nAlert.trim()) {
+          badgesHtml += `<div class="filter-detail-badge nuisance"><span class="material-symbols-rounded" style="font-size: 13px;">warning</span> ${nAlert}</div>`;
+        }
+      } else if (currentFilter === "verified" && r.hasTenant && r.policeVerified) {
+        badgesHtml += `<div class="filter-detail-badge tenants"><span class="material-symbols-rounded" style="font-size: 13px;">verified</span> Verified (${r.tenantCount || 1} Tenants)</div>`;
+      } else {
+        if (r.hasEncroachment) {
+          const encLabel = r.encroachmentType || "Atikraman";
+          badgesHtml += `<span class="icon-encroach" title="Atikraman (अतिक्रमण): ${encLabel}"><span class="material-symbols-rounded">report</span></span>`;
+        }
+        const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+        if (nuisanceAlertVal && nuisanceAlertVal.trim()) {
+          badgesHtml += `<span class="icon-nuisance" title="${nuisanceAlertVal}"><span class="material-symbols-rounded">warning</span></span>`;
+        }
+        if (r.hasTenant) {
+          const tenantStr = r.tenantCount ? `${r.tenantCount} ${t("tenantsText")}` : t("tenantsText");
+          badgesHtml += `<span class="badge-tenant">${tenantStr}</span>`;
+        }
       }
 
       // 1-Tap Action URLs
@@ -1285,8 +1350,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       : "Are you sure you want to delete this progress milestone?";
     if (!confirm(confirmMsg)) return;
 
+    const sId = String(id);
+
     // Check if custom
-    const cIdx = customProgressData.findIndex(m => m.id === id);
+    const cIdx = customProgressData.findIndex(m => String(m.id) === sId);
     if (cIdx >= 0) {
       customProgressData.splice(cIdx, 1);
       try {
@@ -1294,10 +1361,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       } catch (e) {}
     }
 
+    // Also remove from edited map if it was edited
+    const edited = getEditedMilestones();
+    if (edited[sId]) {
+      delete edited[sId];
+      try {
+        localStorage.setItem("arjunpuri_edited_milestones", JSON.stringify(edited));
+      } catch (e) {}
+    }
+
     // Also mark in deleted ids
-    const deletedIds = getDeletedMilestoneIds();
-    if (!deletedIds.includes(id)) {
-      deletedIds.push(id);
+    const deletedIds = getDeletedMilestoneIds().map(String);
+    if (!deletedIds.includes(sId)) {
+      deletedIds.push(sId);
       try {
         localStorage.setItem("arjunpuri_deleted_milestone_ids", JSON.stringify(deletedIds));
       } catch (e) {}
@@ -1482,14 +1558,84 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // -------------------------------------------------------------
-  // 10. Contacts Renderer
+  // 10. Contacts Renderer & Custom Contacts Management
   // -------------------------------------------------------------
+  window.toggleAddContactForm = function(force) {
+    const card = document.getElementById("contact-form-card");
+    const label = document.getElementById("label-add-contact");
+    if (!card) return;
+    const isShow = typeof force === "boolean" ? force : (card.style.display === "none");
+    card.style.display = isShow ? "block" : "none";
+    if (label) {
+      label.textContent = isShow 
+        ? (currentLang === "hi" ? "फॉर्म बंद करें" : "Close Form")
+        : (currentLang === "hi" ? "नया संपर्क जोड़ें" : "Add Contact");
+    }
+  };
+
+  window.handleAddContactSubmit = function(e) {
+    if (e) e.preventDefault();
+    const nameEl = document.getElementById("contact-name");
+    const roleEl = document.getElementById("contact-role");
+    const phoneEl = document.getElementById("contact-phone");
+    const catEl = document.getElementById("contact-category");
+    const dutyEl = document.getElementById("contact-duty");
+    if (!nameEl || !roleEl || !phoneEl) return;
+
+    const name = nameEl.value.trim();
+    const role = roleEl.value.trim();
+    const phone = phoneEl.value.trim();
+    const rawPhone = phone.replace(/[^0-9]/g, "");
+    const category = catEl ? catEl.value : "trade";
+    const duty = dutyEl ? dutyEl.value.trim() : role;
+    if (!name || !phone) return;
+
+    const newContact = {
+      id: "contact_" + Date.now(),
+      name: name,
+      role: role,
+      phone: phone,
+      rawPhone: rawPhone,
+      category: category,
+      icon: category === "authority" ? "badge" : "handyman",
+      office: category === "authority" ? "Official Authority" : "Local Services",
+      duty: duty,
+      isCustom: true
+    };
+
+    customContacts.unshift(newContact);
+    try {
+      localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
+    } catch (err) {}
+
+    nameEl.value = "";
+    roleEl.value = "";
+    phoneEl.value = "";
+    if (dutyEl) dutyEl.value = "";
+    toggleAddContactForm(false);
+    renderContacts();
+  };
+
+  window.deleteCustomContact = function(id) {
+    const confirmMsg = currentLang === "hi" 
+      ? "क्या आप इस संपर्क को हटाना चाहते हैं?" 
+      : "Delete this contact?";
+    if (!confirm(confirmMsg)) return;
+
+    customContacts = customContacts.filter(c => c.id !== id);
+    try {
+      localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
+    } catch (e) {}
+    renderContacts();
+  };
+
   function renderContacts() {
     if (!contactsList) return;
-    const subTitle = document.querySelector("#view-contacts div");
+    const subTitle = document.querySelector("#view-contacts .contacts-top-bar div");
     if (subTitle) subTitle.textContent = t("contactsSub");
 
-    let filtered = CIVIC_AND_TRADE_CONTACTS;
+    let allContacts = [...customContacts, ...CIVIC_AND_TRADE_CONTACTS];
+    let filtered = allContacts;
     if (searchQuery) {
       filtered = filtered.filter(c => {
         const matchName = (c.name || "").toLowerCase().includes(searchQuery);
@@ -1516,10 +1662,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="utility-card">
           <div class="utility-left">
             <div class="utility-icon" style="color: var(--cyan);">
-              <span class="material-symbols-rounded">${c.icon}</span>
+              <span class="material-symbols-rounded">${c.icon || "contacts"}</span>
             </div>
             <div>
-              <div class="utility-title">${c.name}</div>
+              <div class="utility-title">${c.name} ${c.isCustom ? `<span style="font-size: 0.68rem; padding: 2px 6px; background: rgba(234,179,8,0.15); color: var(--gold); border-radius: 4px; font-weight: 700;">Custom</span>` : ''}</div>
               <div class="utility-desc">${c.role} &bull; ${c.office}</div>
             </div>
           </div>
@@ -1534,6 +1680,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               <a href="https://wa.me/${c.rawPhone}?text=${waMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")}">
                 ${WA_SVG}
               </a>
+            ` : ''}
+            ${c.isCustom ? `
+              <button class="btn-delete-contact" onclick="deleteCustomContact('${c.id}')" title="Delete Contact">
+                <span class="material-symbols-rounded" style="font-size: 17px;">delete</span>
+              </button>
             ` : ''}
           </div>
         </div>

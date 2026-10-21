@@ -785,6 +785,14 @@ const GRIEVANCE_PORTALS = [
     actionLabel: "WhatsApp SI"
   },
   {
+    dept: "Dilip Sarsar - Nagar Nigam Sanitation (सफाई कर्मचारी नगर निगम)",
+    issue: "Lane sweeping, drainage silt cleaning & waste disposal",
+    icon: "mop",
+    url: "https://wa.me/919950187959",
+    tollFree: "9950187959",
+    actionLabel: "WhatsApp Dilip Sarsar"
+  },
+  {
     dept: "Nagar Nigam Greater Helpline (नगर निगम शिकायत)",
     issue: "Street sweeping, malba clearance & waste disposal",
     icon: "apartment",
@@ -828,80 +836,6 @@ const GRIEVANCE_PORTALS = [
 
 // Local Authorities, Vigilance, Helplines, Trades & Colony Contacts (Ward 145)
 const CIVIC_AND_TRADE_CONTACTS = [
-  // --- ELECTRICITY & POWER ---
-  {
-    role: "JEN Electricity (कनिष्ठ अभियंता)",
-    name: "Rahul Ji (JEN विद्युत विभाग)",
-    category: "authority",
-    icon: "bolt",
-    phone: "+91 94133 90122",
-    rawPhone: "9413390122",
-    office: "JVVNL Powerhouse CD-II, Jaipur",
-    duty: "Underground cabling, transformer tripping & pillar boxes"
-  },
-  {
-    role: "JVVNL Lineman (लाइनमैन विद्युत विभाग)",
-    name: "Sunil Thapa (सुनील थापा)",
-    category: "authority",
-    icon: "electrical_services",
-    phone: "+91 96028 47270",
-    rawPhone: "9602847270",
-    office: "JVVNL Powerhouse Area Unit",
-    duty: "Local line fault repair, jumper replacement, phase restoration"
-  },
-
-  // --- CIVIC & LOCAL BODY ---
-  {
-    role: "Area Ward Parshad (पार्षद)",
-    name: "Prem Chand (पार्षद)",
-    category: "authority",
-    icon: "how_to_reg",
-    phone: "+91 97857 40980",
-    rawPhone: "9785740980",
-    office: "Ward 145, Nagar Nigam Greater",
-    duty: "Road approvals, drainage allocation, colony meetings"
-  },
-  {
-    role: "Area BJP Karyakarta (कार्यकर्ता)",
-    name: "Gokul Mishra (कार्यकर्ता)",
-    category: "authority",
-    icon: "campaign",
-    phone: "+91 93519 41910",
-    rawPhone: "9351941910",
-    office: "Imli Phatak Area Unit",
-    duty: "MLA liaison, public grievances, street sweeping drive"
-  },
-  {
-    role: "Sanitation Inspector / SI (नगर निगम)",
-    name: "Roop Narayan Ji (SI नगर निगम)",
-    category: "authority",
-    icon: "cleaning_services",
-    phone: "+91 87648 79857",
-    rawPhone: "8764879857",
-    office: "Ward 145 Health Dept",
-    duty: "Garbage vans, lane sweepers, malba challans"
-  },
-  {
-    role: "Sanitation Staff (सफाई कर्मचारी नगर निगम)",
-    name: "Dilip Sarsar (दिलीप सरसर - नगर निगम)",
-    category: "authority",
-    icon: "mop",
-    phone: "+91 99501 87959",
-    rawPhone: "9950187959",
-    office: "Ward 145 Sanitation Team",
-    duty: "Lane sweeping, drainage silt cleaning & waste disposal"
-  },
-  {
-    role: "Nagar Nigam Helpline (नगर निगम हेल्पलाइन)",
-    name: "Nagar Nigam Greater (नगर निगम)",
-    category: "authority",
-    icon: "apartment",
-    phone: "+91 92516 87044",
-    rawPhone: "9251687044",
-    office: "Ward 145, Nagar Nigam Greater",
-    duty: "Sanitation complaints, garbage clearance & road waste"
-  },
-
   // --- EMERGENCY & HELPLINES ---
   {
     role: "Police Emergency & Beat",
