@@ -1219,6 +1219,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         actionClass = "btn-open-sm wa";
       } else if (g.dept.includes("Smart Meter")) {
         actionText = "Smart Meter";
+      } else if (g.dept.includes("PHED") || g.dept.includes("Jal Vibhag")) {
+        actionText = currentLang === "hi" ? "पानी 181" : "Water 181";
       } else if (g.dept.includes("Sampark")) {
         actionText = "Sampark 181";
       } else if (g.dept.includes("JDA")) {

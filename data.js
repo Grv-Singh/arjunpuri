@@ -753,76 +753,12 @@ const GRIEVANCE_PORTALS = [
     actionLabel: "Open Smart Meter Dashboard"
   },
   {
-    dept: "Sunil Thapa - JVVNL Lineman (लाइनमैन विद्युत विभाग)",
-    issue: "Local line fault repair, phase restoration • +91 96028 47270",
-    icon: "electrical_services",
-    url: "https://wa.me/919602847270",
-    tollFree: "9602847270",
-    actionLabel: "Call / WhatsApp Lineman"
-  },
-  {
-    dept: "Rahul Ji - JEN JVVNL (कनिष्ठ अभियंता विद्युत विभाग)",
-    issue: "Underground cabling, transformer & pillar boxes • +91 94133 90122",
-    icon: "bolt",
-    url: "https://wa.me/919413390122",
-    tollFree: "9413390122",
-    actionLabel: "Call / WhatsApp JEN"
-  },
-  {
-    dept: "Prem Chand - Ward Parshad (पार्षद वार्ड 145)",
-    issue: "Road approvals, drainage allocation & civic work • +91 97857 40980",
-    icon: "how_to_reg",
-    url: "https://wa.me/919785740980",
-    tollFree: "9785740980",
-    actionLabel: "Call / WhatsApp Parshad"
-  },
-  {
-    dept: "House Help / Maid Payal (घरेलू सहायिका - पायल)",
-    issue: "Housekeeping, cleaning & domestic help • +91 63783 17012 / +91 86706 34650",
-    icon: "cleaning_services",
-    url: "https://wa.me/916378317012",
-    tollFree: "6378317012",
-    actionLabel: "WhatsApp Payal"
-  },
-  {
-    dept: "House Help / Maid Sandhya (घरेलू सहायिका - संध्या)",
-    issue: "Housekeeping, cleaning & domestic assistance • +91 72401 73551",
-    icon: "cleaning_services",
-    url: "https://wa.me/917240173551",
-    tollFree: "7240173551",
-    actionLabel: "WhatsApp Sandhya"
-  },
-  {
-    dept: "House Help / Maid Komal (घरेलू सहायिका - कोमल)",
-    issue: "Housekeeping, cooking & domestic assistance • +91 63679 83945",
-    icon: "cleaning_services",
-    url: "https://wa.me/916367983945",
-    tollFree: "6367983945",
-    actionLabel: "WhatsApp Komal"
-  },
-  {
-    dept: "Roop Narayan Ji - SI Nagar Nigam (स्वास्थ्य निरीक्षक नगर निगम)",
-    issue: "Garbage vans, lane sweepers & sanitation challans • +91 87648 79857",
-    icon: "delete_sweep",
-    url: "https://wa.me/918764879857",
-    tollFree: "8764879857",
-    actionLabel: "Call / WhatsApp SI"
-  },
-  {
-    dept: "Nagar Nigam Greater Helpline (नगर निगम शिकायत)",
-    issue: "Street sweeping, malba clearance & waste disposal • +91 92516 87044",
-    icon: "apartment",
-    url: "https://wa.me/919251687044",
-    tollFree: "9251687044",
-    actionLabel: "Call / WhatsApp Nagar Nigam"
-  },
-  {
-    dept: "Gokul Mishra - BJP Karyakarta (कार्यकर्ता)",
-    issue: "MLA liaison, public grievances & colony drives • +91 93519 41910",
-    icon: "campaign",
-    url: "https://wa.me/919351941910",
-    tollFree: "9351941910",
-    actionLabel: "Call / WhatsApp Karyakarta"
+    dept: "Jal Vibhag / PHED (जल विभाग - वार्ड 145)",
+    issue: "Key 1: 140730900524 • Key 2: 140730900535 | Water Helpline 181",
+    icon: "water_drop",
+    url: "https://sampark.rajasthan.gov.in/",
+    tollFree: "181",
+    actionLabel: "Report Water Problem (Helpline 181)"
   },
   {
     dept: "Rajasthan Sampark Master Portal (राजस्थान संपर्क)",
