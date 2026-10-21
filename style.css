@@ -944,6 +944,96 @@ body {
   box-shadow: 0 2px 12px var(--gold-glow);
 }
 
+/* Vertically Stacked Compact Grievance Actions */
+.grievance-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: stretch;
+  flex-shrink: 0;
+  min-width: 84px;
+}
+
+.btn-open-sm {
+  background: var(--gold);
+  color: #05070c;
+  padding: 0.28rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 750;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-open-sm.wa {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald);
+  border: 1px solid rgba(16, 185, 129, 0.32);
+}
+
+.btn-open-sm.wa:hover {
+  background: var(--emerald);
+  color: #ffffff;
+}
+
+.btn-open-sm:hover:not(.wa) {
+  background: #fde68a;
+  box-shadow: 0 2px 8px var(--gold-glow);
+}
+
+.btn-open-sm .material-symbols-rounded {
+  font-size: 13px;
+}
+
+.btn-call-sm {
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--cyan);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.28rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 750;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-call-sm:hover {
+  background: var(--cyan);
+  color: #ffffff;
+}
+
+.btn-call-sm .material-symbols-rounded {
+  font-size: 13px;
+}
+
+[data-theme="light"] .btn-open-sm:not(.wa) {
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn-open-sm.wa {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+[data-theme="light"] .btn-call-sm {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.28);
+}
+
 /* Bottom Floating Dock Navigation */
 .bottom-dock {
   position: fixed;

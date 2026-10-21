@@ -1207,28 +1207,53 @@ document.addEventListener("DOMContentLoaded", async () => {
     const subTitle = document.querySelector("#view-grievances div");
     if (subTitle) subTitle.textContent = t("grievanceSub");
 
-    grievanceList.innerHTML = GRIEVANCE_PORTALS.map(g => `
-      <div class="utility-card">
-        <div class="utility-left">
-          <div class="utility-icon">
-            <span class="material-symbols-rounded">${g.icon}</span>
+    grievanceList.innerHTML = GRIEVANCE_PORTALS.map(g => {
+      const isWa = g.url && g.url.includes("wa.me");
+      let actionText = "Portal";
+      let actionIcon = "open_in_new";
+      let actionClass = "btn-open-sm";
+
+      if (isWa) {
+        actionText = currentLang === "hi" ? "व्हाट्सएप" : "WhatsApp";
+        actionIcon = "chat";
+        actionClass = "btn-open-sm wa";
+      } else if (g.dept.includes("Smart Meter")) {
+        actionText = "Smart Meter";
+      } else if (g.dept.includes("Sampark")) {
+        actionText = "Sampark 181";
+      } else if (g.dept.includes("JDA")) {
+        actionText = "JDA Portal";
+      } else {
+        actionText = currentLang === "hi" ? "पोर्टल" : "Portal";
+      }
+
+      const callText = currentLang === "hi" ? "कॉल" : "Call";
+      const callDisplay = g.tollFree.length <= 5 ? `${callText} ${g.tollFree}` : callText;
+
+      return `
+        <div class="utility-card">
+          <div class="utility-left">
+            <div class="utility-icon">
+              <span class="material-symbols-rounded">${g.icon}</span>
+            </div>
+            <div>
+              <div class="utility-title">${g.dept}</div>
+              <div class="utility-desc">${g.issue}</div>
+            </div>
           </div>
-          <div>
-            <div class="utility-title">${g.dept}</div>
-            <div class="utility-desc">${g.issue}</div>
+          <div class="grievance-actions">
+            <a href="${g.url}" target="_blank" class="${actionClass}">
+              <span class="material-symbols-rounded">${actionIcon}</span>
+              <span>${actionText}</span>
+            </a>
+            <a href="tel:${g.tollFree}" class="btn-call-sm" title="${t("call")}">
+              <span class="material-symbols-rounded">call</span>
+              <span>${callDisplay}</span>
+            </a>
           </div>
         </div>
-        <div style="display: flex; gap: 0.35rem; align-items: center;">
-          <a href="${g.url}" target="_blank" class="btn-open">
-            <span class="material-symbols-rounded" style="font-size: 14px;">open_in_new</span>
-            ${g.actionLabel || t("lodge")}
-          </a>
-          <a href="tel:${g.tollFree}" class="btn-icon call" title="${t("call")}">
-            <span class="material-symbols-rounded">call</span>
-          </a>
-        </div>
-      </div>
-    `).join("");
+      `;
+    }).join("");
   }
 
   // -------------------------------------------------------------
