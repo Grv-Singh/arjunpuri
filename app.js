@@ -1210,24 +1210,140 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderProgress();
   };
 
+  let editingProgressId = null;
+
+  function getDeletedMilestoneIds() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_deleted_milestone_ids")) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function getEditedMilestones() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_edited_milestones")) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  window.startEditProgress = function(id) {
+    editingProgressId = id;
+    renderProgress();
+  };
+
+  window.cancelEditProgress = function() {
+    editingProgressId = null;
+    renderProgress();
+  };
+
+  window.saveEditProgress = function(id) {
+    const dateEl = document.getElementById(`edit-prog-date-${id}`);
+    const statusEl = document.getElementById(`edit-prog-status-${id}`);
+    const titleEl = document.getElementById(`edit-prog-title-${id}`);
+    const noteEl = document.getElementById(`edit-prog-note-${id}`);
+    if (!titleEl || !noteEl) return;
+
+    const newDate = dateEl ? dateEl.value.trim() : "";
+    const newStatus = statusEl ? statusEl.value.trim() : "Completed";
+    const newTitle = titleEl.value.trim();
+    const newNote = noteEl.value.trim();
+    if (!newTitle) return;
+
+    // If custom progress milestone, also update customProgressData
+    const cIdx = customProgressData.findIndex(m => m.id === id);
+    if (cIdx >= 0) {
+      customProgressData[cIdx].title = newTitle;
+      customProgressData[cIdx].note = newNote;
+      if (newDate) customProgressData[cIdx].date = newDate;
+      if (newStatus) customProgressData[cIdx].status = newStatus;
+      try {
+        localStorage.setItem("arjunpuri_custom_progress", JSON.stringify(customProgressData));
+      } catch (e) {}
+    }
+
+    // Always record in editedMilestones
+    const edited = getEditedMilestones();
+    edited[id] = {
+      date: newDate,
+      status: newStatus,
+      title: newTitle,
+      note: newNote
+    };
+    try {
+      localStorage.setItem("arjunpuri_edited_milestones", JSON.stringify(edited));
+    } catch (e) {}
+
+    editingProgressId = null;
+    renderProgress();
+  };
+
+  window.deleteProgress = function(id) {
+    const confirmMsg = currentLang === "hi" 
+      ? "क्या आप इस प्रगति माइलस्टोन को हटाना चाहते हैं?" 
+      : "Are you sure you want to delete this progress milestone?";
+    if (!confirm(confirmMsg)) return;
+
+    // Check if custom
+    const cIdx = customProgressData.findIndex(m => m.id === id);
+    if (cIdx >= 0) {
+      customProgressData.splice(cIdx, 1);
+      try {
+        localStorage.setItem("arjunpuri_custom_progress", JSON.stringify(customProgressData));
+      } catch (e) {}
+    }
+
+    // Also mark in deleted ids
+    const deletedIds = getDeletedMilestoneIds();
+    if (!deletedIds.includes(id)) {
+      deletedIds.push(id);
+      try {
+        localStorage.setItem("arjunpuri_deleted_milestone_ids", JSON.stringify(deletedIds));
+      } catch (e) {}
+    }
+
+    if (editingProgressId === id) editingProgressId = null;
+    renderProgress();
+  };
+
+  function escapeProgressAttr(str) {
+    return (str || "").replace(/"/g, '&quot;');
+  }
+
+  function escapeProgressText(str) {
+    return (str || "").replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function renderProgress() {
     if (!progressTimelineList) return;
 
     const delMilestonePhotos = getDeletedMilestonePhotos();
-    const allMilestones = [...customProgressData, ...(window.PROGRESS_DATA || [])].map(m => {
-      if (m.photoUrl && delMilestonePhotos.includes(m.photoUrl)) {
-        return { ...m, photoUrl: "" };
-      }
-      return m;
-    });
+    const delMilestoneIds = getDeletedMilestoneIds();
+    const editedMap = getEditedMilestones();
+
+    const rawList = [...customProgressData, ...(window.PROGRESS_DATA || [])];
+    const allMilestones = rawList
+      .filter(m => !delMilestoneIds.includes(m.id))
+      .map(m => {
+        let item = { ...m };
+        if (editedMap[m.id]) {
+          item = { ...item, ...editedMap[m.id] };
+        }
+        if (item.photoUrl && delMilestonePhotos.includes(item.photoUrl)) {
+          item.photoUrl = "";
+        }
+        return item;
+      });
+
     allMilestones.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     let filtered = allMilestones;
     if (searchQuery) {
       filtered = filtered.filter(m => 
-        m.title.toLowerCase().includes(searchQuery) ||
-        m.note.toLowerCase().includes(searchQuery) ||
-        m.date.includes(searchQuery)
+        (m.title || "").toLowerCase().includes(searchQuery) ||
+        (m.note || "").toLowerCase().includes(searchQuery) ||
+        (m.date || "").includes(searchQuery)
       );
     }
 
@@ -1235,30 +1351,74 @@ document.addEventListener("DOMContentLoaded", async () => {
       progressTimelineList.innerHTML = `
         <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
           <span class="material-symbols-rounded" style="font-size: 38px; color: var(--text-dim); margin-bottom: 0.4rem;">history_toggle_off</span>
-          <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">No progress milestones found</p>
+          <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">${currentLang === "hi" ? "कोई प्रगति माइलस्टोन नहीं मिला" : "No progress milestones found"}</p>
         </div>
       `;
       return;
     }
 
-    progressTimelineList.innerHTML = filtered.map(m => `
-      <div class="timeline-item">
-        <div class="timeline-marker"></div>
-        <div class="timeline-card">
-          <div class="timeline-top-row">
-            <span class="timeline-date-badge">${m.date}</span>
-            <span class="timeline-status-badge">${m.status || "Completed"}</span>
-          </div>
-          <div class="timeline-title">${m.title}</div>
-          <div class="timeline-note">${m.note}</div>
-          ${m.photoUrl ? `
-            <div class="timeline-media" onclick="openProgressSlideshow('${m.photoUrl}', '${encodeURIComponent(m.title)}')">
-              <img src="${m.photoUrl}" alt="${m.title}" loading="lazy">
+    progressTimelineList.innerHTML = filtered.map(m => {
+      const isEditing = editingProgressId === m.id;
+
+      if (isEditing) {
+        return `
+          <div class="timeline-item" id="milestone-${m.id}">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div class="timeline-inline-edit" onclick="event.stopPropagation()">
+                <div style="font-size: 0.76rem; font-weight: 700; color: var(--gold); margin-bottom: 0.15rem;">
+                  <span class="material-symbols-rounded" style="font-size: 14px; vertical-align: middle;">edit</span>
+                  ${currentLang === "hi" ? "माइलस्टोन संपादित करें" : "Edit Milestone"}
+                </div>
+                <div class="inline-edit-row">
+                  <input type="date" class="progress-input-sm" id="edit-prog-date-${m.id}" value="${m.date}">
+                  <input type="text" class="progress-input-sm" id="edit-prog-status-${m.id}" value="${escapeProgressAttr(m.status || 'Completed')}" placeholder="Status">
+                </div>
+                <input type="text" class="progress-input-sm" id="edit-prog-title-${m.id}" value="${escapeProgressAttr(m.title)}" placeholder="Milestone Title">
+                <textarea class="progress-textarea-sm" id="edit-prog-note-${m.id}" rows="3" placeholder="Milestone Details">${escapeProgressText(m.note)}</textarea>
+                <div class="inline-edit-actions">
+                  <button class="btn-progress-save" onclick="saveEditProgress('${m.id}')">
+                    <span class="material-symbols-rounded" style="font-size: 14px;">check</span> ${currentLang === "hi" ? "सहेजें" : "Save"}
+                  </button>
+                  <button class="btn-progress-cancel" onclick="cancelEditProgress()">
+                    <span class="material-symbols-rounded" style="font-size: 14px;">close</span> ${currentLang === "hi" ? "रद्द करें" : "Cancel"}
+                  </button>
+                </div>
+              </div>
             </div>
-          ` : ''}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="timeline-item" id="milestone-${m.id}">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <div class="timeline-top-row">
+              <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                <span class="timeline-date-badge">${m.date}</span>
+                <span class="timeline-status-badge">${m.status || "Completed"}</span>
+              </div>
+              <div class="timeline-card-actions" onclick="event.stopPropagation()">
+                <button class="btn-card-action edit" onclick="startEditProgress('${m.id}')" title="${currentLang === "hi" ? "संपादित करें" : "Edit"}">
+                  <span class="material-symbols-rounded">edit</span>
+                </button>
+                <button class="btn-card-action delete" onclick="deleteProgress('${m.id}')" title="${currentLang === "hi" ? "हटाएं" : "Delete"}">
+                  <span class="material-symbols-rounded">delete</span>
+                </button>
+              </div>
+            </div>
+            <div class="timeline-title">${m.title}</div>
+            <div class="timeline-note">${m.note}</div>
+            ${m.photoUrl ? `
+              <div class="timeline-media" onclick="openProgressSlideshow('${m.photoUrl}', '${encodeURIComponent(m.title)}')">
+                <img src="${m.photoUrl}" alt="${m.title}" loading="lazy">
+              </div>
+            ` : ''}
+          </div>
         </div>
-      </div>
-    `).join("");
+      `;
+    }).join("");
   }
 
   // -------------------------------------------------------------

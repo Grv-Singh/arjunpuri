@@ -1099,17 +1099,18 @@ const CIVIC_AND_TRADE_CONTACTS = [
 ];
 
 // Arjunpuri 1st — Colony Historical Progress & Milestones Register
+// Arjunpuri 1st — Colony Historical Progress & Milestones Register
 const PROGRESS_DATA = [
   {
-    id: "prog-10",
+    id: "prog-21",
     date: "2026-10-14",
     title: "BSNL Telephone Pole Removal Application Submitted",
-    note: "Application for removal of redundant telephone poles submitted to BSNL authorities following community signatures outside Plot A-31.",
+    note: "Official application submitted to BSNL authorities backed by resident petition signatures outside Plot A-31 for redundant pole and dangling wire removal.",
     photoUrl: "",
     status: "Submitted"
   },
   {
-    id: "prog-9",
+    id: "prog-20",
     date: "2026-10-12",
     title: "Tree Pruning & Electrical Load Survey",
     note: "Overhanging tree branch trimming completed along link road lines. Electrical load survey completed with JVVNL Powerhouse CD-II team.",
@@ -1117,23 +1118,31 @@ const PROGRESS_DATA = [
     status: "Completed"
   },
   {
-    id: "prog-8",
+    id: "prog-19",
     date: "2026-10-11",
-    title: "Ward 145 Councillor Colony Survey",
-    note: "Parshad Prem Chand ji, Ward President & Karyakartas conducted ground survey for road carpeting, drainage, and street LED fixtures.",
+    title: "Ward 145 Councillor Prem Chand Ground Survey",
+    note: "Parshad Prem Chand, Ward President & Karyakartas conducted ground survey for road carpeting, drainage, and street LED fixtures.",
     photoUrl: "assets/progress/2026_10_11_160758_ACF61C23E1648A5C68BF58E21CFFD6AE.jpeg",
     status: "Completed"
   },
   {
-    id: "prog-7",
+    id: "prog-18",
     date: "2026-10-11",
-    title: "Sanitation & Vigilance Coordination with Nagar Nigam",
-    note: "Nagar Nigam SI Roop Narayan ji added to colony vigilance channel for prompt road waste and sanitation resolution.",
+    title: "Sanitation & Vigilance Coordination with Nagar Nigam SI",
+    note: "Nagar Nigam SI Roop Narayan added to colony vigilance channel for prompt road waste, daily door-to-door vehicle monitoring, and sanitation resolution.",
     photoUrl: "assets/progress/2026_10_11_162534_AC743F8B10F4244F760D8320E9D7A1BA.jpeg",
     status: "Active"
   },
   {
-    id: "prog-6",
+    id: "prog-17",
+    date: "2026-10-08",
+    title: "BJP Ward Karyakarta Gokul Mishra Meeting & Sweeping Drive",
+    note: "Meeting held with BJP Karyakarta Gokul Mishra. Commitment secured for weekly dedicated full-lane street sweeping and voter registry additions for residents.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-16",
     date: "2026-10-07",
     title: "Smart Meter vs Standard Meter Verification Audit",
     note: "Discrepancy audit conducted comparing 10-day consumption (112 units standard vs 302 units smart meter); consumer helpline mobilized.",
@@ -1141,7 +1150,31 @@ const PROGRESS_DATA = [
     status: "Verified"
   },
   {
-    id: "prog-5",
+    id: "prog-15",
+    date: "2026-09-28",
+    title: "Formal Nagar Nigam Deep Cleaning Grievance Lodged",
+    note: "Street cleaning and rubble removal grievance officially registered on government portal (Grievance ID: 062607127204655) for comprehensive road sweeping.",
+    photoUrl: "",
+    status: "Lodged"
+  },
+  {
+    id: "prog-14",
+    date: "2026-09-28",
+    title: "Plot A-14 Street Waste Clearance Completed",
+    note: "Neeraj Bulchandani (Plot A-14) completed commitment to clear construction debris and packaging waste from street frontage.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-13",
+    date: "2026-09-16",
+    title: "Frontage Realignment & Parking Restoration",
+    note: "Parking alignment resolved between Plot 23-24 and Plot A-17 to maintain smooth vehicle transit along Link Road.",
+    photoUrl: "",
+    status: "Resolved"
+  },
+  {
+    id: "prog-12",
     date: "2026-09-12",
     title: "Colony-Wide Pressurized Sewage Flushing Drive",
     note: "Synchronized downstream sewage flushing drive executed across all plots at 12 noon to clear downstream choke points.",
@@ -1149,7 +1182,7 @@ const PROGRESS_DATA = [
     status: "Executed"
   },
   {
-    id: "prog-4",
+    id: "prog-11",
     date: "2026-09-01",
     title: "Road Encroachment & Auto Clearance Notice",
     note: "Tenant commitment secured to remove obstruction vehicles and auto-rickshaws outside Plot 12A / 20.",
@@ -1157,7 +1190,7 @@ const PROGRESS_DATA = [
     status: "Resolved"
   },
   {
-    id: "prog-3",
+    id: "prog-10",
     date: "2026-08-31",
     title: "Corner Garbage Clearance & Animal Bowl Hygiene",
     note: "Corner waste cleared; proposal initiated for automatic float-valve animal water bowl replacing stagnant troughs.",
@@ -1165,7 +1198,7 @@ const PROGRESS_DATA = [
     status: "Completed"
   },
   {
-    id: "prog-2",
+    id: "prog-9",
     date: "2026-08-23",
     title: "Drainage Chamber L-Joint Connection Completed",
     note: "Drainage chamber L-joint connection completed on Link Road to eliminate persistent dirty water accumulation.",
@@ -1173,11 +1206,67 @@ const PROGRESS_DATA = [
     status: "Completed"
   },
   {
-    id: "prog-1",
+    id: "prog-8",
     date: "2026-08-15",
-    title: "Construction Rubble Removal Initiative",
-    note: "Colony-wide notice and street survey for removal of unattended construction rubble and stones.",
+    title: "Independence Day Rubble & Stone Clearance Notice",
+    note: "Colony-wide notice and street survey for removal of unattended construction rubble and street parking stones.",
     photoUrl: "assets/progress/2026_08_15_192046_AC5C82258CECA709AD7D1CCE418C57AD.jpeg",
-    status: "Ongoing"
+    status: "Completed"
+  },
+  {
+    id: "prog-7",
+    date: "2026-06-25",
+    title: "Smart Meter Live Tracking Portal Rollout",
+    note: "JVVNL Smart Meter online dashboard (cp.jvvnldhundaramisp.in) distributed to all link road residents for real-time daily kWh monitoring.",
+    photoUrl: "",
+    status: "Active"
+  },
+  {
+    id: "prog-6",
+    date: "2026-06-09",
+    title: "Link Road Height & Drainage Elevation Assessment",
+    note: "Colony evaluation conducted on street level vs manhole chamber heights prior to carpeting to prevent rain water backflow into ground floors.",
+    photoUrl: "",
+    status: "Surveyed"
+  },
+  {
+    id: "prog-5",
+    date: "2026-06-05",
+    title: "Overhead Tank Float Ball-Valve Installation",
+    note: "Automatic ball-valves fitted to water tanks across link road houses to eliminate daily street water flooding and wastage.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-4",
+    date: "2026-05-23",
+    title: "Plot 21-25 Construction Malba Removal",
+    note: "Construction debris and stone rubble cleared outside Plot 21-25 by Rahul Saini to clear vehicular path.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-3",
+    date: "2026-05-21",
+    title: "Open Drainage Ditch Underground Pipeline Enclosure",
+    note: "Open roadside drain successfully enclosed underground to prevent foul smell, mosquito breeding, and road narrowing.",
+    photoUrl: "",
+    status: "Completed"
+  },
+  {
+    id: "prog-2",
+    date: "2026-05-10",
+    title: "Colony Speed Breaker & Safety Proposal",
+    note: "Kunplast 4-meter modular rubber speed breaker with reflectors proposed and ordered to control vehicle speeding inside residential lane.",
+    photoUrl: "",
+    status: "Proposed"
+  },
+  {
+    id: "prog-1",
+    date: "2026-04-26",
+    title: "MLA House Underground Sewage Chamber Redirection",
+    note: "Drainage chamber excavated and connected via L-joint to main underground sewer line outside MLA house to resolve open road effluent.",
+    photoUrl: "",
+    status: "Completed"
   }
 ];
