@@ -1221,7 +1221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div style="display: flex; gap: 0.35rem; align-items: center;">
           <a href="${g.url}" target="_blank" class="btn-open">
             <span class="material-symbols-rounded" style="font-size: 14px;">open_in_new</span>
-            ${t("lodge")}
+            ${g.actionLabel || t("lodge")}
           </a>
           <a href="tel:${g.tollFree}" class="btn-icon call" title="${t("call")}">
             <span class="material-symbols-rounded">call</span>
