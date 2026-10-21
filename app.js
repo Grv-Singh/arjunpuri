@@ -1322,7 +1322,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const delMilestoneIds = getDeletedMilestoneIds();
     const editedMap = getEditedMilestones();
 
-    const rawList = [...customProgressData, ...(window.PROGRESS_DATA || [])];
+    const defaultMilestones = (typeof PROGRESS_DATA !== "undefined" ? PROGRESS_DATA : (window.PROGRESS_DATA || []));
+    const rawList = [...customProgressData, ...defaultMilestones];
     const allMilestones = rawList
       .filter(m => !delMilestoneIds.includes(m.id))
       .map(m => {

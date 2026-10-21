@@ -1270,3 +1270,11 @@ const PROGRESS_DATA = [
     status: "Completed"
   }
 ];
+
+if (typeof window !== "undefined") {
+  window.PROGRESS_DATA = PROGRESS_DATA;
+  window.RESIDENTS_DATA = RESIDENTS_DATA;
+  if (typeof CIVIC_GRIEVANCES_DATA !== "undefined") window.CIVIC_GRIEVANCES_DATA = CIVIC_GRIEVANCES_DATA;
+  if (typeof CONTACTS_DATA !== "undefined") window.CONTACTS_DATA = CONTACTS_DATA;
+}
+
