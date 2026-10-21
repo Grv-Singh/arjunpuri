@@ -941,6 +941,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ? `<div class="row-avatar" onclick="event.stopPropagation(); openPlotPhotoSlideshow('${r.plot}')" title="Click to view Plot ${r.plot} photo"><img src="${plotPhotoSrc}" alt="${surnameDisplay}"></div>`
         : `<div class="row-avatar">${initials}</div>`;
 
+      const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+
       // Badges & Filter callouts
       let badgesHtml = '';
       if (currentFilter === "vehicles" && r.vehicles && r.vehicles.length > 0) {
@@ -950,9 +952,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else if (currentFilter === "encroachment" && r.hasEncroachment) {
         badgesHtml += `<div class="filter-detail-badge encroachment"><span class="material-symbols-rounded" style="font-size: 13px;">report</span> ${r.encroachmentType || 'Atikraman'}</div>`;
       } else if (currentFilter === "nuisance") {
-        const nAlert = getPlotNuisance(r.plot, r.nuisanceAlert || "");
-        if (nAlert && nAlert.trim()) {
-          badgesHtml += `<div class="filter-detail-badge nuisance"><span class="material-symbols-rounded" style="font-size: 13px;">warning</span> ${nAlert}</div>`;
+        if (nuisanceAlertVal && nuisanceAlertVal.trim()) {
+          badgesHtml += `<div class="filter-detail-badge nuisance"><span class="material-symbols-rounded" style="font-size: 13px;">warning</span> ${nuisanceAlertVal}</div>`;
         }
       } else if (currentFilter === "verified" && r.hasTenant && r.policeVerified) {
         badgesHtml += `<div class="filter-detail-badge tenants"><span class="material-symbols-rounded" style="font-size: 13px;">verified</span> Verified (${r.tenantCount || 1} Tenants)</div>`;
@@ -961,7 +962,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           const encLabel = r.encroachmentType || "Atikraman";
           badgesHtml += `<span class="icon-encroach" title="Atikraman (अतिक्रमण): ${encLabel}"><span class="material-symbols-rounded">report</span></span>`;
         }
-        const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
         if (nuisanceAlertVal && nuisanceAlertVal.trim()) {
           badgesHtml += `<span class="icon-nuisance" title="${nuisanceAlertVal}"><span class="material-symbols-rounded">warning</span></span>`;
         }
