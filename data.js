@@ -580,7 +580,7 @@ const RESIDENTS_DATA = [
   },
   {
     plot: "C10",
-    surname: "Jagannath Ji",
+    surname: "Jagannaths",
     members: "Jagannath Ji and others",
     relation: "Resident Owner",
     phone: "+91 94140 75229",
