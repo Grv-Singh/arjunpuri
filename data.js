@@ -753,12 +753,60 @@ const GRIEVANCE_PORTALS = [
     actionLabel: "Open Smart Meter Dashboard"
   },
   {
+    dept: "Sunil Thapa - JVVNL Lineman (लाइनमैन विद्युत विभाग)",
+    issue: "Local line fault repair, jumper replacement & phase restoration",
+    icon: "electrical_services",
+    url: "https://wa.me/919602847270",
+    tollFree: "9602847270",
+    actionLabel: "WhatsApp Lineman"
+  },
+  {
+    dept: "Rahul Ji - JEN JVVNL (कनिष्ठ अभियंता विद्युत विभाग)",
+    issue: "Underground cabling, transformer tripping & pillar boxes",
+    icon: "bolt",
+    url: "https://wa.me/919413390122",
+    tollFree: "9413390122",
+    actionLabel: "WhatsApp JEN"
+  },
+  {
+    dept: "Prem Chand - Ward Parshad (पार्षद वार्ड 145)",
+    issue: "Road approvals, drainage allocation & colony development",
+    icon: "how_to_reg",
+    url: "https://wa.me/919785740980",
+    tollFree: "9785740980",
+    actionLabel: "WhatsApp Parshad"
+  },
+  {
+    dept: "Roop Narayan Ji - SI Nagar Nigam (स्वास्थ्य निरीक्षक नगर निगम)",
+    issue: "Garbage vans, lane sweepers & sanitation complaints",
+    icon: "delete_sweep",
+    url: "https://wa.me/918764879857",
+    tollFree: "8764879857",
+    actionLabel: "WhatsApp SI"
+  },
+  {
+    dept: "Nagar Nigam Greater Helpline (नगर निगम शिकायत)",
+    issue: "Street sweeping, malba clearance & waste disposal",
+    icon: "apartment",
+    url: "https://wa.me/919251687044",
+    tollFree: "9251687044",
+    actionLabel: "WhatsApp Nagar Nigam"
+  },
+  {
+    dept: "Gokul Mishra - BJP Karyakarta (कार्यकर्ता)",
+    issue: "MLA liaison, public grievances & colony drives",
+    icon: "campaign",
+    url: "https://wa.me/919351941910",
+    tollFree: "9351941910",
+    actionLabel: "WhatsApp Karyakarta"
+  },
+  {
     dept: "Jal Vibhag / PHED (जल विभाग - वार्ड 145)",
-    issue: "Key 1: 140730900524 • Key 2: 140730900535 | Water Helpline 181",
+    issue: "Key 1: 140730900524 • Key 2: 140730900535 (Water Supply & Leakage)",
     icon: "water_drop",
     url: "https://sampark.rajasthan.gov.in/",
     tollFree: "181",
-    actionLabel: "Report Water Problem (Helpline 181)"
+    actionLabel: "Report Water Problem"
   },
   {
     dept: "Rajasthan Sampark Master Portal (राजस्थान संपर्क)",
