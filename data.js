@@ -261,7 +261,7 @@ const RESIDENTS_DATA = [
     plot: "20",
     surname: "Patnis",
     members: "Yogesh Patni",
-    relation: "Resident Owner & 2 Tenants (Corner Plot)",
+    relation: "Resident Owner",
     phone: "+91 94617 83436",
     rawPhone: "9461783436",
     membersList: [
@@ -269,11 +269,11 @@ const RESIDENTS_DATA = [
     ],
     photoUrl: "assets/plots/plot_20.png",
     plotPhoto: "assets/plots/plot_20.png",
-    hasTenant: true,
-    tenantCount: 2,
-    tenantInfo: "2 Tenants",
-    policeVerified: false,
-    policeVerifRef: "Pending Verification",
+    hasTenant: false,
+    tenantCount: 0,
+    tenantInfo: "Owner Occupied",
+    policeVerified: true,
+    policeVerifRef: "Verified Record",
     hasEncroachment: false,
     vehicles: [
       "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
