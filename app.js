@@ -407,14 +407,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  function getEditedIssueCaptions() {
+    try {
+      const stored = localStorage.getItem("arjunpuri_edited_issue_captions");
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    return {};
+  }
+
+  function saveEditedIssueCaption(key, caption) {
+    if (!key) return;
+    const captions = getEditedIssueCaptions();
+    captions[key] = caption;
+    try {
+      localStorage.setItem("arjunpuri_edited_issue_captions", JSON.stringify(captions));
+    } catch (e) {}
+  }
+
   function getAllPlotIssues(plot) {
     const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
     const rawStatic = (defaultData && defaultData.issues) || [];
     const deletedList = getDeletedStaticIssues();
     const staticIssues = rawStatic.filter(iss => !deletedList.includes(iss.url));
     const clientList = CLIENT_ISSUES[plot] || [];
-    return [...staticIssues, ...clientList];
+    const captionMap = getEditedIssueCaptions();
+    return [...staticIssues, ...clientList].map(iss => {
+      const key = iss.id || iss.url;
+      if (captionMap && captionMap[key] !== undefined) {
+        return { ...iss, caption: captionMap[key] };
+      }
+      return iss;
+    });
   }
+  window.getAllPlotIssues = getAllPlotIssues;
 
   // -------------------------------------------------------------
   // 3. Theme Toggle (Dark / Light)
@@ -662,6 +687,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const slideshowCounter = document.getElementById("slideshow-counter");
   const slideshowMediaWrapper = document.getElementById("slideshow-media-wrapper");
   const slideshowCaption = document.getElementById("slideshow-caption");
+  const slideshowCaptionEdit = document.getElementById("slideshow-caption-edit");
+  const slideshowCaptionInput = document.getElementById("slideshow-caption-input");
+  const slideshowCaptionStatus = document.getElementById("slideshow-caption-status");
   const slideshowFilepath = document.getElementById("slideshow-filepath");
   const slideshowDownloadBtn = document.getElementById("slideshow-download-btn");
   const slideshowDeleteBtn = document.getElementById("slideshow-delete-btn");
@@ -716,6 +744,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.closeSlideshow = function() {
     if (slideshowModal) slideshowModal.style.display = "none";
     if (slideshowMediaWrapper) slideshowMediaWrapper.innerHTML = "";
+    if (slideshowCaptionInput) slideshowCaptionInput.value = "";
+    if (slideshowCaptionStatus) slideshowCaptionStatus.innerHTML = "";
     activeSlideshowPlot = null;
     activeSlideshowIssues = [];
   };
@@ -725,6 +755,46 @@ document.addEventListener("DOMContentLoaded", async () => {
     const len = activeSlideshowIssues.length;
     activeSlideshowIndex = (activeSlideshowIndex + direction + len) % len;
     updateSlideshowUI();
+  };
+
+  window.handleCaptionInput = function(val) {
+    if (!activeSlideshowIssues || activeSlideshowIssues.length === 0) return;
+    const issue = activeSlideshowIssues[activeSlideshowIndex];
+    if (!issue || issue.isPlotPhoto || activeSlideshowPlot === "Progress") return;
+    const key = issue.id || issue.url;
+    issue.caption = val;
+    saveEditedIssueCaption(key, val);
+  };
+
+  window.saveCurrentIssueCaption = async function() {
+    if (!activeSlideshowIssues || activeSlideshowIssues.length === 0) return;
+    const issue = activeSlideshowIssues[activeSlideshowIndex];
+    if (!issue || issue.isPlotPhoto || activeSlideshowPlot === "Progress") return;
+
+    const input = document.getElementById("slideshow-caption-input");
+    const val = input ? input.value.trim() : (issue.caption || "");
+    const key = issue.id || issue.url;
+
+    issue.caption = val;
+    saveEditedIssueCaption(key, val);
+
+    if (issue.isCustom && issue.id) {
+      await mediaDB.addIssue(issue);
+      if (CLIENT_ISSUES[activeSlideshowPlot]) {
+        const found = CLIENT_ISSUES[activeSlideshowPlot].find(i => i.id === issue.id);
+        if (found) found.caption = val;
+      }
+    }
+
+    renderDirectory();
+
+    const statusEl = document.getElementById("slideshow-caption-status");
+    if (statusEl) {
+      statusEl.innerHTML = `<span class="material-symbols-rounded" style="font-size: 14px; vertical-align: middle;">check_circle</span> Saved`;
+      setTimeout(() => {
+        if (statusEl) statusEl.innerHTML = "";
+      }, 2000);
+    }
   };
 
   function updateSlideshowUI() {
@@ -745,13 +815,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (slideshowCounter) {
       slideshowCounter.textContent = `${activeSlideshowIndex + 1} of ${activeSlideshowIssues.length}`;
     }
-    if (slideshowCaption) {
-      if (issue.isPlotPhoto) {
-        slideshowCaption.textContent = `Plot ${activeSlideshowPlot}`;
-      } else {
-        slideshowCaption.textContent = issue.caption || `Plot ${activeSlideshowPlot}`;
+
+    const isIssuePhoto = !issue.isPlotPhoto && activeSlideshowPlot !== "Progress";
+    if (isIssuePhoto) {
+      if (slideshowCaption) slideshowCaption.style.display = "none";
+      if (slideshowCaptionEdit) slideshowCaptionEdit.style.display = "flex";
+      if (slideshowCaptionInput) {
+        slideshowCaptionInput.value = issue.caption || "";
+      }
+      if (slideshowCaptionStatus) {
+        slideshowCaptionStatus.innerHTML = "";
+      }
+    } else {
+      if (slideshowCaptionEdit) slideshowCaptionEdit.style.display = "none";
+      if (slideshowCaption) {
+        slideshowCaption.style.display = "block";
+        if (issue.isPlotPhoto) {
+          slideshowCaption.textContent = `Plot ${activeSlideshowPlot}`;
+        } else {
+          slideshowCaption.textContent = issue.caption || `Plot ${activeSlideshowPlot}`;
+        }
       }
     }
+
     if (slideshowFilepath) {
       slideshowFilepath.textContent = "";
     }

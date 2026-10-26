@@ -1666,6 +1666,85 @@ body {
   color: var(--text-main);
 }
 
+.slideshow-caption-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.caption-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  transition: var(--transition);
+}
+
+.caption-input-wrapper:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.caption-input-wrapper .caption-icon {
+  font-size: 18px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.slideshow-caption-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.84rem;
+  font-weight: 500;
+  outline: none;
+  padding: 0.2rem 0;
+  font-family: inherit;
+}
+
+.slideshow-caption-input::placeholder {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.btn-caption-save {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--gold);
+  border-radius: 5px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition);
+}
+
+.btn-caption-save:hover {
+  background: var(--gold);
+  color: #05070c;
+}
+
+.btn-caption-save .material-symbols-rounded {
+  font-size: 17px;
+}
+
+.caption-save-status {
+  font-size: 0.72rem;
+  color: var(--emerald);
+  min-height: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .slideshow-meta {
   display: flex;
   align-items: center;

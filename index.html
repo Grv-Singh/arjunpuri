@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261021_1940">
+  <link rel="stylesheet" href="style.css?v=20261026_1225">
 </head>
 <body>
 
@@ -282,6 +282,16 @@
 
         <div class="slideshow-footer">
           <div class="slideshow-caption" id="slideshow-caption"></div>
+          <div class="slideshow-caption-edit" id="slideshow-caption-edit" style="display: none;">
+            <div class="caption-input-wrapper">
+              <span class="material-symbols-rounded caption-icon">edit_note</span>
+              <input type="text" id="slideshow-caption-input" class="slideshow-caption-input" placeholder="Add issue caption..." maxlength="140" oninput="handleCaptionInput(this.value)" onchange="saveCurrentIssueCaption()" />
+              <button id="slideshow-caption-save-btn" class="btn-caption-save" onclick="saveCurrentIssueCaption()" title="Save caption">
+                <span class="material-symbols-rounded">check</span>
+              </button>
+            </div>
+            <div id="slideshow-caption-status" class="caption-save-status"></div>
+          </div>
           <div class="slideshow-meta">
             <div class="slideshow-actions">
               <button id="slideshow-download-btn" class="slideshow-action-btn" title="Download">
@@ -298,7 +308,7 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261021_1940"></script>
-  <script src="app.js?v=20261021_1940"></script>
+  <script src="data.js?v=20261026_1225"></script>
+  <script src="app.js?v=20261026_1225"></script>
 </body>
 </html>
