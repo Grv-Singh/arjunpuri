@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const langIndicator = document.getElementById("lang-indicator");
   const themeToggleBtn = document.getElementById("theme-toggle-btn");
   const themeIcon = document.getElementById("theme-icon");
+  const notifToggleBtn = document.getElementById("notif-toggle-btn");
+  const notifIcon = document.getElementById("notif-icon");
+  const notifBanner = document.getElementById("notif-banner");
 
   if (progressDate) {
     progressDate.value = new Date().toISOString().split("T")[0];
@@ -97,7 +100,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       relation_Corner_Plot: "Resident Owner & 2 Tenants (Corner Plot)",
       tenantsText: "Tenants",
       ownerOccupied: "Owner Occupied",
-      cleanRecord: "Clean Record"
+      cleanRecord: "Clean Record",
+      notifBannerTitle: "Stay Updated on Arjunpuri 1st",
+      notifBannerDesc: "Enable notifications to receive instant updates on colony development milestones, maintenance alerts & emergency notices.",
+      notifAllowBtn: "Allow Notifications",
+      notifGrantedTitle: "Arjunpuri 1st Colony Updates",
+      notifGrantedMsg: "Notifications enabled! You will receive live updates on colony development and notices.",
+      notifStatusActive: "Notifications are active! You will receive live colony updates and emergency alerts."
     },
     hi: {
       brandSub: "लिंक रोड • वार्ड 145 • जयपुर 302015",
@@ -155,7 +164,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       relation_Corner_Plot: "निवासी मालिक व 2 किरायेदार (कॉर्नर प्लॉट)",
       tenantsText: "किरायेदार",
       ownerOccupied: "मालिक का निवास",
-      cleanRecord: "स्वच्छ रिकॉर्ड"
+      cleanRecord: "स्वच्छ रिकॉर्ड",
+      notifBannerTitle: "अर्जुनपुरी 1st के नए अपडेट्स प्राप्त करें",
+      notifBannerDesc: "कॉलोनी विकास कार्यों, प्रगति अपडेट्स और आपातकालीन सूचनाओं के लिए नोटिफिकेशन की अनुमति दें।",
+      notifAllowBtn: "सूचनाएं चालू करें",
+      notifGrantedTitle: "अर्जुनपुरी 1st कॉलोनी अपडेट",
+      notifGrantedMsg: "सूचनाएं सक्रिय हैं! आपको कॉलोनी प्रगति और आवश्यक सूचनाएं तुरंत प्राप्त होंगी।",
+      notifStatusActive: "सूचनाएं सक्रिय हैं! आपको कॉलोनी के लाइव अपडेट्स और अलर्ट प्राप्त होते रहेंगे।"
     }
   };
 
@@ -222,6 +237,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         btn.innerHTML = `${icon} ${t(key)}`;
       }
     });
+
+    // Notification banner translations
+    const notifTitle = document.getElementById("notif-banner-title");
+    const notifDesc = document.getElementById("notif-banner-desc");
+    const notifBtnText = document.getElementById("notif-btn-allow-text");
+    if (notifTitle) notifTitle.textContent = t("notifBannerTitle");
+    if (notifDesc) notifDesc.textContent = t("notifBannerDesc");
+    if (notifBtnText) notifBtnText.textContent = t("notifAllowBtn");
 
     // Re-render active view
     if (currentTab === "progress") renderProgress();
@@ -672,6 +695,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderDirectory();
       const allIssues = getAllPlotIssues(plot);
       openSlideshow(plot, allIssues.length - 1);
+
+      window.showPortalNotification(
+        `Plot ${plot} Issue Logged`,
+        newIssue.caption || "A new photo/video issue was recorded.",
+        { tag: `issue-${newIssue.id}` }
+      );
     };
     reader.readAsDataURL(file);
     inputEl.value = "";
@@ -1359,6 +1388,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     progressDate.value = new Date().toISOString().split("T")[0];
 
     renderProgress();
+
+    window.showPortalNotification(
+      `New Milestone: ${newMilestone.title}`,
+      newMilestone.note || "New civic milestone added to Arjunpuri 1st.",
+      { tag: `prog-${newMilestone.id}` }
+    );
   };
 
   let editingProgressId = null;
@@ -1777,6 +1812,137 @@ document.addEventListener("DOMContentLoaded", async () => {
       `;
     }).join("");
   }
+
+  // -------------------------------------------------------------
+  // Notification Access & Service Worker System
+  // -------------------------------------------------------------
+  async function registerServiceWorker() {
+    if ("serviceWorker" in navigator) {
+      try {
+        await navigator.serviceWorker.register("./sw.js");
+      } catch (err) {
+        console.warn("ServiceWorker registration:", err);
+      }
+    }
+  }
+
+  function updateNotificationUI() {
+    if (!("Notification" in window)) {
+      if (notifToggleBtn) notifToggleBtn.style.display = "none";
+      if (notifBanner) notifBanner.style.display = "none";
+      return;
+    }
+
+    const permission = Notification.permission;
+    if (permission === "granted") {
+      if (notifIcon) notifIcon.textContent = "notifications_active";
+      if (notifToggleBtn) {
+        notifToggleBtn.classList.add("active");
+        notifToggleBtn.setAttribute("title", t("notifStatusActive"));
+      }
+      if (notifBanner) notifBanner.style.display = "none";
+    } else if (permission === "denied") {
+      if (notifIcon) notifIcon.textContent = "notifications_off";
+      if (notifToggleBtn) {
+        notifToggleBtn.classList.remove("active");
+        notifToggleBtn.setAttribute("title", "Notifications blocked (reset in browser settings)");
+      }
+      if (notifBanner) notifBanner.style.display = "none";
+    } else {
+      if (notifIcon) notifIcon.textContent = "notifications";
+      if (notifToggleBtn) {
+        notifToggleBtn.classList.remove("active");
+        notifToggleBtn.setAttribute("title", "Enable Notifications");
+      }
+      let dismissed = false;
+      try {
+        dismissed = localStorage.getItem("arjunpuri_notif_banner_dismissed") === "true";
+      } catch (e) {}
+
+      if (!dismissed && notifBanner) {
+        setTimeout(() => {
+          if (typeof Notification !== "undefined" && Notification.permission === "default" && notifBanner) {
+            notifBanner.style.display = "flex";
+          }
+        }, 1500);
+      }
+    }
+  }
+
+  window.requestNotificationAccess = async function() {
+    if (!("Notification" in window)) {
+      alert("This browser does not support web notifications.");
+      return;
+    }
+
+    try {
+      const permission = await Notification.requestPermission();
+      updateNotificationUI();
+      if (permission === "granted") {
+        if (notifBanner) notifBanner.style.display = "none";
+        window.showPortalNotification(
+          t("notifGrantedTitle"),
+          t("notifGrantedMsg"),
+          { tag: "arjunpuri-welcome" }
+        );
+      } else if (permission === "denied") {
+        if (notifBanner) notifBanner.style.display = "none";
+      }
+    } catch (e) {
+      console.warn("Notification request error:", e);
+    }
+  };
+
+  window.handleNotifBtnClick = function() {
+    if (!("Notification" in window)) return;
+    if (Notification.permission === "granted") {
+      window.showPortalNotification(
+        t("notifGrantedTitle"),
+        t("notifStatusActive"),
+        { tag: "arjunpuri-status" }
+      );
+    } else {
+      window.requestNotificationAccess();
+    }
+  };
+
+  window.dismissNotifBanner = function() {
+    if (notifBanner) notifBanner.style.display = "none";
+    try {
+      localStorage.setItem("arjunpuri_notif_banner_dismissed", "true");
+    } catch (e) {}
+  };
+
+  window.showPortalNotification = async function(title, body, options = {}) {
+    if (!("Notification" in window) || Notification.permission !== "granted") return;
+
+    const notifOpts = {
+      body: body,
+      icon: "map.jpg",
+      badge: "map.jpg",
+      tag: options.tag || "arjunpuri-update",
+      vibrate: [200, 100, 200],
+      ...options
+    };
+
+    if ("serviceWorker" in navigator) {
+      try {
+        const reg = await navigator.serviceWorker.ready;
+        if (reg && reg.showNotification) {
+          reg.showNotification(title, notifOpts);
+          return;
+        }
+      } catch (e) {}
+    }
+
+    try {
+      new Notification(title, notifOpts);
+    } catch (e) {}
+  };
+
+  // Register service worker and initialize notification state
+  registerServiceWorker();
+  updateNotificationUI();
 
   // Initial Language Setup & Render
   applyLanguage(currentLang);

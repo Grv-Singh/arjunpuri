@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261026_1225">
+  <link rel="stylesheet" href="style.css?v=20261026_1312">
 </head>
 <body>
 
@@ -40,6 +40,9 @@
           <span class="material-symbols-rounded" style="font-size: 14px;">verified</span>
           <span id="plot-counter">26 Plots</span>
         </div>
+        <button id="notif-toggle-btn" class="notif-toggle-btn" title="Notification Alerts" aria-label="Notifications" onclick="handleNotifBtnClick()">
+          <span class="material-symbols-rounded notif-icon" id="notif-icon">notifications</span>
+        </button>
         <button id="lang-toggle-btn" class="lang-toggle-btn" title="Toggle Language (हिंदी / English)" aria-label="Toggle Language">
           <span class="material-symbols-rounded" style="font-size: 16px;">translate</span>
           <span id="lang-indicator" class="lang-indicator">HI</span>
@@ -49,6 +52,28 @@
         </button>
       </div>
     </header>
+
+    <!-- Notification Permission Banner -->
+    <div id="notif-banner" class="notif-banner" style="display: none;">
+      <div class="notif-banner-content">
+        <div class="notif-banner-icon">
+          <span class="material-symbols-rounded">notifications_active</span>
+        </div>
+        <div class="notif-banner-text">
+          <strong id="notif-banner-title">Stay Updated on Arjunpuri 1st</strong>
+          <span id="notif-banner-desc">Enable notifications to receive instant updates on colony development milestones, maintenance alerts & emergency notices.</span>
+        </div>
+      </div>
+      <div class="notif-banner-actions">
+        <button class="btn-notif-allow" onclick="requestNotificationAccess()">
+          <span class="material-symbols-rounded">check</span>
+          <span id="notif-btn-allow-text">Allow Notifications</span>
+        </button>
+        <button class="btn-notif-dismiss" onclick="dismissNotifBanner()" title="Later">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+    </div>
 
     <!-- Instant Universal Search -->
     <div class="search-island">
@@ -308,7 +333,7 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261026_1225"></script>
-  <script src="app.js?v=20261026_1225"></script>
+  <script src="data.js?v=20261026_1312"></script>
+  <script src="app.js?v=20261026_1312"></script>
 </body>
 </html>
