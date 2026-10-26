@@ -661,6 +661,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (e) {}
   };
 
+  function getPlotVehicles(plot, fallback = []) {
+    try {
+      const stored = localStorage.getItem(`arjunpuri_vehicles_${plot}`);
+      if (stored !== null) return JSON.parse(stored);
+    } catch (e) {}
+    return fallback;
+  }
+
+  function savePlotVehicles(plot, list) {
+    try {
+      localStorage.setItem(`arjunpuri_vehicles_${plot}`, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  window.handleVehicleInput = function(plot, idx, val) {
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotVehicles(plot, (defaultData && defaultData.vehicles) || []);
+    if (idx >= 0 && idx < list.length) {
+      list[idx] = val;
+      savePlotVehicles(plot, list);
+    }
+  };
+
+  window.saveVehicleEdit = function(plot, idx) {
+    const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+    const input = document.getElementById(`vehicle-input-${safePlot}-${idx}`);
+    if (!input) return;
+    const val = input.value.trim();
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotVehicles(plot, (defaultData && defaultData.vehicles) || []);
+    if (idx >= 0 && idx < list.length) {
+      list[idx] = val;
+      savePlotVehicles(plot, list);
+    }
+    input.style.borderColor = "var(--emerald)";
+    setTimeout(() => {
+      if (input) input.style.borderColor = "";
+    }, 1200);
+  };
+
+  window.addVehicle = function(plot) {
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotVehicles(plot, (defaultData && defaultData.vehicles) || []);
+    const promptMsg = currentLang === "hi"
+      ? "नया वाहन नंबर व मॉडल दर्ज करें (उदा. RJ 14 CQ 2182 Baleno):"
+      : "Enter vehicle number & model (e.g. RJ 14 CQ 2182 Baleno):";
+    const res = prompt(promptMsg, "RJ ");
+    if (res && res.trim() && res.trim() !== "RJ") {
+      list.push(res.trim());
+      savePlotVehicles(plot, list);
+      renderDirectory();
+    }
+  };
+
+  window.deleteVehicle = function(plot, idx) {
+    const confirmMsg = currentLang === "hi" 
+      ? "क्या आप इस वाहन को हटाना चाहते हैं?" 
+      : "Remove this vehicle?";
+    if (!confirm(confirmMsg)) return;
+
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotVehicles(plot, (defaultData && defaultData.vehicles) || []);
+    if (idx >= 0 && idx < list.length) {
+      list.splice(idx, 1);
+      savePlotVehicles(plot, list);
+      renderDirectory();
+    }
+  };
+
   // -------------------------------------------------------------
   // 6. Issues Media Upload & Slideshow System
   // -------------------------------------------------------------
@@ -986,6 +1055,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   function renderDirectory() {
     if (!directoryList) return;
 
+    RESIDENTS_DATA.forEach(r => {
+      r.vehicles = getPlotVehicles(r.plot, r.vehicles || []);
+    });
+
     let filtered = RESIDENTS_DATA.filter(r => {
       // Filter Pill logic
       if (currentFilter === "vehicles" && (!r.vehicles || r.vehicles.length === 0)) return false;
@@ -1215,15 +1288,45 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="note-save-status" id="note-status-${safePlot}"></div>
             </div>
 
-            <!-- Registered Vehicles -->
-            ${(r.vehicles && r.vehicles.length > 0) ? `
-              <div class="detail-item" style="align-items: flex-start; margin-top: 0.4rem;">
-                <span>${t("carsVehicles")}</span>
-                <span style="text-align: right; color: #f1f5f9; font-weight: 600;">
-                  ${r.vehicles.map(v => `<div style="font-size: 0.76rem; line-height: 1.35;">${v}</div>`).join("")}
-                </span>
+            <!-- Registered Vehicles (Editable, Add & Delete) -->
+            <div class="vehicles-section" id="vehicles-section-${safePlot}">
+              <div class="vehicles-header">
+                <div class="vehicles-header-title">
+                  <span class="material-symbols-rounded">directions_car</span>
+                  <span>${t("carsVehicles")}</span>
+                  <span class="vehicles-count-badge" id="vehicles-count-${safePlot}">(${(r.vehicles || []).length})</span>
+                </div>
+                <button class="btn-add-vehicle" onclick="addVehicle('${r.plot}')" title="Add Vehicle">
+                  <span class="material-symbols-rounded">add</span>
+                  <span>Add</span>
+                </button>
               </div>
-            ` : ''}
+              <div class="vehicles-list" id="vehicles-list-${safePlot}">
+                ${(!r.vehicles || r.vehicles.length === 0) ? `
+                  <div class="no-vehicles-text">${currentLang === "hi" ? "कोई वाहन दर्ज नहीं" : "No registered vehicles"}</div>
+                ` : r.vehicles.map((v, idx) => `
+                  <div class="vehicle-item-row" id="vehicle-row-${safePlot}-${idx}">
+                    <span class="material-symbols-rounded vehicle-car-icon">directions_car</span>
+                    <input 
+                      type="text" 
+                      class="vehicle-input" 
+                      id="vehicle-input-${safePlot}-${idx}" 
+                      value="${v.replace(/"/g, '&quot;')}" 
+                      placeholder="e.g. RJ 14 CQ 1234 (Model)"
+                      oninput="handleVehicleInput('${r.plot}', ${idx}, this.value)"
+                      onchange="saveVehicleEdit('${r.plot}', ${idx})"
+                      onkeydown="if(event.key==='Enter'){saveVehicleEdit('${r.plot}', ${idx}); this.blur();}"
+                    />
+                    <button class="btn-vehicle-action save" onclick="saveVehicleEdit('${r.plot}', ${idx})" title="Save">
+                      <span class="material-symbols-rounded">check</span>
+                    </button>
+                    <button class="btn-vehicle-action delete" onclick="deleteVehicle('${r.plot}', ${idx})" title="Delete">
+                      <span class="material-symbols-rounded">delete</span>
+                    </button>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
 
             <!-- Individual Members & Contacts with Profile Pictures -->
             ${(() => {
