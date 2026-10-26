@@ -1785,6 +1785,12 @@ body {
   border-radius: 9999px;
 }
 
+.issues-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .btn-add-issue {
   background: rgba(56, 189, 248, 0.12);
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -1803,6 +1809,114 @@ body {
 
 .btn-add-issue:hover {
   background: rgba(56, 189, 248, 0.22);
+}
+
+.btn-add-issue.camera {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--emerald);
+}
+
+.btn-add-issue.camera:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: var(--emerald);
+}
+
+.progress-media-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-progress-file.camera {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--emerald);
+}
+
+.btn-progress-file.camera:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: var(--emerald);
+}
+
+/* Contact Edit & Action Styles */
+.contact-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.contact-edit-form .edit-row {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.contact-edit-form .edit-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+
+[data-theme="light"] .contact-edit-form .edit-input {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+.contact-edit-form .edit-input:focus {
+  border-color: var(--gold);
+}
+
+.contact-edit-form .edit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.btn-save-sm {
+  background: var(--gold);
+  color: #05070c;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-save-sm .material-symbols-rounded {
+  font-size: 15px;
+}
+
+.btn-cancel-sm {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.74rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-cancel-sm .material-symbols-rounded {
+  font-size: 15px;
 }
 
 .issues-thumb-strip {

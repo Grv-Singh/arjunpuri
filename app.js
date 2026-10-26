@@ -1278,17 +1278,29 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span>${t("issues")}</span>
                   <span class="issues-count-badge">${issuesList.length}</span>
                 </div>
-                <label class="btn-add-issue" title="${t("uploadTitle")}">
-                  <input 
-                    type="file" 
-                    accept="image/*,video/*" 
-                    capture="environment" 
-                    style="display: none;" 
-                    onchange="handleIssueUpload('${r.plot}', this)"
-                  >
-                  <span class="material-symbols-rounded" style="font-size: 14px;">add_a_photo</span>
-                  <span>${t("addMedia")}</span>
-                </label>
+                <div class="issues-header-actions">
+                  <label class="btn-add-issue camera" title="Click with Camera">
+                    <input 
+                      type="file" 
+                      accept="image/*,video/*" 
+                      capture="environment" 
+                      style="display: none;" 
+                      onchange="handleIssueUpload('${r.plot}', this)"
+                    >
+                    <span class="material-symbols-rounded" style="font-size: 14px;">photo_camera</span>
+                    <span>Camera</span>
+                  </label>
+                  <label class="btn-add-issue" title="${t("uploadTitle")}">
+                    <input 
+                      type="file" 
+                      accept="image/*,video/*" 
+                      style="display: none;" 
+                      onchange="handleIssueUpload('${r.plot}', this)"
+                    >
+                    <span class="material-symbols-rounded" style="font-size: 14px;">upload_file</span>
+                    <span>${t("addMedia")}</span>
+                  </label>
+                </div>
               </div>
 
               <div class="issues-thumb-strip">
@@ -1306,7 +1318,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <input 
                     type="file" 
                     accept="image/*,video/*" 
-                    capture="environment" 
                     style="display: none;" 
                     onchange="handleIssueUpload('${r.plot}', this)"
                   >
@@ -1889,33 +1900,163 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderContacts();
   };
 
-  window.deleteCustomContact = function(id) {
+  let editingContactId = null;
+
+  function getContactStableId(c) {
+    if (c.id) return c.id;
+    const key = (c.rawPhone ? c.rawPhone : (c.name || "contact")).replace(/[^a-zA-Z0-9]/g, "_");
+    return "contact_" + key;
+  }
+
+  function getDeletedContactIds() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_deleted_contacts") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveDeletedContactId(id) {
+    if (!id) return;
+    const list = getDeletedContactIds();
+    if (!list.includes(id)) {
+      list.push(id);
+      try {
+        localStorage.setItem("arjunpuri_deleted_contacts", JSON.stringify(list));
+      } catch (e) {}
+    }
+  }
+
+  function getEditedContacts() {
+    try {
+      return JSON.parse(localStorage.getItem("arjunpuri_edited_contacts") || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveEditedContact(id, data) {
+    if (!id || !data) return;
+    const map = getEditedContacts();
+    map[id] = Object.assign({}, map[id] || {}, data);
+    try {
+      localStorage.setItem("arjunpuri_edited_contacts", JSON.stringify(map));
+    } catch (e) {}
+  }
+
+  window.startEditContact = function(id) {
+    editingContactId = id;
+    renderContacts();
+  };
+
+  window.cancelEditContact = function() {
+    editingContactId = null;
+    renderContacts();
+  };
+
+  window.saveEditContact = function(id) {
+    const nameInput = document.getElementById("edit-c-name-" + id);
+    const phoneInput = document.getElementById("edit-c-phone-" + id);
+    const roleInput = document.getElementById("edit-c-role-" + id);
+    const officeInput = document.getElementById("edit-c-office-" + id);
+
+    if (!nameInput || !phoneInput) return;
+    const newName = nameInput.value.trim();
+    const newPhone = phoneInput.value.trim();
+    const newRole = roleInput ? roleInput.value.trim() : "";
+    const newOffice = officeInput ? officeInput.value.trim() : "";
+
+    if (!newName || !newPhone) {
+      alert(currentLang === "hi" ? "कृपया नाम और फोन नंबर दर्ज करें" : "Please enter both name and phone number");
+      return;
+    }
+
+    const rawPhone = newPhone.replace(/[^0-9]/g, "");
+
+    const customIdx = customContacts.findIndex(c => c.id === id);
+    if (customIdx !== -1) {
+      customContacts[customIdx].name = newName;
+      customContacts[customIdx].phone = newPhone;
+      customContacts[customIdx].rawPhone = rawPhone;
+      if (newRole) customContacts[customIdx].role = newRole;
+      if (newOffice) customContacts[customIdx].office = newOffice;
+      try {
+        localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
+      } catch (e) {}
+    } else {
+      saveEditedContact(id, {
+        name: newName,
+        phone: newPhone,
+        rawPhone: rawPhone,
+        role: newRole,
+        office: newOffice
+      });
+    }
+
+    editingContactId = null;
+    renderContacts();
+  };
+
+  window.deleteContact = function(id) {
     const confirmMsg = currentLang === "hi" 
       ? "क्या आप इस संपर्क को हटाना चाहते हैं?" 
       : "Delete this contact?";
     if (!confirm(confirmMsg)) return;
 
-    customContacts = customContacts.filter(c => c.id !== id);
-    try {
-      localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
-    } catch (e) {}
+    const customIdx = customContacts.findIndex(c => c.id === id);
+    if (customIdx !== -1) {
+      customContacts.splice(customIdx, 1);
+      try {
+        localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
+      } catch (e) {}
+    } else {
+      saveDeletedContactId(id);
+    }
+
+    if (editingContactId === id) editingContactId = null;
     renderContacts();
   };
+
+  window.deleteCustomContact = window.deleteContact;
 
   function renderContacts() {
     if (!contactsList) return;
     const subTitle = document.querySelector("#view-contacts .contacts-top-bar div");
     if (subTitle) subTitle.textContent = t("contactsSub");
 
-    let allContacts = [...customContacts, ...CIVIC_AND_TRADE_CONTACTS];
+    const deletedIds = getDeletedContactIds();
+    const editedMap = getEditedContacts();
+
+    // Base contacts with stable IDs and edits
+    const baseContacts = CIVIC_AND_TRADE_CONTACTS.map(c => {
+      const stableId = getContactStableId(c);
+      const edited = editedMap[stableId];
+      if (edited) {
+        return Object.assign({}, c, { id: stableId }, edited);
+      }
+      return Object.assign({}, c, { id: stableId });
+    });
+
+    // Custom contacts
+    const custom = customContacts.map(c => {
+      const edited = editedMap[c.id];
+      if (edited) {
+        return Object.assign({}, c, edited);
+      }
+      return c;
+    });
+
+    let allContacts = [...custom, ...baseContacts].filter(c => !deletedIds.includes(c.id));
+
     let filtered = allContacts;
     if (searchQuery) {
       filtered = filtered.filter(c => {
         const matchName = (c.name || "").toLowerCase().includes(searchQuery);
         const matchRole = (c.role || "").toLowerCase().includes(searchQuery);
         const matchDuty = (c.duty || "").toLowerCase().includes(searchQuery);
+        const matchOffice = (c.office || "").toLowerCase().includes(searchQuery);
         const matchPhone = (c.phone || "").toLowerCase().includes(searchQuery) || (c.rawPhone || "").includes(searchQuery);
-        return matchName || matchRole || matchDuty || matchPhone;
+        return matchName || matchRole || matchDuty || matchOffice || matchPhone;
       });
     }
 
@@ -1930,6 +2071,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     contactsList.innerHTML = filtered.map(c => {
+      if (editingContactId === c.id) {
+        return `
+          <div class="utility-card" id="contact-card-${c.id}">
+            <form class="contact-edit-form" onsubmit="event.preventDefault(); saveEditContact('${c.id}');">
+              <div class="edit-row">
+                <input type="text" id="edit-c-name-${c.id}" class="edit-input" value="${escapeProgressAttr(c.name)}" placeholder="Contact Name" required>
+                <input type="text" id="edit-c-phone-${c.id}" class="edit-input" value="${escapeProgressAttr(c.phone || c.rawPhone)}" placeholder="Phone Number" required>
+              </div>
+              <div class="edit-row">
+                <input type="text" id="edit-c-role-${c.id}" class="edit-input" value="${escapeProgressAttr(c.role || '')}" placeholder="Role / Designation">
+                <input type="text" id="edit-c-office-${c.id}" class="edit-input" value="${escapeProgressAttr(c.office || c.duty || '')}" placeholder="Office / Area">
+              </div>
+              <div class="edit-actions">
+                <button type="button" class="btn-cancel-sm" onclick="cancelEditContact()" title="Cancel">
+                  <span class="material-symbols-rounded">close</span>
+                  <span>Cancel</span>
+                </button>
+                <button type="submit" class="btn-save-sm" title="Save Contact">
+                  <span class="material-symbols-rounded">check</span>
+                  <span>Save</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        `;
+      }
+
       const waMsg = encodeURIComponent(c.customMsg || `Namaste ${c.name} ji, regarding Arjunpuri 1st Link Road...`);
       return `
         <div class="utility-card">
@@ -1938,15 +2106,15 @@ document.addEventListener("DOMContentLoaded", async () => {
               <span class="material-symbols-rounded">${c.icon || "contacts"}</span>
             </div>
             <div>
-              <div class="utility-title">${c.name} ${c.isCustom ? `<span style="font-size: 0.68rem; padding: 2px 6px; background: rgba(234,179,8,0.15); color: var(--gold); border-radius: 4px; font-weight: 700;">Custom</span>` : ''}</div>
-              <div class="utility-desc">${c.role} &bull; ${c.office}</div>
+              <div class="utility-title">${escapeProgressText(c.name)} ${c.isCustom ? `<span style="font-size: 0.68rem; padding: 2px 6px; background: rgba(234,179,8,0.15); color: var(--gold); border-radius: 4px; font-weight: 700;">Custom</span>` : ''}</div>
+              <div class="utility-desc">${escapeProgressText(c.role || '')} &bull; ${escapeProgressText(c.office || c.duty || '')}</div>
             </div>
           </div>
           <div class="row-actions">
             <a href="tel:${c.rawPhone}" class="btn-icon call" title="${t("call")}">
               <span class="material-symbols-rounded">call</span>
             </a>
-            ${c.rawPhone.length > 5 ? `
+            ${c.rawPhone && c.rawPhone.length > 5 ? `
               <a href="sms:${c.rawPhone}?body=${waMsg}" class="btn-icon sms" title="${t("sms")}">
                 <span class="material-symbols-rounded">sms</span>
               </a>
@@ -1954,11 +2122,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ${WA_SVG}
               </a>
             ` : ''}
-            ${c.isCustom ? `
-              <button class="btn-delete-contact" onclick="deleteCustomContact('${c.id}')" title="Delete Contact">
-                <span class="material-symbols-rounded" style="font-size: 17px;">delete</span>
-              </button>
-            ` : ''}
+            <button class="btn-icon edit" onclick="startEditContact('${c.id}')" title="Edit Contact" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
+              <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
+            </button>
+            <button class="btn-delete-contact" onclick="deleteContact('${c.id}')" title="Delete Contact">
+              <span class="material-symbols-rounded" style="font-size: 17px;">delete</span>
+            </button>
           </div>
         </div>
       `;
