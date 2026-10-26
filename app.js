@@ -574,6 +574,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     return fallback;
   }
 
+  function getPlotTenantCount(plot, fallback = 0) {
+    try {
+      const v = localStorage.getItem(`arjunpuri_tenants_${plot}`);
+      if (v !== null) return parseInt(v, 10);
+    } catch (e) {}
+    return fallback;
+  }
+
   function getPlotNote(plot, fallback = "") {
     try {
       const v = localStorage.getItem(`arjunpuri_note_${plot}`);
@@ -592,9 +600,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     let nextVal = Math.max(0, current + delta);
     el.textContent = nextVal;
 
-    try {
-      localStorage.setItem(`arjunpuri_warn_${plot}`, nextVal.toString());
-    } catch (e) {}
+    if (type === "warnings") {
+      try {
+        localStorage.setItem(`arjunpuri_warn_${plot}`, nextVal.toString());
+      } catch (e) {}
+    } else if (type === "tenants") {
+      try {
+        localStorage.setItem(`arjunpuri_tenants_${plot}`, nextVal.toString());
+      } catch (e) {}
+      const resident = RESIDENTS_DATA.find(r => r.plot === plot);
+      if (resident) {
+        resident.tenantCount = nextVal;
+        resident.hasTenant = nextVal > 0;
+      }
+      const badgeEl = document.getElementById(`badge-tenant-${safePlot}`);
+      if (badgeEl) {
+        if (nextVal > 0) {
+          badgeEl.textContent = `${nextVal} ${t("tenantsText")}`;
+          badgeEl.style.display = "inline-flex";
+        } else {
+          badgeEl.style.display = "none";
+        }
+      }
+    }
   };
 
   window.saveNote = function(plot) {
@@ -1057,6 +1085,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     RESIDENTS_DATA.forEach(r => {
       r.vehicles = getPlotVehicles(r.plot, r.vehicles || []);
+      const savedTenants = getPlotTenantCount(r.plot, null);
+      if (savedTenants !== null) {
+        r.tenantCount = savedTenants;
+        r.hasTenant = savedTenants > 0;
+      }
     });
 
     let filtered = RESIDENTS_DATA.filter(r => {
@@ -1130,6 +1163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         : `<div class="row-avatar">${initials}</div>`;
 
       const nuisanceAlertVal = getPlotNuisance(r.plot, r.nuisanceAlert || "");
+      const tenantCountVal = getPlotTenantCount(r.plot, r.tenantCount || 0);
 
       // Badges & Filter callouts
       let badgesHtml = '';
@@ -1154,8 +1188,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           badgesHtml += `<span class="icon-nuisance" title="${nuisanceAlertVal}"><span class="material-symbols-rounded">warning</span></span>`;
         }
         if (r.hasTenant) {
-          const tenantStr = r.tenantCount ? `${r.tenantCount} ${t("tenantsText")}` : t("tenantsText");
-          badgesHtml += `<span class="badge-tenant">${tenantStr}</span>`;
+          const tenantStr = tenantCountVal ? `${tenantCountVal} ${t("tenantsText")}` : t("tenantsText");
+          badgesHtml += `<span class="badge-tenant" id="badge-tenant-${safePlot}">${tenantStr}</span>`;
+        } else {
+          badgesHtml += `<span class="badge-tenant" id="badge-tenant-${safePlot}" style="display: none;">0 ${t("tenantsText")}</span>`;
         }
       }
 
@@ -1205,7 +1241,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           <!-- Accordion Details -->
           <div class="row-details">
-            <!-- Compact Warning Counter -->
+            <!-- Compact Governance Counters (Warnings & Tenants) -->
             <div class="governance-counters" onclick="event.stopPropagation()">
               <div class="counter-box warning-box">
                 <span class="counter-label">${t("warnings")}</span>
@@ -1215,6 +1251,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                   </button>
                   <span class="stepper-value" id="val-warnings-${safePlot}">${warningsVal}</span>
                   <button class="stepper-btn plus" onclick="updateCounter('${r.plot}', 'warnings', 1)" title="Increase Warnings">
+                    <span class="material-symbols-rounded" style="font-size: 13px;">add</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="counter-box tenant-counter-box">
+                <span class="counter-label">${t("tenantsText")}</span>
+                <div class="stepper-controls">
+                  <button class="stepper-btn minus" onclick="updateCounter('${r.plot}', 'tenants', -1)" title="Decrease Tenants">
+                    <span class="material-symbols-rounded" style="font-size: 13px;">remove</span>
+                  </button>
+                  <span class="stepper-value" id="val-tenants-${safePlot}">${tenantCountVal}</span>
+                  <button class="stepper-btn plus" onclick="updateCounter('${r.plot}', 'tenants', 1)" title="Increase Tenants">
                     <span class="material-symbols-rounded" style="font-size: 13px;">add</span>
                   </button>
                 </div>

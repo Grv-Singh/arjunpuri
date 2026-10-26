@@ -1548,7 +1548,24 @@ body {
 .governance-counters {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin: 0.45rem 0 0.25rem 0;
+}
+
+.counter-box.tenant-counter-box {
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.counter-box.tenant-counter-box .counter-label {
+  color: var(--cyan);
+}
+
+.counter-box.tenant-counter-box .stepper-btn:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .counter-box {
