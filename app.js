@@ -1585,9 +1585,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <span class="material-symbols-rounded">call</span>
                           </a>
                           ${cleanPhone.length > 5 ? `
-                            <a href="sms:${cleanPhone}?body=${mMsg}" class="btn-icon sms" title="${t("sms")} ${m.name}">
-                              <span class="material-symbols-rounded">sms</span>
-                            </a>
                             <a href="https://wa.me/${cleanPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")} ${m.name}">
                               ${WA_SVG}
                             </a>
@@ -2288,9 +2285,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               <span class="material-symbols-rounded">call</span>
             </a>
             ${c.rawPhone && c.rawPhone.length > 5 ? `
-              <a href="sms:${c.rawPhone}?body=${waMsg}" class="btn-icon sms" title="${t("sms")}">
-                <span class="material-symbols-rounded">sms</span>
-              </a>
               <a href="https://wa.me/${c.rawPhone}?text=${waMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")}">
                 ${WA_SVG}
               </a>
