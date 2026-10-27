@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261027_0546">
+  <link rel="stylesheet" href="style.css?v=20261027_0615">
 </head>
 <body>
 
@@ -130,7 +130,7 @@
 
     <!-- VIEW 2: 1-Click Grievance Launchers -->
     <section id="view-grievances" class="view-panel" style="display: none;">
-      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;" data-i18n="grievanceSub">
         1-Click Government Grievance Portals (बिजली, पानी, नगर निगम):
       </div>
       <div id="grievance-list">
@@ -141,12 +141,12 @@
     <!-- VIEW 3: Authorities & Help Directory -->
     <section id="view-contacts" class="view-panel" style="display: none;">
       <div class="contacts-top-bar">
-        <div style="font-size: 0.85rem; color: var(--text-muted);">
+        <div style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="contactsSub">
           पुलिस, आपातकालीन व स्थानीय मिस्त्री / घरेलू सहायता:
         </div>
         <button id="btn-toggle-add-contact" class="btn-add-contact" onclick="toggleAddContactForm()">
           <span class="material-symbols-rounded">person_add</span>
-          <span id="label-add-contact">नया संपर्क जोड़ें</span>
+          <span id="label-add-contact" data-i18n="addContactBtn">नया संपर्क जोड़ें</span>
         </button>
       </div>
 
@@ -154,44 +154,44 @@
       <div id="contact-form-card" class="contact-form-card" style="display: none;">
         <div class="contact-form-title">
           <span class="material-symbols-rounded" style="color: var(--gold); font-size: 18px;">person_add</span>
-          <span>Add New Contact / नया संपर्क</span>
+          <span data-i18n="addContactFormTitle">नया संपर्क जोड़ें</span>
         </div>
         <form id="contact-form" onsubmit="handleAddContactSubmit(event)">
           <div class="contact-form-row">
             <div class="form-group" style="flex: 2;">
-              <label for="contact-name">Name / नाम:</label>
-              <input type="text" id="contact-name" class="progress-input" placeholder="उदा. Ramesh Kumar (प्लंबर)" required>
+              <label for="contact-name" data-i18n="contactNameLabel">नाम:</label>
+              <input type="text" id="contact-name" class="progress-input" data-i18n-placeholder="contactNamePlaceholder" placeholder="उदा. Ramesh Kumar (प्लंबर)" required>
             </div>
             <div class="form-group" style="flex: 1.5;">
-              <label for="contact-role">Role / सेवा / पद:</label>
-              <input type="text" id="contact-role" class="progress-input" placeholder="उदा. Plumber / मिस्त्री" required>
+              <label for="contact-role" data-i18n="contactRoleLabel">सेवा / पद:</label>
+              <input type="text" id="contact-role" class="progress-input" data-i18n-placeholder="contactRolePlaceholder" placeholder="उदा. Plumber / मिस्त्री" required>
             </div>
           </div>
           <div class="contact-form-row">
             <div class="form-group" style="flex: 2;">
-              <label for="contact-phone">Phone / मोबाइल नंबर:</label>
-              <input type="tel" id="contact-phone" class="progress-input" placeholder="+91 98765 43210" required>
+              <label for="contact-phone" data-i18n="contactPhoneLabel">मोबाइल नंबर:</label>
+              <input type="tel" id="contact-phone" class="progress-input" data-i18n-placeholder="contactPhonePlaceholder" placeholder="+91 98765 43210" required>
             </div>
             <div class="form-group" style="flex: 1.5;">
-              <label for="contact-category">Category / श्रेणी:</label>
+              <label for="contact-category" data-i18n="contactCatLabel">श्रेणी:</label>
               <select id="contact-category" class="progress-input">
-                <option value="trade">Trades & Domestic (मिस्त्री / घरेलू)</option>
-                <option value="authority">Civic & Authority (अधिकारी)</option>
+                <option value="trade" data-i18n="catTrades">Trades & Domestic (मिस्त्री / घरेलू)</option>
+                <option value="authority" data-i18n="catAuthorities">Civic & Authority (अधिकारी)</option>
               </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-duty">Duty / Description (कार्य विवरण):</label>
-            <input type="text" id="contact-duty" class="progress-input" placeholder="उदा. पाइप फिटिंग, नल रिपेयर, नाली लीकेज">
+            <label for="contact-duty" data-i18n="contactDutyLabel">कार्य विवरण / क्षेत्र:</label>
+            <input type="text" id="contact-duty" class="progress-input" data-i18n-placeholder="contactDutyPlaceholder" placeholder="उदा. पाइप फिटिंग, नल रिपेयर, नाली लीकेज">
           </div>
           <div class="contact-form-footer">
             <button type="submit" class="btn-submit-contact">
               <span class="material-symbols-rounded" style="font-size: 16px;">check</span>
-              <span>Save Contact / सहेजें</span>
+              <span data-i18n="saveContactBtn">सहेजें</span>
             </button>
             <button type="button" class="btn-cancel-contact" onclick="toggleAddContactForm(false)">
               <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
-              <span>Cancel / रद्द करें</span>
+              <span data-i18n="cancelBtn">रद्द करें</span>
             </button>
           </div>
         </form>
@@ -223,21 +223,21 @@
             </div>
             <div class="form-group" style="flex: 2;">
               <label for="progress-title" data-i18n="progressTitleLabel">Milestone Title:</label>
-              <input type="text" id="progress-title" class="progress-input" placeholder="e.g. Street LED Light Installed" required>
+              <input type="text" id="progress-title" class="progress-input" data-i18n-placeholder="progressTitlePlaceholder" placeholder="e.g. Street LED Light Installed" required>
             </div>
           </div>
           <div class="form-group">
             <label for="progress-note" data-i18n="progressNoteLabel">Description / Details:</label>
-            <textarea id="progress-note" class="progress-textarea" placeholder="Enter progress details..." rows="2" required></textarea>
+            <textarea id="progress-note" class="progress-textarea" data-i18n-placeholder="progressNotePlaceholder" placeholder="Enter progress details..." rows="2" required></textarea>
           </div>
           <div class="progress-form-footer">
             <div class="progress-media-buttons">
-              <label class="btn-progress-file camera" title="Click with Camera">
+              <label class="btn-progress-file camera" data-i18n-title="cameraTitle" title="Click with Camera">
                 <input type="file" id="progress-file-camera" accept="image/*" capture="environment" style="display: none;" onchange="handleProgressFileSelect(this)">
                 <span class="material-symbols-rounded" style="font-size: 16px;">photo_camera</span>
-                <span>Camera</span>
+                <span data-i18n="camera">Camera</span>
               </label>
-              <label class="btn-progress-file" title="Upload from Device / Gallery">
+              <label class="btn-progress-file" data-i18n-title="uploadTitle" title="Upload from Device / Gallery">
                 <input type="file" id="progress-file" accept="image/*" style="display: none;" onchange="handleProgressFileSelect(this)">
                 <span class="material-symbols-rounded" style="font-size: 16px;">upload_file</span>
                 <span id="progress-file-label" data-i18n="progressUploadPhoto">Attach Photo</span>
@@ -340,7 +340,7 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261027_0546"></script>
-  <script src="app.js?v=20261027_0546"></script>
+  <script src="data.js?v=20261027_0615"></script>
+  <script src="app.js?v=20261027_0615"></script>
 </body>
 </html>

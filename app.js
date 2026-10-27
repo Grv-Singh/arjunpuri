@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const I18N = {
     en: {
       brandSub: "Link Road • Ward 145 • Jaipur 302015",
+      verifiedWard: "Verified Ward 145",
       plotsCount: "Plots",
       searchPlaceholder: "Search: Plot, Name, Vehicle No., or Phone...",
       allPlots: "Plots",
@@ -56,40 +57,74 @@ document.addEventListener("DOMContentLoaded", async () => {
       verified: "Police Verified",
       dockDirectory: "Directory",
       dockProgress: "Progress",
-      dockGrievance: "Grievance",
+      dockGrievance: "Grievances",
       dockContacts: "Contacts",
       progressHeading: "Colony Progress & Milestones",
       progressSub: "Timeline of community progress, civic works, and key milestones:",
       addProgressTitle: "Add New Progress Milestone",
       progressDateLabel: "Date:",
       progressTitleLabel: "Milestone Title:",
+      progressTitlePlaceholder: "e.g. Street LED Light Installed",
       progressNoteLabel: "Description / Details:",
+      progressNotePlaceholder: "Enter progress details...",
       progressUploadPhoto: "Attach Photo",
       progressSubmitBtn: "Add to Timeline",
-      grievanceSub: "1-Click Government Grievance Portals (Electricity, Water, Nagar Nigam):",
+      grievanceSub: "1-Click Government Grievance Portals (Electricity, Water, Municipal):",
       contactsSub: "Police Emergency, Helplines, Trades & Local Services:",
+      addContactBtn: "Add New Contact",
+      closeFormBtn: "Close Form",
+      addContactFormTitle: "Add New Contact",
+      contactNameLabel: "Name:",
+      contactNamePlaceholder: "e.g. Ramesh Kumar (Plumber)",
+      contactRoleLabel: "Role / Service:",
+      contactRolePlaceholder: "e.g. Plumber / Electrician",
+      contactPhoneLabel: "Phone Number:",
+      contactPhonePlaceholder: "+91 98765 43210",
+      contactCatLabel: "Category:",
+      catTrades: "Trades & Domestic Services",
+      catAuthorities: "Civic & Official Authorities",
+      contactDutyLabel: "Duty / Service Details:",
+      contactDutyPlaceholder: "e.g. Pipe fitting, tap repair, naali leakage",
+      saveContactBtn: "Save Contact",
+      cancelBtn: "Cancel",
+      saveBtn: "Save",
       noPlotsFound: "No matching plots found",
       noPlotsHint: "Search by plot (20, 31), name, or vehicle number",
       noContactsFound: "No matching contacts",
       warnings: "Warnings",
       issues: "Issues",
+      camera: "Camera",
+      upload: "Upload",
       notes: "Notes:",
       save: "Save",
       saved: "Saved!",
-      addMedia: "Add",
-      uploadTitle: "Upload Photo/Video or Take Picture",
+      cancel: "Cancel",
+      edit: "Edit",
+      delete: "Delete",
+      add: "Add",
+      addMedia: "Upload",
+      uploadTitle: "Upload Photo/Video from Device",
+      cameraTitle: "Click Photo/Video with Camera",
       contactsHeader: "Contacts:",
+      addContactTitle: "Add Contact to Plot",
+      noMembers: "No contacts registered (Click Add)",
+      noVehicles: "No registered vehicles",
+      addVehicleTitle: "Add Vehicle to Plot",
+      vehiclePlaceholder: "e.g. RJ 14 CQ 1234 (Model)",
+      namePlaceholder: "Name",
+      phonePlaceholder: "Phone Number",
+      rolePlaceholder: "Role / Status (e.g. Owner, Son, Tenant)",
+      officePlaceholder: "Office / Area",
       status: "Status:",
       tenantVerification: "Tenant Verification:",
       statusVerified: "Verified",
       statusPending: "Pending",
       carsVehicles: "Cars / Vehicles:",
-      atkLabel: "Atikraman (अतिक्रमण):",
+      atkLabel: "Encroachment:",
       nuisanceLabel: "Public Nuisance Alert:",
       nuisancePlaceholder: "Add or update public nuisance alert for this plot...",
       notePlaceholder: "Add or update notes for this plot...",
       call: "Call",
-      sms: "SMS",
       whatsapp: "WhatsApp",
       lodge: "Lodge",
       relation_Resident_Owner: "Resident Owner",
@@ -98,9 +133,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       relation_Family_Occupied: "Family Occupied",
       relation_Resident_Family: "Resident Family",
       relation_Corner_Plot: "Resident Owner & 2 Tenants (Corner Plot)",
+      relation_Vacant: "Vacant Plot",
       tenantsText: "Tenants",
       ownerOccupied: "Owner Occupied",
       cleanRecord: "Clean Record",
+      customBadge: "Custom",
+      statusCompleted: "Completed",
+      statusSubmitted: "Submitted",
+      statusLogged: "Community Logged",
+      editMilestoneTitle: "Edit Milestone",
+      noMilestonesFound: "No progress milestones found",
       notifBannerTitle: "Stay Updated on Arjunpuri 1st",
       notifBannerDesc: "Enable notifications to receive instant updates on colony development milestones, maintenance alerts & emergency notices.",
       notifAllowBtn: "Allow Notifications",
@@ -110,6 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     },
     hi: {
       brandSub: "लिंक रोड • वार्ड 145 • जयपुर 302015",
+      verifiedWard: "सत्यापित वार्ड 145",
       plotsCount: "प्लॉट",
       searchPlaceholder: "खोजें: प्लॉट, नाम, गाड़ी नंबर, या मोबाइल...",
       allPlots: "प्लॉट",
@@ -127,33 +170,67 @@ document.addEventListener("DOMContentLoaded", async () => {
       addProgressTitle: "नया प्रगति कार्य / माइलस्टोन जोड़ें",
       progressDateLabel: "दिनांक:",
       progressTitleLabel: "कार्य शीर्षक:",
+      progressTitlePlaceholder: "उदा. स्ट्रीट एलईडी लाइट लगाई गई",
       progressNoteLabel: "विवरण / जानकारी:",
+      progressNotePlaceholder: "प्रगति कार्य का विवरण दर्ज करें...",
       progressUploadPhoto: "फोटो जोड़ें",
       progressSubmitBtn: "टाइमलाइन में जोड़ें",
       grievanceSub: "1-क्लिक सरकारी शिकायत पोर्टल (बिजली, पानी, नगर निगम):",
       contactsSub: "पुलिस, आपातकालीन व स्थानीय मिस्त्री / घरेलू सहायता:",
+      addContactBtn: "नया संपर्क जोड़ें",
+      closeFormBtn: "फॉर्म बंद करें",
+      addContactFormTitle: "नया संपर्क जोड़ें",
+      contactNameLabel: "नाम:",
+      contactNamePlaceholder: "उदा. रमेश कुमार (प्लंबर)",
+      contactRoleLabel: "सेवा / पद:",
+      contactRolePlaceholder: "उदा. प्लंबर / मिस्त्री",
+      contactPhoneLabel: "मोबाइल नंबर:",
+      contactPhonePlaceholder: "+91 98765 43210",
+      contactCatLabel: "श्रेणी:",
+      catTrades: "मिस्त्री / घरेलू सेवा",
+      catAuthorities: "अधिकारी / प्रशासनिक",
+      contactDutyLabel: "कार्य विवरण / क्षेत्र:",
+      contactDutyPlaceholder: "उदा. पाइप फिटिंग, नल रिपेयर, नाली लीकेज",
+      saveContactBtn: "संपर्क सहेजें",
+      cancelBtn: "रद्द करें",
+      saveBtn: "सहेजें",
       noPlotsFound: "कोई प्लॉट नहीं मिला",
       noPlotsHint: "प्लॉट (20, 31), नाम, या वाहन नंबर से खोजें",
       noContactsFound: "कोई संपर्क नहीं मिला",
       warnings: "चेतावनी",
       issues: "समस्याएं",
+      camera: "कैमरा",
+      upload: "अपलोड",
       notes: "टिप्पणी:",
       save: "सहेजें",
       saved: "सहेजा गया!",
-      addMedia: "जोड़ें",
-      uploadTitle: "फोटो/वीडियो अपलोड करें या सीधे फोटो खींचें",
+      cancel: "रद्द करें",
+      edit: "संपादित करें",
+      delete: "हटाएं",
+      add: "जोड़ें",
+      addMedia: "अपलोड",
+      uploadTitle: "डिवाइस से फोटो/वीडियो अपलोड करें",
+      cameraTitle: "कैमरे से सीधे फोटो खींचें",
       contactsHeader: "संपर्क:",
+      addContactTitle: "प्लॉट में संपर्क जोड़ें",
+      noMembers: "कोई संपर्क दर्ज नहीं (जोड़ें पर क्लिक करें)",
+      noVehicles: "कोई वाहन दर्ज नहीं",
+      addVehicleTitle: "प्लॉट में वाहन जोड़ें",
+      vehiclePlaceholder: "उदा. RJ 14 CQ 1234 (मॉडल)",
+      namePlaceholder: "नाम",
+      phonePlaceholder: "मोबाइल नंबर",
+      rolePlaceholder: "पद / स्थिति (उदा. मालिक, पुत्र, किरायेदार)",
+      officePlaceholder: "कार्यालय / क्षेत्र",
       status: "स्थिति:",
       tenantVerification: "किरायेदार सत्यापन:",
       statusVerified: "सत्यापित",
       statusPending: "लंबित",
       carsVehicles: "कार / वाहन:",
-      atkLabel: "अतिक्रमण (Atikraman):",
+      atkLabel: "अतिक्रमण:",
       nuisanceLabel: "सार्वजनिक उपद्रव चेतावनी:",
       nuisancePlaceholder: "इस प्लॉट के लिए सार्वजनिक उपद्रव या शिकायत दर्ज करें...",
       notePlaceholder: "इस प्लॉट के लिए टिप्पणी दर्ज या संपादित करें...",
       call: "कॉल करें",
-      sms: "एसएमएस",
       whatsapp: "व्हाट्सएप",
       lodge: "दर्ज करें",
       relation_Resident_Owner: "निवासी मालिक",
@@ -162,9 +239,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       relation_Family_Occupied: "पारिवारिक निवास",
       relation_Resident_Family: "निवासी परिवार",
       relation_Corner_Plot: "निवासी मालिक व 2 किरायेदार (कॉर्नर प्लॉट)",
+      relation_Vacant: "खाली प्लॉट",
       tenantsText: "किरायेदार",
       ownerOccupied: "मालिक का निवास",
       cleanRecord: "स्वच्छ रिकॉर्ड",
+      customBadge: "कस्टम",
+      statusCompleted: "पूर्ण",
+      statusSubmitted: "दर्ज",
+      statusLogged: "नागरिक प्रविष्टि",
+      editMilestoneTitle: "माइलस्टोन संपादित करें",
+      noMilestonesFound: "कोई प्रगति माइलस्टोन नहीं मिला",
       notifBannerTitle: "अर्जुनपुरी 1st के नए अपडेट्स प्राप्त करें",
       notifBannerDesc: "कॉलोनी विकास कार्यों, प्रगति अपडेट्स और आपातकालीन सूचनाओं के लिए नोटिफिकेशन की अनुमति दें।",
       notifAllowBtn: "सूचनाएं चालू करें",
@@ -192,7 +276,28 @@ document.addEventListener("DOMContentLoaded", async () => {
       langToggleBtn.setAttribute("title", lang === "hi" ? "Switch to English" : "हिंदी में देखें");
     }
 
-    // Static DOM translations
+    // Translate all elements with data-i18n
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      const val = t(key);
+      if (val) el.textContent = val;
+    });
+
+    // Translate all elements with data-i18n-placeholder
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      const val = t(key);
+      if (val) el.setAttribute("placeholder", val);
+    });
+
+    // Translate all elements with data-i18n-title
+    document.querySelectorAll("[data-i18n-title]").forEach(el => {
+      const key = el.getAttribute("data-i18n-title");
+      const val = t(key);
+      if (val) el.setAttribute("title", val);
+    });
+
+    // Brand sub
     const brandSub = document.querySelector(".brand-titles span");
     if (brandSub) brandSub.innerHTML = t("brandSub");
 
@@ -1405,7 +1510,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span class="issues-count-badge">${issuesList.length}</span>
                 </div>
                 <div class="issues-header-actions">
-                  <label class="btn-add-issue camera" title="Click with Camera">
+                  <label class="btn-add-issue camera" title="${t("cameraTitle")}">
                     <input 
                       type="file" 
                       accept="image/*,video/*" 
@@ -1414,7 +1519,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                       onchange="handleIssueUpload('${r.plot}', this)"
                     >
                     <span class="material-symbols-rounded" style="font-size: 14px;">photo_camera</span>
-                    <span>Camera</span>
+                    <span>${t("camera")}</span>
                   </label>
                   <label class="btn-add-issue" title="${t("uploadTitle")}">
                     <input 
@@ -1459,7 +1564,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span class="material-symbols-rounded" style="font-size: 16px; color: var(--gold);">edit_note</span>
                   <span>${t("notes")}</span>
                 </div>
-                <button class="btn-save-note" onclick="saveNote('${r.plot}')" title="Save Note">
+                <button class="btn-save-note" onclick="saveNote('${r.plot}')" title="${t("save")}">
                   <span class="material-symbols-rounded" style="font-size: 14px;">check</span>
                   <span>${t("save")}</span>
                 </button>
@@ -1482,14 +1587,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span>${t("carsVehicles")}</span>
                   <span class="vehicles-count-badge" id="vehicles-count-${safePlot}">(${(r.vehicles || []).length})</span>
                 </div>
-                <button class="btn-add-vehicle" onclick="addVehicle('${r.plot}')" title="Add Vehicle">
+                <button class="btn-add-vehicle" onclick="addVehicle('${r.plot}')" title="${t("addVehicleTitle")}">
                   <span class="material-symbols-rounded">add</span>
-                  <span>Add</span>
+                  <span>${t("add")}</span>
                 </button>
               </div>
               <div class="vehicles-list" id="vehicles-list-${safePlot}">
                 ${(!r.vehicles || r.vehicles.length === 0) ? `
-                  <div class="no-vehicles-text">${currentLang === "hi" ? "कोई वाहन दर्ज नहीं" : "No registered vehicles"}</div>
+                  <div class="no-vehicles-text">${t("noVehicles")}</div>
                 ` : r.vehicles.map((v, idx) => `
                   <div class="vehicle-item-row" id="vehicle-row-${safePlot}-${idx}">
                     <span class="material-symbols-rounded vehicle-car-icon">directions_car</span>
@@ -1498,15 +1603,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                       class="vehicle-input" 
                       id="vehicle-input-${safePlot}-${idx}" 
                       value="${v.replace(/"/g, '&quot;')}" 
-                      placeholder="e.g. RJ 14 CQ 1234 (Model)"
+                      placeholder="${t("vehiclePlaceholder")}"
                       oninput="handleVehicleInput('${r.plot}', ${idx}, this.value)"
                       onchange="saveVehicleEdit('${r.plot}', ${idx})"
                       onkeydown="if(event.key==='Enter'){saveVehicleEdit('${r.plot}', ${idx}); this.blur();}"
                     />
-                    <button class="btn-vehicle-action save" onclick="saveVehicleEdit('${r.plot}', ${idx})" title="Save">
+                    <button class="btn-vehicle-action save" onclick="saveVehicleEdit('${r.plot}', ${idx})" title="${t("save")}">
                       <span class="material-symbols-rounded">check</span>
                     </button>
-                    <button class="btn-vehicle-action delete" onclick="deleteVehicle('${r.plot}', ${idx})" title="Delete">
+                    <button class="btn-vehicle-action delete" onclick="deleteVehicle('${r.plot}', ${idx})" title="${t("delete")}">
                       <span class="material-symbols-rounded">delete</span>
                     </button>
                   </div>
@@ -1522,14 +1627,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span>${t("contactsHeader")}</span>
                   <span class="members-count-badge" id="members-count-${safePlot}">(${(r.membersList || []).length})</span>
                 </div>
-                <button class="btn-add-contact-plot" onclick="addPlotContact('${r.plot}')" title="Add Contact">
+                <button class="btn-add-contact-plot" onclick="addPlotContact('${r.plot}')" title="${t("addContactTitle")}">
                   <span class="material-symbols-rounded">person_add</span>
-                  <span>Add</span>
+                  <span>${t("add")}</span>
                 </button>
               </div>
               <div class="members-grid">
                 ${(!r.membersList || r.membersList.length === 0) ? `
-                  <div class="no-members-text">${currentLang === "hi" ? "कोई संपर्क दर्ज नहीं (Add पर क्लिक करें)" : "No contacts registered (Click Add)"}</div>
+                  <div class="no-members-text">${t("noMembers")}</div>
                 ` : r.membersList.map((m, idx) => {
                   const isEditing = editingPlotContactKey === `${r.plot}_${idx}`;
                   if (isEditing) {
@@ -1537,20 +1642,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                       <div class="member-card editing" id="member-card-${safePlot}-${idx}">
                         <div class="plot-contact-edit-form">
                           <div class="p-edit-row">
-                            <input type="text" id="plot-c-name-${safePlot}-${idx}" class="p-edit-input" value="${(m.name || '').replace(/"/g, '&quot;')}" placeholder="Name (नाम)" required>
-                            <input type="tel" id="plot-c-phone-${safePlot}-${idx}" class="p-edit-input" value="${(m.phone || '').replace(/"/g, '&quot;')}" placeholder="Phone (उदा. +91 98280 12345)" required>
+                            <input type="text" id="plot-c-name-${safePlot}-${idx}" class="p-edit-input" value="${(m.name || '').replace(/"/g, '&quot;')}" placeholder="${t("namePlaceholder")}" required>
+                            <input type="tel" id="plot-c-phone-${safePlot}-${idx}" class="p-edit-input" value="${(m.phone || '').replace(/"/g, '&quot;')}" placeholder="${t("phonePlaceholder")}" required>
                           </div>
                           <div class="p-edit-row">
-                            <input type="text" id="plot-c-role-${safePlot}-${idx}" class="p-edit-input" value="${(m.role || '').replace(/"/g, '&quot;')}" placeholder="Role / Status (उदा. Owner, Son, Tenant)">
+                            <input type="text" id="plot-c-role-${safePlot}-${idx}" class="p-edit-input" value="${(m.role || '').replace(/"/g, '&quot;')}" placeholder="${t("rolePlaceholder")}">
                           </div>
                           <div class="p-edit-actions">
-                            <button type="button" class="btn-cancel-sm" onclick="cancelEditPlotContact()" title="Cancel">
+                            <button type="button" class="btn-cancel-sm" onclick="cancelEditPlotContact()" title="${t("cancel")}">
                               <span class="material-symbols-rounded">close</span>
-                              <span>Cancel</span>
+                              <span>${t("cancel")}</span>
                             </button>
-                            <button type="button" class="btn-save-sm" onclick="savePlotContactEdit('${r.plot}', ${idx})" title="Save Contact">
+                            <button type="button" class="btn-save-sm" onclick="savePlotContactEdit('${r.plot}', ${idx})" title="${t("save")}">
                               <span class="material-symbols-rounded">check</span>
-                              <span>Save</span>
+                              <span>${t("save")}</span>
                             </button>
                           </div>
                         </div>
@@ -1590,10 +1695,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             </a>
                           ` : ''}
                         ` : ''}
-                        <button class="btn-icon edit" onclick="startEditPlotContact('${r.plot}', ${idx})" title="Edit Contact" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
+                        <button class="btn-icon edit" onclick="startEditPlotContact('${r.plot}', ${idx})" title="${t("edit")}" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
                           <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
                         </button>
-                        <button class="btn-icon delete" onclick="deletePlotContact('${r.plot}', ${idx})" title="Delete Contact" style="background: rgba(244,63,94,0.1); color: var(--rose); border: 1px solid rgba(244,63,94,0.25);">
+                        <button class="btn-icon delete" onclick="deletePlotContact('${r.plot}', ${idx})" title="${t("delete")}" style="background: rgba(244,63,94,0.1); color: var(--rose); border: 1px solid rgba(244,63,94,0.25);">
                           <span class="material-symbols-rounded" style="font-size: 16px;">delete</span>
                         </button>
                       </div>
@@ -1639,7 +1744,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span class="material-symbols-rounded" style="font-size: 16px; color: var(--gold);">warning</span>
                   <span>${t("nuisanceLabel")}</span>
                 </div>
-                <button class="btn-save-note" onclick="saveNuisance('${r.plot}')" title="Save Nuisance Alert">
+                <button class="btn-save-note" onclick="saveNuisance('${r.plot}')" title="${t("save")}">
                   <span class="material-symbols-rounded" style="font-size: 14px;">check</span>
                   <span>${t("save")}</span>
                 </button>
@@ -1882,7 +1987,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       progressTimelineList.innerHTML = `
         <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
           <span class="material-symbols-rounded" style="font-size: 38px; color: var(--text-dim); margin-bottom: 0.4rem;">history_toggle_off</span>
-          <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">${currentLang === "hi" ? "कोई प्रगति माइलस्टोन नहीं मिला" : "No progress milestones found"}</p>
+          <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">${t("noMilestonesFound")}</p>
         </div>
       `;
       return;
@@ -1899,20 +2004,20 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="timeline-inline-edit" onclick="event.stopPropagation()">
                 <div style="font-size: 0.76rem; font-weight: 700; color: var(--gold); margin-bottom: 0.15rem;">
                   <span class="material-symbols-rounded" style="font-size: 14px; vertical-align: middle;">edit</span>
-                  ${currentLang === "hi" ? "माइलस्टोन संपादित करें" : "Edit Milestone"}
+                  ${t("editMilestoneTitle")}
                 </div>
                 <div class="inline-edit-row">
                   <input type="date" class="progress-input-sm" id="edit-prog-date-${m.id}" value="${m.date}">
-                  <input type="text" class="progress-input-sm" id="edit-prog-status-${m.id}" value="${escapeProgressAttr(m.status || 'Completed')}" placeholder="Status">
+                  <input type="text" class="progress-input-sm" id="edit-prog-status-${m.id}" value="${escapeProgressAttr(m.status || 'Completed')}" placeholder="${t("status")}">
                 </div>
-                <input type="text" class="progress-input-sm" id="edit-prog-title-${m.id}" value="${escapeProgressAttr(m.title)}" placeholder="Milestone Title">
-                <textarea class="progress-textarea-sm" id="edit-prog-note-${m.id}" rows="3" placeholder="Milestone Details">${escapeProgressText(m.note)}</textarea>
+                <input type="text" class="progress-input-sm" id="edit-prog-title-${m.id}" value="${escapeProgressAttr(m.title)}" placeholder="${t("progressTitleLabel")}">
+                <textarea class="progress-textarea-sm" id="edit-prog-note-${m.id}" rows="3" placeholder="${t("progressNoteLabel")}">${escapeProgressText(m.note)}</textarea>
                 <div class="inline-edit-actions">
-                  <button class="btn-progress-save" onclick="saveEditProgress('${m.id}')">
-                    <span class="material-symbols-rounded" style="font-size: 14px;">check</span> ${currentLang === "hi" ? "सहेजें" : "Save"}
+                  <button class="btn-progress-save" onclick="saveEditProgress('${m.id}')" title="${t("save")}">
+                    <span class="material-symbols-rounded" style="font-size: 14px;">check</span> ${t("save")}
                   </button>
-                  <button class="btn-progress-cancel" onclick="cancelEditProgress()">
-                    <span class="material-symbols-rounded" style="font-size: 14px;">close</span> ${currentLang === "hi" ? "रद्द करें" : "Cancel"}
+                  <button class="btn-progress-cancel" onclick="cancelEditProgress()" title="${t("cancel")}">
+                    <span class="material-symbols-rounded" style="font-size: 14px;">close</span> ${t("cancel")}
                   </button>
                 </div>
               </div>
@@ -1921,6 +2026,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
       }
 
+      let statusBadgeText = m.status || "Completed";
+      if (statusBadgeText === "Completed") statusBadgeText = t("statusCompleted");
+      else if (statusBadgeText === "Submitted") statusBadgeText = t("statusSubmitted");
+      else if (statusBadgeText === "Community Logged") statusBadgeText = t("statusLogged");
+
       return `
         <div class="timeline-item" id="milestone-${m.id}">
           <div class="timeline-marker"></div>
@@ -1928,13 +2038,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             <div class="timeline-top-row">
               <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
                 <span class="timeline-date-badge">${m.date}</span>
-                <span class="timeline-status-badge">${m.status || "Completed"}</span>
+                <span class="timeline-status-badge">${statusBadgeText}</span>
               </div>
               <div class="timeline-card-actions" onclick="event.stopPropagation()">
-                <button class="btn-card-action edit" onclick="startEditProgress('${m.id}')" title="${currentLang === "hi" ? "संपादित करें" : "Edit"}">
+                <button class="btn-card-action edit" onclick="startEditProgress('${m.id}')" title="${t("edit")}">
                   <span class="material-symbols-rounded">edit</span>
                 </button>
-                <button class="btn-card-action delete" onclick="deleteProgress('${m.id}')" title="${currentLang === "hi" ? "हटाएं" : "Delete"}">
+                <button class="btn-card-action delete" onclick="deleteProgress('${m.id}')" title="${t("delete")}">
                   <span class="material-symbols-rounded">delete</span>
                 </button>
               </div>
@@ -2246,21 +2356,21 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="utility-card" id="contact-card-${c.id}">
             <form class="contact-edit-form" onsubmit="event.preventDefault(); saveEditContact('${c.id}');">
               <div class="edit-row">
-                <input type="text" id="edit-c-name-${c.id}" class="edit-input" value="${escapeProgressAttr(c.name)}" placeholder="Contact Name" required>
-                <input type="text" id="edit-c-phone-${c.id}" class="edit-input" value="${escapeProgressAttr(c.phone || c.rawPhone)}" placeholder="Phone Number" required>
+                <input type="text" id="edit-c-name-${c.id}" class="edit-input" value="${escapeProgressAttr(c.name)}" placeholder="${t("namePlaceholder")}" required>
+                <input type="text" id="edit-c-phone-${c.id}" class="edit-input" value="${escapeProgressAttr(c.phone || c.rawPhone)}" placeholder="${t("phonePlaceholder")}" required>
               </div>
               <div class="edit-row">
-                <input type="text" id="edit-c-role-${c.id}" class="edit-input" value="${escapeProgressAttr(c.role || '')}" placeholder="Role / Designation">
-                <input type="text" id="edit-c-office-${c.id}" class="edit-input" value="${escapeProgressAttr(c.office || c.duty || '')}" placeholder="Office / Area">
+                <input type="text" id="edit-c-role-${c.id}" class="edit-input" value="${escapeProgressAttr(c.role || '')}" placeholder="${t("rolePlaceholder")}">
+                <input type="text" id="edit-c-office-${c.id}" class="edit-input" value="${escapeProgressAttr(c.office || c.duty || '')}" placeholder="${t("officePlaceholder")}">
               </div>
               <div class="edit-actions">
-                <button type="button" class="btn-cancel-sm" onclick="cancelEditContact()" title="Cancel">
+                <button type="button" class="btn-cancel-sm" onclick="cancelEditContact()" title="${t("cancel")}">
                   <span class="material-symbols-rounded">close</span>
-                  <span>Cancel</span>
+                  <span>${t("cancel")}</span>
                 </button>
-                <button type="submit" class="btn-save-sm" title="Save Contact">
+                <button type="submit" class="btn-save-sm" title="${t("save")}">
                   <span class="material-symbols-rounded">check</span>
-                  <span>Save</span>
+                  <span>${t("save")}</span>
                 </button>
               </div>
             </form>
@@ -2276,7 +2386,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <span class="material-symbols-rounded">${c.icon || "contacts"}</span>
             </div>
             <div>
-              <div class="utility-title">${escapeProgressText(c.name)} ${c.isCustom ? `<span style="font-size: 0.68rem; padding: 2px 6px; background: rgba(234,179,8,0.15); color: var(--gold); border-radius: 4px; font-weight: 700;">Custom</span>` : ''}</div>
+              <div class="utility-title">${escapeProgressText(c.name)} ${c.isCustom ? `<span style="font-size: 0.68rem; padding: 2px 6px; background: rgba(234,179,8,0.15); color: var(--gold); border-radius: 4px; font-weight: 700;">${t("customBadge")}</span>` : ''}</div>
               <div class="utility-desc">${escapeProgressText(c.role || '')} &bull; ${escapeProgressText(c.office || c.duty || '')}</div>
             </div>
           </div>
@@ -2289,10 +2399,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ${WA_SVG}
               </a>
             ` : ''}
-            <button class="btn-icon edit" onclick="startEditContact('${c.id}')" title="Edit Contact" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
+            <button class="btn-icon edit" onclick="startEditContact('${c.id}')" title="${t("edit")}" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
               <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
             </button>
-            <button class="btn-delete-contact" onclick="deleteContact('${c.id}')" title="Delete Contact">
+            <button class="btn-delete-contact" onclick="deleteContact('${c.id}')" title="${t("delete")}">
               <span class="material-symbols-rounded" style="font-size: 17px;">delete</span>
             </button>
           </div>
