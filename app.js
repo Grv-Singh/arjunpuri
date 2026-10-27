@@ -759,6 +759,120 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // -------------------------------------------------------------
+  // 5b. Plot Contacts (Members) Management (Edit, Add, Delete)
+  // -------------------------------------------------------------
+  let editingPlotContactKey = null; // e.g. "21_0"
+
+  function getPlotContacts(plot, fallback = []) {
+    try {
+      const v = localStorage.getItem(`arjunpuri_contacts_${plot}`);
+      if (v !== null) return JSON.parse(v);
+    } catch (e) {}
+    return fallback;
+  }
+
+  function savePlotContacts(plot, list) {
+    try {
+      localStorage.setItem(`arjunpuri_contacts_${plot}`, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  window.startEditPlotContact = function(plot, idx) {
+    editingPlotContactKey = `${plot}_${idx}`;
+    renderDirectory();
+    setTimeout(() => {
+      const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+      const nameInp = document.getElementById(`plot-c-name-${safePlot}-${idx}`);
+      if (nameInp) nameInp.focus();
+    }, 50);
+  };
+
+  window.cancelEditPlotContact = function() {
+    if (editingPlotContactKey) {
+      const parts = editingPlotContactKey.split("_");
+      const plot = parts[0];
+      const idx = parseInt(parts[1], 10);
+      const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+      const list = getPlotContacts(plot, (defaultData && defaultData.membersList) || []);
+      if (idx < list.length && !list[idx].name && !list[idx].phone) {
+        list.splice(idx, 1);
+        savePlotContacts(plot, list);
+      }
+    }
+    editingPlotContactKey = null;
+    renderDirectory();
+  };
+
+  window.savePlotContactEdit = function(plot, idx) {
+    const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+    const nameInp = document.getElementById(`plot-c-name-${safePlot}-${idx}`);
+    const phoneInp = document.getElementById(`plot-c-phone-${safePlot}-${idx}`);
+    const roleInp = document.getElementById(`plot-c-role-${safePlot}-${idx}`);
+
+    if (!nameInp || !phoneInp) return;
+    const nameVal = nameInp.value.trim();
+    const phoneVal = phoneInp.value.trim();
+    const roleVal = roleInp ? roleInp.value.trim() : "";
+
+    if (!nameVal || !phoneVal) {
+      alert(currentLang === "hi" ? "कृपया नाम और फोन नंबर दर्ज करें" : "Please enter both name and phone number");
+      return;
+    }
+
+    const rawPhone = phoneVal.replace(/[^0-9]/g, "");
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotContacts(plot, (defaultData && defaultData.membersList) || []);
+
+    if (idx >= 0 && idx < list.length) {
+      list[idx] = Object.assign({}, list[idx], {
+        name: nameVal,
+        phone: phoneVal,
+        rawPhone: rawPhone,
+        role: roleVal
+      });
+      savePlotContacts(plot, list);
+    }
+
+    editingPlotContactKey = null;
+    renderDirectory();
+  };
+
+  window.addPlotContact = function(plot) {
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotContacts(plot, (defaultData && defaultData.membersList) || []);
+    list.push({
+      name: "",
+      phone: "",
+      rawPhone: "",
+      role: "Resident"
+    });
+    savePlotContacts(plot, list);
+    editingPlotContactKey = `${plot}_${list.length - 1}`;
+    renderDirectory();
+    setTimeout(() => {
+      const safePlot = plot.replace(/[^a-zA-Z0-9]/g, "_");
+      const nameInp = document.getElementById(`plot-c-name-${safePlot}-${list.length - 1}`);
+      if (nameInp) nameInp.focus();
+    }, 50);
+  };
+
+  window.deletePlotContact = function(plot, idx) {
+    const confirmMsg = currentLang === "hi" 
+      ? "क्या आप इस संपर्क को हटाना चाहते हैं?" 
+      : "Delete this contact?";
+    if (!confirm(confirmMsg)) return;
+
+    const defaultData = RESIDENTS_DATA.find(r => r.plot === plot);
+    const list = getPlotContacts(plot, (defaultData && defaultData.membersList) || []);
+    if (idx >= 0 && idx < list.length) {
+      list.splice(idx, 1);
+      savePlotContacts(plot, list);
+    }
+    if (editingPlotContactKey === `${plot}_${idx}`) editingPlotContactKey = null;
+    renderDirectory();
+  };
+
+  // -------------------------------------------------------------
   // 6. Issues Media Upload & Slideshow System
   // -------------------------------------------------------------
   window.handleIssueUpload = function(plot, inputEl) {
@@ -1083,8 +1197,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   function renderDirectory() {
     if (!directoryList) return;
 
+    // Preserve expanded state across re-renders
+    const expandedPlotSet = new Set();
+    document.querySelectorAll(".plot-row.expanded").forEach(el => {
+      const p = el.getAttribute("data-plot");
+      if (p) expandedPlotSet.add(p);
+    });
+    if (editingPlotContactKey) {
+      const p = editingPlotContactKey.split("_")[0];
+      expandedPlotSet.add(p);
+    }
+
     RESIDENTS_DATA.forEach(r => {
       r.vehicles = getPlotVehicles(r.plot, r.vehicles || []);
+      r.membersList = getPlotContacts(r.plot, r.membersList || []);
       const savedTenants = getPlotTenantCount(r.plot, null);
       if (savedTenants !== null) {
         r.tenantCount = savedTenants;
@@ -1220,7 +1346,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       return `
-        <div class="plot-row" data-plot="${r.plot}" onclick="toggleRowExpand(this)">
+        <div class="plot-row ${expandedPlotSet.has(r.plot) ? 'expanded' : ''}" data-plot="${r.plot}" onclick="toggleRowExpand(this)">
           <div class="row-main">
             <div class="row-left">
               <div class="plot-tag">${r.plot}</div>
@@ -1388,50 +1514,97 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
             </div>
 
-            <!-- Individual Members & Contacts with Profile Pictures -->
-            ${(() => {
-              const verifiedMembers = (r.membersList || []).filter(m => m.phone && m.phone.trim() !== "");
-              if (verifiedMembers.length === 0) return '';
-              return `
-                <div class="members-section">
-                  <div class="members-header">
-                    <span class="material-symbols-rounded">contacts</span>
-                    <span>${t("contactsHeader")}</span>
-                  </div>
-                  <div class="members-grid">
-                    ${verifiedMembers.map(m => {
-                      const mMsg = encodeURIComponent(`Namaste ${m.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
-                      return `
-                        <div class="member-card">
-                          ${m.photoUrl ? `<img src="${m.photoUrl}" alt="${m.name}" class="member-avatar-mini">` : ''}
-                          <div class="member-details">
-                            <div class="member-top-row">
-                              <span class="member-name-text">${m.name}</span>
-                              ${m.role ? `<span class="member-badge">${m.role}</span>` : ''}
-                            </div>
-                            <div class="member-phone-row">
-                              <span class="material-symbols-rounded member-phone-icon">call</span>
-                              <span class="member-phone-val">${m.phone}</span>
-                            </div>
+            <!-- Individual Members & Contacts (Editable, Add & Delete) -->
+            <div class="members-section" id="members-section-${safePlot}" onclick="event.stopPropagation()">
+              <div class="members-header">
+                <div class="members-header-title">
+                  <span class="material-symbols-rounded">contacts</span>
+                  <span>${t("contactsHeader")}</span>
+                  <span class="members-count-badge" id="members-count-${safePlot}">(${(r.membersList || []).length})</span>
+                </div>
+                <button class="btn-add-contact-plot" onclick="addPlotContact('${r.plot}')" title="Add Contact">
+                  <span class="material-symbols-rounded">person_add</span>
+                  <span>Add</span>
+                </button>
+              </div>
+              <div class="members-grid">
+                ${(!r.membersList || r.membersList.length === 0) ? `
+                  <div class="no-members-text">${currentLang === "hi" ? "कोई संपर्क दर्ज नहीं (Add पर क्लिक करें)" : "No contacts registered (Click Add)"}</div>
+                ` : r.membersList.map((m, idx) => {
+                  const isEditing = editingPlotContactKey === `${r.plot}_${idx}`;
+                  if (isEditing) {
+                    return `
+                      <div class="member-card editing" id="member-card-${safePlot}-${idx}">
+                        <div class="plot-contact-edit-form">
+                          <div class="p-edit-row">
+                            <input type="text" id="plot-c-name-${safePlot}-${idx}" class="p-edit-input" value="${(m.name || '').replace(/"/g, '&quot;')}" placeholder="Name (नाम)" required>
+                            <input type="tel" id="plot-c-phone-${safePlot}-${idx}" class="p-edit-input" value="${(m.phone || '').replace(/"/g, '&quot;')}" placeholder="Phone (उदा. +91 98280 12345)" required>
                           </div>
-                          <div class="member-action-btns" onclick="event.stopPropagation()">
-                            <a href="tel:${m.phone}" class="btn-icon call" title="${t("call")} ${m.name}">
-                              <span class="material-symbols-rounded">call</span>
-                            </a>
-                            <a href="sms:${m.rawPhone}?body=${mMsg}" class="btn-icon sms" title="${t("sms")} ${m.name}">
-                              <span class="material-symbols-rounded">sms</span>
-                            </a>
-                            <a href="https://wa.me/${m.rawPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")} ${m.name}">
-                              ${WA_SVG}
-                            </a>
+                          <div class="p-edit-row">
+                            <input type="text" id="plot-c-role-${safePlot}-${idx}" class="p-edit-input" value="${(m.role || '').replace(/"/g, '&quot;')}" placeholder="Role / Status (उदा. Owner, Son, Tenant)">
+                          </div>
+                          <div class="p-edit-actions">
+                            <button type="button" class="btn-cancel-sm" onclick="cancelEditPlotContact()" title="Cancel">
+                              <span class="material-symbols-rounded">close</span>
+                              <span>Cancel</span>
+                            </button>
+                            <button type="button" class="btn-save-sm" onclick="savePlotContactEdit('${r.plot}', ${idx})" title="Save Contact">
+                              <span class="material-symbols-rounded">check</span>
+                              <span>Save</span>
+                            </button>
                           </div>
                         </div>
-                      `;
-                    }).join("")}
-                  </div>
-                </div>
-              `;
-            })()}
+                      </div>
+                    `;
+                  }
+
+                  const mMsg = encodeURIComponent(`Namaste ${m.name} ji, regarding Arjunpuri 1st (Plot ${r.plot})...`);
+                  const cleanPhone = m.rawPhone || (m.phone ? m.phone.replace(/[^0-9]/g, "") : "");
+                  return `
+                    <div class="member-card" id="member-card-${safePlot}-${idx}">
+                      ${m.photoUrl ? `
+                        <img src="${m.photoUrl}" alt="${m.name}" class="member-avatar-mini">
+                      ` : `
+                        <div class="member-avatar-mini placeholder">
+                          <span class="material-symbols-rounded" style="font-size: 18px; color: var(--gold);">person</span>
+                        </div>
+                      `}
+                      <div class="member-details">
+                        <div class="member-top-row">
+                          <span class="member-name-text">${m.name || 'Unnamed'}</span>
+                          ${m.role ? `<span class="member-badge">${m.role}</span>` : ''}
+                        </div>
+                        <div class="member-phone-row">
+                          <span class="material-symbols-rounded member-phone-icon">call</span>
+                          <span class="member-phone-val">${m.phone || 'No phone'}</span>
+                        </div>
+                      </div>
+                      <div class="member-action-btns" onclick="event.stopPropagation()">
+                        ${m.phone ? `
+                          <a href="tel:${cleanPhone || m.phone}" class="btn-icon call" title="${t("call")} ${m.name}">
+                            <span class="material-symbols-rounded">call</span>
+                          </a>
+                          ${cleanPhone.length > 5 ? `
+                            <a href="sms:${cleanPhone}?body=${mMsg}" class="btn-icon sms" title="${t("sms")} ${m.name}">
+                              <span class="material-symbols-rounded">sms</span>
+                            </a>
+                            <a href="https://wa.me/${cleanPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")} ${m.name}">
+                              ${WA_SVG}
+                            </a>
+                          ` : ''}
+                        ` : ''}
+                        <button class="btn-icon edit" onclick="startEditPlotContact('${r.plot}', ${idx})" title="Edit Contact" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
+                          <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
+                        </button>
+                        <button class="btn-icon delete" onclick="deletePlotContact('${r.plot}', ${idx})" title="Delete Contact" style="background: rgba(244,63,94,0.1); color: var(--rose); border: 1px solid rgba(244,63,94,0.25);">
+                          <span class="material-symbols-rounded" style="font-size: 16px;">delete</span>
+                        </button>
+                      </div>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+            </div>
 
             <div class="detail-item">
               <span>${t("status")}</span>

@@ -1041,16 +1041,116 @@ body {
 .members-header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: space-between;
+  gap: 0.5rem;
   font-size: 0.88rem;
   font-weight: 750;
   color: var(--gold);
   letter-spacing: 0.02em;
 }
 
-.members-header .material-symbols-rounded {
+.members-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.members-header-title .material-symbols-rounded {
   font-size: 19px;
   color: var(--gold);
+}
+
+.members-count-badge {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.btn-add-contact-plot {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: var(--gold);
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-add-contact-plot:hover {
+  background: rgba(234, 179, 8, 0.25);
+  border-color: var(--gold);
+}
+
+.btn-add-contact-plot .material-symbols-rounded {
+  font-size: 14px;
+}
+
+.member-avatar-mini.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.member-card.editing {
+  display: block;
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.plot-contact-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.p-edit-row {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.p-edit-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+
+[data-theme="light"] .p-edit-input {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+.p-edit-input:focus {
+  border-color: var(--gold);
+}
+
+.p-edit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.no-members-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 0.3rem 0.2rem;
 }
 
 .members-grid {
