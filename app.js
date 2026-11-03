@@ -323,7 +323,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const key = pillMap[f];
       if (key) {
         const icon = pill.querySelector(".material-symbols-rounded")?.outerHTML || "";
-        pill.innerHTML = `${icon} ${t(key)}`;
+        if (f === "all") {
+          pill.innerHTML = `${icon} <span class="filter-label">${t(key)}</span> <span class="filter-count-badge" id="plots-filter-count">${RESIDENTS_DATA.length}</span>`;
+        } else {
+          pill.innerHTML = `${icon} ${t(key)}`;
+        }
       }
     });
 
@@ -1387,12 +1391,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       return true;
     });
 
-    if (plotCounter) {
-      if (currentFilter === "all" && !searchQuery) {
-        plotCounter.textContent = `${RESIDENTS_DATA.length} ${t("plotsCount")}`;
-      } else {
-        plotCounter.textContent = `${filtered.length} / ${RESIDENTS_DATA.length} ${t("plotsCount")}`;
-      }
+    const plotsCountBadge = document.getElementById("plots-filter-count");
+    if (plotsCountBadge) {
+      plotsCountBadge.textContent = RESIDENTS_DATA.length;
     }
 
     if (filtered.length === 0) {
