@@ -56,7 +56,7 @@
     } else {
       icon.textContent = "cloud_done";
       icon.style.color = "var(--emerald)";
-      text.textContent = label || "Live Sync";
+      text.textContent = label || "Live";
       btn.setAttribute("title", "All files synchronized safely with GitHub");
     }
   }
