@@ -6,7 +6,7 @@
   "notes": "Presence of construction rubble.",
   "nuisanceAlert": "Presence of construction rubble outside.",
   "vehicles": [
-    "RJ 60 CC 8594"
+    "RJ 60 CC 8594 "
   ],
   "membersList": [
     {
@@ -37,5 +37,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-03T15:01:50.495Z"
+  "lastUpdated": "2026-11-03T15:01:57.704Z"
 }
