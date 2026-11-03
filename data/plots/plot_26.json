@@ -1,0 +1,23 @@
+{
+  "plot": "26",
+  "surname": "Chaudharys",
+  "warnings": 0,
+  "tenantCount": 2,
+  "hasTenant": true,
+  "notes": "2 tenants.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
+  ],
+  "membersList": [
+    {
+      "name": "Raj Choudhary",
+      "phone": "+91 88906 72644",
+      "rawPhone": "8890672644",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_918890672644.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.828Z"
+}

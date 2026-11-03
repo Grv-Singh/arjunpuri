@@ -1,0 +1,33 @@
+{
+  "plot": "9",
+  "surname": "Singhanias",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Dr. G D Singhania and Sunita Singhania residence.",
+  "nuisanceAlert": "",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Ishika Singhania",
+      "phone": "+91 83869 77101",
+      "rawPhone": "8386977101",
+      "role": "Resident",
+      "photoUrl": "assets/avatars/user_918386977101.jpg"
+    },
+    {
+      "name": "Dr. G D Singhania",
+      "phone": "",
+      "rawPhone": "",
+      "role": "Resident Owner"
+    },
+    {
+      "name": "Sunita Singhania",
+      "phone": "+91 70628 45001",
+      "rawPhone": "7062845001",
+      "role": "Resident"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.374Z"
+}

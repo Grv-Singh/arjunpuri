@@ -1,0 +1,20 @@
+{
+  "plot": "25",
+  "surname": "Sainis (PG)",
+  "warnings": 0,
+  "tenantCount": 6,
+  "hasTenant": true,
+  "notes": "Eight big stones outside the house to restrict parking (नौ बड़े पत्थर पार्किंग रोकते हैं).",
+  "nuisanceAlert": "Large stones placed on street to restrict parking.",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Rahul Saini",
+      "phone": "+91 63506 56029",
+      "rawPhone": "6350656029",
+      "role": "Resident"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.921Z"
+}

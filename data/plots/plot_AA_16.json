@@ -1,0 +1,22 @@
+{
+  "plot": "AA 16",
+  "surname": "Kailash Villa",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Kailash Villa. Long-standing vehicle parked outside.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 14 CH 9849"
+  ],
+  "membersList": [
+    {
+      "name": "Ramesh",
+      "phone": "+91 98290 57961",
+      "rawPhone": "9829057961",
+      "role": "Resident Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.121Z"
+}

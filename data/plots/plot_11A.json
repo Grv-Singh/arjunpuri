@@ -1,0 +1,27 @@
+{
+  "plot": "11A",
+  "surname": "Rathores",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Rathore family residence.",
+  "nuisanceAlert": "",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Ashok Singh Rathore",
+      "phone": "+91 98290 75229",
+      "rawPhone": "9829075229",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919829075229.jpg"
+    },
+    {
+      "name": "Ajay Singh Rathore",
+      "phone": "+91 92140 75229",
+      "rawPhone": "9214075229",
+      "role": "Resident"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.289Z"
+}

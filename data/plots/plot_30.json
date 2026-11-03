@@ -1,0 +1,29 @@
+{
+  "plot": "30",
+  "surname": "Guptas",
+  "warnings": 1,
+  "tenantCount": 2,
+  "hasTenant": true,
+  "notes": "",
+  "nuisanceAlert": "Advertisement board & rubble outside.",
+  "vehicles": [
+    "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
+  ],
+  "membersList": [
+    {
+      "name": "Ashish Gupta",
+      "phone": "+91 80059 50955",
+      "rawPhone": "8005950955",
+      "role": "Resident Owner"
+    },
+    {
+      "name": "Harshita Gupta",
+      "phone": "+91 83868 30777",
+      "rawPhone": "918386830777",
+      "role": "Resident",
+      "photoUrl": "assets/avatars/user_918386830777.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.705Z"
+}

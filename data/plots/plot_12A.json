@@ -1,0 +1,22 @@
+{
+  "plot": "12A",
+  "surname": "Boolchandanis",
+  "warnings": 0,
+  "tenantCount": 4,
+  "hasTenant": true,
+  "notes": "Boundary: Garbage and construction rubble. Has encroachment. Rented out to many tenants.",
+  "nuisanceAlert": "Boundary garbage and construction rubble.",
+  "vehicles": [
+    "Tenants' Vehicles Present"
+  ],
+  "membersList": [
+    {
+      "name": "Neeraj Boolchandani",
+      "phone": "+91 97820 23549",
+      "rawPhone": "9782023549",
+      "role": "Property Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.268Z"
+}

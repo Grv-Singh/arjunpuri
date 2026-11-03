@@ -1,0 +1,24 @@
+{
+  "plot": "1-2",
+  "surname": "Krishna Kunj (Radhe Krishna Girls PG)",
+  "warnings": 2,
+  "tenantCount": 4,
+  "hasTenant": true,
+  "notes": "Plot 1&2. Krishna Kunj aka Radhe Krishna Girls PG. Stagnant water trough, construction rubble and commercial encroachment outside. 4+ tenants.",
+  "nuisanceAlert": "Stagnant dirty water trough, construction rubble & commercial encroachment outside.",
+  "vehicles": [
+    "RJ 14 CK 6124 (Maruti Suzuki Alto)",
+    "RJ 14 UX 8634 (Maruti Suzuki XL6)"
+  ],
+  "membersList": [
+    {
+      "name": "Rajesh Agrawal (Taparia)",
+      "phone": "+91 93148 35023",
+      "rawPhone": "9314835023",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919314835023.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.461Z"
+}

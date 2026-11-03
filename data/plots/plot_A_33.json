@@ -1,0 +1,20 @@
+{
+  "plot": "A-33",
+  "surname": "Plot A-33",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Construction rubble present outside.",
+  "nuisanceAlert": "Construction rubble present outside.",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Plot A-33 Premises",
+      "phone": "+91 99822 31470",
+      "rawPhone": "9982231470",
+      "role": "Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.408Z"
+}

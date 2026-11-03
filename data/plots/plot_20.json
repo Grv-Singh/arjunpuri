@@ -1,0 +1,23 @@
+{
+  "plot": "20",
+  "surname": "Patnis",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Yogesh Patni residence.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 45 CD 2225 (Gray Maruti Suzuki Ignis)"
+  ],
+  "membersList": [
+    {
+      "name": "Yogesh Patni",
+      "phone": "+91 94617 83436",
+      "rawPhone": "9461783436",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919461783436.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.985Z"
+}

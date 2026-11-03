@@ -1,0 +1,39 @@
+{
+  "plot": "31",
+  "surname": "Jagrawals",
+  "warnings": 0,
+  "tenantCount": 2,
+  "hasTenant": true,
+  "notes": "Tenant Verification: Police Ref: 682357 / 682358. Vehicle wash water runoff onto street.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 45 CU 9353 (Grey Nissan Magnite)",
+    "RJ 14 WB 3851 (Grey Maruti Esteem)",
+    "RJ 14 WB 6095 (Maroon Honda Aviator)"
+  ],
+  "membersList": [
+    {
+      "name": "Gaurav Singh",
+      "phone": "+91 89469 68876",
+      "rawPhone": "918946968876",
+      "role": "Resident",
+      "photoUrl": "assets/avatars/user_918946968876.jpg"
+    },
+    {
+      "name": "Pramod Jagrawal",
+      "phone": "+91 99299 90041",
+      "rawPhone": "919929990041",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919929990041.jpg"
+    },
+    {
+      "name": "Rekha",
+      "phone": "+91 94140 40522",
+      "rawPhone": "919414040522",
+      "role": "Resident",
+      "photoUrl": "assets/avatars/user_919414040522.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.659Z"
+}

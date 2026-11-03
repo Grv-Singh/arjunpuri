@@ -1,0 +1,11 @@
+{
+  "role": "Emergency Ambulance (एम्बुलेंस)",
+  "name": "Medical Ambulance 102",
+  "category": "authority",
+  "icon": "emergency",
+  "phone": "102",
+  "rawPhone": "102",
+  "office": "Rajasthan Emergency Medical Service",
+  "duty": "Immediate emergency hospital transport & patient care",
+  "id": "102"
+}

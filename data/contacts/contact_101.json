@@ -1,0 +1,11 @@
+{
+  "role": "Fire Brigade (अग्निशमन सेवा)",
+  "name": "Fire Emergency 101",
+  "category": "authority",
+  "icon": "local_fire_department",
+  "phone": "101",
+  "rawPhone": "101",
+  "office": "Jaipur Fire Service Control Room",
+  "duty": "Transformer fire, electrical short circuits, emergency rescue",
+  "id": "101"
+}

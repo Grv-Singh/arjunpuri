@@ -1,0 +1,21 @@
+{
+  "plot": "48A",
+  "surname": "Goyals",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "No vehicles.",
+  "nuisanceAlert": "",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Goyal Ji",
+      "phone": "+91 94134 90448",
+      "rawPhone": "9413490448",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919413490448.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.435Z"
+}

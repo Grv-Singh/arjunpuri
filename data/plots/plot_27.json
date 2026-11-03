@@ -1,0 +1,22 @@
+{
+  "plot": "27",
+  "surname": "Radhe Radhe",
+  "warnings": 2,
+  "tenantCount": 10,
+  "hasTenant": true,
+  "notes": "Radhe Krishna Girls PG & Cafe. Chabutra encroachment, road pipe water discharge.",
+  "nuisanceAlert": "Commercial cafe waste, raised chabutra and road waste water.",
+  "vehicles": [
+    "RJ 14 KE 1074 (HERO Honda Splendor plus)"
+  ],
+  "membersList": [
+    {
+      "name": "Pushpendra",
+      "phone": "+91 95882 57792",
+      "rawPhone": "9588257792",
+      "role": "PG & Cafe Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.784Z"
+}

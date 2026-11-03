@@ -1,0 +1,22 @@
+{
+  "plot": "A14",
+  "surname": "Bambanis",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Permanent Resident.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "Black Honda City"
+  ],
+  "membersList": [
+    {
+      "name": "Ashish Bambani",
+      "phone": "+91 98870 00785",
+      "rawPhone": "9887000785",
+      "role": "Resident Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.196Z"
+}

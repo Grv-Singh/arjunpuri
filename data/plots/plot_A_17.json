@@ -1,0 +1,38 @@
+{
+  "plot": "A-17",
+  "surname": "Sethiyas",
+  "warnings": 0,
+  "tenantCount": 6,
+  "hasTenant": true,
+  "notes": "6 tenants residing on premises.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 60 CD 4541 (Hyundai i20)",
+    "RJ 60 CD 8970 (Maruti Suzuki Brezza)",
+    "RJ 14 CW 8141"
+  ],
+  "membersList": [
+    {
+      "name": "Neetu Sethia",
+      "phone": "+91 90241 10043",
+      "rawPhone": "9024110043",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919024110043.jpg"
+    },
+    {
+      "name": "Raj Sethiya",
+      "phone": "+91 77288 30454",
+      "rawPhone": "7728830454",
+      "role": "Resident Owner"
+    },
+    {
+      "name": "Ritu Sethia",
+      "phone": "+91 99833 83045",
+      "rawPhone": "9983383045",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919983383045.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.077Z"
+}

@@ -1,0 +1,11 @@
+{
+  "role": "Police Emergency & Beat",
+  "name": "Police Emergency 112 / 100",
+  "category": "authority",
+  "icon": "local_police",
+  "phone": "112 / 100",
+  "rawPhone": "112",
+  "office": "Local Police Beat & Control Room",
+  "duty": "Evening anti-social loitering, lane obstruction, security",
+  "id": "112"
+}

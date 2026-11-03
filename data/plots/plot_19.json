@@ -1,0 +1,29 @@
+{
+  "plot": "19",
+  "surname": "Jain",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Praduman Jain (PK Jain) & Pradeep Jain residence.",
+  "nuisanceAlert": "",
+  "vehicles": [
+    "RJ 45 CH 3474 (Maruti Suzuki Celerio)"
+  ],
+  "membersList": [
+    {
+      "name": "Praduman Jain (PK Jain)",
+      "phone": "+91 98206 95225",
+      "rawPhone": "9820695225",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919820695225.jpg"
+    },
+    {
+      "name": "Pradeep Jain",
+      "phone": "+91 94143 44976",
+      "rawPhone": "9414344976",
+      "role": "Resident"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.009Z"
+}

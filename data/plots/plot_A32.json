@@ -1,0 +1,43 @@
+{
+  "plot": "A32",
+  "surname": "Agrawals",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Presence of construction rubble.",
+  "nuisanceAlert": "Presence of construction rubble outside.",
+  "vehicles": [
+    "RJ 60 CC 8594",
+    "White Tata Nexon"
+  ],
+  "membersList": [
+    {
+      "name": "Archna Agrawal",
+      "phone": "+91 99280 22998",
+      "rawPhone": "9928022998",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919928022998.jpg"
+    },
+    {
+      "name": "Gopal Agrawal",
+      "phone": "+91 98290 15875",
+      "rawPhone": "9829015875",
+      "role": "Resident Owner"
+    },
+    {
+      "name": "Vaibhav Agrawal",
+      "phone": "+91 96727 68657",
+      "rawPhone": "9672768657",
+      "role": "Resident",
+      "photoUrl": "assets/avatars/user_919672768657.jpg"
+    },
+    {
+      "name": "Ananya Agrawal",
+      "phone": "+91 83858 44375",
+      "rawPhone": "8385844375",
+      "role": "Resident"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.391Z"
+}

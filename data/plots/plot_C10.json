@@ -1,0 +1,20 @@
+{
+  "plot": "C10",
+  "surname": "Jagannaths",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Jagannath Ji and others residence.",
+  "nuisanceAlert": "",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Jagannath Ji",
+      "phone": "+91 94140 75229",
+      "rawPhone": "9414075229",
+      "role": "Resident Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.351Z"
+}

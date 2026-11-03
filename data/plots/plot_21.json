@@ -1,0 +1,21 @@
+{
+  "plot": "21",
+  "surname": "Sainis",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "T.R. Saini and Sushila Saini residence.",
+  "nuisanceAlert": "",
+  "vehicles": [],
+  "membersList": [
+    {
+      "name": "Sushila Saini",
+      "phone": "+91 94601 92021",
+      "rawPhone": "9460192021",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_919460192021.jpg"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:28.880Z"
+}

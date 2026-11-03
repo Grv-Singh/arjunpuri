@@ -1,0 +1,29 @@
+{
+  "plot": "B13",
+  "surname": "Chandwars",
+  "warnings": 0,
+  "tenantCount": 0,
+  "hasTenant": false,
+  "notes": "Remove three telephone poles outside Plot B-13. Also clear the area of trash.",
+  "nuisanceAlert": "Telephone poles and area trash buildup outside.",
+  "vehicles": [
+    "RJ 14 LC 9770 (Hyundai Accent)"
+  ],
+  "membersList": [
+    {
+      "name": "Alka Chandwar",
+      "phone": "+91 77378 19230",
+      "rawPhone": "7737819230",
+      "role": "Resident Owner",
+      "photoUrl": "assets/avatars/user_917737819230.jpg"
+    },
+    {
+      "name": "Anil Chandwar",
+      "phone": "+91 93146 37812",
+      "rawPhone": "9314637812",
+      "role": "Resident Owner"
+    }
+  ],
+  "plotPhotoDeleted": false,
+  "lastUpdated": "2026-11-03T13:20:29.242Z"
+}
