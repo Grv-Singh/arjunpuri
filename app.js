@@ -1719,12 +1719,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                           <a href="tel:${cleanPhone || m.phone}" class="btn-icon call" title="${t("call")} ${m.name}">
                             <span class="material-symbols-rounded">call</span>
                           </a>
-                          ${cleanPhone.length > 5 ? `
-                            <a href="https://wa.me/${cleanPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")} ${m.name}">
-                              ${WA_SVG}
-                            </a>
-                          ` : ''}
-                        ` : ''}
+                        ` : `
+                          <span class="btn-icon call disabled" style="opacity: 0.35; cursor: not-allowed; pointer-events: none;">
+                            <span class="material-symbols-rounded">call</span>
+                          </span>
+                        `}
+                        ${(m.phone && cleanPhone.length > 5) ? `
+                          <a href="https://wa.me/${cleanPhone}?text=${mMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")} ${m.name}">
+                            ${WA_SVG}
+                          </a>
+                        ` : `
+                          <span class="btn-icon wa disabled" style="opacity: 0.35; cursor: not-allowed; pointer-events: none;">
+                            ${WA_SVG}
+                          </span>
+                        `}
                         <button class="btn-icon edit" onclick="startEditPlotContact('${r.plot}', ${idx})" title="${t("edit")}" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
                           <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
                         </button>
@@ -2427,14 +2435,24 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           </div>
           <div class="row-actions">
-            <a href="tel:${c.rawPhone}" class="btn-icon call" title="${t("call")}">
-              <span class="material-symbols-rounded">call</span>
-            </a>
+            ${c.rawPhone ? `
+              <a href="tel:${c.rawPhone}" class="btn-icon call" title="${t("call")}">
+                <span class="material-symbols-rounded">call</span>
+              </a>
+            ` : `
+              <span class="btn-icon call disabled" style="opacity: 0.35; cursor: not-allowed; pointer-events: none;">
+                <span class="material-symbols-rounded">call</span>
+              </span>
+            `}
             ${c.rawPhone && c.rawPhone.length > 5 ? `
               <a href="https://wa.me/${c.rawPhone}?text=${waMsg}" target="_blank" class="btn-icon wa" title="${t("whatsapp")}">
                 ${WA_SVG}
               </a>
-            ` : ''}
+            ` : `
+              <span class="btn-icon wa disabled" style="opacity: 0.35; cursor: not-allowed; pointer-events: none;">
+                ${WA_SVG}
+              </span>
+            `}
             <button class="btn-icon edit" onclick="startEditContact('${c.id}')" title="${t("edit")}" style="background: rgba(56,189,248,0.1); color: var(--cyan); border: 1px solid rgba(56,189,248,0.25);">
               <span class="material-symbols-rounded" style="font-size: 16px;">edit</span>
             </button>
