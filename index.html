@@ -19,7 +19,7 @@
   <!-- Android Material Symbols Rounded (Material 3) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <link rel="stylesheet" href="style.css?v=20261027_0615">
+  <link rel="stylesheet" href="style.css?v=20261103_1845">
 </head>
 <body>
 
@@ -36,6 +36,10 @@
         </div>
       </div>
       <div class="header-right">
+        <button id="sync-status-btn" class="header-badge sync-status-btn" title="Cloud Sync: Live" aria-label="Sync Status" onclick="window.manualTriggerSync && window.manualTriggerSync()">
+          <span class="material-symbols-rounded" id="sync-status-icon" style="font-size: 14px; color: var(--emerald);">cloud_done</span>
+          <span id="sync-status-text" style="font-size: 0.75rem; font-weight: 700;">Live Sync</span>
+        </button>
         <div class="header-badge">
           <span class="material-symbols-rounded" style="font-size: 14px;">verified</span>
           <span id="plot-counter">26 Plots</span>
@@ -340,7 +344,8 @@
   </div>
 
   <!-- Scripts with cache busters -->
-  <script src="data.js?v=20261027_0615"></script>
-  <script src="app.js?v=20261027_0615"></script>
+  <script src="data.js?v=20261103_1845"></script>
+  <script src="cloud_sync.js?v=20261103_1845"></script>
+  <script src="app.js?v=20261103_1845"></script>
 </body>
 </html>

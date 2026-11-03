@@ -2990,5 +2990,41 @@ body {
   border: 1px solid rgba(251, 146, 60, 0.35);
 }
 
+.sync-status-btn {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--emerald);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 4px 9px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  user-select: none;
+}
+
+.sync-status-btn:hover {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.sync-status-btn.syncing {
+  background: rgba(234, 179, 8, 0.12);
+  border-color: rgba(234, 179, 8, 0.35);
+  color: var(--gold);
+}
+
+.sync-status-btn.syncing #sync-status-icon {
+  color: var(--gold) !important;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
 
 

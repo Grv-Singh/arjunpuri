@@ -446,6 +446,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const mediaDB = new ArjunpuriMediaDB();
+  window.mediaDB = mediaDB;
   await mediaDB.init();
 
   // In-memory cache of client-uploaded issues by plot
@@ -709,10 +710,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         localStorage.setItem(`arjunpuri_warn_${plot}`, nextVal.toString());
       } catch (e) {}
+      if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "warnings", nextVal);
     } else if (type === "tenants") {
       try {
         localStorage.setItem(`arjunpuri_tenants_${plot}`, nextVal.toString());
       } catch (e) {}
+      if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "tenantCount", nextVal);
       const resident = RESIDENTS_DATA.find(r => r.plot === plot);
       if (resident) {
         resident.tenantCount = nextVal;
@@ -740,6 +743,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem(`arjunpuri_note_${plot}`, val);
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "notes", val);
 
     if (statusEl) {
       statusEl.innerHTML = `<span class="material-symbols-rounded" style="font-size: 13px; vertical-align: middle;">check_circle</span> ${t("saved")}`;
@@ -776,6 +780,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem(`arjunpuri_nuisance_${plot}`, val);
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "nuisance", val);
 
     if (statusEl) {
       statusEl.innerHTML = `<span class="material-symbols-rounded" style="font-size: 13px; vertical-align: middle;">check_circle</span> ${t("saved")}`;
@@ -806,6 +811,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem(`arjunpuri_vehicles_${plot}`, JSON.stringify(list));
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "vehicles", list);
   }
 
   window.handleVehicleInput = function(plot, idx, val) {
@@ -880,6 +886,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem(`arjunpuri_contacts_${plot}`, JSON.stringify(list));
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordPlotChange(plot, "contacts", list);
   }
 
   window.startEditPlotContact = function(plot, idx) {
@@ -1007,6 +1014,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!CLIENT_ISSUES[plot]) CLIENT_ISSUES[plot] = [];
       CLIENT_ISSUES[plot].push(newIssue);
 
+      // Async cloud sync for media
+      if (window.cloudSync) {
+        window.cloudSync.recordIssueChange(plot, newIssue, false);
+        // Upload media file binary directly to repo assets folder
+        window.cloudSync.uploadMediaToRepo(file, organizedFilePath).then(remoteUrl => {
+          if (remoteUrl) {
+            newIssue.url = remoteUrl;
+            mediaDB.addIssue(newIssue);
+            window.cloudSync.recordIssueChange(plot, newIssue, false);
+          }
+        });
+      }
+
       // Re-render and automatically open slideshow showing this new issue
       renderDirectory();
       const allIssues = getAllPlotIssues(plot);
@@ -1109,6 +1129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const key = issue.id || issue.url;
     issue.caption = val;
     saveEditedIssueCaption(key, val);
+    if (window.cloudSync) window.cloudSync.recordIssueCaption(key, val);
   };
 
   window.saveCurrentIssueCaption = async function() {
@@ -1122,6 +1143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     issue.caption = val;
     saveEditedIssueCaption(key, val);
+    if (window.cloudSync) window.cloudSync.recordIssueCaption(key, val);
 
     if (issue.isCustom && issue.id) {
       await mediaDB.addIssue(issue);
@@ -1236,6 +1258,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (issue.isPlotPhoto) {
       saveDeletedPlotPhoto(issue.url, activeSlideshowPlot);
+      if (window.cloudSync) window.cloudSync.recordPlotChange(activeSlideshowPlot, "plotPhotoDeleted", true);
       closeSlideshow();
       renderDirectory();
       return;
@@ -1251,14 +1274,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         } catch (e) {}
       }
       saveDeletedMilestonePhoto(targetUrl);
+      if (window.cloudSync) window.cloudSync.recordProgressChange(customProgressData, null, null);
       closeSlideshow();
       renderProgress();
     } else {
       if (issue.isCustom && issue.id) {
         await mediaDB.deleteIssue(issue.id);
         CLIENT_ISSUES[activeSlideshowPlot] = (CLIENT_ISSUES[activeSlideshowPlot] || []).filter(i => i.id !== issue.id);
+        if (window.cloudSync) window.cloudSync.recordIssueChange(activeSlideshowPlot, issue, true);
       } else {
         saveDeletedStaticIssue(issue.url);
+        if (window.cloudSync) {
+          const list = getDeletedStaticIssues();
+          window.cloudSync.CloudData.deletedStaticIssues = list;
+          window.cloudSync.schedulePush();
+        }
       }
       activeSlideshowIssues = getAllPlotIssues(activeSlideshowPlot);
       if (activeSlideshowIssues.length === 0) {
@@ -1812,6 +1842,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem("arjunpuri_custom_progress", JSON.stringify(customProgressData));
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordProgressChange(customProgressData, null, null);
 
     // Reset Form
     progressTitle.value = "";
@@ -1898,6 +1929,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem("arjunpuri_edited_milestones", JSON.stringify(edited));
     } catch (e) {}
+    if (window.cloudSync) window.cloudSync.recordProgressChange(customProgressData, edited, null);
 
     editingProgressId = null;
     renderProgress();
@@ -1937,6 +1969,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.setItem("arjunpuri_deleted_milestone_ids", JSON.stringify(deletedIds));
       } catch (e) {}
     }
+    if (window.cloudSync) window.cloudSync.recordProgressChange(customProgressData, edited, deletedIds);
 
     if (editingProgressId === id) editingProgressId = null;
     renderProgress();
@@ -2171,6 +2204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       localStorage.setItem("arjunpuri_custom_contacts", JSON.stringify(customContacts));
     } catch (err) {}
+    if (window.cloudSync) window.cloudSync.recordContactsChange(customContacts, null, null);
 
     nameEl.value = "";
     roleEl.value = "";
@@ -2272,6 +2306,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         office: newOffice
       });
     }
+    if (window.cloudSync) window.cloudSync.recordContactsChange(customContacts, getEditedContacts(), null);
 
     editingContactId = null;
     renderContacts();
@@ -2292,6 +2327,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       saveDeletedContactId(id);
     }
+    if (window.cloudSync) window.cloudSync.recordContactsChange(customContacts, getEditedContacts(), getDeletedContactIds());
 
     if (editingContactId === id) editingContactId = null;
     renderContacts();
@@ -2541,6 +2577,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Register service worker and initialize notification state
   registerServiceWorker();
   updateNotificationUI();
+
+  // Universal Renderer Hook for Cloud Sync Refresh
+  window.renderAllViews = function() {
+    // Reload custom progress and contacts from localStorage
+    try {
+      customProgressData = JSON.parse(localStorage.getItem("arjunpuri_custom_progress")) || [];
+    } catch (e) {}
+    try {
+      customContacts = JSON.parse(localStorage.getItem("arjunpuri_custom_contacts")) || [];
+    } catch (e) {}
+
+    if (currentTab === "progress") renderProgress();
+    else if (currentTab === "grievances") renderGrievances();
+    else if (currentTab === "contacts") renderContacts();
+    else renderDirectory();
+  };
 
   // Initial Language Setup & Render
   applyLanguage(currentLang);
