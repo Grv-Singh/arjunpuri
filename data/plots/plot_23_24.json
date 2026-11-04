@@ -1,11 +1,10 @@
 {
   "plot": "23-24",
-  "surname": "Sokhiyas & Guptas",
   "warnings": 1,
   "tenantCount": 1,
   "hasTenant": true,
-  "notes": "Active in colony improvement. Construction rubble outside.",
-  "nuisanceAlert": "Construction rubble and waste outside.",
+  "notes": "Active in colony improvement.",
+  "nuisanceAlert": "",
   "vehicles": [
     "RJ 45 CN 9300 (White Tata Harrier)",
     "RJ 45 CN 4767 (Skoda Rapid)",
@@ -67,5 +66,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-03T13:20:28.960Z"
+  "lastUpdated": "2026-11-04T07:31:16.061Z"
 }
