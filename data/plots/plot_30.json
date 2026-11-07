@@ -4,7 +4,7 @@
   "tenantCount": 2,
   "hasTenant": true,
   "notes": "",
-  "nuisanceAlert": "Advertisement board & rubble outside.",
+  "nuisanceAlert": "Rubble outside.",
   "vehicles": [
     "RJ 14 CK 2863 (Maruti Suzuki Dzire)"
   ],
@@ -24,5 +24,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-07T05:31:54.164Z"
+  "lastUpdated": "2026-11-07T05:33:16.937Z"
 }
