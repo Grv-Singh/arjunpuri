@@ -3,7 +3,7 @@
   "warnings": 0,
   "tenantCount": 2,
   "hasTenant": true,
-  "notes": "Tenant Verification: Police Ref: 682357 / 682358. Vehicle wash water runoff onto street.",
+  "notes": "Vehicle wash water runoff onto street.",
   "nuisanceAlert": "",
   "vehicles": [
     "RJ 45 CU 9353 (Grey Nissan Magnite)",
@@ -34,5 +34,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-07T05:31:54.164Z"
+  "lastUpdated": "2026-11-07T05:32:52.689Z"
 }
