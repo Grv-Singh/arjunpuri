@@ -4,7 +4,7 @@
   "tenantCount": 0,
   "hasTenant": false,
   "notes": "",
-  "nuisanceAlert": "Presence of construction rubble outside.",
+  "nuisanceAlert": "",
   "vehicles": [
     "RJ 60 CC 8594 White Tata Nexon"
   ],
@@ -37,5 +37,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-07T05:34:12.062Z"
+  "lastUpdated": "2026-11-07T05:34:20.588Z"
 }
