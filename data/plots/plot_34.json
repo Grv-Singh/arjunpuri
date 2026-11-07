@@ -3,8 +3,8 @@
   "warnings": 0,
   "tenantCount": 0,
   "hasTenant": false,
-  "notes": "Garbage accumulates outside.",
-  "nuisanceAlert": "Garbage gets accumulated outside.",
+  "notes": "Colony-wide garbage accumulates outside.",
+  "nuisanceAlert": "Entire colony garbage dumping point outside.",
   "vehicles": [
     "RJ 45 CQ 2182 (Maruti Suzuki Baleno)",
     "GJ 01 RL 4038 (Maruti Suzuki Alto)"
@@ -32,5 +32,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-07T05:32:41.554Z"
+  "lastUpdated": "2026-11-07T05:33:50.112Z"
 }
