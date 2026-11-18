@@ -3,7 +3,7 @@
   "warnings": 0,
   "tenantCount": 2,
   "hasTenant": true,
-  "notes": "2 tenants.",
+  "notes": "",
   "nuisanceAlert": "",
   "vehicles": [
     "RJ 14 CF 1967 (Red Maruti Suzuki WagonR)"
@@ -18,5 +18,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-18T07:03:21.156Z"
+  "lastUpdated": "2026-11-18T07:03:40.572Z"
 }
