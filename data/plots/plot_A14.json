@@ -1,10 +1,9 @@
 {
   "plot": "A14",
-  "surname": "Bambanis",
   "warnings": 0,
   "tenantCount": 0,
   "hasTenant": false,
-  "notes": "Permanent Resident.",
+  "notes": "",
   "nuisanceAlert": "",
   "vehicles": [
     "Black Honda City"
@@ -18,5 +17,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-03T13:20:29.196Z"
+  "lastUpdated": "2026-11-18T07:05:15.444Z"
 }
