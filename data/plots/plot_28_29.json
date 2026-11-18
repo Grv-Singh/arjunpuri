@@ -1,9 +1,8 @@
 {
   "plot": "28-29",
-  "surname": "MLAs",
-  "warnings": 0,
-  "tenantCount": 0,
-  "hasTenant": false,
+  "warnings": 1,
+  "tenantCount": 5,
+  "hasTenant": true,
   "notes": "Drainage chamber L-joint connection completed. Food waste and wrappers dumped outside.",
   "nuisanceAlert": "Persistent food waste & wrapper dumping outside.",
   "vehicles": [
@@ -11,5 +10,5 @@
   ],
   "membersList": [],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-03T13:20:28.739Z"
+  "lastUpdated": "2026-11-18T07:03:04.081Z"
 }
