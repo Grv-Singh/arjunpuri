@@ -1,6 +1,6 @@
 {
   "plot": "A32",
-  "warnings": 0,
+  "warnings": 2,
   "tenantCount": 0,
   "hasTenant": false,
   "notes": "",
@@ -37,5 +37,5 @@
     }
   ],
   "plotPhotoDeleted": false,
-  "lastUpdated": "2026-11-07T05:34:21.850Z"
+  "lastUpdated": "2026-11-18T07:06:07.618Z"
 }
