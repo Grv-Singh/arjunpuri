@@ -836,6 +836,136 @@ const GRIEVANCE_PORTALS = [
 
 // Local Authorities, Vigilance, Helplines, Trades & Colony Contacts (Ward 145)
 const CIVIC_AND_TRADE_CONTACTS = [
+  // --- M/S V-CARE ENVIRO (JV) & NAGAR NIGAM USER CHARGE OFFICIALS ---
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Chetan Sharma (चेतन शर्मा)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88001",
+    "rawPhone": "9251688001",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते चेतन जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688001"
+  },
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Ajay Kumawat (अजय कुमावत)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88002",
+    "rawPhone": "9251688002",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते अजय जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688002"
+  },
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Lalitesh Singh Jadon (ललितेश सिंह जादौन)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88003",
+    "rawPhone": "9251688003",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते ललितेश जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688003"
+  },
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Manoj Kumar (मनोज कुमार)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88004",
+    "rawPhone": "9251688004",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते मनोज जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688004"
+  },
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Chaganlal Jogi (छगनलाल जोगी)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88005",
+    "rawPhone": "9251688005",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते छगनलाल जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688005"
+  },
+  {
+    "role": "User Charge Collection / कचरा शुल्क वसूली (V-CARE)",
+    "name": "Subash Verma (सुभाष वर्मा)",
+    "category": "authority",
+    "icon": "receipt_long",
+    "phone": "+91 92516 88006",
+    "rawPhone": "9251688006",
+    "office": "M/s V-CARE ENVIRO JV अधिकृत प्रतिनिधि",
+    "duty": "मालवीय नगर जोन में यूजर चार्ज (कचरा शुल्क) की वसूली और ऑनलाइन रसीद देना",
+    "customMsg": "नमस्ते सुभाष जी, अर्जुनपुरी 1st लिंक रोड से यूजर चार्ज / रसीद के संदर्भ में...",
+    "id": "9251688006"
+  },
+  {
+    "role": "User Charge Helpline / शिकायत कॉल सेंटर",
+    "name": "कॉल सेंटर - नगर निगम ग्रेटर (मालवीय नगर जोन)",
+    "category": "authority",
+    "icon": "support_agent",
+    "phone": "08447905965",
+    "rawPhone": "08447905965",
+    "office": "नगर निगम ग्रेटर, जयपुर (कॉल सेंटर)",
+    "duty": "यूजर चार्ज वसूली से जुड़ी किसी भी समस्या या शिकायत को दर्ज कराने के लिए",
+    "id": "08447905965"
+  },
+  {
+    "role": "Nagar Nigam Landline / लैंडलाइन कंट्रोल रूम",
+    "name": "कॉल सेंटर लैंडलाइन - नगर निगम ग्रेटर",
+    "category": "authority",
+    "icon": "deskphone",
+    "phone": "0141-2747400",
+    "rawPhone": "01412747400",
+    "office": "नगर निगम ग्रेटर, जयपुर (कॉल सेंटर)",
+    "duty": "यूजर चार्ज वसूली से जुड़ी किसी भी समस्या या शिकायत को दर्ज कराने के लिए",
+    "id": "01412747400"
+  },
+  {
+    "role": "Vendor Head Office / संवेदक कंपनी कार्यालय",
+    "name": "M/s V CARE ENVIRO (JV) कार्यालय",
+    "category": "authority",
+    "icon": "domain",
+    "phone": "D59-60 (पिन: 302019)",
+    "rawPhone": "",
+    "office": "कचरा संग्रहण संवेदक कंपनी कार्यालय",
+    "duty": "तमन्ना बिल्डिंग बेसमेंट-1, कश्यप पथ, श्याम नगर, जयपुर (पत्राचार हेतु)",
+    "id": "v_care_enviro_office"
+  },
+  {
+    "role": "Official Zone Order / कार्यालय क्रमांक",
+    "name": "आधिकारिक आदेश: एफ ()/न.नि.ज.ग्रेटर/मा.न.जोन/2023/555",
+    "category": "authority",
+    "icon": "description",
+    "phone": "दिनांक 16/05/2023",
+    "rawPhone": "",
+    "office": "कार्यालय उपायुक्त, मालवीय नगर जोन",
+    "duty": "दिनांक 16/05/2023 को जारी आधिकारिक आदेश पहचान संख्या",
+    "id": "order_nnj_mnz_2023_555"
+  },
+  {
+    "role": "Govt Solid Waste Rule / अधिसूचना क्रमांक",
+    "name": "अधिसूचना: प. 8 (ग) (ठोस अपशिष्ट) नियम/डीएलबी/19/20213",
+    "category": "authority",
+    "icon": "gavel",
+    "phone": "दिनांक 12.04.2019",
+    "rawPhone": "",
+    "office": "स्वायत्त शासन विभाग, राजस्थान सरकार",
+    "duty": "दिनांक 12.04.2019 के सरकारी नियम का संदर्भ, जिसके तहत ये दरें तय की गई हैं",
+    "id": "notif_dlb_19_20213"
+  },
+
+
   // --- EMERGENCY & HELPLINES ---
   {
     role: "Police Emergency & Beat",
